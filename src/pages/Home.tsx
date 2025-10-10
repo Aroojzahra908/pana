@@ -2668,7 +2668,7 @@ const Home = () => {
                   />
                   
                 </div>
-                <div className="text-3xl font-bold mb-1 text-cyan-600">
+                <div className="text-3xl font-extrabold mb-1 text-primary">
                   {stat.number}
                 </div>
                 <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
