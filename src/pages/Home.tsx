@@ -2659,7 +2659,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
-              <div key={index} className="stat-card animate-on-scroll group border-2 border-cyan-300" data-animation="bounce-in">
+              <div key={index} className="stat-card animate-on-scroll group rounded-2xl p-6 bg-white border border-[#00b4bb]/15 shadow-sm hover:shadow-md hover:border-[#00b4bb]/40 transition flex flex-col items-center text-center gap-2" data-animation="bounce-in">
                 <div className="w-14 h-14 rounded-md overflow-hidden border border-cyan-300 mb-3">
                   <img
                     src={stat.image}
