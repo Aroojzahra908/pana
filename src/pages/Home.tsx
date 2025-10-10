@@ -631,7 +631,7 @@
 //             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
 //               <span>Our AI Services</span>
 //             </h2>
-//             <p className="text-lg max-w-3xl mx-auto text-slate-700">
+//             <p className="text-lg max-w-3xl mx-auto text-[#2c3d4f]">
 //               Comprehensive AI solutions designed to transform your business operations and drive innovation
 //             </p>
 //           </div>
@@ -736,7 +736,7 @@
 //             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
 //               <span className="text-blue-600">What Our Clients Say</span>
 //             </h2>
-//             <p className="text-lg max-w-3xl mx-auto text-slate-600">
+//             <p className="text-lg max-w-3xl mx-auto text-[#2c3d4f]">
 //               Don't just take our word for it - hear from the companies we've helped transform
 //             </p>
 //           </div>
@@ -755,10 +755,10 @@
 //                   </div>
 //                 </div>
 //                 <div className="ml-6 flex-1">
-//                   <h4 className="font-bold text-xl text-slate-800 mb-1">
+//                   <h4 className="font-bold text-xl text-[#2c3d4f] mb-1">
 //                     {testimonials[currentTestimonial].name}
 //                   </h4>
-//                   <p className="text-slate-600 mb-1">{testimonials[currentTestimonial].role}</p>
+//                   <p className="text-[#2c3d4f] mb-1">{testimonials[currentTestimonial].role}</p>
 //                   <p className="text-blue-600 font-semibold text-sm">
 //                     {testimonials[currentTestimonial].company}
 //                   </p>
@@ -770,7 +770,7 @@
 //                 </div>
 //               </div>
 
-//               <blockquote className="text-lg mb-8 leading-relaxed text-slate-700 italic">
+//               <blockquote className="text-lg mb-8 leading-relaxed text-[#2c3d4f] italic">
 //                 "{testimonials[currentTestimonial].content}"
 //               </blockquote>
 
@@ -915,7 +915,7 @@
 //             <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-blue-600">
 //               Powered by Leading Technologies
 //             </h2>
-//             <p className="text-lg max-w-3xl mx-auto text-slate-600">
+//             <p className="text-lg max-w-3xl mx-auto text-[#2c3d4f]">
 //               We leverage the most advanced tools and frameworks to build scalable, robust AI solutions
 //             </p>
 //           </div>
@@ -1666,7 +1666,7 @@
 //             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
 //               <span>Our AI Services</span>
 //             </h2>
-//             <p className="text-lg max-w-3xl mx-auto text-slate-700">
+//             <p className="text-lg max-w-3xl mx-auto text-[#2c3d4f]">
 //               Comprehensive AI solutions designed to transform your business operations and drive innovation
 //             </p>
 //           </div>
@@ -1719,7 +1719,7 @@
 //             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
 //               <span>Success Stories</span>
 //             </h2>
-//             <p className="text-lg max-w-3xl mx-auto text-slate-700">
+//             <p className="text-lg max-w-3xl mx-auto text-[#2c3d4f]">
 //               Real results from our AI implementations across various industries
 //             </p>
 //           </div>
@@ -1739,7 +1739,7 @@
 //                 </div>
 
 //                 <div className="p-6">
-//                   <h3 className="text-xl font-bold mb-3 text-slate-800">
+//                   <h3 className="text-xl font-bold mb-3 text-[#2c3d4f]">
 //                     {project.title}
 //                   </h3>
 
@@ -1771,7 +1771,7 @@
 //             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
 //               <span>What Our Clients Say</span>
 //             </h2>
-//             <p className="text-lg max-w-3xl mx-auto text-slate-600">
+//             <p className="text-lg max-w-3xl mx-auto text-[#2c3d4f]">
 //               Don't just take our word for it - hear from the companies we've helped transform
 //             </p>
 //           </div>
@@ -1790,11 +1790,11 @@
 //                   </div>
 //                 </div>
 //                 <div className="ml-6 flex-1">
-//                   <h4 className="font-bold text-xl text-slate-800 mb-1">
+//                   <h4 className="font-bold text-xl text-[#2c3d4f] mb-1">
 //                     {testimonials[currentTestimonial].name}
 //                   </h4>
-//                   <p className="text-slate-600 mb-1">{testimonials[currentTestimonial].role}</p>
-//                   <p className="text-cyan-600 font-semibold text-sm">
+//                   <p className="text-[#2c3d4f] mb-1">{testimonials[currentTestimonial].role}</p>
+//                   <p className="text-primary font-semibold text-sm">
 //                     {testimonials[currentTestimonial].company}
 //                   </p>
 //                 </div>
@@ -1805,7 +1805,7 @@
 //                 </div>
 //               </div>
 
-//               <blockquote className="text-lg mb-8 leading-relaxed text-slate-700 italic">
+//               <blockquote className="text-lg mb-8 leading-relaxed text-[#2c3d4f] italic">
 //                 "{testimonials[currentTestimonial].content}"
 //               </blockquote>
 
@@ -1839,7 +1839,7 @@
 //             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
 //               Why Choose <span>Panabotics?</span>
 //             </h2>
-//             <p className="text-lg max-w-3xl mx-auto text-slate-700">
+//             <p className="text-lg max-w-3xl mx-auto text-[#2c3d4f]">
 //               We combine cutting-edge technology with deep industry expertise to deliver exceptional results
 //             </p>
 //           </div>
@@ -1860,11 +1860,11 @@
 //                     </div>
 //                   </div>
 
-//                   <h3 className="text-xl font-bold mb-4 text-slate-800">
+//                   <h3 className="text-xl font-bold mb-4 text-[#2c3d4f]">
 //                     {item.title}
 //                   </h3>
 
-//                   <p className="text-slate-600 leading-relaxed">
+//                   <p className="text-[#2c3d4f] leading-relaxed">
 //                     {item.description}
 //                   </p>
 //                 </div>
@@ -1950,7 +1950,7 @@
 //             <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-sky-600">
 //               Powered by Leading Technologies
 //             </h2>
-//             <p className="text-lg max-w-3xl mx-auto text-slate-600">
+//             <p className="text-lg max-w-3xl mx-auto text-[#2c3d4f]">
 //               We leverage the most advanced tools and frameworks to build scalable, robust AI solutions
 //             </p>
 //           </div>
@@ -2020,7 +2020,7 @@
 //                 Ready to Transform Your Business with AI?
 //               </h2>
 
-//               <p className="text-xl mb-8 max-w-2xl mx-auto text-slate-700">
+//               <p className="text-xl mb-8 max-w-2xl mx-auto text-[#2c3d4f]">
 //                 Join hundreds of companies already using our AI solutions to drive growth,
 //                 reduce costs, and unlock new possibilities.
 //               </p>
@@ -2685,7 +2685,7 @@ const Home = () => {
             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
               <span>Our AI Services</span>
             </h2>
-            <p className="text-lg max-w-3xl mx-auto text-slate-700">
+            <p className="text-lg max-w-3xl mx-auto text-[#2c3d4f]">
               Comprehensive AI solutions designed to transform your business operations and drive innovation
             </p>
           </div>
@@ -2738,7 +2738,7 @@ const Home = () => {
             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
               <span>Success Stories</span>
             </h2>
-            <p className="text-lg max-w-3xl mx-auto text-slate-700">
+            <p className="text-lg max-w-3xl mx-auto text-[#2c3d4f]">
               Real results from our AI implementations across various industries
             </p>
           </div>
@@ -2758,7 +2758,7 @@ const Home = () => {
                 </div>
 
                 <div className="p-6">
-                  <h3 className="text-xl font-bold mb-3 text-slate-800">
+                  <h3 className="text-xl font-bold mb-3 text-[#2c3d4f]">
                     {project.title}
                   </h3>
 
@@ -2790,7 +2790,7 @@ const Home = () => {
             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
               <span>What Our Clients Say</span>
             </h2>
-            <p className="text-lg max-w-3xl mx-auto text-slate-600">
+            <p className="text-lg max-w-3xl mx-auto text-[#2c3d4f]">
               Don't just take our word for it - hear from the companies we've helped transform
             </p>
           </div>
@@ -2809,11 +2809,11 @@ const Home = () => {
                   </div>
                 </div>
                 <div className="ml-6 flex-1">
-                  <h4 className="font-bold text-xl text-slate-800 mb-1">
+                  <h4 className="font-bold text-xl text-[#2c3d4f] mb-1">
                     {testimonials[currentTestimonial].name}
                   </h4>
-                  <p className="text-slate-600 mb-1">{testimonials[currentTestimonial].role}</p>
-                  <p className="text-cyan-600 font-semibold text-sm">
+                  <p className="text-[#2c3d4f] mb-1">{testimonials[currentTestimonial].role}</p>
+                  <p className="text-primary font-semibold text-sm">
                     {testimonials[currentTestimonial].company}
                   </p>
                 </div>
@@ -2824,7 +2824,7 @@ const Home = () => {
                 </div>
               </div>
 
-              <blockquote className="text-lg mb-8 leading-relaxed text-slate-700 italic">
+              <blockquote className="text-lg mb-8 leading-relaxed text-[#2c3d4f] italic">
                 "{testimonials[currentTestimonial].content}"
               </blockquote>
 
@@ -2857,7 +2857,7 @@ const Home = () => {
             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
               Why Choose <span>Panabotics?</span>
             </h2>
-            <p className="text-lg max-w-3xl mx-auto text-slate-700">
+            <p className="text-lg max-w-3xl mx-auto text-[#2c3d4f]">
               We combine cutting-edge technology with deep industry expertise to deliver exceptional results
             </p>
           </div>
@@ -2878,11 +2878,11 @@ const Home = () => {
                     </div>
                   </div>
 
-                  <h3 className="text-xl font-bold mb-4 text-slate-800">
+                  <h3 className="text-xl font-bold mb-4 text-[#2c3d4f]">
                     {item.title}
                   </h3>
 
-                  <p className="text-slate-600 leading-relaxed">
+                  <p className="text-[#2c3d4f] leading-relaxed">
                     {item.description}
                   </p>
                 </div>
@@ -2944,7 +2944,7 @@ const Home = () => {
             <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-primary">
               Powered by Leading Technologies
             </h2>
-            <p className="text-lg max-w-3xl mx-auto text-slate-600">
+            <p className="text-lg max-w-3xl mx-auto text-[#2c3d4f]">
               We leverage the most advanced tools and frameworks to build scalable, robust AI solutions
             </p>
           </div>
@@ -3014,7 +3014,7 @@ const Home = () => {
                 Ready to Transform Your Business with AI?
               </h2>
 
-              <p className="text-xl mb-8 max-w-2xl mx-auto text-slate-700">
+              <p className="text-xl mb-8 max-w-2xl mx-auto text-[#2c3d4f]">
                 Join hundreds of companies already using our AI solutions to drive growth,
                 reduce costs, and unlock new possibilities.
               </p>
