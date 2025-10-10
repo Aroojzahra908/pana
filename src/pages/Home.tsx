@@ -2909,7 +2909,7 @@ const Home = () => {
                 <div key={index} className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 lg:gap-12 items-center">
                   {index % 2 === 0 ? (
                     <>
-                      <div className="bg-white rounded-xl p-6 md:p-8 border border-[#00b4bb]/20 text-[#2c3d4f] shadow-sm">
+                      <div className="bg-white rounded-xl p-6 md:p-8 border border-[#00b4bb]/20 text-[#2c3d4f] shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg">
                         <div className="text-5xl font-extrabold leading-none text-primary">{step.step}</div>
                         <h3 className="mt-2 text-2xl font-semibold text-[#2c3d4f]">{step.title}</h3>
                         <p className="mt-2 text-[#2c3d4f]">{step.description}</p>
@@ -2923,7 +2923,7 @@ const Home = () => {
                       <div className="rounded-xl overflow-hidden ring-2 ring-[#00b4bb]/30 shadow-md">
                         <img src={step.image} alt={step.title} className="w-full h-48 md:h-56 lg:h-64 object-cover" />
                       </div>
-                      <div className="bg-white rounded-xl p-6 md:p-8 border border-[#00b4bb]/20 text-[#2c3d4f] shadow-sm">
+                      <div className="bg-white rounded-xl p-6 md:p-8 border border-[#00b4bb]/20 text-[#2c3d4f] shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg">
                         <div className="text-5xl font-extrabold leading-none text-primary">{step.step}</div>
                         <h3 className="mt-2 text-2xl font-semibold text-[#2c3d4f]">{step.title}</h3>
                         <p className="mt-2 text-[#2c3d4f]">{step.description}</p>
