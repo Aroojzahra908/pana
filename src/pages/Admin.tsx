@@ -103,7 +103,9 @@ const Admin: React.FC = () => {
 
 
   return (
-    <div className="max-w-6xl mx-auto p-6">
+    <div>
+      <ConfigBanner />
+      <div className="max-w-6xl mx-auto p-6">
       <h2 className="text-2xl font-bold mb-4">Admin Panel</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
         <div className="p-4 border rounded-lg">
@@ -175,6 +177,7 @@ const Admin: React.FC = () => {
             </button>
           </div>
         </form>
+      </div>
       </div>
     </div>
   );
