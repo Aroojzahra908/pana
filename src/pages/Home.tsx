@@ -2909,24 +2909,24 @@ const Home = () => {
                 <div key={index} className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 lg:gap-12 items-center">
                   {index % 2 === 0 ? (
                     <>
-                      <div className="bg-white/10 rounded-xl p-6 md:p-8 border border-white/20 text-white">
-                        <div className="text-5xl font-bold leading-none opacity-90">{step.step}</div>
-                        <h3 className="mt-2 text-2xl font-semibold">{step.title}</h3>
-                        <p className="mt-2 text-white/90">{step.description}</p>
+                      <div className="bg-white rounded-xl p-6 md:p-8 border border-[#00b4bb]/20 text-[#2c3d4f] shadow-sm">
+                        <div className="text-5xl font-extrabold leading-none text-primary">{step.step}</div>
+                        <h3 className="mt-2 text-2xl font-semibold text-[#2c3d4f]">{step.title}</h3>
+                        <p className="mt-2 text-[#2c3d4f]">{step.description}</p>
                       </div>
-                      <div className="rounded-xl overflow-hidden ring-1 ring-white/30">
+                      <div className="rounded-xl overflow-hidden ring-2 ring-[#00b4bb]/30 shadow-md">
                         <img src={step.image} alt={step.title} className="w-full h-48 md:h-56 lg:h-64 object-cover" />
                       </div>
                     </>
                   ) : (
                     <>
-                      <div className="rounded-xl overflow-hidden ring-1 ring-white/30">
+                      <div className="rounded-xl overflow-hidden ring-2 ring-[#00b4bb]/30 shadow-md">
                         <img src={step.image} alt={step.title} className="w-full h-48 md:h-56 lg:h-64 object-cover" />
                       </div>
-                      <div className="bg-white/10 rounded-xl p-6 md:p-8 border border-white/20 text-white">
-                        <div className="text-5xl font-bold leading-none opacity-90">{step.step}</div>
-                        <h3 className="mt-2 text-2xl font-semibold">{step.title}</h3>
-                        <p className="mt-2 text-white/90">{step.description}</p>
+                      <div className="bg-white rounded-xl p-6 md:p-8 border border-[#00b4bb]/20 text-[#2c3d4f] shadow-sm">
+                        <div className="text-5xl font-extrabold leading-none text-primary">{step.step}</div>
+                        <h3 className="mt-2 text-2xl font-semibold text-[#2c3d4f]">{step.title}</h3>
+                        <p className="mt-2 text-[#2c3d4f]">{step.description}</p>
                       </div>
                     </>
                   )}
