@@ -13,7 +13,7 @@ const Admin: React.FC = () => {
   const missingConfig = !import.meta.env.VITE_SUPABASE_URL || !import.meta.env.VITE_SUPABASE_ANON_KEY;
 
   useEffect(() => {
-    if (missingConfig) return;
+    // attempt to fetch regardless; fetchTable will throw helpful errors if vars are missing
     fetchAll();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
