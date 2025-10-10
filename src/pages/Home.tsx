@@ -564,7 +564,7 @@
 //                   <ArrowRight className="ml-2 h-5 w-5" />
 //                 </Link>
 
-//                 <button className="inline-flex items-center px-8 py-4 font-semibold rounded-full border transition-colors duration-300 glass-effect text-white hover:bg-white hover:text-slate-900">
+//                 <button className="inline-flex items-center px-8 py-4 font-semibold rounded-full border transition-colors duration-300 bg-primary text-primary-foreground hover:opacity-90">
 //                   <Play className="mr-2 h-5 w-5" />
 //                   Watch Demo
 //                 </button>
@@ -614,7 +614,7 @@
 //                   />
 //                   
 //                 </div>
-//                 <div className="text-3xl font-bold mb-1 text-cyan-600">
+//                 <div className="text-3xl font-bold mb-1 text-primary">
 //                   {stat.number}
 //                 </div>
 //                 <div className="text-sm font-medium text-[#2c3d4f]">{stat.label}</div>
@@ -667,7 +667,7 @@
 //                     ))}
 //                   </ul>
 
-//                   <Link to="/services" className="inline-flex items-center font-medium hover:underline text-cyan-600 group-hover:text-teal-700 transition-colors">
+//                   <Link to="/services" className="inline-flex items-center font-medium hover:underline text-primary group-hover:text-primary transition-colors">
 //                     Learn More <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
 //                   </Link>
 //                 </div>
@@ -694,7 +694,7 @@
 //               <div key={index} className="bg-slate-700 rounded-2xl overflow-hidden hover-lift animate-on-scroll shadow-2xl group" data-animation="slide-up">
 //                 <div className="relative h-48 overflow-hidden">
 //                   <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-//                   <div className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-medium text-white bg-sky-500">
+//                   <div className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-medium text-white bg-primary">
 //                     {project.category}
 //                   </div>
 //                   <div className="absolute top-4 right-4">
@@ -1101,7 +1101,7 @@
 //       label: "Client Satisfaction", 
 //       image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop&crop=center",
 //       bgColor: "bg-teal-50",
-//       iconColor: "text-cyan-600"
+//       iconColor: "text-primary"
 //     },
 //     { 
 //       number: "150+", 
@@ -1593,13 +1593,13 @@
 //               <div className="flex flex-col sm:flex-row gap-4 mb-8">
 //                 <Link
 //                   to="/services"
-//                   className="inline-flex items-center px-8 py-4 bg-cyan-500 text-white font-semibold rounded-full hover-scale animate-pulse-glow shadow-md hover:bg-cyan-400 transition-colors"
+//                   className="inline-flex items-center px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-full hover-scale animate-pulse-glow shadow-md hover:opacity-90 transition-colors"
 //                 >
 //                   Explore Services
 //                   <ArrowRight className="ml-2 h-5 w-5" />
 //                 </Link>
 
-//                 <button className="inline-flex items-center px-8 py-4 font-semibold rounded-full border transition-colors duration-300 glass-effect text-white hover:bg-white hover:text-slate-900">
+//                 <button className="inline-flex items-center px-8 py-4 font-semibold rounded-full border transition-colors duration-300 bg-primary text-primary-foreground hover:opacity-90">
 //                   <Play className="mr-2 h-5 w-5" />
 //                   Watch Demo
 //                 </button>
@@ -1649,7 +1649,7 @@
 //                   />
 //                   
 //                 </div>
-//                 <div className="text-3xl font-bold mb-1 text-cyan-600">
+//                 <div className="text-3xl font-bold mb-1 text-primary">
 //                   {stat.number}
 //                 </div>
 //                 <div className="text-sm font-medium text-[#2c3d4f]">{stat.label}</div>
@@ -1702,7 +1702,7 @@
 //                     ))}
 //                   </ul>
 
-//                   <Link to="/services" className="inline-flex items-center font-medium hover:underline text-cyan-600 group-hover:text-teal-700 transition-colors">
+//                   <Link to="/services" className="inline-flex items-center font-medium hover:underline text-primary group-hover:text-primary transition-colors">
 //                     Learn More <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
 //                   </Link>
 //                 </div>
@@ -1729,7 +1729,7 @@
 //               <div key={index} className="bg-white rounded-2xl overflow-hidden hover-lift animate-on-scroll shadow-xl group" data-animation="slide-up">
 //                 <div className="relative h-48 overflow-hidden">
 //                   <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-//                   <div className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-medium text-white bg-sky-500">
+//                   <div className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-medium text-white bg-primary">
 //                     {project.category}
 //                   </div>
 //                   <div className="absolute top-4 right-4">
@@ -1748,13 +1748,13 @@
 //                   <div className="space-y-2 mb-4">
 //                     {project.metrics.map((metric, idx) => (
 //                       <div key={idx} className="flex items-center text-sm text-gray-600">
-//                         <TrendingUp className="h-4 w-4 mr-2 text-sky-500" />
+//                         <TrendingUp className="h-4 w-4 mr-2 text-primary" />
 //                         <span>{metric}</span>
 //                       </div>
 //                     ))}
 //                   </div>
 
-//                   <button className="flex items-center text-sm font-medium hover:underline text-sky-600 hover:text-sky-700 transition-colors group">
+//                   <button className="flex items-center text-sm font-medium hover:underline text-primary hover:text-primary transition-colors group">
 //                     View Case Study <ExternalLink className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
 //                   </button>
 //                 </div>
@@ -2028,7 +2028,7 @@
 //               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
 //                 <Link
 //                   to="/contact"
-//                   className="inline-flex items-center px-8 py-4 bg-cyan-500 text-white font-semibold rounded-full hover-scale shadow-lg transition-all duration-300 hover:bg-cyan-600"
+//                   className="inline-flex items-center px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-full hover-scale shadow-lg transition-all duration-300 hover:bg-cyan-600"
 //                 >
 //                   Start Your AI Journey
 //                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -2120,7 +2120,7 @@ const Home = () => {
       label: "Client Satisfaction",
       image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop&crop=center",
       bgColor: "bg-teal-50",
-      iconColor: "text-cyan-600"
+      iconColor: "text-primary"
     },
     {
       number: "150+",
@@ -2394,26 +2394,26 @@ const Home = () => {
       .hover-lift:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
 
       /* Enhanced AI Brain */
-      .ai-brain-container { position: relative; width: 400px; height: 400px; display: flex; justify-content: center; align-items: center; }
+      .ai-brain-container { position: relative; width: 340px; height: 340px; display: flex; justify-content: center; align-items: center; }
       .ai-brain {
         width: 100%; height: 100%;
-        background: rgba(56, 189, 248, 0.1);
+        background: hsl(var(--primary) / 0.12);
         border-radius: 50%;
         display: flex; justify-content: center; align-items: center;
         position: relative;
-        box-shadow: 0 0 60px rgba(56, 189, 248, 0.4), 0 0 120px rgba(56, 189, 248, 0.2);
+        box-shadow: 0 0 60px hsl(var(--primary) / 0.45), 0 0 120px hsl(var(--primary) / 0.25);
         z-index: 2;
       }
       .ai-text {
-        font-size: 6rem; font-weight: bold; color: #67e8f9;
-        text-shadow: 0 0 15px rgba(56, 189, 248, 0.7);
+        font-size: 5.2rem; font-weight: bold; color: hsl(var(--primary));
+        text-shadow: 0 0 15px hsl(var(--primary) / 0.9);
         transform: rotate(-15deg);
         animation: spin 15s linear infinite;
         transform-origin: center;
       }
       .ai-brain-glow {
         position: absolute; width: 120%; height: 120%; border-radius: 50%;
-        background: radial-gradient(circle, rgba(56, 189, 248, 0.6) 0%, transparent 70%);
+        background: radial-gradient(circle, hsl(var(--primary) / 0.65) 0%, transparent 70%);
         filter: blur(30px);
         animation: pulse 4s ease-in-out infinite alternate;
         z-index: 1;
@@ -2507,18 +2507,18 @@ const Home = () => {
 
       /* Responsive Design */
       @media (max-width: 1024px) {
-        .ai-brain-container { width: 320px; height: 320px; }
-        .ai-text { font-size: 5rem; }
+        .ai-brain-container { width: 280px; height: 280px; }
+        .ai-text { font-size: 4.6rem; }
         .tech-slide { flex: 0 0 33.33%; }
       }
       @media (max-width: 768px) {
-        .ai-brain-container { width: 280px; height: 280px; }
-        .ai-text { font-size: 4rem; }
+        .ai-brain-container { width: 240px; height: 240px; }
+        .ai-text { font-size: 3.6rem; }
         .tech-slide { flex: 0 0 50%; }
       }
       @media (max-width: 480px) {
-        .ai-brain-container { width: 200px; height: 200px; }
-        .ai-text { font-size: 3rem; }
+        .ai-brain-container { width: 180px; height: 180px; }
+        .ai-text { font-size: 2.6rem; }
         .tech-slide { flex: 0 0 100%; }
       }
 
@@ -2612,32 +2612,18 @@ const Home = () => {
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <Link
                   to="/services"
-                  className="inline-flex items-center px-8 py-4 bg-cyan-500 text-white font-semibold rounded-full hover-scale animate-pulse-glow shadow-md hover:bg-cyan-400 transition-colors"
+                  className="inline-flex items-center px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-full hover-scale animate-pulse-glow shadow-md hover:opacity-90 transition-colors"
                 >
                   Explore Services
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
 
-                <button className="inline-flex items-center px-8 py-4 font-semibold rounded-full border transition-colors duration-300 glass-effect text-white hover:bg-white hover:text-slate-900">
+                <button className="inline-flex items-center px-8 py-4 font-semibold rounded-full border transition-colors duration-300 bg-white text-slate-900 shadow-sm hover:opacity-95">
                   <Play className="mr-2 h-5 w-5" />
                   Watch Demo
                 </button>
               </div>
 
-              <div className="flex items-center space-x-8 text-white">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">500+</div>
-                  <div className="text-sm">Projects</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">98%</div>
-                  <div className="text-sm">Satisfaction</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">24/7</div>
-                  <div className="text-sm">Support</div>
-                </div>
-              </div>
             </div>
 
             <div className="animate-on-scroll" data-animation="scale">
@@ -2721,7 +2707,7 @@ const Home = () => {
                     ))}
                   </ul>
 
-                  <Link to="/services" className="inline-flex items-center font-medium hover:underline text-cyan-600 group-hover:text-teal-700 transition-colors">
+                  <Link to="/services" className="inline-flex items-center font-medium hover:underline text-primary group-hover:text-primary transition-colors">
                     Learn More <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>
@@ -2748,7 +2734,7 @@ const Home = () => {
               <div key={index} className="bg-white rounded-2xl overflow-hidden hover-lift animate-on-scroll shadow-xl group" data-animation="slide-up">
                 <div className="relative h-48 overflow-hidden">
                   <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                  <div className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-medium text-white bg-sky-500">
+                  <div className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-medium text-white bg-primary">
                     {project.category}
                   </div>
                   <div className="absolute top-4 right-4">
@@ -2767,13 +2753,13 @@ const Home = () => {
                   <div className="space-y-2 mb-4">
                     {project.metrics.map((metric, idx) => (
                       <div key={idx} className="flex items-center text-sm text-gray-600">
-                        <TrendingUp className="h-4 w-4 mr-2 text-sky-500" />
+                        <TrendingUp className="h-4 w-4 mr-2 text-primary" />
                         <span>{metric}</span>
                       </div>
                     ))}
                   </div>
 
-                  <button className="flex items-center text-sm font-medium hover:underline text-sky-600 hover:text-sky-700 transition-colors group">
+                  <button className="flex items-center text-sm font-medium hover:underline text-primary hover:text-primary transition-colors group">
                     View Case Study <ExternalLink className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </button>
                 </div>
@@ -3021,7 +3007,7 @@ const Home = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
                 <Link
                   to="/contact"
-                  className="inline-flex items-center px-8 py-4 bg-cyan-500 text-white font-semibold rounded-full hover-scale shadow-lg transition-all duration-300 hover:bg-cyan-600"
+                  className="inline-flex items-center px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-full hover-scale shadow-lg transition-all duration-300 hover:opacity-90"
                 >
                   Start Your AI Journey
                   <ArrowRight className="ml-2 h-5 w-5" />
