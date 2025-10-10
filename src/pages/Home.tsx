@@ -605,16 +605,16 @@
 //         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 //           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 //             {stats.map((stat, index) => (
-//               <div key={index} className="stat-card animate-on-scroll group" data-animation="bounce-in">
-//                 <div className="relative h-32 mb-6 rounded-lg overflow-hidden">
+//               <div key={index} className="stat-card animate-on-scroll group border-2 border-cyan-300" data-animation="bounce-in">
+//                 <div className="w-14 h-14 rounded-md overflow-hidden border border-cyan-300 mb-3">
 //                   <img 
 //                     src={stat.image} 
 //                     alt={stat.label}
 //                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
 //                   />
-//                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+//                   
 //                 </div>
-//                 <div className="text-4xl font-bold mb-2 text-slate-800">
+//                 <div className="text-3xl font-bold mb-1 text-cyan-600">
 //                   {stat.number}
 //                 </div>
 //                 <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
@@ -629,7 +629,7 @@
 //         <div className="max-w-7xl mx-auto">
 //           <div className="text-center mb-16 animate-on-scroll" data-animation="slide-up">
 //             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
-//               <span className="text-teal-600">Our AI Services</span>
+//               <span className="text-cyan-600">Our AI Services</span>
 //             </h2>
 //             <p className="text-lg max-w-3xl mx-auto text-slate-700">
 //               Comprehensive AI solutions designed to transform your business operations and drive innovation
@@ -667,7 +667,7 @@
 //                     ))}
 //                   </ul>
 
-//                   <Link to="/services" className="inline-flex items-center font-medium hover:underline text-teal-600 group-hover:text-teal-700 transition-colors">
+//                   <Link to="/services" className="inline-flex items-center font-medium hover:underline text-cyan-600 group-hover:text-teal-700 transition-colors">
 //                     Learn More <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
 //                   </Link>
 //                 </div>
@@ -681,7 +681,7 @@
 //       <section className="py-20 bg-slate-800 px-4 sm:px-6 lg:px-8">
 //         <div className="max-w-7xl mx-auto">
 //           <div className="text-center mb-16 animate-on-scroll" data-animation="slide-up">
-//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-white">
+//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
 //               <span className="text-sky-400">Success Stories</span>
 //             </h2>
 //             <p className="text-lg max-w-3xl mx-auto text-gray-300">
@@ -801,7 +801,7 @@
 //       <section className="py-20 bg-gradient-to-br from-teal-500 to-emerald-600 px-4 sm:px-6 lg:px-8">
 //         <div className="max-w-7xl mx-auto">
 //           <div className="text-center mb-16 animate-on-scroll" data-animation="slide-up">
-//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-white">
+//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
 //               Why Choose <span className="text-teal-200">Panabotics?</span>
 //             </h2>
 //             <p className="text-lg max-w-3xl mx-auto text-teal-100">
@@ -849,7 +849,7 @@
 
 //         <div className="max-w-7xl mx-auto relative z-10">
 //           <div className="text-center mb-20 animate-on-scroll" data-animation="slide-up">
-//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-white">
+//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
 //               Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">AI Journey</span>
 //             </h2>
 //             <p className="text-lg max-w-3xl mx-auto text-gray-300">
@@ -936,7 +936,7 @@
 //               ))}
 //             </div>
 
-//             <div className="slider-nav pointer-events-auto">
+//             <div className="slider-nav pointer-events-auto hidden">
 //               <button
 //                 className="slider-btn hover-scale"
 //                 onClick={() => {
@@ -1101,7 +1101,7 @@
 //       label: "Client Satisfaction", 
 //       image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop&crop=center",
 //       bgColor: "bg-teal-50",
-//       iconColor: "text-teal-600"
+//       iconColor: "text-cyan-600"
 //     },
 //     { 
 //       number: "150+", 
@@ -1640,16 +1640,16 @@
 //         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 //           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 //             {stats.map((stat, index) => (
-//               <div key={index} className="stat-card animate-on-scroll group" data-animation="bounce-in">
-//                 <div className="relative h-32 mb-6 rounded-lg overflow-hidden">
+//               <div key={index} className="stat-card animate-on-scroll group border-2 border-cyan-300" data-animation="bounce-in">
+//                 <div className="w-14 h-14 rounded-md overflow-hidden border border-cyan-300 mb-3">
 //                   <img 
 //                     src={stat.image} 
 //                     alt={stat.label}
 //                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
 //                   />
-//                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+//                   
 //                 </div>
-//                 <div className="text-4xl font-bold mb-2 text-slate-800">
+//                 <div className="text-3xl font-bold mb-1 text-cyan-600">
 //                   {stat.number}
 //                 </div>
 //                 <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
@@ -1664,7 +1664,7 @@
 //         <div className="max-w-7xl mx-auto">
 //           <div className="text-center mb-16 animate-on-scroll" data-animation="slide-up">
 //             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
-//               <span className="text-teal-600">Our AI Services</span>
+//               <span className="text-cyan-600">Our AI Services</span>
 //             </h2>
 //             <p className="text-lg max-w-3xl mx-auto text-slate-700">
 //               Comprehensive AI solutions designed to transform your business operations and drive innovation
@@ -1702,7 +1702,7 @@
 //                     ))}
 //                   </ul>
 
-//                   <Link to="/services" className="inline-flex items-center font-medium hover:underline text-teal-600 group-hover:text-teal-700 transition-colors">
+//                   <Link to="/services" className="inline-flex items-center font-medium hover:underline text-cyan-600 group-hover:text-teal-700 transition-colors">
 //                     Learn More <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
 //                   </Link>
 //                 </div>
@@ -1769,7 +1769,7 @@
 //         <div className="max-w-7xl mx-auto">
 //           <div className="text-center mb-16 animate-on-scroll" data-animation="slide-up">
 //             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
-//               <span className="text-teal-600">What Our Clients Say</span>
+//               <span className="text-cyan-600">What Our Clients Say</span>
 //             </h2>
 //             <p className="text-lg max-w-3xl mx-auto text-slate-600">
 //               Don't just take our word for it - hear from the companies we've helped transform
@@ -1777,7 +1777,7 @@
 //           </div>
 
 //           <div className="relative max-w-4xl mx-auto">
-//             <div className="bg-gradient-to-br from-sky-50 to-teal-50 rounded-3xl p-8 shadow-xl animate-on-scroll border border-sky-200" data-animation="fade-in">
+//             <div className="bg-gray-100 rounded-3xl p-8 shadow-md animate-on-scroll border border-gray-200" data-animation="fade-in">
 //               <div className="flex items-start mb-8">
 //                 <div className="relative">
 //                   <img
@@ -1794,7 +1794,7 @@
 //                     {testimonials[currentTestimonial].name}
 //                   </h4>
 //                   <p className="text-slate-600 mb-1">{testimonials[currentTestimonial].role}</p>
-//                   <p className="text-teal-600 font-semibold text-sm">
+//                   <p className="text-cyan-600 font-semibold text-sm">
 //                     {testimonials[currentTestimonial].company}
 //                   </p>
 //                 </div>
@@ -1837,7 +1837,7 @@
 //         <div className="max-w-7xl mx-auto">
 //           <div className="text-center mb-16 animate-on-scroll" data-animation="slide-up">
 //             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
-//               Why Choose <span className="text-teal-600">Panabotics?</span>
+//               Why Choose <span className="text-cyan-600">Panabotics?</span>
 //             </h2>
 //             <p className="text-lg max-w-3xl mx-auto text-slate-700">
 //               We combine cutting-edge technology with deep industry expertise to deliver exceptional results
@@ -1847,7 +1847,7 @@
 //           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 //             {whyChooseUs.map((item, index) => (
 //               <div key={index} className="group animate-on-scroll" data-animation="slide-up">
-//                 <div className="bg-white rounded-2xl p-6 text-center hover-lift transition-all duration-300 shadow-xl">
+//                 <div className="bg-white rounded-2xl p-6 text-center hover-lift transition-all duration-300 shadow-xl border-2 border-cyan-300">
 //                   <div className="relative mb-6 mx-auto w-24 h-24 rounded-xl overflow-hidden">
 //                     <img 
 //                       src={item.image} 
@@ -1971,7 +1971,7 @@
 //               ))}
 //             </div>
 
-//             <div className="slider-nav pointer-events-auto">
+//             <div className="slider-nav pointer-events-auto hidden">
 //               <button
 //                 className="slider-btn hover-scale"
 //                 onClick={() => {
@@ -2028,7 +2028,7 @@
 //               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
 //                 <Link
 //                   to="/contact"
-//                   className="inline-flex items-center px-8 py-4 bg-sky-500 text-white font-semibold rounded-full hover-scale shadow-lg transition-all duration-300 hover:bg-sky-600"
+//                   className="inline-flex items-center px-8 py-4 bg-cyan-500 text-white font-semibold rounded-full hover-scale shadow-lg transition-all duration-300 hover:bg-cyan-600"
 //                 >
 //                   Start Your AI Journey
 //                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -2036,7 +2036,7 @@
 
 //                 <Link
 //                   to="/portfolio"
-//                   className="inline-flex items-center px-8 py-4 border-2 border-slate-600 font-semibold rounded-full hover:bg-slate-600 hover:text-white hover-scale transition-all duration-300 text-slate-700"
+//                   className="inline-flex items-center px-8 py-4 border border-gray-400 font-semibold rounded-full hover:bg-white hover-scale transition-all duration-300 text-slate-700"
 //                 >
 //                   View Our Work
 //                 </Link>
@@ -2120,7 +2120,7 @@ const Home = () => {
       label: "Client Satisfaction",
       image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop&crop=center",
       bgColor: "bg-teal-50",
-      iconColor: "text-teal-600"
+      iconColor: "text-cyan-600"
     },
     {
       number: "150+",
@@ -2659,16 +2659,16 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
-              <div key={index} className="stat-card animate-on-scroll group" data-animation="bounce-in">
-                <div className="relative h-32 mb-6 rounded-lg overflow-hidden">
+              <div key={index} className="stat-card animate-on-scroll group border-2 border-cyan-300" data-animation="bounce-in">
+                <div className="w-14 h-14 rounded-md overflow-hidden border border-cyan-300 mb-3">
                   <img
                     src={stat.image}
                     alt={stat.label}
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                  
                 </div>
-                <div className="text-4xl font-bold mb-2 text-slate-800">
+                <div className="text-3xl font-bold mb-1 text-cyan-600">
                   {stat.number}
                 </div>
                 <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
@@ -2683,7 +2683,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-on-scroll" data-animation="slide-up">
             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
-              <span className="text-teal-600">Our AI Services</span>
+              <span className="text-cyan-600">Our AI Services</span>
             </h2>
             <p className="text-lg max-w-3xl mx-auto text-slate-700">
               Comprehensive AI solutions designed to transform your business operations and drive innovation
@@ -2721,7 +2721,7 @@ const Home = () => {
                     ))}
                   </ul>
 
-                  <Link to="/services" className="inline-flex items-center font-medium hover:underline text-teal-600 group-hover:text-teal-700 transition-colors">
+                  <Link to="/services" className="inline-flex items-center font-medium hover:underline text-cyan-600 group-hover:text-teal-700 transition-colors">
                     Learn More <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>
@@ -2736,7 +2736,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-on-scroll" data-animation="slide-up">
             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
-              <span className="text-teal-600">Success Stories</span>
+              <span className="text-cyan-600">Success Stories</span>
             </h2>
             <p className="text-lg max-w-3xl mx-auto text-slate-700">
               Real results from our AI implementations across various industries
@@ -2788,7 +2788,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-on-scroll" data-animation="slide-up">
             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
-              <span className="text-teal-600">What Our Clients Say</span>
+              <span className="text-cyan-600">What Our Clients Say</span>
             </h2>
             <p className="text-lg max-w-3xl mx-auto text-slate-600">
               Don't just take our word for it - hear from the companies we've helped transform
@@ -2796,7 +2796,7 @@ const Home = () => {
           </div>
 
           <div className="relative max-w-4xl mx-auto">
-            <div className="bg-gradient-to-br from-sky-50 to-teal-50 rounded-3xl p-8 shadow-xl animate-on-scroll border border-sky-200" data-animation="fade-in">
+            <div className="bg-gray-100 rounded-3xl p-8 shadow-md animate-on-scroll border border-gray-200" data-animation="fade-in">
               <div className="flex items-start mb-8">
                 <div className="relative">
                   <img
@@ -2813,7 +2813,7 @@ const Home = () => {
                     {testimonials[currentTestimonial].name}
                   </h4>
                   <p className="text-slate-600 mb-1">{testimonials[currentTestimonial].role}</p>
-                  <p className="text-teal-600 font-semibold text-sm">
+                  <p className="text-cyan-600 font-semibold text-sm">
                     {testimonials[currentTestimonial].company}
                   </p>
                 </div>
@@ -2851,13 +2851,13 @@ const Home = () => {
       </section>
 
       {/* Why Choose Us Section - Light Teal Background */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "#06ba87" }}>
+      <section className="py-20 bg-gray-200 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-on-scroll" data-animation="slide-up">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-white">
-              Why Choose <span className="text-white-600">Panabotics?</span>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
+              Why Choose <span className="text-cyan-600">Panabotics?</span>
             </h2>
-            <p className="text-lg max-w-3xl mx-auto text-white/90">
+            <p className="text-lg max-w-3xl mx-auto text-slate-700">
               We combine cutting-edge technology with deep industry expertise to deliver exceptional results
             </p>
           </div>
@@ -2865,7 +2865,7 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {whyChooseUs.map((item, index) => (
               <div key={index} className="group animate-on-scroll" data-animation="slide-up">
-                <div className="bg-white rounded-2xl p-6 text-center hover-lift transition-all duration-300 shadow-xl">
+                <div className="bg-white rounded-2xl p-6 text-center hover-lift transition-all duration-300 shadow-xl border-2 border-cyan-300">
                   <div className="relative mb-6 mx-auto w-24 h-24 rounded-xl overflow-hidden">
                     <img
                       src={item.image}
@@ -2963,7 +2963,7 @@ const Home = () => {
       <section className="py-20 bg-white px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-on-scroll" data-animation="fade-in">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-teal-600">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-cyan-600">
               Powered by Leading Technologies
             </h2>
             <p className="text-lg max-w-3xl mx-auto text-slate-600">
@@ -2987,7 +2987,7 @@ const Home = () => {
               ))}
             </div>
 
-            <div className="slider-nav pointer-events-auto">
+            <div className="slider-nav pointer-events-auto hidden">
               <button
                 className="slider-btn hover-scale"
                 onClick={() => {
@@ -3020,10 +3020,9 @@ const Home = () => {
       </section>
 
       {/* Enhanced CTA Section - sea green and white gray */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "#0dbf8cff" }}>
+      <section className="py-20 bg-white px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="rounded-3xl text-white text-center max-w-4xl mx-auto px-6 sm:px-10 lg:px-12 py-16 animate-on-scroll relative overflow-hidden shadow-xl"
-            style={{ backgroundImage: "linear-gradient(to bottom right, #15b477ff, #c7c7c7ff)" }}
+          <div className="rounded-2xl text-slate-800 text-center max-w-4xl mx-auto px-6 sm:px-10 lg:px-12 py-12 animate-on-scroll relative overflow-hidden bg-gray-100 border border-gray-200 shadow-sm"
             data-animation="scale-in">
 
             {/* Background Pattern */}
@@ -3045,7 +3044,7 @@ const Home = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
                 <Link
                   to="/contact"
-                  className="inline-flex items-center px-8 py-4 bg-sky-500 text-white font-semibold rounded-full hover-scale shadow-lg transition-all duration-300 hover:bg-sky-600"
+                  className="inline-flex items-center px-8 py-4 bg-cyan-500 text-white font-semibold rounded-full hover-scale shadow-lg transition-all duration-300 hover:bg-cyan-600"
                 >
                   Start Your AI Journey
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -3053,7 +3052,7 @@ const Home = () => {
 
                 <Link
                   to="/portfolio"
-                  className="inline-flex items-center px-8 py-4 border-2 border-slate-600 font-semibold rounded-full hover:bg-slate-600 hover:text-white hover-scale transition-all duration-300 text-slate-700"
+                  className="inline-flex items-center px-8 py-4 border border-gray-400 font-semibold rounded-full hover:bg-white hover-scale transition-all duration-300 text-slate-700"
                 >
                   View Our Work
                 </Link>
