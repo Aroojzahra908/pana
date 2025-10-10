@@ -3,7 +3,7 @@ import supabase from "@/lib/supabaseClient"; // simple REST helpers: supabase.fe
 import { toast } from "@/hooks/use-toast";
 
 const Admin: React.FC = () => {
-  const [users, setUsers] = useState<any[] | null>(null);
+  const [users, setUsers] = useState<any[] | null>(null); // uses profiles table from Supabase
   const [visits, setVisits] = useState<any[] | null>(null);
   const [courses, setCourses] = useState<any[] | null>(null);
   const [loading, setLoading] = useState(false);
@@ -22,7 +22,7 @@ const Admin: React.FC = () => {
     setLoading(true);
     try {
       try {
-        const usersData = await supabase.fetchTable("users");
+        const usersData = await supabase.fetchTable("profiles");
         setUsers(usersData || []);
       } catch (err) {
         console.warn("users fetch error:", err);
@@ -108,15 +108,15 @@ const Admin: React.FC = () => {
       <h2 className="text-2xl font-bold mb-4">Admin Panel</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
         <div className="p-4 border rounded-lg">
-          <h3 className="font-semibold mb-2">Users</h3>
+          <h3 className="font-semibold mb-2">Profiles</h3>
           {users === null ? (
-            <div className="text-sm text-muted-foreground">No users table or permission denied.</div>
+            <div className="text-sm text-muted-foreground">No profiles table or permission denied.</div>
           ) : (
             <div className="space-y-2 max-h-64 overflow-auto">
               {users.map((u) => (
                 <div key={u.id} className="text-sm">
                   <div className="font-medium">{u.email || u.id}</div>
-                  <div className="text-xs text-slate-500">{u.role || "-"}</div>
+                  <div className="text-xs text-slate-500">{u.role || "user"}</div>
                 </div>
               ))}
             </div>
