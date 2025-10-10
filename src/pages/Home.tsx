@@ -2394,26 +2394,26 @@ const Home = () => {
       .hover-lift:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
 
       /* Enhanced AI Brain */
-      .ai-brain-container { position: relative; width: 400px; height: 400px; display: flex; justify-content: center; align-items: center; }
+      .ai-brain-container { position: relative; width: 340px; height: 340px; display: flex; justify-content: center; align-items: center; }
       .ai-brain {
         width: 100%; height: 100%;
-        background: rgba(56, 189, 248, 0.1);
+        background: hsl(var(--primary) / 0.12);
         border-radius: 50%;
         display: flex; justify-content: center; align-items: center;
         position: relative;
-        box-shadow: 0 0 60px rgba(56, 189, 248, 0.4), 0 0 120px rgba(56, 189, 248, 0.2);
+        box-shadow: 0 0 60px hsl(var(--primary) / 0.45), 0 0 120px hsl(var(--primary) / 0.25);
         z-index: 2;
       }
       .ai-text {
-        font-size: 6rem; font-weight: bold; color: #67e8f9;
-        text-shadow: 0 0 15px rgba(56, 189, 248, 0.7);
+        font-size: 5.2rem; font-weight: bold; color: hsl(var(--primary-foreground));
+        text-shadow: 0 0 15px hsl(var(--primary) / 0.75);
         transform: rotate(-15deg);
         animation: spin 15s linear infinite;
         transform-origin: center;
       }
       .ai-brain-glow {
         position: absolute; width: 120%; height: 120%; border-radius: 50%;
-        background: radial-gradient(circle, rgba(56, 189, 248, 0.6) 0%, transparent 70%);
+        background: radial-gradient(circle, hsl(var(--primary) / 0.65) 0%, transparent 70%);
         filter: blur(30px);
         animation: pulse 4s ease-in-out infinite alternate;
         z-index: 1;
@@ -2507,18 +2507,18 @@ const Home = () => {
 
       /* Responsive Design */
       @media (max-width: 1024px) {
-        .ai-brain-container { width: 320px; height: 320px; }
-        .ai-text { font-size: 5rem; }
+        .ai-brain-container { width: 280px; height: 280px; }
+        .ai-text { font-size: 4.6rem; }
         .tech-slide { flex: 0 0 33.33%; }
       }
       @media (max-width: 768px) {
-        .ai-brain-container { width: 280px; height: 280px; }
-        .ai-text { font-size: 4rem; }
+        .ai-brain-container { width: 240px; height: 240px; }
+        .ai-text { font-size: 3.6rem; }
         .tech-slide { flex: 0 0 50%; }
       }
       @media (max-width: 480px) {
-        .ai-brain-container { width: 200px; height: 200px; }
-        .ai-text { font-size: 3rem; }
+        .ai-brain-container { width: 180px; height: 180px; }
+        .ai-text { font-size: 2.6rem; }
         .tech-slide { flex: 0 0 100%; }
       }
 
