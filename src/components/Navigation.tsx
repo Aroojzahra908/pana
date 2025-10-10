@@ -1,5 +1,3 @@
-
-
 // import { useState, useEffect } from "react";
 // import { Link, useLocation } from "react-router-dom";
 // import { Menu, X } from "lucide-react";
@@ -177,6 +175,7 @@ const Navigation = () => {
     { name: "Home", path: "/" },
     { name: "Portfolio", path: "/portfolio" },
     { name: "Services", path: "/services" },
+    { name: "Courses", path: "/courses" },
     { name: "Blog", path: "/blog" },
     { name: "About", path: "/about" },
     { name: "Careers", path: "/careers" },
