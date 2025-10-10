@@ -10,7 +10,6 @@ import Blog from "./pages/Blog";
 import About from "./pages/About";
 import Careers from "./pages/Careers";
 import Contact from "./pages/Contact";
-import Courses from "./pages/Courses";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 import Layout from "./components/Layout";
