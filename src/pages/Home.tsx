@@ -617,7 +617,7 @@
 //                 <div className="text-3xl font-bold mb-1 text-cyan-600">
 //                   {stat.number}
 //                 </div>
-//                 <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
+//                 <div className="text-sm font-medium text-[#2c3d4f]">{stat.label}</div>
 //               </div>
 //             ))}
 //           </div>
@@ -1652,7 +1652,7 @@
 //                 <div className="text-3xl font-bold mb-1 text-cyan-600">
 //                   {stat.number}
 //                 </div>
-//                 <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
+//                 <div className="text-sm font-medium text-[#2c3d4f]">{stat.label}</div>
 //               </div>
 //             ))}
 //           </div>
@@ -2671,7 +2671,7 @@ const Home = () => {
                 <div className="text-3xl font-extrabold mb-1 text-primary">
                   {stat.number}
                 </div>
-                <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
+                <div className="text-sm font-medium text-[#2c3d4f]">{stat.label}</div>
               </div>
             ))}
           </div>
