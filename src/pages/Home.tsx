@@ -2897,7 +2897,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
             <h2 className="text-3xl sm:text-4xl font-bold text-primary">Our Process</h2>
-            <p className="text-slate-600">A step-by-step approach to delivering high-quality AI solutions tailored to your business.</p>
+            <p className="text-[#2c3d4f]">A step-by-step approach to delivering high-quality AI solutions tailored to your business.</p>
           </div>
 
           <div
