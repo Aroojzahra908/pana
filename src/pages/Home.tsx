@@ -2405,8 +2405,8 @@ const Home = () => {
         z-index: 2;
       }
       .ai-text {
-        font-size: 5.2rem; font-weight: bold; color: #ffffff;
-        text-shadow: 0 0 15px rgba(255,255,255,0.9);
+        font-size: 5.2rem; font-weight: bold; color: hsl(var(--primary));
+        text-shadow: 0 0 15px hsl(var(--primary) / 0.9);
         transform: rotate(-15deg);
         animation: spin 15s linear infinite;
         transform-origin: center;
