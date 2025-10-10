@@ -178,48 +178,8 @@ const Admin: React.FC = () => {
           )}
         </div>
 
-        <div className="p-4 border rounded-lg">
-          <h3 className="font-semibold mb-2">Courses</h3>
-          {coursesError ? (
-            <div className="text-sm text-red-600">{coursesError}</div>
-          ) : courses === null ? (
-            <div className="text-sm text-muted-foreground">No courses table or permission denied.</div>
-          ) : courses.length === 0 ? (
-            <div className="text-sm text-muted-foreground">No courses found.</div>
-          ) : (
-            <div className="space-y-2 max-h-64 overflow-auto text-sm">
-              {courses.map((c) => (
-                <div key={c.id}>
-                  <div className="font-medium">{c.title}</div>
-                  <div className="text-xs text-slate-500">{c.created_at}</div>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
       </div>
 
-      <div className="p-4 border rounded-lg">
-        <h3 className="font-semibold mb-4">Add Course</h3>
-        <form onSubmit={handleAddCourse} className="space-y-3">
-          <div>
-            <label className="block text-sm mb-1">Title</label>
-            <input value={title} onChange={(e) => setTitle(e.target.value)} className="w-full border rounded px-3 py-2" />
-          </div>
-          <div>
-            <label className="block text-sm mb-1">Description</label>
-            <textarea value={description} onChange={(e) => setDescription(e.target.value)} className="w-full border rounded px-3 py-2" />
-          </div>
-          <div className="flex items-center space-x-3">
-            <button disabled={loading} className="px-4 py-2 bg-primary text-primary-foreground rounded">
-              Add Course
-            </button>
-            <button type="button" onClick={() => fetchAll()} className="px-4 py-2 border rounded">
-              Refresh
-            </button>
-          </div>
-        </form>
-      </div>
       </div>
     </div>
   );
