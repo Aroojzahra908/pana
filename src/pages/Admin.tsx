@@ -4,6 +4,9 @@ import { toast } from "@/hooks/use-toast";
 
 const Admin: React.FC = () => {
   const [users, setUsers] = useState<any[] | null>(null); // uses profiles table from Supabase
+  const [usersError, setUsersError] = useState<string | null>(null);
+  const [visitsError, setVisitsError] = useState<string | null>(null);
+  const [coursesError, setCoursesError] = useState<string | null>(null);
   const [visits, setVisits] = useState<any[] | null>(null);
   const [courses, setCourses] = useState<any[] | null>(null);
   const [loading, setLoading] = useState(false);
@@ -24,17 +27,21 @@ const Admin: React.FC = () => {
       try {
         const usersData = await supabase.fetchTable("profiles");
         setUsers(usersData || []);
-      } catch (err) {
+        setUsersError(null);
+      } catch (err: any) {
         console.warn("users fetch error:", err);
         setUsers(null);
+        setUsersError(err?.message || String(err));
       }
 
       try {
         const visitsData = await supabase.fetchTable("page_visits");
         setVisits(visitsData || []);
-      } catch (err) {
+        setVisitsError(null);
+      } catch (err: any) {
         console.warn("visits fetch error:", err);
         setVisits(null);
+        setVisitsError(err?.message || String(err));
       }
 
       try {
@@ -44,9 +51,11 @@ const Admin: React.FC = () => {
           ? coursesData.sort((a: any, b: any) => (a.created_at < b.created_at ? 1 : -1))
           : coursesData;
         setCourses(sorted || []);
-      } catch (err) {
+        setCoursesError(null);
+      } catch (err: any) {
         console.warn("courses fetch error:", err);
         setCourses(null);
+        setCoursesError(err?.message || String(err));
       }
     } catch (err) {
       console.error(err);
@@ -110,8 +119,12 @@ const Admin: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
         <div className="p-4 border rounded-lg">
           <h3 className="font-semibold mb-2">Profiles</h3>
-          {users === null ? (
+          {usersError ? (
+            <div className="text-sm text-red-600">{usersError}</div>
+          ) : users === null ? (
             <div className="text-sm text-muted-foreground">No profiles table or permission denied.</div>
+          ) : users.length === 0 ? (
+            <div className="text-sm text-muted-foreground">No profiles found.</div>
           ) : (
             <div className="space-y-2 max-h-64 overflow-auto">
               {users.map((u) => (
@@ -126,8 +139,12 @@ const Admin: React.FC = () => {
 
         <div className="p-4 border rounded-lg">
           <h3 className="font-semibold mb-2">Page visits</h3>
-          {visits === null ? (
+          {visitsError ? (
+            <div className="text-sm text-red-600">{visitsError}</div>
+          ) : visits === null ? (
             <div className="text-sm text-muted-foreground">No page_visits table or permission denied.</div>
+          ) : visits.length === 0 ? (
+            <div className="text-sm text-muted-foreground">No page visits yet.</div>
           ) : (
             <div className="space-y-2 max-h-64 overflow-auto text-sm">
               {visits.map((v) => (
@@ -142,8 +159,12 @@ const Admin: React.FC = () => {
 
         <div className="p-4 border rounded-lg">
           <h3 className="font-semibold mb-2">Courses</h3>
-          {courses === null ? (
+          {coursesError ? (
+            <div className="text-sm text-red-600">{coursesError}</div>
+          ) : courses === null ? (
             <div className="text-sm text-muted-foreground">No courses table or permission denied.</div>
+          ) : courses.length === 0 ? (
+            <div className="text-sm text-muted-foreground">No courses found.</div>
           ) : (
             <div className="space-y-2 max-h-64 overflow-auto text-sm">
               {courses.map((c) => (
