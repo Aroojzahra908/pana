@@ -2405,8 +2405,8 @@ const Home = () => {
         z-index: 2;
       }
       .ai-text {
-        font-size: 5.2rem; font-weight: bold; color: hsl(var(--primary-foreground));
-        text-shadow: 0 0 15px hsl(var(--primary) / 0.75);
+        font-size: 5.2rem; font-weight: bold; color: hsl(var(--primary));
+        text-shadow: 0 0 15px hsl(var(--primary) / 0.9);
         transform: rotate(-15deg);
         animation: spin 15s linear infinite;
         transform-origin: center;
@@ -2624,20 +2624,6 @@ const Home = () => {
                 </button>
               </div>
 
-              <div className="flex items-center space-x-8 text-white">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">500+</div>
-                  <div className="text-sm">Projects</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">98%</div>
-                  <div className="text-sm">Satisfaction</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">24/7</div>
-                  <div className="text-sm">Support</div>
-                </div>
-              </div>
             </div>
 
             <div className="animate-on-scroll" data-animation="scale">
