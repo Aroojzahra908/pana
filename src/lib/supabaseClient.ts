@@ -28,7 +28,15 @@ export async function insertInto(table: string, payload: any) {
     const text = await res.text();
     throw new Error(`Failed to insert into ${table}: ${res.status} ${text}`);
   }
-  return res.json();
+  // handle empty body responses safely
+  const text = await res.text();
+  if (!text) return null;
+  try {
+    return JSON.parse(text);
+  } catch (e) {
+    // fallback: return raw text when JSON parse fails
+    return text;
+  }
 }
 
 export default { fetchTable, insertInto };
