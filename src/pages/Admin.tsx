@@ -90,18 +90,17 @@ const Admin: React.FC = () => {
     }
   }
 
-  if (missingConfig) {
-    return (
-      <div className="max-w-4xl mx-auto p-6">
-        <h2 className="text-2xl font-bold mb-4">Admin panel setup</h2>
-        <p className="mb-4">
-          Supabase environment variables are not configured. Set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in your environment or
-          connect via the Builder MCP popover.
-        </p>
-        <p className="text-sm text-muted-foreground">After you configure the keys, refresh this page.</p>
+  // show banner if env vars are missing but continue rendering so we can surface detailed errors
+  const ConfigBanner = () =>
+    missingConfig ? (
+      <div className="max-w-6xl mx-auto p-6">
+        <div className="rounded-md bg-yellow-50 p-4 mb-6 border border-yellow-200">
+          <h3 className="font-semibold">Supabase config not set</h3>
+          <p className="text-sm">Supabase environment variables are not configured. Set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in your environment or connect via the Builder MCP popover.</p>
+        </div>
       </div>
-    );
-  }
+    ) : null;
+
 
   return (
     <div className="max-w-6xl mx-auto p-6">
