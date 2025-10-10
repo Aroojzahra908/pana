@@ -661,7 +661,7 @@
 //                   <ul className="space-y-3 mb-6">
 //                     {service.features.map((feature, idx) => (
 //                       <li key={idx} className="flex items-center text-sm">
-//                         <CheckCircle className="h-4 w-4 mr-3 flex-shrink-0 text-teal-500" />
+//                         <CheckCircle className="h-4 w-4 mr-3 flex-shrink-0 text-cyan-500" />
 //                         <span>{feature}</span>
 //                       </li>
 //                     ))}
@@ -1696,7 +1696,7 @@
 //                   <ul className="space-y-3 mb-6">
 //                     {service.features.map((feature, idx) => (
 //                       <li key={idx} className="flex items-center text-sm">
-//                         <CheckCircle className="h-4 w-4 mr-3 flex-shrink-0 text-teal-500" />
+//                         <CheckCircle className="h-4 w-4 mr-3 flex-shrink-0 text-cyan-500" />
 //                         <span>{feature}</span>
 //                       </li>
 //                     ))}
@@ -2044,15 +2044,15 @@
 
 //               <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-600">
 //                 <div className="flex items-center">
-//                   <CheckCircle className="h-4 w-4 mr-2 text-teal-500" />
+//                   <CheckCircle className="h-4 w-4 mr-2 text-cyan-500" />
 //                   <span>Free Consultation</span>
 //                 </div>
 //                 <div className="flex items-center">
-//                   <CheckCircle className="h-4 w-4 mr-2 text-teal-500" />
+//                   <CheckCircle className="h-4 w-4 mr-2 text-cyan-500" />
 //                   <span>Custom Solutions</span>
 //                 </div>
 //                 <div className="flex items-center">
-//                   <CheckCircle className="h-4 w-4 mr-2 text-teal-500" />
+//                   <CheckCircle className="h-4 w-4 mr-2 text-cyan-500" />
 //                   <span>Expert Support</span>
 //                 </div>
 //               </div>
@@ -2715,7 +2715,7 @@ const Home = () => {
                   <ul className="space-y-3 mb-6">
                     {service.features.map((feature, idx) => (
                       <li key={idx} className="flex items-center text-sm">
-                        <CheckCircle className="h-4 w-4 mr-3 flex-shrink-0 text-teal-500" />
+                        <CheckCircle className="h-4 w-4 mr-3 flex-shrink-0 text-cyan-500" />
                         <span>{feature}</span>
                       </li>
                     ))}
@@ -2902,7 +2902,7 @@ const Home = () => {
 
           <div
             className="rounded-2xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-xl"
-            style={{ backgroundColor: '#06ba87' }}
+            style={{ backgroundColor: colors.primaryHex }}
           >
             <div className="space-y-10">
               {processSteps.map((step, index) => (
@@ -3038,15 +3038,15 @@ const Home = () => {
 
               <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-600">
                 <div className="flex items-center">
-                  <CheckCircle className="h-4 w-4 mr-2 text-teal-500" />
+                  <CheckCircle className="h-4 w-4 mr-2 text-cyan-500" />
                   <span>Free Consultation</span>
                 </div>
                 <div className="flex items-center">
-                  <CheckCircle className="h-4 w-4 mr-2 text-teal-500" />
+                  <CheckCircle className="h-4 w-4 mr-2 text-cyan-500" />
                   <span>Custom Solutions</span>
                 </div>
                 <div className="flex items-center">
-                  <CheckCircle className="h-4 w-4 mr-2 text-teal-500" />
+                  <CheckCircle className="h-4 w-4 mr-2 text-cyan-500" />
                   <span>Expert Support</span>
                 </div>
               </div>
