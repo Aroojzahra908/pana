@@ -3007,7 +3007,7 @@ const Home = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
                 <Link
                   to="/contact"
-                  className="inline-flex items-center px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-full hover-scale shadow-lg transition-all duration-300 hover:bg-cyan-600"
+                  className="inline-flex items-center px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-full hover-scale shadow-lg transition-all duration-300 hover:opacity-90"
                 >
                   Start Your AI Journey
                   <ArrowRight className="ml-2 h-5 w-5" />
