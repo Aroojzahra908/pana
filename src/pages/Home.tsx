@@ -2660,7 +2660,7 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="stat-card animate-on-scroll group rounded-2xl p-6 bg-white border border-[#00b4bb]/15 shadow-sm hover:shadow-md hover:border-[#00b4bb]/40 transition flex flex-col items-center text-center gap-2" data-animation="bounce-in">
-                <div className="w-14 h-14 rounded-md overflow-hidden border border-cyan-300 mb-3">
+                <div className="w-16 h-16 rounded-full overflow-hidden ring-2 ring-[#00b4bb]/30 mb-4 bg-[#00b4bb]/10 mx-auto">
                   <img
                     src={stat.image}
                     alt={stat.label}
