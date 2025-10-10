@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import supabase from "@/lib/supabaseClient";
+import supabase from "@/lib/supabaseClient"; // simple REST helpers: supabase.fetchTable / supabase.insertInto
 import { toast } from "@/hooks/use-toast";
 
 const Admin: React.FC = () => {
