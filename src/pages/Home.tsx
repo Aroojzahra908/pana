@@ -694,7 +694,7 @@
 //               <div key={index} className="bg-slate-700 rounded-2xl overflow-hidden hover-lift animate-on-scroll shadow-2xl group" data-animation="slide-up">
 //                 <div className="relative h-48 overflow-hidden">
 //                   <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-//                   <div className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-medium text-white bg-sky-500">
+//                   <div className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-medium text-white bg-primary">
 //                     {project.category}
 //                   </div>
 //                   <div className="absolute top-4 right-4">
@@ -1729,7 +1729,7 @@
 //               <div key={index} className="bg-white rounded-2xl overflow-hidden hover-lift animate-on-scroll shadow-xl group" data-animation="slide-up">
 //                 <div className="relative h-48 overflow-hidden">
 //                   <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-//                   <div className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-medium text-white bg-sky-500">
+//                   <div className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-medium text-white bg-primary">
 //                     {project.category}
 //                   </div>
 //                   <div className="absolute top-4 right-4">
@@ -1748,13 +1748,13 @@
 //                   <div className="space-y-2 mb-4">
 //                     {project.metrics.map((metric, idx) => (
 //                       <div key={idx} className="flex items-center text-sm text-gray-600">
-//                         <TrendingUp className="h-4 w-4 mr-2 text-sky-500" />
+//                         <TrendingUp className="h-4 w-4 mr-2 text-primary" />
 //                         <span>{metric}</span>
 //                       </div>
 //                     ))}
 //                   </div>
 
-//                   <button className="flex items-center text-sm font-medium hover:underline text-sky-600 hover:text-sky-700 transition-colors group">
+//                   <button className="flex items-center text-sm font-medium hover:underline text-primary hover:text-primary transition-colors group">
 //                     View Case Study <ExternalLink className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
 //                   </button>
 //                 </div>
@@ -2734,7 +2734,7 @@ const Home = () => {
               <div key={index} className="bg-white rounded-2xl overflow-hidden hover-lift animate-on-scroll shadow-xl group" data-animation="slide-up">
                 <div className="relative h-48 overflow-hidden">
                   <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                  <div className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-medium text-white bg-sky-500">
+                  <div className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-medium text-white bg-primary">
                     {project.category}
                   </div>
                   <div className="absolute top-4 right-4">
@@ -2753,13 +2753,13 @@ const Home = () => {
                   <div className="space-y-2 mb-4">
                     {project.metrics.map((metric, idx) => (
                       <div key={idx} className="flex items-center text-sm text-gray-600">
-                        <TrendingUp className="h-4 w-4 mr-2 text-sky-500" />
+                        <TrendingUp className="h-4 w-4 mr-2 text-primary" />
                         <span>{metric}</span>
                       </div>
                     ))}
                   </div>
 
-                  <button className="flex items-center text-sm font-medium hover:underline text-sky-600 hover:text-sky-700 transition-colors group">
+                  <button className="flex items-center text-sm font-medium hover:underline text-primary hover:text-primary transition-colors group">
                     View Case Study <ExternalLink className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </button>
                 </div>
