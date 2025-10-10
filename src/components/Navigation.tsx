@@ -175,7 +175,6 @@ const Navigation = () => {
     { name: "Home", path: "/" },
     { name: "Portfolio", path: "/portfolio" },
     { name: "Services", path: "/services" },
-    { name: "Courses", path: "/courses" },
     { name: "Blog", path: "/blog" },
     { name: "About", path: "/about" },
     { name: "Careers", path: "/careers" },
