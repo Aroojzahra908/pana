@@ -23,6 +23,19 @@ const Admin: React.FC = () => {
 
   async function fetchAll() {
     setLoading(true);
+
+    if (!import.meta.env.VITE_SUPABASE_URL) {
+      const msg = "Missing SUPABASE_URL";
+      setUsers(null);
+      setVisits(null);
+      setCourses(null);
+      setUsersError(msg);
+      setVisitsError(msg);
+      setCoursesError(msg);
+      setLoading(false);
+      return;
+    }
+
     try {
       try {
         const usersData = await supabase.fetchTable("profiles");
@@ -71,6 +84,14 @@ const Admin: React.FC = () => {
       toast({ title: "Validation", description: "Title is required." });
       return;
     }
+
+    if (!import.meta.env.VITE_SUPABASE_URL) {
+      const msg = "Missing SUPABASE_URL";
+      setCoursesError(msg);
+      toast({ title: "Config", description: msg });
+      return;
+    }
+
     setLoading(true);
     try {
       const payload = [{ title: title.trim(), description: description.trim(), created_at: new Date().toISOString() }];
