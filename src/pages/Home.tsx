@@ -1386,7 +1386,7 @@
 //         z-index: 2;
 //       }
 //       .ai-text {
-//         font-size: 6rem; font-weight: bold; color: #1e293b;
+//         font-size: 6rem; font-weight: bold; color: #67e8f9;
 //         text-shadow: 0 0 15px rgba(56, 189, 248, 0.7);
 //         transform: rotate(-15deg);
 //         animation: spin 15s linear infinite;
@@ -1567,25 +1567,25 @@
 //   return (
 //     <div className="min-h-screen bg-white selection:bg-sky-200 selection:text-sky-900">
 //       {/* Enhanced Hero Section - Light Sky Blue Gradient */}
-//       <section className="relative min-h-screen flex flex-col sm:flex-row items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-sky-100 via-sky-200 to-sky-300">
+//       <section className="relative min-h-screen flex flex-col sm:flex-row items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 bg-black">
 //         <NeuronNetwork />
 //         <div className="relative z-10 max-w-7xl w-full mx-auto">
 //           <div className="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
 //             <div className="animate-on-scroll mb-12 lg:mb-0" data-animation="slide-up">
-//               <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 text-gray-800 mb-6">
+//               <div className="inline-flex items-center px-4 py-2 rounded-full glass-effect text-white mb-6">
 //                 <Award className="w-4 h-4 mr-2" />
 //                 <span className="text-sm font-medium">Award-Winning AI Solutions</span>
 //               </div>
 
-//               <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 text-gray-800 leading-tight">
-//                 <span className="text-sky-600">
+//               <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 text-white leading-tight">
+//                 <span className="text-cyan-400">
 //                   AI Solutions
 //                 </span>
 //                 <br />
 //                 <span>for Tomorrow</span>
 //               </h1>
 
-//               <p className="text-lg sm:text-xl mb-8 leading-relaxed text-gray-700 max-w-xl">
+//               <p className="text-lg sm:text-xl mb-8 leading-relaxed text-white max-w-xl">
 //                 Transform your business with cutting-edge artificial intelligence, machine learning,
 //                 and automation solutions. We create intelligent systems that evolve with your needs.
 //               </p>
@@ -1593,29 +1593,29 @@
 //               <div className="flex flex-col sm:flex-row gap-4 mb-8">
 //                 <Link
 //                   to="/services"
-//                   className="inline-flex items-center px-8 py-4 bg-sky-500 text-white font-semibold rounded-full hover-scale animate-pulse-glow shadow-md hover:bg-sky-600 transition-colors"
+//                   className="inline-flex items-center px-8 py-4 bg-cyan-500 text-white font-semibold rounded-full hover-scale animate-pulse-glow shadow-md hover:bg-cyan-400 transition-colors"
 //                 >
 //                   Explore Services
 //                   <ArrowRight className="ml-2 h-5 w-5" />
 //                 </Link>
 
-//                 <button className="inline-flex items-center px-8 py-4 font-semibold rounded-full border-2 border-gray-600 text-gray-700 hover:bg-gray-600 hover:text-white transition-colors duration-300">
+//                 <button className="inline-flex items-center px-8 py-4 font-semibold rounded-full border transition-colors duration-300 glass-effect text-white hover:bg-white hover:text-slate-900">
 //                   <Play className="mr-2 h-5 w-5" />
 //                   Watch Demo
 //                 </button>
 //               </div>
 
-//               <div className="flex items-center space-x-8 text-gray-700">
+//               <div className="flex items-center space-x-8 text-white">
 //                 <div className="text-center">
-//                   <div className="text-2xl font-bold text-sky-600">500+</div>
+//                   <div className="text-2xl font-bold text-cyan-400">500+</div>
 //                   <div className="text-sm">Projects</div>
 //                 </div>
 //                 <div className="text-center">
-//                   <div className="text-2xl font-bold text-teal-600">98%</div>
+//                   <div className="text-2xl font-bold text-cyan-400">98%</div>
 //                   <div className="text-sm">Satisfaction</div>
 //                 </div>
 //                 <div className="text-center">
-//                   <div className="text-2xl font-bold text-slate-600">24/7</div>
+//                   <div className="text-2xl font-bold text-cyan-400">24/7</div>
 //                   <div className="text-sm">Support</div>
 //                 </div>
 //               </div>
@@ -1717,7 +1717,7 @@
 //         <div className="max-w-7xl mx-auto">
 //           <div className="text-center mb-16 animate-on-scroll" data-animation="slide-up">
 //             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
-//               <span className="text-sky-600">Success Stories</span>
+//               <span className="text-cyan-400">Success Stories</span>
 //             </h2>
 //             <p className="text-lg max-w-3xl mx-auto text-slate-700">
 //               Real results from our AI implementations across various industries
@@ -2405,7 +2405,7 @@ const Home = () => {
         z-index: 2;
       }
       .ai-text {
-        font-size: 6rem; font-weight: bold; color: #1e293b;
+        font-size: 6rem; font-weight: bold; color: #67e8f9;
         text-shadow: 0 0 15px rgba(56, 189, 248, 0.7);
         transform: rotate(-15deg);
         animation: spin 15s linear infinite;
@@ -2586,25 +2586,25 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-white selection:bg-sky-200 selection:text-sky-900">
       {/* Enhanced Hero Section - Light Sky Blue Gradient */}
-      <section className="relative min-h-screen flex flex-col sm:flex-row items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-sky-100 via-sky-200 to-sky-300">
+      <section className="relative min-h-screen flex flex-col sm:flex-row items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 bg-black">
         <NeuronNetwork />
         <div className="relative z-10 max-w-7xl w-full mx-auto">
           <div className="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
             <div className="animate-on-scroll mb-12 lg:mb-0" data-animation="slide-up">
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 text-gray-800 mb-6">
+              <div className="inline-flex items-center px-4 py-2 rounded-full glass-effect text-white mb-6">
                 <Award className="w-4 h-4 mr-2" />
                 <span className="text-sm font-medium">Award-Winning AI Solutions</span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 text-gray-800 leading-tight">
-                <span className="text-sky-600">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 text-white leading-tight">
+                <span className="text-cyan-400">
                   AI Solutions
                 </span>
                 <br />
                 <span>for Tomorrow</span>
               </h1>
 
-              <p className="text-lg sm:text-xl mb-8 leading-relaxed text-gray-700 max-w-xl">
+              <p className="text-lg sm:text-xl mb-8 leading-relaxed text-white max-w-xl">
                 Transform your business with cutting-edge artificial intelligence, machine learning,
                 and automation solutions. We create intelligent systems that evolve with your needs.
               </p>
@@ -2612,29 +2612,29 @@ const Home = () => {
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <Link
                   to="/services"
-                  className="inline-flex items-center px-8 py-4 bg-sky-500 text-white font-semibold rounded-full hover-scale animate-pulse-glow shadow-md hover:bg-sky-600 transition-colors"
+                  className="inline-flex items-center px-8 py-4 bg-cyan-500 text-white font-semibold rounded-full hover-scale animate-pulse-glow shadow-md hover:bg-cyan-400 transition-colors"
                 >
                   Explore Services
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
 
-                <button className="inline-flex items-center px-8 py-4 font-semibold rounded-full border-2 border-gray-600 text-gray-700 hover:bg-gray-600 hover:text-white transition-colors duration-300">
+                <button className="inline-flex items-center px-8 py-4 font-semibold rounded-full border transition-colors duration-300 glass-effect text-white hover:bg-white hover:text-slate-900">
                   <Play className="mr-2 h-5 w-5" />
                   Watch Demo
                 </button>
               </div>
 
-              <div className="flex items-center space-x-8 text-gray-700">
+              <div className="flex items-center space-x-8 text-white">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-sky-600">500+</div>
+                  <div className="text-2xl font-bold text-cyan-400">500+</div>
                   <div className="text-sm">Projects</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-teal-600">98%</div>
+                  <div className="text-2xl font-bold text-cyan-400">98%</div>
                   <div className="text-sm">Satisfaction</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-slate-600">24/7</div>
+                  <div className="text-2xl font-bold text-cyan-400">24/7</div>
                   <div className="text-sm">Support</div>
                 </div>
               </div>
