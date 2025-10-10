@@ -1607,15 +1607,15 @@
 
 //               <div className="flex items-center space-x-8 text-white">
 //                 <div className="text-center">
-//                   <div className="text-2xl font-bold text-cyan-400">500+</div>
+//                   <div className="text-2xl font-bold text-primary">500+</div>
 //                   <div className="text-sm">Projects</div>
 //                 </div>
 //                 <div className="text-center">
-//                   <div className="text-2xl font-bold text-cyan-400">98%</div>
+//                   <div className="text-2xl font-bold text-primary">98%</div>
 //                   <div className="text-sm">Satisfaction</div>
 //                 </div>
 //                 <div className="text-center">
-//                   <div className="text-2xl font-bold text-cyan-400">24/7</div>
+//                   <div className="text-2xl font-bold text-primary">24/7</div>
 //                   <div className="text-sm">Support</div>
 //                 </div>
 //               </div>
@@ -2626,15 +2626,15 @@ const Home = () => {
 
               <div className="flex items-center space-x-8 text-white">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-cyan-400">500+</div>
+                  <div className="text-2xl font-bold text-primary">500+</div>
                   <div className="text-sm">Projects</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-cyan-400">98%</div>
+                  <div className="text-2xl font-bold text-primary">98%</div>
                   <div className="text-sm">Satisfaction</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-cyan-400">24/7</div>
+                  <div className="text-2xl font-bold text-primary">24/7</div>
                   <div className="text-sm">Support</div>
                 </div>
               </div>
