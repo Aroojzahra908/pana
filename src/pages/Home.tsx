@@ -564,7 +564,7 @@
 //                   <ArrowRight className="ml-2 h-5 w-5" />
 //                 </Link>
 
-//                 <button className="inline-flex items-center px-8 py-4 font-semibold rounded-full border transition-colors duration-300 glass-effect text-white hover:bg-white hover:text-slate-900">
+//                 <button className="inline-flex items-center px-8 py-4 font-semibold rounded-full border transition-colors duration-300 bg-primary text-primary-foreground hover:opacity-90">
 //                   <Play className="mr-2 h-5 w-5" />
 //                   Watch Demo
 //                 </button>
@@ -614,7 +614,7 @@
 //                   />
 //                   
 //                 </div>
-//                 <div className="text-3xl font-bold mb-1 text-cyan-600">
+//                 <div className="text-3xl font-bold mb-1 text-primary">
 //                   {stat.number}
 //                 </div>
 //                 <div className="text-sm font-medium text-[#2c3d4f]">{stat.label}</div>
@@ -667,7 +667,7 @@
 //                     ))}
 //                   </ul>
 
-//                   <Link to="/services" className="inline-flex items-center font-medium hover:underline text-cyan-600 group-hover:text-teal-700 transition-colors">
+//                   <Link to="/services" className="inline-flex items-center font-medium hover:underline text-primary group-hover:text-primary transition-colors">
 //                     Learn More <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
 //                   </Link>
 //                 </div>
@@ -1101,7 +1101,7 @@
 //       label: "Client Satisfaction", 
 //       image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop&crop=center",
 //       bgColor: "bg-teal-50",
-//       iconColor: "text-cyan-600"
+//       iconColor: "text-primary"
 //     },
 //     { 
 //       number: "150+", 
@@ -1593,13 +1593,13 @@
 //               <div className="flex flex-col sm:flex-row gap-4 mb-8">
 //                 <Link
 //                   to="/services"
-//                   className="inline-flex items-center px-8 py-4 bg-cyan-500 text-white font-semibold rounded-full hover-scale animate-pulse-glow shadow-md hover:bg-cyan-400 transition-colors"
+//                   className="inline-flex items-center px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-full hover-scale animate-pulse-glow shadow-md hover:opacity-90 transition-colors"
 //                 >
 //                   Explore Services
 //                   <ArrowRight className="ml-2 h-5 w-5" />
 //                 </Link>
 
-//                 <button className="inline-flex items-center px-8 py-4 font-semibold rounded-full border transition-colors duration-300 glass-effect text-white hover:bg-white hover:text-slate-900">
+//                 <button className="inline-flex items-center px-8 py-4 font-semibold rounded-full border transition-colors duration-300 bg-primary text-primary-foreground hover:opacity-90">
 //                   <Play className="mr-2 h-5 w-5" />
 //                   Watch Demo
 //                 </button>
@@ -1649,7 +1649,7 @@
 //                   />
 //                   
 //                 </div>
-//                 <div className="text-3xl font-bold mb-1 text-cyan-600">
+//                 <div className="text-3xl font-bold mb-1 text-primary">
 //                   {stat.number}
 //                 </div>
 //                 <div className="text-sm font-medium text-[#2c3d4f]">{stat.label}</div>
@@ -1702,7 +1702,7 @@
 //                     ))}
 //                   </ul>
 
-//                   <Link to="/services" className="inline-flex items-center font-medium hover:underline text-cyan-600 group-hover:text-teal-700 transition-colors">
+//                   <Link to="/services" className="inline-flex items-center font-medium hover:underline text-primary group-hover:text-primary transition-colors">
 //                     Learn More <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
 //                   </Link>
 //                 </div>
@@ -2028,7 +2028,7 @@
 //               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
 //                 <Link
 //                   to="/contact"
-//                   className="inline-flex items-center px-8 py-4 bg-cyan-500 text-white font-semibold rounded-full hover-scale shadow-lg transition-all duration-300 hover:bg-cyan-600"
+//                   className="inline-flex items-center px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-full hover-scale shadow-lg transition-all duration-300 hover:bg-cyan-600"
 //                 >
 //                   Start Your AI Journey
 //                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -2120,7 +2120,7 @@ const Home = () => {
       label: "Client Satisfaction",
       image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop&crop=center",
       bgColor: "bg-teal-50",
-      iconColor: "text-cyan-600"
+      iconColor: "text-primary"
     },
     {
       number: "150+",
@@ -2612,13 +2612,13 @@ const Home = () => {
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <Link
                   to="/services"
-                  className="inline-flex items-center px-8 py-4 bg-cyan-500 text-white font-semibold rounded-full hover-scale animate-pulse-glow shadow-md hover:bg-cyan-400 transition-colors"
+                  className="inline-flex items-center px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-full hover-scale animate-pulse-glow shadow-md hover:opacity-90 transition-colors"
                 >
                   Explore Services
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
 
-                <button className="inline-flex items-center px-8 py-4 font-semibold rounded-full border transition-colors duration-300 glass-effect text-white hover:bg-white hover:text-slate-900">
+                <button className="inline-flex items-center px-8 py-4 font-semibold rounded-full border transition-colors duration-300 bg-primary text-primary-foreground hover:opacity-90">
                   <Play className="mr-2 h-5 w-5" />
                   Watch Demo
                 </button>
@@ -2707,7 +2707,7 @@ const Home = () => {
                     ))}
                   </ul>
 
-                  <Link to="/services" className="inline-flex items-center font-medium hover:underline text-cyan-600 group-hover:text-teal-700 transition-colors">
+                  <Link to="/services" className="inline-flex items-center font-medium hover:underline text-primary group-hover:text-primary transition-colors">
                     Learn More <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>
@@ -3007,7 +3007,7 @@ const Home = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
                 <Link
                   to="/contact"
-                  className="inline-flex items-center px-8 py-4 bg-cyan-500 text-white font-semibold rounded-full hover-scale shadow-lg transition-all duration-300 hover:bg-cyan-600"
+                  className="inline-flex items-center px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-full hover-scale shadow-lg transition-all duration-300 hover:bg-cyan-600"
                 >
                   Start Your AI Journey
                   <ArrowRight className="ml-2 h-5 w-5" />
