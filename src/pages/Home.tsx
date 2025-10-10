@@ -2901,8 +2901,7 @@ const Home = () => {
           </div>
 
           <div
-            className="rounded-2xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-xl"
-            style={{ backgroundColor: colors.primaryHex }}
+            className="rounded-2xl p-6 sm:p-8 md:p-10 lg:p-12 bg-gray-100 border border-gray-200 shadow-sm"
           >
             <div className="space-y-10">
               {processSteps.map((step, index) => (
