@@ -542,7 +542,7 @@
 //                 <span className="text-sm font-medium">Award-Winning AI Solutions</span>
 //               </div>
 
-//               <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 text-white leading-tight">
+//               <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 text-primary leading-tight">
 //                 <span className="text-sky-400">
 //                   AI Solutions
 //                 </span>
@@ -628,8 +628,8 @@
 //       <section className="py-20 bg-gradient-to-br from-teal-50 to-emerald-100 px-4 sm:px-6 lg:px-8">
 //         <div className="max-w-7xl mx-auto">
 //           <div className="text-center mb-16 animate-on-scroll" data-animation="slide-up">
-//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
-//               <span className="text-cyan-600">Our AI Services</span>
+//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
+//               <span>Our AI Services</span>
 //             </h2>
 //             <p className="text-lg max-w-3xl mx-auto text-slate-700">
 //               Comprehensive AI solutions designed to transform your business operations and drive innovation
@@ -681,7 +681,7 @@
 //       <section className="py-20 bg-slate-800 px-4 sm:px-6 lg:px-8">
 //         <div className="max-w-7xl mx-auto">
 //           <div className="text-center mb-16 animate-on-scroll" data-animation="slide-up">
-//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
+//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
 //               <span className="text-sky-400">Success Stories</span>
 //             </h2>
 //             <p className="text-lg max-w-3xl mx-auto text-gray-300">
@@ -733,7 +733,7 @@
 //       <section className="py-20 bg-white px-4 sm:px-6 lg:px-8">
 //         <div className="max-w-7xl mx-auto">
 //           <div className="text-center mb-16 animate-on-scroll" data-animation="slide-up">
-//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
+//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
 //               <span className="text-blue-600">What Our Clients Say</span>
 //             </h2>
 //             <p className="text-lg max-w-3xl mx-auto text-slate-600">
@@ -801,7 +801,7 @@
 //       <section className="py-20 bg-gradient-to-br from-teal-500 to-emerald-600 px-4 sm:px-6 lg:px-8">
 //         <div className="max-w-7xl mx-auto">
 //           <div className="text-center mb-16 animate-on-scroll" data-animation="slide-up">
-//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
+//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
 //               Why Choose <span className="text-teal-200">Panabotics?</span>
 //             </h2>
 //             <p className="text-lg max-w-3xl mx-auto text-teal-100">
@@ -849,7 +849,7 @@
 
 //         <div className="max-w-7xl mx-auto relative z-10">
 //           <div className="text-center mb-20 animate-on-scroll" data-animation="slide-up">
-//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
+//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
 //               Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">AI Journey</span>
 //             </h2>
 //             <p className="text-lg max-w-3xl mx-auto text-gray-300">
@@ -1577,8 +1577,8 @@
 //                 <span className="text-sm font-medium">Award-Winning AI Solutions</span>
 //               </div>
 
-//               <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 text-white leading-tight">
-//                 <span className="text-cyan-400">
+//               <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 text-primary leading-tight">
+//                 <span>
 //                   AI Solutions
 //                 </span>
 //                 <br />
@@ -1663,8 +1663,8 @@
 //       <section className="py-20 bg-gradient-to-br from-teal-50 to-sky-50 px-4 sm:px-6 lg:px-8">
 //         <div className="max-w-7xl mx-auto">
 //           <div className="text-center mb-16 animate-on-scroll" data-animation="slide-up">
-//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
-//               <span className="text-cyan-600">Our AI Services</span>
+//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
+//               <span>Our AI Services</span>
 //             </h2>
 //             <p className="text-lg max-w-3xl mx-auto text-slate-700">
 //               Comprehensive AI solutions designed to transform your business operations and drive innovation
@@ -1716,8 +1716,8 @@
 //       <section className="py-20 bg-gray-100 px-4 sm:px-6 lg:px-8">
 //         <div className="max-w-7xl mx-auto">
 //           <div className="text-center mb-16 animate-on-scroll" data-animation="slide-up">
-//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
-//               <span className="text-cyan-400">Success Stories</span>
+//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
+//               <span>Success Stories</span>
 //             </h2>
 //             <p className="text-lg max-w-3xl mx-auto text-slate-700">
 //               Real results from our AI implementations across various industries
@@ -1768,8 +1768,8 @@
 //       <section className="py-20 bg-white px-4 sm:px-6 lg:px-8">
 //         <div className="max-w-7xl mx-auto">
 //           <div className="text-center mb-16 animate-on-scroll" data-animation="slide-up">
-//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
-//               <span className="text-cyan-600">What Our Clients Say</span>
+//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
+//               <span>What Our Clients Say</span>
 //             </h2>
 //             <p className="text-lg max-w-3xl mx-auto text-slate-600">
 //               Don't just take our word for it - hear from the companies we've helped transform
@@ -1836,8 +1836,8 @@
 //       <section className="py-20 bg-gradient-to-br from-teal-100 to-sky-100 px-4 sm:px-6 lg:px-8">
 //         <div className="max-w-7xl mx-auto">
 //           <div className="text-center mb-16 animate-on-scroll" data-animation="slide-up">
-//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
-//               Why Choose <span className="text-cyan-600">Panabotics?</span>
+//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
+//               Why Choose <span>Panabotics?</span>
 //             </h2>
 //             <p className="text-lg max-w-3xl mx-auto text-slate-700">
 //               We combine cutting-edge technology with deep industry expertise to deliver exceptional results
@@ -2016,7 +2016,7 @@
 //             </div>
 
 //             <div className="relative z-10">
-//               <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
+//               <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
 //                 Ready to Transform Your Business with AI?
 //               </h2>
 
@@ -2596,8 +2596,8 @@ const Home = () => {
                 <span className="text-sm font-medium">Award-Winning AI Solutions</span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 text-white leading-tight">
-                <span className="text-cyan-400">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 text-primary leading-tight">
+                <span>
                   AI Solutions
                 </span>
                 <br />
@@ -2682,8 +2682,8 @@ const Home = () => {
       <section className="py-20 bg-white px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-on-scroll" data-animation="slide-up">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
-              <span className="text-cyan-600">Our AI Services</span>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
+              <span>Our AI Services</span>
             </h2>
             <p className="text-lg max-w-3xl mx-auto text-slate-700">
               Comprehensive AI solutions designed to transform your business operations and drive innovation
@@ -2735,8 +2735,8 @@ const Home = () => {
       <section className="py-20 bg-gray-100 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-on-scroll" data-animation="slide-up">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
-              <span className="text-cyan-600">Success Stories</span>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
+              <span>Success Stories</span>
             </h2>
             <p className="text-lg max-w-3xl mx-auto text-slate-700">
               Real results from our AI implementations across various industries
@@ -2787,8 +2787,8 @@ const Home = () => {
       <section className="py-20 bg-white px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-on-scroll" data-animation="slide-up">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
-              <span className="text-cyan-600">What Our Clients Say</span>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
+              <span>What Our Clients Say</span>
             </h2>
             <p className="text-lg max-w-3xl mx-auto text-slate-600">
               Don't just take our word for it - hear from the companies we've helped transform
@@ -2854,8 +2854,8 @@ const Home = () => {
       <section className="py-20 bg-gray-200 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-on-scroll" data-animation="slide-up">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
-              Why Choose <span className="text-cyan-600">Panabotics?</span>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
+              Why Choose <span>Panabotics?</span>
             </h2>
             <p className="text-lg max-w-3xl mx-auto text-slate-700">
               We combine cutting-edge technology with deep industry expertise to deliver exceptional results
@@ -2896,7 +2896,7 @@ const Home = () => {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white" id="process">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
-            <h2 className="text-3xl sm:text-4xl font-bold text-cyan-600">Our Process</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-primary">Our Process</h2>
             <p className="text-slate-600">A step-by-step approach to delivering high-quality AI solutions tailored to your business.</p>
           </div>
 
@@ -2941,7 +2941,7 @@ const Home = () => {
       <section className="py-20 bg-white px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-on-scroll" data-animation="fade-in">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-cyan-600">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-primary">
               Powered by Leading Technologies
             </h2>
             <p className="text-lg max-w-3xl mx-auto text-slate-600">
@@ -3010,7 +3010,7 @@ const Home = () => {
             </div>
 
             <div className="relative z-10">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
+              <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
                 Ready to Transform Your Business with AI?
               </h2>
 
