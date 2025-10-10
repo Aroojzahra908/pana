@@ -21,28 +21,32 @@ const Admin: React.FC = () => {
   async function fetchAll() {
     setLoading(true);
     try {
-      const { data: usersData, error: usersError } = await supabase.from("users").select("*");
-      if (usersError) {
-        console.warn("users fetch error:", usersError);
-        setUsers(null);
-      } else {
+      try {
+        const usersData = await supabase.fetchTable("users");
         setUsers(usersData || []);
+      } catch (err) {
+        console.warn("users fetch error:", err);
+        setUsers(null);
       }
 
-      const { data: visitsData, error: visitsError } = await supabase.from("page_visits").select("*");
-      if (visitsError) {
-        console.warn("visits fetch error:", visitsError);
-        setVisits(null);
-      } else {
+      try {
+        const visitsData = await supabase.fetchTable("page_visits");
         setVisits(visitsData || []);
+      } catch (err) {
+        console.warn("visits fetch error:", err);
+        setVisits(null);
       }
 
-      const { data: coursesData, error: coursesError } = await supabase.from("courses").select("*").order("created_at", { ascending: false });
-      if (coursesError) {
-        console.warn("courses fetch error:", coursesError);
+      try {
+        const coursesData = await supabase.fetchTable("courses");
+        // sort by created_at desc if present
+        const sorted = Array.isArray(coursesData)
+          ? coursesData.sort((a: any, b: any) => (a.created_at < b.created_at ? 1 : -1))
+          : coursesData;
+        setCourses(sorted || []);
+      } catch (err) {
+        console.warn("courses fetch error:", err);
         setCourses(null);
-      } else {
-        setCourses(coursesData || []);
       }
     } catch (err) {
       console.error(err);
