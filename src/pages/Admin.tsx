@@ -64,18 +64,23 @@ const Admin: React.FC = () => {
     }
     setLoading(true);
     try {
-      const payload = { title: title.trim(), description: description.trim(), created_at: new Date().toISOString() };
-      const { data, error } = await supabase.from("courses").insert([payload]);
-      if (error) {
-        console.error(error);
-        toast({ title: "Error", description: "Failed to add course. Check RLS and keys." });
-      } else {
+      const payload = [{ title: title.trim(), description: description.trim(), created_at: new Date().toISOString() }];
+      try {
+        const inserted = await supabase.insertInto("courses", payload);
         toast({ title: "Success", description: "Course added." });
         setTitle("");
         setDescription("");
         // refresh
-        const { data: refreshed } = await supabase.from("courses").select("*").order("created_at", { ascending: false });
-        setCourses(refreshed || []);
+        try {
+          const refreshed = await supabase.fetchTable("courses");
+          const sorted = Array.isArray(refreshed) ? refreshed.sort((a: any, b: any) => (a.created_at < b.created_at ? 1 : -1)) : refreshed;
+          setCourses(sorted || []);
+        } catch (err) {
+          console.warn("refresh courses failed", err);
+        }
+      } catch (err) {
+        console.error(err);
+        toast({ title: "Error", description: "Failed to add course. Check RLS and keys." });
       }
     } catch (err) {
       console.error(err);
