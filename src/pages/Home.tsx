@@ -2893,68 +2893,46 @@ const Home = () => {
       </section>
 
       {/* Our Process Section */}
-      <section className="py-20 bg-slate-900" id="process">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-4">Our Process</h2>
-            <p className="text-lg text-gray-300">
-              A step-by-step approach to delivering high-quality AI solutions tailored to your business.
-            </p>
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white" id="process">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl sm:text-4xl font-bold text-cyan-600">Our Process</h2>
+            <p className="text-slate-600">A step-by-step approach to delivering high-quality AI solutions tailored to your business.</p>
           </div>
 
-          <div className="space-y-16">
-            {processSteps.map((step, index) => (
-              <div
-                key={index}
-                className={`lg:grid lg:grid-cols-2 lg:gap-12 items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
-                  }`}
-              >
-                {/* Text Content */}
-                <div className={`mb-8 lg:mb-0 ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
-                  <div className="space-y-6">
-                    {/* Step Number */}
-                    <div className="text-7xl font-bold text-sky-400/30 leading-none">
-                      {step.step}
-                    </div>
-
-                    {/* Icon */}
-                    <div className="text-5xl">
-                      {step.icon}
-                    </div>
-
-                    {/* Title */}
-                    <h3 className="text-3xl font-bold text-white">
-                      {step.title}
-                    </h3>
-
-                    {/* Description */}
-                    <p className="text-gray-300 leading-relaxed text-lg max-w-md">
-                      {step.description}
-                    </p>
-
-                    {/* Optional accent line */}
-                    <div className={`w-16 h-1 bg-gradient-to-r ${step.color} rounded-full`}></div>
-                  </div>
-                </div>
-
-                {/* Image */}
-                <div className={`${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
-                  <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
-                    <img
-                      src={step.image}
-                      alt={step.title}
-                      className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-                    <div className="absolute bottom-6 left-6">
-                      <div className={`w-12 h-12 rounded-full bg-gradient-to-r ${step.color} flex items-center justify-center text-xl text-white shadow-lg`}>
-                        {step.icon}
+          <div
+            className="rounded-2xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-xl"
+            style={{ backgroundColor: '#06ba87' }}
+          >
+            <div className="space-y-10">
+              {processSteps.map((step, index) => (
+                <div key={index} className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 lg:gap-12 items-center">
+                  {index % 2 === 0 ? (
+                    <>
+                      <div className="bg-white/10 rounded-xl p-6 md:p-8 border border-white/20 text-white">
+                        <div className="text-5xl font-bold leading-none opacity-90">{step.step}</div>
+                        <h3 className="mt-2 text-2xl font-semibold">{step.title}</h3>
+                        <p className="mt-2 text-white/90">{step.description}</p>
                       </div>
-                    </div>
-                  </div>
+                      <div className="rounded-xl overflow-hidden ring-1 ring-white/30">
+                        <img src={step.image} alt={step.title} className="w-full h-48 md:h-56 lg:h-64 object-cover" />
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="rounded-xl overflow-hidden ring-1 ring-white/30">
+                        <img src={step.image} alt={step.title} className="w-full h-48 md:h-56 lg:h-64 object-cover" />
+                      </div>
+                      <div className="bg-white/10 rounded-xl p-6 md:p-8 border border-white/20 text-white">
+                        <div className="text-5xl font-bold leading-none opacity-90">{step.step}</div>
+                        <h3 className="mt-2 text-2xl font-semibold">{step.title}</h3>
+                        <p className="mt-2 text-white/90">{step.description}</p>
+                      </div>
+                    </>
+                  )}
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
