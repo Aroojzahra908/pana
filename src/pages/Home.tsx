@@ -2618,7 +2618,7 @@ const Home = () => {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
 
-                <button className="inline-flex items-center px-8 py-4 font-semibold rounded-full border transition-colors duration-300 bg-primary text-primary-foreground hover:opacity-90">
+                <button className="inline-flex items-center px-8 py-4 font-semibold rounded-full border transition-colors duration-300 bg-white text-slate-900 shadow-sm hover:opacity-95">
                   <Play className="mr-2 h-5 w-5" />
                   Watch Demo
                 </button>
