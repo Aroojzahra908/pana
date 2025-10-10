@@ -542,7 +542,7 @@
 //                 <span className="text-sm font-medium">Award-Winning AI Solutions</span>
 //               </div>
 
-//               <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 text-white leading-tight">
+//               <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 text-primary leading-tight">
 //                 <span className="text-sky-400">
 //                   AI Solutions
 //                 </span>
@@ -617,7 +617,7 @@
 //                 <div className="text-3xl font-bold mb-1 text-cyan-600">
 //                   {stat.number}
 //                 </div>
-//                 <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
+//                 <div className="text-sm font-medium text-[#2c3d4f]">{stat.label}</div>
 //               </div>
 //             ))}
 //           </div>
@@ -628,10 +628,10 @@
 //       <section className="py-20 bg-gradient-to-br from-teal-50 to-emerald-100 px-4 sm:px-6 lg:px-8">
 //         <div className="max-w-7xl mx-auto">
 //           <div className="text-center mb-16 animate-on-scroll" data-animation="slide-up">
-//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
-//               <span className="text-cyan-600">Our AI Services</span>
+//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
+//               <span>Our AI Services</span>
 //             </h2>
-//             <p className="text-lg max-w-3xl mx-auto text-slate-700">
+//             <p className="text-lg max-w-3xl mx-auto text-[#2c3d4f]">
 //               Comprehensive AI solutions designed to transform your business operations and drive innovation
 //             </p>
 //           </div>
@@ -681,7 +681,7 @@
 //       <section className="py-20 bg-slate-800 px-4 sm:px-6 lg:px-8">
 //         <div className="max-w-7xl mx-auto">
 //           <div className="text-center mb-16 animate-on-scroll" data-animation="slide-up">
-//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
+//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
 //               <span className="text-sky-400">Success Stories</span>
 //             </h2>
 //             <p className="text-lg max-w-3xl mx-auto text-gray-300">
@@ -733,10 +733,10 @@
 //       <section className="py-20 bg-white px-4 sm:px-6 lg:px-8">
 //         <div className="max-w-7xl mx-auto">
 //           <div className="text-center mb-16 animate-on-scroll" data-animation="slide-up">
-//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
+//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
 //               <span className="text-blue-600">What Our Clients Say</span>
 //             </h2>
-//             <p className="text-lg max-w-3xl mx-auto text-slate-600">
+//             <p className="text-lg max-w-3xl mx-auto text-[#2c3d4f]">
 //               Don't just take our word for it - hear from the companies we've helped transform
 //             </p>
 //           </div>
@@ -755,10 +755,10 @@
 //                   </div>
 //                 </div>
 //                 <div className="ml-6 flex-1">
-//                   <h4 className="font-bold text-xl text-slate-800 mb-1">
+//                   <h4 className="font-bold text-xl text-[#2c3d4f] mb-1">
 //                     {testimonials[currentTestimonial].name}
 //                   </h4>
-//                   <p className="text-slate-600 mb-1">{testimonials[currentTestimonial].role}</p>
+//                   <p className="text-[#2c3d4f] mb-1">{testimonials[currentTestimonial].role}</p>
 //                   <p className="text-blue-600 font-semibold text-sm">
 //                     {testimonials[currentTestimonial].company}
 //                   </p>
@@ -770,7 +770,7 @@
 //                 </div>
 //               </div>
 
-//               <blockquote className="text-lg mb-8 leading-relaxed text-slate-700 italic">
+//               <blockquote className="text-lg mb-8 leading-relaxed text-[#2c3d4f] italic">
 //                 "{testimonials[currentTestimonial].content}"
 //               </blockquote>
 
@@ -801,7 +801,7 @@
 //       <section className="py-20 bg-gradient-to-br from-teal-500 to-emerald-600 px-4 sm:px-6 lg:px-8">
 //         <div className="max-w-7xl mx-auto">
 //           <div className="text-center mb-16 animate-on-scroll" data-animation="slide-up">
-//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
+//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
 //               Why Choose <span className="text-teal-200">Panabotics?</span>
 //             </h2>
 //             <p className="text-lg max-w-3xl mx-auto text-teal-100">
@@ -849,7 +849,7 @@
 
 //         <div className="max-w-7xl mx-auto relative z-10">
 //           <div className="text-center mb-20 animate-on-scroll" data-animation="slide-up">
-//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
+//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
 //               Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">AI Journey</span>
 //             </h2>
 //             <p className="text-lg max-w-3xl mx-auto text-gray-300">
@@ -915,7 +915,7 @@
 //             <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-blue-600">
 //               Powered by Leading Technologies
 //             </h2>
-//             <p className="text-lg max-w-3xl mx-auto text-slate-600">
+//             <p className="text-lg max-w-3xl mx-auto text-[#2c3d4f]">
 //               We leverage the most advanced tools and frameworks to build scalable, robust AI solutions
 //             </p>
 //           </div>
@@ -1577,8 +1577,8 @@
 //                 <span className="text-sm font-medium">Award-Winning AI Solutions</span>
 //               </div>
 
-//               <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 text-white leading-tight">
-//                 <span className="text-cyan-400">
+//               <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 text-primary leading-tight">
+//                 <span>
 //                   AI Solutions
 //                 </span>
 //                 <br />
@@ -1607,15 +1607,15 @@
 
 //               <div className="flex items-center space-x-8 text-white">
 //                 <div className="text-center">
-//                   <div className="text-2xl font-bold text-cyan-400">500+</div>
+//                   <div className="text-2xl font-bold text-primary">500+</div>
 //                   <div className="text-sm">Projects</div>
 //                 </div>
 //                 <div className="text-center">
-//                   <div className="text-2xl font-bold text-cyan-400">98%</div>
+//                   <div className="text-2xl font-bold text-primary">98%</div>
 //                   <div className="text-sm">Satisfaction</div>
 //                 </div>
 //                 <div className="text-center">
-//                   <div className="text-2xl font-bold text-cyan-400">24/7</div>
+//                   <div className="text-2xl font-bold text-primary">24/7</div>
 //                   <div className="text-sm">Support</div>
 //                 </div>
 //               </div>
@@ -1652,7 +1652,7 @@
 //                 <div className="text-3xl font-bold mb-1 text-cyan-600">
 //                   {stat.number}
 //                 </div>
-//                 <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
+//                 <div className="text-sm font-medium text-[#2c3d4f]">{stat.label}</div>
 //               </div>
 //             ))}
 //           </div>
@@ -1663,10 +1663,10 @@
 //       <section className="py-20 bg-gradient-to-br from-teal-50 to-sky-50 px-4 sm:px-6 lg:px-8">
 //         <div className="max-w-7xl mx-auto">
 //           <div className="text-center mb-16 animate-on-scroll" data-animation="slide-up">
-//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
-//               <span className="text-cyan-600">Our AI Services</span>
+//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
+//               <span>Our AI Services</span>
 //             </h2>
-//             <p className="text-lg max-w-3xl mx-auto text-slate-700">
+//             <p className="text-lg max-w-3xl mx-auto text-[#2c3d4f]">
 //               Comprehensive AI solutions designed to transform your business operations and drive innovation
 //             </p>
 //           </div>
@@ -1716,10 +1716,10 @@
 //       <section className="py-20 bg-gray-100 px-4 sm:px-6 lg:px-8">
 //         <div className="max-w-7xl mx-auto">
 //           <div className="text-center mb-16 animate-on-scroll" data-animation="slide-up">
-//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
-//               <span className="text-cyan-400">Success Stories</span>
+//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
+//               <span>Success Stories</span>
 //             </h2>
-//             <p className="text-lg max-w-3xl mx-auto text-slate-700">
+//             <p className="text-lg max-w-3xl mx-auto text-[#2c3d4f]">
 //               Real results from our AI implementations across various industries
 //             </p>
 //           </div>
@@ -1739,7 +1739,7 @@
 //                 </div>
 
 //                 <div className="p-6">
-//                   <h3 className="text-xl font-bold mb-3 text-slate-800">
+//                   <h3 className="text-xl font-bold mb-3 text-[#2c3d4f]">
 //                     {project.title}
 //                   </h3>
 
@@ -1768,10 +1768,10 @@
 //       <section className="py-20 bg-white px-4 sm:px-6 lg:px-8">
 //         <div className="max-w-7xl mx-auto">
 //           <div className="text-center mb-16 animate-on-scroll" data-animation="slide-up">
-//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
-//               <span className="text-cyan-600">What Our Clients Say</span>
+//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
+//               <span>What Our Clients Say</span>
 //             </h2>
-//             <p className="text-lg max-w-3xl mx-auto text-slate-600">
+//             <p className="text-lg max-w-3xl mx-auto text-[#2c3d4f]">
 //               Don't just take our word for it - hear from the companies we've helped transform
 //             </p>
 //           </div>
@@ -1790,11 +1790,11 @@
 //                   </div>
 //                 </div>
 //                 <div className="ml-6 flex-1">
-//                   <h4 className="font-bold text-xl text-slate-800 mb-1">
+//                   <h4 className="font-bold text-xl text-[#2c3d4f] mb-1">
 //                     {testimonials[currentTestimonial].name}
 //                   </h4>
-//                   <p className="text-slate-600 mb-1">{testimonials[currentTestimonial].role}</p>
-//                   <p className="text-cyan-600 font-semibold text-sm">
+//                   <p className="text-[#2c3d4f] mb-1">{testimonials[currentTestimonial].role}</p>
+//                   <p className="text-primary font-semibold text-sm">
 //                     {testimonials[currentTestimonial].company}
 //                   </p>
 //                 </div>
@@ -1805,7 +1805,7 @@
 //                 </div>
 //               </div>
 
-//               <blockquote className="text-lg mb-8 leading-relaxed text-slate-700 italic">
+//               <blockquote className="text-lg mb-8 leading-relaxed text-[#2c3d4f] italic">
 //                 "{testimonials[currentTestimonial].content}"
 //               </blockquote>
 
@@ -1836,10 +1836,10 @@
 //       <section className="py-20 bg-gradient-to-br from-teal-100 to-sky-100 px-4 sm:px-6 lg:px-8">
 //         <div className="max-w-7xl mx-auto">
 //           <div className="text-center mb-16 animate-on-scroll" data-animation="slide-up">
-//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
-//               Why Choose <span className="text-cyan-600">Panabotics?</span>
+//             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
+//               Why Choose <span>Panabotics?</span>
 //             </h2>
-//             <p className="text-lg max-w-3xl mx-auto text-slate-700">
+//             <p className="text-lg max-w-3xl mx-auto text-[#2c3d4f]">
 //               We combine cutting-edge technology with deep industry expertise to deliver exceptional results
 //             </p>
 //           </div>
@@ -1860,11 +1860,11 @@
 //                     </div>
 //                   </div>
 
-//                   <h3 className="text-xl font-bold mb-4 text-slate-800">
+//                   <h3 className="text-xl font-bold mb-4 text-[#2c3d4f]">
 //                     {item.title}
 //                   </h3>
 
-//                   <p className="text-slate-600 leading-relaxed">
+//                   <p className="text-[#2c3d4f] leading-relaxed">
 //                     {item.description}
 //                   </p>
 //                 </div>
@@ -1950,7 +1950,7 @@
 //             <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-sky-600">
 //               Powered by Leading Technologies
 //             </h2>
-//             <p className="text-lg max-w-3xl mx-auto text-slate-600">
+//             <p className="text-lg max-w-3xl mx-auto text-[#2c3d4f]">
 //               We leverage the most advanced tools and frameworks to build scalable, robust AI solutions
 //             </p>
 //           </div>
@@ -2016,11 +2016,11 @@
 //             </div>
 
 //             <div className="relative z-10">
-//               <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
+//               <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
 //                 Ready to Transform Your Business with AI?
 //               </h2>
 
-//               <p className="text-xl mb-8 max-w-2xl mx-auto text-slate-700">
+//               <p className="text-xl mb-8 max-w-2xl mx-auto text-[#2c3d4f]">
 //                 Join hundreds of companies already using our AI solutions to drive growth,
 //                 reduce costs, and unlock new possibilities.
 //               </p>
@@ -2596,8 +2596,8 @@ const Home = () => {
                 <span className="text-sm font-medium">Award-Winning AI Solutions</span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 text-white leading-tight">
-                <span className="text-cyan-400">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 text-primary leading-tight">
+                <span>
                   AI Solutions
                 </span>
                 <br />
@@ -2626,15 +2626,15 @@ const Home = () => {
 
               <div className="flex items-center space-x-8 text-white">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-cyan-400">500+</div>
+                  <div className="text-2xl font-bold text-primary">500+</div>
                   <div className="text-sm">Projects</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-cyan-400">98%</div>
+                  <div className="text-2xl font-bold text-primary">98%</div>
                   <div className="text-sm">Satisfaction</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-cyan-400">24/7</div>
+                  <div className="text-2xl font-bold text-primary">24/7</div>
                   <div className="text-sm">Support</div>
                 </div>
               </div>
@@ -2659,8 +2659,8 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
-              <div key={index} className="stat-card animate-on-scroll group border-2 border-cyan-300" data-animation="bounce-in">
-                <div className="w-14 h-14 rounded-md overflow-hidden border border-cyan-300 mb-3">
+              <div key={index} className="stat-card animate-on-scroll group rounded-2xl p-6 bg-white border border-[#00b4bb]/15 shadow-sm hover:shadow-md hover:border-[#00b4bb]/40 transition flex flex-col items-center justify-center text-center gap-2 min-h-[200px]" data-animation="bounce-in">
+                <div className="w-16 h-16 rounded-full overflow-hidden ring-2 ring-[#00b4bb]/30 mb-4 bg-[#00b4bb]/10 mx-auto">
                   <img
                     src={stat.image}
                     alt={stat.label}
@@ -2668,10 +2668,10 @@ const Home = () => {
                   />
                   
                 </div>
-                <div className="text-3xl font-bold mb-1 text-cyan-600">
+                <div className="text-3xl font-extrabold mb-1 text-primary">
                   {stat.number}
                 </div>
-                <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
+                <div className="text-sm font-medium text-[#2c3d4f]">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -2682,10 +2682,10 @@ const Home = () => {
       <section className="py-20 bg-white px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-on-scroll" data-animation="slide-up">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
-              <span className="text-cyan-600">Our AI Services</span>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
+              <span>Our AI Services</span>
             </h2>
-            <p className="text-lg max-w-3xl mx-auto text-slate-700">
+            <p className="text-lg max-w-3xl mx-auto text-[#2c3d4f]">
               Comprehensive AI solutions designed to transform your business operations and drive innovation
             </p>
           </div>
@@ -2735,10 +2735,10 @@ const Home = () => {
       <section className="py-20 bg-gray-100 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-on-scroll" data-animation="slide-up">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
-              <span className="text-cyan-600">Success Stories</span>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
+              <span>Success Stories</span>
             </h2>
-            <p className="text-lg max-w-3xl mx-auto text-slate-700">
+            <p className="text-lg max-w-3xl mx-auto text-[#2c3d4f]">
               Real results from our AI implementations across various industries
             </p>
           </div>
@@ -2758,7 +2758,7 @@ const Home = () => {
                 </div>
 
                 <div className="p-6">
-                  <h3 className="text-xl font-bold mb-3 text-slate-800">
+                  <h3 className="text-xl font-bold mb-3 text-[#2c3d4f]">
                     {project.title}
                   </h3>
 
@@ -2787,10 +2787,10 @@ const Home = () => {
       <section className="py-20 bg-white px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-on-scroll" data-animation="slide-up">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
-              <span className="text-cyan-600">What Our Clients Say</span>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
+              <span>What Our Clients Say</span>
             </h2>
-            <p className="text-lg max-w-3xl mx-auto text-slate-600">
+            <p className="text-lg max-w-3xl mx-auto text-[#2c3d4f]">
               Don't just take our word for it - hear from the companies we've helped transform
             </p>
           </div>
@@ -2809,11 +2809,11 @@ const Home = () => {
                   </div>
                 </div>
                 <div className="ml-6 flex-1">
-                  <h4 className="font-bold text-xl text-slate-800 mb-1">
+                  <h4 className="font-bold text-xl text-[#2c3d4f] mb-1">
                     {testimonials[currentTestimonial].name}
                   </h4>
-                  <p className="text-slate-600 mb-1">{testimonials[currentTestimonial].role}</p>
-                  <p className="text-cyan-600 font-semibold text-sm">
+                  <p className="text-[#2c3d4f] mb-1">{testimonials[currentTestimonial].role}</p>
+                  <p className="text-primary font-semibold text-sm">
                     {testimonials[currentTestimonial].company}
                   </p>
                 </div>
@@ -2824,7 +2824,7 @@ const Home = () => {
                 </div>
               </div>
 
-              <blockquote className="text-lg mb-8 leading-relaxed text-slate-700 italic">
+              <blockquote className="text-lg mb-8 leading-relaxed text-[#2c3d4f] italic">
                 "{testimonials[currentTestimonial].content}"
               </blockquote>
 
@@ -2854,10 +2854,10 @@ const Home = () => {
       <section className="py-20 bg-gray-200 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-on-scroll" data-animation="slide-up">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
-              Why Choose <span className="text-cyan-600">Panabotics?</span>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
+              Why Choose <span>Panabotics?</span>
             </h2>
-            <p className="text-lg max-w-3xl mx-auto text-slate-700">
+            <p className="text-lg max-w-3xl mx-auto text-[#2c3d4f]">
               We combine cutting-edge technology with deep industry expertise to deliver exceptional results
             </p>
           </div>
@@ -2878,11 +2878,11 @@ const Home = () => {
                     </div>
                   </div>
 
-                  <h3 className="text-xl font-bold mb-4 text-slate-800">
+                  <h3 className="text-xl font-bold mb-4 text-[#2c3d4f]">
                     {item.title}
                   </h3>
 
-                  <p className="text-slate-600 leading-relaxed">
+                  <p className="text-[#2c3d4f] leading-relaxed">
                     {item.description}
                   </p>
                 </div>
@@ -2896,37 +2896,36 @@ const Home = () => {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white" id="process">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
-            <h2 className="text-3xl sm:text-4xl font-bold text-cyan-600">Our Process</h2>
-            <p className="text-slate-600">A step-by-step approach to delivering high-quality AI solutions tailored to your business.</p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-primary">Our Process</h2>
+            <p className="text-[#2c3d4f]">A step-by-step approach to delivering high-quality AI solutions tailored to your business.</p>
           </div>
 
           <div
-            className="rounded-2xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-xl"
-            style={{ backgroundColor: colors.primaryHex }}
+            className="rounded-2xl p-6 sm:p-8 md:p-10 lg:p-12 bg-gray-100 border border-gray-200 shadow-sm"
           >
             <div className="space-y-10">
               {processSteps.map((step, index) => (
                 <div key={index} className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 lg:gap-12 items-center">
                   {index % 2 === 0 ? (
                     <>
-                      <div className="bg-white/10 rounded-xl p-6 md:p-8 border border-white/20 text-white">
-                        <div className="text-5xl font-bold leading-none opacity-90">{step.step}</div>
-                        <h3 className="mt-2 text-2xl font-semibold">{step.title}</h3>
-                        <p className="mt-2 text-white/90">{step.description}</p>
+                      <div className="bg-white rounded-xl p-6 md:p-8 border border-[#00b4bb]/20 text-[#2c3d4f] shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg">
+                        <div className="text-5xl font-extrabold leading-none text-primary">{step.step}</div>
+                        <h3 className="mt-2 text-2xl font-semibold text-[#2c3d4f]">{step.title}</h3>
+                        <p className="mt-2 text-[#2c3d4f]">{step.description}</p>
                       </div>
-                      <div className="rounded-xl overflow-hidden ring-1 ring-white/30">
+                      <div className="rounded-xl overflow-hidden ring-2 ring-[#00b4bb]/30 shadow-md">
                         <img src={step.image} alt={step.title} className="w-full h-48 md:h-56 lg:h-64 object-cover" />
                       </div>
                     </>
                   ) : (
                     <>
-                      <div className="rounded-xl overflow-hidden ring-1 ring-white/30">
+                      <div className="rounded-xl overflow-hidden ring-2 ring-[#00b4bb]/30 shadow-md">
                         <img src={step.image} alt={step.title} className="w-full h-48 md:h-56 lg:h-64 object-cover" />
                       </div>
-                      <div className="bg-white/10 rounded-xl p-6 md:p-8 border border-white/20 text-white">
-                        <div className="text-5xl font-bold leading-none opacity-90">{step.step}</div>
-                        <h3 className="mt-2 text-2xl font-semibold">{step.title}</h3>
-                        <p className="mt-2 text-white/90">{step.description}</p>
+                      <div className="bg-white rounded-xl p-6 md:p-8 border border-[#00b4bb]/20 text-[#2c3d4f] shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg">
+                        <div className="text-5xl font-extrabold leading-none text-primary">{step.step}</div>
+                        <h3 className="mt-2 text-2xl font-semibold text-[#2c3d4f]">{step.title}</h3>
+                        <p className="mt-2 text-[#2c3d4f]">{step.description}</p>
                       </div>
                     </>
                   )}
@@ -2941,10 +2940,10 @@ const Home = () => {
       <section className="py-20 bg-white px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-on-scroll" data-animation="fade-in">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-cyan-600">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-primary">
               Powered by Leading Technologies
             </h2>
-            <p className="text-lg max-w-3xl mx-auto text-slate-600">
+            <p className="text-lg max-w-3xl mx-auto text-[#2c3d4f]">
               We leverage the most advanced tools and frameworks to build scalable, robust AI solutions
             </p>
           </div>
@@ -3010,11 +3009,11 @@ const Home = () => {
             </div>
 
             <div className="relative z-10">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-slate-800">
+              <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-primary">
                 Ready to Transform Your Business with AI?
               </h2>
 
-              <p className="text-xl mb-8 max-w-2xl mx-auto text-slate-700">
+              <p className="text-xl mb-8 max-w-2xl mx-auto text-[#2c3d4f]">
                 Join hundreds of companies already using our AI solutions to drive growth,
                 reduce costs, and unlock new possibilities.
               </p>
