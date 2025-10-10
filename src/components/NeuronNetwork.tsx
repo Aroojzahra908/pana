@@ -424,9 +424,10 @@ const NeuronNetwork = () => {
         left: 0,
         width: "100vw",
         height: "100vh",
-        zIndex: 1,
-        background: "radial-gradient(circle at center, rgba(0,182,189,0.18), rgba(2,8,12,0.95))",
+        zIndex: 0,
+        background: "transparent",
         display: "block",
+        pointerEvents: "none",
       }}
     />
   );
