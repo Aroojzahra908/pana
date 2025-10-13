@@ -1,4 +1,3 @@
-
 // okkk final
 import { useEffect, useRef } from "react";
 
@@ -88,7 +87,7 @@ const NeuronNetwork = () => {
       radius: Math.random() * 1.5 + 0.5,
       opacity: 0.8 + Math.random() * 0.2,
       life: 1,
-      color: `hsl(${Math.random() * 60 + 180}, 100%, 70%)`, // cyan-blue colors
+      color: (() => { const base = [0,182,189]; const v = Math.floor(Math.random()*40)-20; return `rgb(${base[0]},${Math.min(255,Math.max(0,base[1]+v))},${Math.min(255,Math.max(0,base[2]+v))})`; })(), // cyan-teal variations
     };
 
     particle.update = function() {
@@ -201,19 +200,19 @@ const NeuronNetwork = () => {
       ctx.save();
       ctx.globalAlpha = neuron.opacity! * neuron.life!;
       ctx.shadowBlur = 8;
-      ctx.shadowColor = "rgba(0,255,255,0.7)"; // cyan glow
+      ctx.shadowColor = "rgba(0,182,189,0.7)"; // cyan-teal glow
       ctx.beginPath();
       ctx.arc(neuron.x!, neuron.y!, neuron.radius!, 0, Math.PI * 2);
       ctx.fillStyle = neuron.isConnected
-        ? "rgba(0,255,255,0.95)"
-        : "rgba(0,255,255,0.8)";
+        ? "rgba(0,182,189,0.95)"
+        : "rgba(0,182,189,0.8)";
       ctx.fill();
 
       ctx.shadowBlur = 0;
       ctx.globalAlpha = (neuron.opacity! * neuron.life!) * 0.9;
       ctx.beginPath();
       ctx.arc(neuron.x!, neuron.y!, neuron.radius! * 0.6, 0, Math.PI * 2);
-      ctx.fillStyle = neuron.isConnected ? "rgba(0,255,255,1)" : "white";
+      ctx.fillStyle = neuron.isConnected ? "rgba(0,182,189,1)" : "white";
       ctx.fill();
       ctx.restore();
     };
@@ -269,7 +268,7 @@ const NeuronNetwork = () => {
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < connectionDistance) {
           const t = dist / connectionDistance;
-          ctx.strokeStyle = lerpColor("#ffffff", "#00ffff", t);
+          ctx.strokeStyle = lerpColor("#ffffff", "#00b6bd", t);
           let opacity = ((connectionDistance - dist) / connectionDistance) * 0.7;
           opacity *= a.life * b.life;
           ctx.globalAlpha = opacity;
@@ -287,7 +286,7 @@ const NeuronNetwork = () => {
         const dy = neuron.y - mouseRef.current.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
         const t = Math.min(dist / mouseConnectionDistance, 1);
-        ctx.strokeStyle = lerpColor("#ffffff", "#00ffff", t);
+        ctx.strokeStyle = lerpColor("#ffffff", "#00b6bd", t);
         let opacity = ((mouseConnectionDistance - dist) / mouseConnectionDistance) * 0.95;
         opacity *= neuron.life;
         ctx.globalAlpha = opacity;
@@ -425,14 +424,13 @@ const NeuronNetwork = () => {
         left: 0,
         width: "100vw",
         height: "100vh",
-        zIndex: 1,
-        background: "black",
+        zIndex: 0,
+        background: "transparent",
         display: "block",
+        pointerEvents: "none",
       }}
     />
   );
 };
 
 export default NeuronNetwork;
-
-
