@@ -194,7 +194,7 @@ const Admin: React.FC = () => {
   };
 
   const tableShellStyle = {
-    background: colors.white,
+    background: primaryTint(0.04),
     borderColor: primaryTint(0.12),
   } as const;
 
@@ -448,7 +448,7 @@ const Admin: React.FC = () => {
         <section className="mt-8 mb-8">
           <div
             className="w-full rounded-3xl p-6 shadow-sm hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 flex flex-col sm:flex-row items-start sm:items-center gap-4"
-            style={{ background: `linear-gradient(90deg, rgba(${colors.primaryRgb},0.06), ${colors.white})`, border: `1px solid ${primaryTint(0.08)}`, borderLeft: `6px solid ${colors.primaryHex}` }}
+            style={{ background: `linear-gradient(90deg, rgba(${colors.primaryRgb},0.10), ${colors.white})`, border: `1px solid ${primaryTint(0.08)}`, borderLeft: `6px solid ${colors.primaryHex}` }}
           >
             <div className="flex-1">
               <h3 className="text-2xl font-semibold" style={{ color: colors.secondaryHex }}>Welcome back</h3>
@@ -477,7 +477,7 @@ const Admin: React.FC = () => {
         <div className="flex flex-col gap-10 lg:flex-row">
           <aside
             className="w-full rounded-3xl border p-6 shadow-sm lg:max-w-xs"
-            style={{ background: colors.white, borderColor: colors.primaryHex, color: colors.secondaryHex }}
+            style={{ background: primaryTint(0.03), borderColor: primaryTint(0.12), color: colors.secondaryHex }}
           >
             <p className="text-xs uppercase tracking-[0.4em]" style={{ color: colors.primaryHex }}>
               Control
@@ -578,8 +578,8 @@ const Admin: React.FC = () => {
                     key={card.label}
                     className="relative overflow-hidden rounded-3xl border p-6 shadow-sm transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
                     style={{
-                      background: colors.white,
-                      borderColor: primaryTint(0.06),
+                      background: primaryTint(0.06),
+                      borderColor: primaryTint(0.12),
                       color: colors.secondaryHex,
                     }}
                   >
