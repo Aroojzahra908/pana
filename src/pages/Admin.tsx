@@ -528,8 +528,8 @@ const Admin: React.FC = () => {
                 disabled={loading}
                 className="group inline-flex items-center gap-2 self-start rounded-full border px-5 py-2 text-sm font-medium transition"
                 style={{
-                  background: secondaryTint(0.25),
-                  borderColor: primaryTint(0.45),
+                  background: colors.primaryHex,
+                  borderColor: colors.primaryHex,
                   color: colors.white,
                   opacity: loading ? 0.6 : 1,
                 }}
