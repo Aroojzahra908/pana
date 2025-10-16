@@ -470,9 +470,9 @@ const Admin: React.FC = () => {
                     aria-pressed={active}
                     className="group flex w-full items-start gap-3 rounded-2xl border px-4 py-3 text-left transition"
                     style={{
-                      borderColor: active ? colors.white : primaryTint(0.4),
-                      background: active ? colors.white : secondaryTint(0.2),
-                      color: active ? colors.secondaryHex : colors.white,
+                      borderColor: active ? colors.primaryHex : primaryTint(0.08),
+                      background: active ? colors.primaryHex : colors.white,
+                      color: active ? colors.white : colors.secondaryHex,
                     }}
                   >
                     <span
