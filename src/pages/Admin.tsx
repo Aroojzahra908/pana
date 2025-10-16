@@ -442,7 +442,29 @@ const Admin: React.FC = () => {
     >
       <div className="pointer-events-none absolute inset-0" aria-hidden />
       <ConfigBanner />
+      {/* Hero banner below header */}
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <section className="mb-8">
+          <div
+            className="w-full rounded-3xl p-6 shadow-sm hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 flex flex-col sm:flex-row items-start sm:items-center gap-4"
+            style={{ background: colors.white, border: `1px solid ${primaryTint(0.06)}` }}
+          >
+            <div className="flex-1">
+              <h3 className="text-2xl font-semibold" style={{ color: colors.secondaryHex }}>Welcome back</h3>
+              <p className="mt-1 text-sm" style={{ color: secondaryTint(0.6) }}>
+                Here's a quick overview of recent activity. Use the controls to the left to switch tabs and manage submissions.
+              </p>
+            </div>
+            <div className="flex items-center gap-3">
+              <a href="/" className="inline-flex items-center px-4 py-2 rounded-full font-medium" style={{ background: colors.primaryHex, color: colors.white }}>
+                View site
+              </a>
+              <button onClick={fetchAll} className="inline-flex items-center px-4 py-2 rounded-full border" style={{ borderColor: primaryTint(0.06), color: colors.secondaryHex }}>
+                Refresh
+              </button>
+            </div>
+          </div>
+        </section>
         <div className="flex flex-col gap-10 lg:flex-row">
           <aside
             className="w-full rounded-3xl border p-6 shadow-sm lg:max-w-xs"
