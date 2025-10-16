@@ -538,7 +538,7 @@ const Admin: React.FC = () => {
             </div>
           </aside>
 
-          <main className="flex-1" style={{ color: colors.white }}>
+          <main className="flex-1" style={{ color: colors.secondaryHex }}>
             <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <p className="text-xs uppercase tracking-[0.4em]" style={{ color: secondaryTint(0.7) }}>
