@@ -567,7 +567,7 @@ const Admin: React.FC = () => {
                 return (
                   <div
                     key={card.label}
-                    className="relative overflow-hidden rounded-3xl border p-6 shadow-sm transition"
+                    className="relative overflow-hidden rounded-3xl border p-6 shadow-sm transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
                     style={{
                       background: colors.white,
                       borderColor: primaryTint(0.06),
