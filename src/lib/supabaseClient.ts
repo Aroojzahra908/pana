@@ -59,7 +59,9 @@ export async function uploadToStorage(
     headers["Content-Type"] = contentType;
   }
 
-  const res = await fetch(url, { method: "POST", headers, body: file });
+  // Convert file to ArrayBuffer first to avoid reusing the file's internal stream
+  const arrayBuffer = await (file as Blob).arrayBuffer();
+  const res = await fetch(url, { method: "POST", headers, body: new Uint8Array(arrayBuffer) });
   if (!res.ok) {
     const text = await res.text();
     throw new Error(`Failed to upload to storage: ${res.status} ${text}`);
