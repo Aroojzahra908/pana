@@ -194,8 +194,8 @@ const Admin: React.FC = () => {
   };
 
   const tableShellStyle = {
-    background: secondaryTint(0.25),
-    borderColor: secondaryTint(0.4),
+    background: colors.white,
+    borderColor: primaryTint(0.12),
   } as const;
 
   const renderContactsTable = () => {
