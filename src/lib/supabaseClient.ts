@@ -59,9 +59,39 @@ export async function uploadToStorage(
     headers["Content-Type"] = contentType;
   }
 
-  // Convert file to ArrayBuffer first to avoid reusing the file's internal stream
-  const arrayBuffer = await (file as Blob).arrayBuffer();
-  const res = await fetch(url, { method: "POST", headers, body: new Uint8Array(arrayBuffer) });
+  // Try sending the Blob directly first (let the browser set Content-Type)
+  try {
+    const resDirect = await fetch(url, { method: "POST", headers, body: file });
+    if (resDirect.ok) return await resDirect.json().catch(() => resDirect.text());
+    // if not ok and status is 403, surface a clearer error about storage policies
+    if (resDirect.status === 403) {
+      const text = await resDirect.text().catch(() => "");
+      throw new Error(`Upload denied (403). Check Supabase storage bucket policies and RLS: ${text}`);
+    }
+    // Otherwise read the text and throw below to keep the same flow
+    const textErr = await resDirect.text().catch(() => "");
+    throw new Error(`Failed to upload to storage: ${resDirect.status} ${textErr}`);
+  } catch (err: any) {
+    // If the browser threw a body stream error, try to clone the blob and retry using ArrayBuffer
+    if (err && typeof err.message === "string" && err.message.includes("body stream already read")) {
+      try {
+        const blobCopy = (file as Blob).slice(0, (file as Blob).size, (file as Blob).type);
+        const arrayBuffer = await blobCopy.arrayBuffer();
+        const res = await fetch(url, { method: "POST", headers, body: new Uint8Array(arrayBuffer) });
+        if (!res.ok) {
+          const text = await res.text().catch(() => "");
+          if (res.status === 403) throw new Error(`Upload denied (403). Check Supabase storage bucket policies and RLS: ${text}`);
+          throw new Error(`Failed to upload to storage: ${res.status} ${text}`);
+        }
+        return await res.json().catch(() => res.text());
+      } catch (inner) {
+        // rethrow the inner error for caller
+        throw inner;
+      }
+    }
+    // Not a body-stream error: rethrow
+    throw err;
+  }
   if (!res.ok) {
     const text = await res.text();
     throw new Error(`Failed to upload to storage: ${res.status} ${text}`);
