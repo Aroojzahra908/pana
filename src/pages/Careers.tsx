@@ -38,6 +38,15 @@ const Careers = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [selectedJob, showApplication]);
 
+  // Debug: log when modal visibility changes and when form state updates
+  useEffect(() => {
+    console.log("Careers: showApplication =", showApplication, "selectedJob =", selectedJob?.id ?? null);
+  }, [showApplication, selectedJob]);
+
+  useEffect(() => {
+    console.log("Careers form state:", { firstName, lastName, email, phone, linkedIn, coverLetter, resumeFileName });
+  }, [firstName, lastName, email, phone, linkedIn, coverLetter, resumeFileName]);
+
   const jobs = [
     {
       id: 1,
