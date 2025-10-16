@@ -291,11 +291,11 @@ const Admin: React.FC = () => {
                     </span>
                   </td>
                   <td className="px-6 py-4">
-                    <p className="max-w-md text-sm" style={{ color: colors.white }}>
+                    <p className="max-w-md text-sm" style={{ color: colors.secondaryHex }}>
                       {contact.message || "No additional message supplied."}
                     </p>
                   </td>
-                  <td className="px-6 py-4 text-sm" style={{ color: secondaryTint(0.8) }}>
+                  <td className="px-6 py-4 text-sm" style={{ color: secondaryTint(0.6) }}>
                     {formatDateTime(contact.created_at)}
                   </td>
                 </tr>
