@@ -557,10 +557,10 @@ const Admin: React.FC = () => {
                         <p className="text-xs uppercase tracking-wide" style={{ color: secondaryTint(0.7) }}>
                           {card.label}
                         </p>
-                        <p className="mt-2 text-2xl font-semibold" style={{ color: colors.white }}>
+                        <p className="mt-2 text-2xl font-semibold" style={{ color: colors.secondaryHex }}>
                           {card.value}
                         </p>
-                        <p className="mt-1 text-sm" style={{ color: secondaryTint(0.85) }}>
+                        <p className="mt-1 text-sm" style={{ color: secondaryTint(0.6) }}>
                           {card.helper}
                         </p>
                       </div>
