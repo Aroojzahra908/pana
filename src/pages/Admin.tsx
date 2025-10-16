@@ -440,11 +440,7 @@ const Admin: React.FC = () => {
         color: colors.secondaryHex,
       }}
     >
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{ background: `radial-gradient(circle at top, ${primaryTint(0.3)} 0%, transparent 60%)` }}
-        aria-hidden
-      />
+      <div className="pointer-events-none absolute inset-0" aria-hidden />
       <ConfigBanner />
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-10 lg:flex-row">
