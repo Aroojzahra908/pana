@@ -59,25 +59,46 @@ export async function uploadToStorage(
     headers["Content-Type"] = contentType;
   }
 
-  // Try sending the Blob directly first (let the browser set Content-Type)
+  // Encode path segments to avoid URL issues
+  const encodedBucket = encodeURIComponent(bucket);
+  const encodedObjectPath = objectPath.split("/").map(encodeURIComponent).join("/");
+  const uploadUrl = `${SUPABASE_URL}/storage/v1/object/${encodedBucket}/${encodedObjectPath}`;
+
+  // Prepare headers - allow browser to set Content-Type for Blobs if not explicitly provided
+  const uploadHeaders: Record<string, string> = { apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}`, "x-upsert": upsert ? "true" : "false" };
+  if (contentType) uploadHeaders["Content-Type"] = contentType;
+
+  // Use a clone of the blob to avoid any stream reuse issues
+  const blobToSend = (file as Blob).slice(0, (file as Blob).size, (file as Blob).type);
+
+  // Try POST first. If server responds 400, try PUT as a fallback. Provide detailed error messages.
   try {
-    const resDirect = await fetch(url, { method: "POST", headers, body: file });
-    if (resDirect.ok) return await resDirect.json().catch(() => resDirect.text());
-    // if not ok and status is 403, surface a clearer error about storage policies
-    if (resDirect.status === 403) {
-      const text = await resDirect.text().catch(() => "");
-      throw new Error(`Upload denied (403). Check Supabase storage bucket policies and RLS: ${text}`);
+    let res = await fetch(uploadUrl, { method: "POST", headers: uploadHeaders, body: blobToSend });
+    if (!res.ok) {
+      const text = await res.text().catch(() => "");
+      // Try PUT fallback for servers expecting PUT
+      try {
+        console.warn(`uploadToStorage: POST failed ${res.status} - retrying with PUT. Message: ${text}`);
+        res = await fetch(uploadUrl, { method: "PUT", headers: uploadHeaders, body: blobToSend });
+        if (!res.ok) {
+          const putText = await res.text().catch(() => "");
+          if (res.status === 403) throw new Error(`Upload denied (403). Check Supabase storage bucket policies and RLS: ${putText}`);
+          throw new Error(`Failed to upload to storage: ${res.status} ${putText}`);
+        }
+        return await res.json().catch(() => res.text());
+      } catch (putErr) {
+        // surface original POST error if PUT also failed
+        if (res.status === 403) throw new Error(`Upload denied (403). Check Supabase storage bucket policies and RLS: ${text}`);
+        throw new Error(`Failed to upload to storage: ${res.status} ${text}`);
+      }
     }
-    // Otherwise read the text and throw below to keep the same flow
-    const textErr = await resDirect.text().catch(() => "");
-    throw new Error(`Failed to upload to storage: ${resDirect.status} ${textErr}`);
+    return await res.json().catch(() => res.text());
   } catch (err: any) {
-    // If the browser threw a body stream error, try to clone the blob and retry using ArrayBuffer
+    // If we hit a body-stream issue, retry using ArrayBuffer
     if (err && typeof err.message === "string" && err.message.includes("body stream already read")) {
       try {
-        const blobCopy = (file as Blob).slice(0, (file as Blob).size, (file as Blob).type);
-        const arrayBuffer = await blobCopy.arrayBuffer();
-        const res = await fetch(url, { method: "POST", headers, body: new Uint8Array(arrayBuffer) });
+        const arrayBuffer = await blobToSend.arrayBuffer();
+        const res = await fetch(uploadUrl, { method: "POST", headers: uploadHeaders, body: new Uint8Array(arrayBuffer) });
         if (!res.ok) {
           const text = await res.text().catch(() => "");
           if (res.status === 403) throw new Error(`Upload denied (403). Check Supabase storage bucket policies and RLS: ${text}`);
@@ -85,11 +106,10 @@ export async function uploadToStorage(
         }
         return await res.json().catch(() => res.text());
       } catch (inner) {
-        // rethrow the inner error for caller
         throw inner;
       }
     }
-    // Not a body-stream error: rethrow
+
     throw err;
   }
   if (!res.ok) {
