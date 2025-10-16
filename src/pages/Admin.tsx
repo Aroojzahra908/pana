@@ -4,7 +4,7 @@ import supabase from "@/lib/supabaseClient"; // simple REST helpers: supabase.fe
 import { toast } from "@/hooks/use-toast";
 import colors from "@/components/colors";
 
-type TabKey = "contacts" | "applications";
+type TabKey = "contacts" | "applications" | "selected";
 
 const formatDateTime = (value?: string | null) => {
   if (!value) return "—";
