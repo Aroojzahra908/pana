@@ -159,8 +159,8 @@ const Admin: React.FC = () => {
         <div
           className="mb-6 rounded-2xl border p-6 text-sm"
           style={{
-            background: primaryTint(0.12),
-            borderColor: primaryTint(0.35),
+            background: colors.primaryHex,
+            borderColor: colors.primaryHex,
             color: colors.white,
           }}
         >
