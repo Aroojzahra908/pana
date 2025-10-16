@@ -359,7 +359,7 @@ const Admin: React.FC = () => {
             </thead>
             <tbody>
               {applications.map((application) => (
-                <tr key={application.id} style={{ borderBottom: `1px solid ${secondaryTint(0.35)}` }}>
+                <tr key={application.id} style={{ borderBottom: `1px solid ${secondaryTint(0.35)}`, transition: 'background-color 0.18s ease' }} onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = `rgba(${colors.primaryRgb},0.04)`)} onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}>
                   <td className="px-6 py-4">
                     <p className="font-semibold" style={{ color: colors.secondaryHex }}>
                       {formatFullName(application.first_name, application.last_name)}
