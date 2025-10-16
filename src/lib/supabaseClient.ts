@@ -28,15 +28,55 @@ export async function insertInto(table: string, payload: any) {
     const text = await res.text();
     throw new Error(`Failed to insert into ${table}: ${res.status} ${text}`);
   }
-  // handle empty body responses safely
   const text = await res.text();
   if (!text) return null;
   try {
     return JSON.parse(text);
   } catch (e) {
-    // fallback: return raw text when JSON parse fails
     return text;
   }
 }
 
-export default { fetchTable, insertInto };
+export async function uploadToStorage(
+  bucket: string,
+  objectPath: string,
+  file: Blob,
+  options: { contentType?: string; upsert?: boolean } = {}
+) {
+  if (!SUPABASE_URL) throw new Error("Missing SUPABASE_URL");
+  if (!SUPABASE_ANON_KEY) throw new Error("Missing SUPABASE_ANON_KEY");
+  if (!bucket) throw new Error("Missing storage bucket name");
+  if (!objectPath) throw new Error("Missing storage object path");
+
+  const { contentType = (file as File).type || "application/octet-stream", upsert = false } = options;
+  const url = `${SUPABASE_URL}/storage/v1/object/${bucket}/${objectPath}`;
+  const headers: Record<string, string> = {
+    apikey: SUPABASE_ANON_KEY,
+    Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+    "x-upsert": upsert ? "true" : "false",
+  };
+  if (contentType) {
+    headers["Content-Type"] = contentType;
+  }
+
+  const res = await fetch(url, { method: "POST", headers, body: file });
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`Failed to upload to storage: ${res.status} ${text}`);
+  }
+
+  const text = await res.text();
+  if (!text) return null;
+  try {
+    return JSON.parse(text);
+  } catch (e) {
+    return text;
+  }
+}
+
+export function getPublicUrl(bucket: string, objectPath: string) {
+  if (!SUPABASE_URL) throw new Error("Missing SUPABASE_URL");
+  return `${SUPABASE_URL}/storage/v1/object/public/${bucket}/${objectPath}`;
+}
+
+export default { fetchTable, insertInto, uploadToStorage, getPublicUrl };
