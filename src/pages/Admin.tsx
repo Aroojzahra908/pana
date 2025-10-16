@@ -478,8 +478,8 @@ const Admin: React.FC = () => {
                     <span
                       className="flex h-10 w-10 items-center justify-center rounded-xl"
                       style={{
-                        background: active ? secondaryTint(0.15) : primaryTint(0.2),
-                        color: active ? colors.secondaryHex : colors.white,
+                        background: active ? colors.white : primaryTint(0.06),
+                        color: colors.primaryHex,
                       }}
                     >
                       <Icon className="h-5 w-5" />
