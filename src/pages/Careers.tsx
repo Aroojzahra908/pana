@@ -200,7 +200,8 @@ const ApplicationModal = ({ job, onClose, isGeneral, firstName, setFirstName, la
 
           <div className="flex flex-col md:flex-row gap-4">
             <button
-              type="submit"
+              type="button"
+              onClick={async (ev) => { ev.preventDefault(); console.log('Careers: submit button clicked'); await handleSubmit(); }}
               className="flex-1 text-white px-8 py-4 rounded-xl font-semibold shadow-lg flex items-center justify-center transition-transform duration-300 hover:scale-105 hover:opacity-90"
               style={{ backgroundColor: colors.primaryHex }}
               disabled={isSubmitting}
