@@ -22,7 +22,16 @@ const Careers = () => {
   const [showApplication, setShowApplication] = useState(false);
   const [isGeneralApplication, setIsGeneralApplication] = useState(false);
   const [resumeFileName, setResumeFileName] = useState("");
+  const [resumeFile, setResumeFile] = useState<File | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // controlled form fields to prevent unexpected resets
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [linkedIn, setLinkedIn] = useState("");
+  const [coverLetter, setCoverLetter] = useState("");
 
   // Scroll to top on initial mount and when selectedJob or showApplication change
   useEffect(() => {
