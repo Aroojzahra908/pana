@@ -513,10 +513,10 @@ const Admin: React.FC = () => {
                 <p className="text-xs uppercase tracking-[0.4em]" style={{ color: secondaryTint(0.7) }}>
                   Overview
                 </p>
-                <h2 className="mt-2 text-3xl font-semibold" style={{ color: colors.white }}>
+                <h2 className="mt-2 text-3xl font-semibold" style={{ color: colors.secondaryHex }}>
                   Control center
                 </h2>
-                <p className="mt-1 text-sm" style={{ color: secondaryTint(0.75) }}>
+                <p className="mt-1 text-sm" style={{ color: secondaryTint(0.65) }}>
                   {activeTab === "contacts"
                     ? "Monitor every contact submission instantly."
                     : "Discover the latest applicants and their documents."}
