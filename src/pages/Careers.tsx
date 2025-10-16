@@ -396,8 +396,8 @@ const Careers = () => {
       return;
     }
 
-    if (!resumeFile && !resumeFileName) {
-      console.log("Careers: validation failed - missing resume");
+    if (!resumeFile) {
+      console.log("Careers: validation failed - missing resume file");
       toast({ title: "Validation", description: "Please attach your resume (PDF/DOC) before submitting." });
       return;
     }
@@ -410,13 +410,36 @@ const Careers = () => {
 
     setIsSubmitting(true);
     try {
+      let resumeUrl: string | null = null;
+      const storedResumeName = resumeFileName || resumeFile?.name || null;
+
+      if (resumeFile) {
+        const extension = resumeFile.name.includes(".")
+          ? resumeFile.name.split(".").pop()?.toLowerCase() ?? ""
+          : "";
+        const baseName = resumeFile.name.replace(/\.[^/.]+$/, "");
+        const safeBase = baseName.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "") || "resume";
+        const uniqueSuffix = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+        const objectName = extension ? `${safeBase}-${uniqueSuffix}.${extension}` : `${safeBase}-${uniqueSuffix}`;
+        const objectPath = `applications/${objectName}`;
+
+        console.log("Careers: uploading resume", objectPath);
+        await supabase.uploadToStorage("resumes", objectPath, resumeFile, {
+          contentType: resumeFile.type || "application/octet-stream",
+          upsert: false,
+        });
+        resumeUrl = supabase.getPublicUrl("resumes", objectPath);
+        console.log("Careers: resume uploaded", resumeUrl);
+      }
+
       const payload = [{
         first_name: first,
         last_name: last,
         email: mail,
         phone: phoneVal || null,
         linkedin: linked || null,
-        resume_file_name: resumeFileName || null,
+        resume_file_name: storedResumeName,
+        resume_file_url: resumeUrl,
         cover_letter: cover || null,
         position: isGeneralApplication ? "General Application" : selectedJob?.title || null,
         job_id: isGeneralApplication ? null : selectedJob?.id || null,
