@@ -131,4 +131,34 @@ export function getPublicUrl(bucket: string, objectPath: string) {
   return `${SUPABASE_URL}/storage/v1/object/public/${bucket}/${objectPath}`;
 }
 
-export default { fetchTable, insertInto, uploadToStorage, getPublicUrl };
+export async function deleteFrom(table: string, id: string | number) {
+  if (!SUPABASE_URL) throw new Error("Missing SUPABASE_URL");
+  const url = `${SUPABASE_URL}/rest/v1/${table}?id=eq.${encodeURIComponent(String(id))}`;
+  const res = await fetch(url, { method: "DELETE", headers: getHeaders() });
+  if (!res.ok) {
+    const text = await res.text().catch(() => "");
+    throw new Error(`Failed to delete from ${table}: ${res.status} ${text}`);
+  }
+  return true;
+}
+
+export async function updateRow(table: string, id: string | number, payload: any) {
+  if (!SUPABASE_URL) throw new Error("Missing SUPABASE_URL");
+  const url = `${SUPABASE_URL}/rest/v1/${table}?id=eq.${encodeURIComponent(String(id))}`;
+  const headers = getHeaders();
+  // PATCH requires application/json
+  const res = await fetch(url, { method: "PATCH", headers, body: JSON.stringify(payload) });
+  if (!res.ok) {
+    const text = await res.text().catch(() => "");
+    throw new Error(`Failed to update ${table}: ${res.status} ${text}`);
+  }
+  const text = await res.text();
+  if (!text) return null;
+  try {
+    return JSON.parse(text);
+  } catch (e) {
+    return text;
+  }
+}
+
+export default { fetchTable, insertInto, uploadToStorage, getPublicUrl, deleteFrom, updateRow };
