@@ -340,7 +340,7 @@ const Admin: React.FC = () => {
           </div>
           <span
             className="rounded-full px-3 py-1 text-xs font-semibold"
-            style={{ background: secondaryTint(0.22), color: colors.white }}
+            style={{ background: colors.primaryHex, color: colors.white }}
           >
             {applications.length} records
           </span>
