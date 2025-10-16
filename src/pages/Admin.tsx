@@ -347,8 +347,8 @@ const Admin: React.FC = () => {
         </div>
 
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y text-left text-sm" style={{ color: colors.white }}>
-            <thead style={{ background: secondaryTint(0.2), color: colors.white }}>
+          <table className="min-w-full divide-y text-left text-sm" style={{ color: colors.secondaryHex }}>
+            <thead style={{ background: secondaryTint(0.06), color: colors.secondaryHex }}>
               <tr>
                 <th className="px-6 py-3 font-semibold">Student</th>
                 <th className="px-6 py-3 font-semibold">Contact</th>
