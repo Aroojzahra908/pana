@@ -59,7 +59,59 @@ export async function uploadToStorage(
     headers["Content-Type"] = contentType;
   }
 
-  const res = await fetch(url, { method: "POST", headers, body: file });
+  // Encode path segments to avoid URL issues
+  const encodedBucket = encodeURIComponent(bucket);
+  const encodedObjectPath = objectPath.split("/").map(encodeURIComponent).join("/");
+  const uploadUrl = `${SUPABASE_URL}/storage/v1/object/${encodedBucket}/${encodedObjectPath}`;
+
+  // Prepare headers - allow browser to set Content-Type for Blobs if not explicitly provided
+  const uploadHeaders: Record<string, string> = { apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}`, "x-upsert": upsert ? "true" : "false" };
+  if (contentType) uploadHeaders["Content-Type"] = contentType;
+
+  // Use a clone of the blob to avoid any stream reuse issues
+  const blobToSend = (file as Blob).slice(0, (file as Blob).size, (file as Blob).type);
+
+  // Try POST first. If server responds 400, try PUT as a fallback. Provide detailed error messages.
+  try {
+    let res = await fetch(uploadUrl, { method: "POST", headers: uploadHeaders, body: blobToSend });
+    if (!res.ok) {
+      const text = await res.text().catch(() => "");
+      // Try PUT fallback for servers expecting PUT
+      try {
+        console.warn(`uploadToStorage: POST failed ${res.status} - retrying with PUT. Message: ${text}`);
+        res = await fetch(uploadUrl, { method: "PUT", headers: uploadHeaders, body: blobToSend });
+        if (!res.ok) {
+          const putText = await res.text().catch(() => "");
+          if (res.status === 403) throw new Error(`Upload denied (403). Check Supabase storage bucket policies and RLS: ${putText}`);
+          throw new Error(`Failed to upload to storage: ${res.status} ${putText}`);
+        }
+        return await res.json().catch(() => res.text());
+      } catch (putErr) {
+        // surface original POST error if PUT also failed
+        if (res.status === 403) throw new Error(`Upload denied (403). Check Supabase storage bucket policies and RLS: ${text}`);
+        throw new Error(`Failed to upload to storage: ${res.status} ${text}`);
+      }
+    }
+    return await res.json().catch(() => res.text());
+  } catch (err: any) {
+    // If we hit a body-stream issue, retry using ArrayBuffer
+    if (err && typeof err.message === "string" && err.message.includes("body stream already read")) {
+      try {
+        const arrayBuffer = await blobToSend.arrayBuffer();
+        const res = await fetch(uploadUrl, { method: "POST", headers: uploadHeaders, body: new Uint8Array(arrayBuffer) });
+        if (!res.ok) {
+          const text = await res.text().catch(() => "");
+          if (res.status === 403) throw new Error(`Upload denied (403). Check Supabase storage bucket policies and RLS: ${text}`);
+          throw new Error(`Failed to upload to storage: ${res.status} ${text}`);
+        }
+        return await res.json().catch(() => res.text());
+      } catch (inner) {
+        throw inner;
+      }
+    }
+
+    throw err;
+  }
   if (!res.ok) {
     const text = await res.text();
     throw new Error(`Failed to upload to storage: ${res.status} ${text}`);

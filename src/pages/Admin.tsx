@@ -159,8 +159,8 @@ const Admin: React.FC = () => {
         <div
           className="mb-6 rounded-2xl border p-6 text-sm"
           style={{
-            background: primaryTint(0.12),
-            borderColor: primaryTint(0.35),
+            background: colors.primaryHex,
+            borderColor: colors.primaryHex,
             color: colors.white,
           }}
         >
@@ -194,8 +194,8 @@ const Admin: React.FC = () => {
   };
 
   const tableShellStyle = {
-    background: secondaryTint(0.25),
-    borderColor: secondaryTint(0.4),
+    background: colors.white,
+    borderColor: primaryTint(0.12),
   } as const;
 
   const renderContactsTable = () => {
@@ -222,40 +222,40 @@ const Admin: React.FC = () => {
           style={{ borderColor: secondaryTint(0.35) }}
         >
           <div>
-            <h2 className="text-xl font-semibold" style={{ color: colors.white }}>
+            <h2 className="text-xl font-semibold" style={{ color: colors.secondaryHex }}>
               Contact messages
             </h2>
-            <p className="text-sm" style={{ color: primaryTint(0.8) }}>
+            <p className="text-sm" style={{ color: secondaryTint(0.65) }}>
               Review student and client enquiries with all supporting details.
             </p>
           </div>
           <span
             className="rounded-full px-3 py-1 text-xs font-semibold"
-            style={{ background: primaryTint(0.18), color: colors.white }}
+            style={{ background: colors.primaryHex, color: colors.white }}
           >
             {contacts.length} records
           </span>
         </div>
 
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y text-left text-sm" style={{ color: colors.white }}>
-            <thead style={{ background: primaryTint(0.12), color: colors.white }}>
+          <table className="min-w-full divide-y text-left text-sm" style={{ color: colors.secondaryHex }}>
+            <thead style={{ background: primaryTint(0.12), color: colors.primaryHex }}>
               <tr>
-                <th className="px-6 py-3 font-semibold">Student</th>
-                <th className="px-6 py-3 font-semibold">Contact</th>
-                <th className="px-6 py-3 font-semibold">Company &amp; Service</th>
-                <th className="px-6 py-3 font-semibold">Message</th>
-                <th className="px-6 py-3 font-semibold">Received</th>
+                <th className="px-6 py-3 font-bold text-sm tracking-wide" style={{ color: colors.primaryHex }}>Student</th>
+                <th className="px-6 py-3 font-bold text-sm tracking-wide" style={{ color: colors.primaryHex }}>Contact</th>
+                <th className="px-6 py-3 font-bold text-sm tracking-wide" style={{ color: colors.primaryHex }}>Company &amp; Service</th>
+                <th className="px-6 py-3 font-bold text-sm tracking-wide" style={{ color: colors.primaryHex }}>Message</th>
+                <th className="px-6 py-3 font-bold text-sm tracking-wide" style={{ color: colors.primaryHex }}>Received</th>
               </tr>
             </thead>
             <tbody>
               {contacts.map((contact) => (
-                <tr key={contact.id} style={{ borderBottom: `1px solid ${secondaryTint(0.35)}` }}>
+                <tr key={contact.id} style={{ borderBottom: `1px solid ${secondaryTint(0.35)}`, transition: 'background-color 0.18s ease' }} onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = `rgba(${colors.primaryRgb},0.08)`)} onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}>
                   <td className="px-6 py-4">
-                    <p className="font-semibold" style={{ color: colors.white }}>
+                    <p className="font-semibold" style={{ color: colors.secondaryHex }}>
                       {formatFullName(contact.first_name, contact.last_name)}
                     </p>
-                    <p className="text-xs" style={{ color: primaryTint(0.8) }}>
+                    <p className="text-xs" style={{ color: secondaryTint(0.6) }}>
                       {contact.role || contact.company || "—"}
                     </p>
                   </td>
@@ -280,22 +280,22 @@ const Admin: React.FC = () => {
                     ) : null}
                   </td>
                   <td className="px-6 py-4">
-                    <p className="text-sm" style={{ color: colors.white }}>
+                    <p className="text-sm" style={{ color: colors.secondaryHex }}>
                       {contact.company || "—"}
                     </p>
                     <span
                       className="mt-1 inline-flex rounded-full px-3 py-1 text-xs font-medium"
-                      style={{ background: primaryTint(0.18), color: colors.white }}
+                      style={{ background: colors.primaryHex, color: colors.white }}
                     >
                       {contact.service || "Not specified"}
                     </span>
                   </td>
                   <td className="px-6 py-4">
-                    <p className="max-w-md text-sm" style={{ color: colors.white }}>
+                    <p className="max-w-md text-sm" style={{ color: colors.secondaryHex }}>
                       {contact.message || "No additional message supplied."}
                     </p>
                   </td>
-                  <td className="px-6 py-4 text-sm" style={{ color: secondaryTint(0.8) }}>
+                  <td className="px-6 py-4 text-sm" style={{ color: secondaryTint(0.6) }}>
                     {formatDateTime(contact.created_at)}
                   </td>
                 </tr>
@@ -331,40 +331,40 @@ const Admin: React.FC = () => {
           style={{ borderColor: secondaryTint(0.35) }}
         >
           <div>
-            <h2 className="text-xl font-semibold" style={{ color: colors.white }}>
+            <h2 className="text-xl font-semibold" style={{ color: colors.secondaryHex }}>
               Job applications
             </h2>
-            <p className="text-sm" style={{ color: primaryTint(0.8) }}>
+            <p className="text-sm" style={{ color: secondaryTint(0.65) }}>
               Track every applicant and their supporting documents at a glance.
             </p>
           </div>
           <span
             className="rounded-full px-3 py-1 text-xs font-semibold"
-            style={{ background: secondaryTint(0.22), color: colors.white }}
+            style={{ background: colors.primaryHex, color: colors.white }}
           >
             {applications.length} records
           </span>
         </div>
 
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y text-left text-sm" style={{ color: colors.white }}>
-            <thead style={{ background: secondaryTint(0.2), color: colors.white }}>
+          <table className="min-w-full divide-y text-left text-sm" style={{ color: colors.secondaryHex }}>
+            <thead style={{ background: primaryTint(0.12), color: colors.primaryHex }}>
               <tr>
-                <th className="px-6 py-3 font-semibold">Student</th>
-                <th className="px-6 py-3 font-semibold">Contact</th>
-                <th className="px-6 py-3 font-semibold">Role info</th>
-                <th className="px-6 py-3 font-semibold">Resume &amp; links</th>
-                <th className="px-6 py-3 font-semibold">Applied</th>
+                <th className="px-6 py-3 font-bold text-sm tracking-wide" style={{ color: colors.primaryHex }}>Student</th>
+                <th className="px-6 py-3 font-bold text-sm tracking-wide" style={{ color: colors.primaryHex }}>Contact</th>
+                <th className="px-6 py-3 font-bold text-sm tracking-wide" style={{ color: colors.primaryHex }}>Role info</th>
+                <th className="px-6 py-3 font-bold text-sm tracking-wide" style={{ color: colors.primaryHex }}>Resume &amp; links</th>
+                <th className="px-6 py-3 font-bold text-sm tracking-wide" style={{ color: colors.primaryHex }}>Applied</th>
               </tr>
             </thead>
             <tbody>
               {applications.map((application) => (
-                <tr key={application.id} style={{ borderBottom: `1px solid ${secondaryTint(0.35)}` }}>
+                <tr key={application.id} style={{ borderBottom: `1px solid ${secondaryTint(0.35)}`, transition: 'background-color 0.18s ease' }} onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = `rgba(${colors.primaryRgb},0.08)`)} onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}>
                   <td className="px-6 py-4">
-                    <p className="font-semibold" style={{ color: colors.white }}>
+                    <p className="font-semibold" style={{ color: colors.secondaryHex }}>
                       {formatFullName(application.first_name, application.last_name)}
                     </p>
-                    <p className="text-xs" style={{ color: primaryTint(0.8) }}>
+                    <p className="text-xs" style={{ color: secondaryTint(0.6) }}>
                       {application.linkedin || "—"}
                     </p>
                   </td>
@@ -389,10 +389,10 @@ const Admin: React.FC = () => {
                     ) : null}
                   </td>
                   <td className="px-6 py-4">
-                    <p className="text-sm" style={{ color: colors.white }}>
+                    <p className="text-sm" style={{ color: colors.secondaryHex }}>
                       {application.position || "General application"}
                     </p>
-                    <p className="mt-1 text-xs" style={{ color: secondaryTint(0.8) }}>
+                    <p className="mt-1 text-xs" style={{ color: secondaryTint(0.6) }}>
                       Job ID: {application.job_id ?? "—"}
                     </p>
                   </td>
@@ -436,29 +436,56 @@ const Admin: React.FC = () => {
     <div
       className="relative isolate min-h-screen pb-16 pt-8"
       style={{
-        background: `linear-gradient(140deg, ${primaryTint(0.22)} 0%, ${secondaryTint(0.92)} 55%, ${primaryTint(0.55)} 100%)`,
-        color: colors.white,
+        background: colors.white,
+        color: colors.secondaryHex,
+        paddingTop: '6.5rem' // extra spacing to account for fixed header
       }}
     >
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{ background: `radial-gradient(circle at top, ${primaryTint(0.3)} 0%, transparent 60%)` }}
-        aria-hidden
-      />
+      <div className="pointer-events-none absolute inset-0" aria-hidden />
       <ConfigBanner />
+      {/* Hero banner below header */}
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <section className="mt-8 mb-8">
+          <div
+            className="w-full rounded-3xl p-6 shadow-sm hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 flex flex-col sm:flex-row items-start sm:items-center gap-4"
+            style={{ background: `linear-gradient(90deg, rgba(${colors.primaryRgb},0.10), ${colors.white})`, border: `1px solid ${primaryTint(0.08)}`, borderLeft: `6px solid ${colors.primaryHex}` }}
+          >
+            <div className="flex-1">
+              <h3 className="text-2xl font-semibold" style={{ color: colors.secondaryHex }}>Welcome back</h3>
+              <p className="mt-1 text-sm" style={{ color: secondaryTint(0.6) }}>
+                Here's a quick overview of recent activity. Use the controls to the left to switch tabs and manage submissions.
+              </p>
+              <div className="mt-3 flex flex-wrap gap-3">
+                <span className="inline-flex items-center rounded-full px-3 py-1 text-sm font-semibold" style={{ background: colors.primaryHex, color: colors.white }}>
+                  {contacts?.length ?? 0} Leads
+                </span>
+                <span className="inline-flex items-center rounded-full px-3 py-1 text-sm font-semibold" style={{ background: colors.white, border: `1px solid ${primaryTint(0.06)}`, color: colors.secondaryHex }}>
+                  {applications?.length ?? 0} Applicants
+                </span>
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <a href="/" className="inline-flex items-center px-4 py-2 rounded-full font-medium" style={{ background: colors.primaryHex, color: colors.white }}>
+                View site
+              </a>
+              <button onClick={fetchAll} className="inline-flex items-center px-4 py-2 rounded-full border" style={{ borderColor: primaryTint(0.06), color: colors.secondaryHex }}>
+                Refresh
+              </button>
+            </div>
+          </div>
+        </section>
         <div className="flex flex-col gap-10 lg:flex-row">
           <aside
-            className="w-full rounded-3xl border p-6 shadow-2xl backdrop-blur lg:max-w-xs"
-            style={{ background: primaryTint(0.18), borderColor: primaryTint(0.4), color: colors.white }}
+            className="w-full rounded-3xl border p-6 shadow-sm lg:max-w-xs"
+            style={{ background: colors.primaryHex, borderColor: colors.primaryHex, color: colors.white }}
           >
-            <p className="text-xs uppercase tracking-[0.4em]" style={{ color: colors.white }}>
+            <p className="text-xs uppercase tracking-[0.4em]" style={{ color: colors.primaryHex }}>
               Control
             </p>
-            <h1 className="mt-3 text-2xl font-semibold" style={{ color: colors.white }}>
+            <h1 className="mt-3 text-2xl font-bold" style={{ color: colors.white }}>
               Admin dashboard
             </h1>
-            <p className="mt-2 text-sm leading-relaxed" style={{ color: secondaryTint(0.75) }}>
+            <p className="mt-2 text-sm leading-relaxed" style={{ color: colors.white }}>
               Switch between tabs to review contact enquiries and job applications in real time.
             </p>
 
@@ -473,34 +500,37 @@ const Admin: React.FC = () => {
                     onClick={() => setActiveTab(tab.id)}
                     aria-pressed={active}
                     className="group flex w-full items-start gap-3 rounded-2xl border px-4 py-3 text-left transition"
+                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = `rgba(${colors.primaryRgb},0.12)`; if (!active) { (e.currentTarget as HTMLElement).style.color = colors.white; } else { (e.currentTarget as HTMLElement).style.color = colors.primaryHex; } }}
+                    onMouseLeave={(e) => { if (active) { (e.currentTarget as HTMLElement).style.backgroundColor = colors.white; (e.currentTarget as HTMLElement).style.color = colors.primaryHex; } else { (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent'; (e.currentTarget as HTMLElement).style.color = colors.white; } }}
                     style={{
-                      borderColor: active ? colors.white : primaryTint(0.4),
-                      background: active ? colors.white : secondaryTint(0.2),
-                      color: active ? colors.secondaryHex : colors.white,
+                      borderColor: 'rgba(255,255,255,0.14)',
+                      background: active ? colors.white : 'transparent',
+                      color: active ? colors.primaryHex : colors.white,
+                      boxShadow: active ? '0 6px 18px rgba(0,0,0,0.06)' : 'none'
                     }}
                   >
                     <span
                       className="flex h-10 w-10 items-center justify-center rounded-xl"
                       style={{
-                        background: active ? secondaryTint(0.15) : primaryTint(0.2),
-                        color: active ? colors.secondaryHex : colors.white,
+                        background: active ? colors.white : 'rgba(255,255,255,0.12)',
+                        color: active ? colors.primaryHex : colors.white,
                       }}
                     >
                       <Icon className="h-5 w-5" />
                     </span>
                     <span className="flex-1">
-                      <span className="text-sm font-semibold" style={{ color: active ? colors.secondaryHex : colors.white }}>
+                      <span className="text-sm font-semibold" style={{ color: active ? colors.primaryHex : colors.white }}>
                         {tab.label}
                       </span>
-                      <p className="mt-1 text-xs" style={{ color: active ? secondaryTint(0.7) : secondaryTint(0.8) }}>
+                      <p className="mt-1 text-xs" style={{ color: active ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,0.85)' }}>
                         {tab.description}
                       </p>
                     </span>
                     <span
                       className="rounded-full px-2 py-1 text-xs font-semibold"
                       style={{
-                        background: active ? secondaryTint(0.18) : primaryTint(0.2),
-                        color: colors.white,
+                        background: active ? colors.white : 'rgba(255,255,255,0.12)',
+                        color: active ? colors.primaryHex : colors.white,
                       }}
                     >
                       {tab.badge}
@@ -511,16 +541,16 @@ const Admin: React.FC = () => {
             </div>
           </aside>
 
-          <main className="flex-1" style={{ color: colors.white }}>
+          <main className="flex-1" style={{ color: colors.secondaryHex }}>
             <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <p className="text-xs uppercase tracking-[0.4em]" style={{ color: secondaryTint(0.7) }}>
                   Overview
                 </p>
-                <h2 className="mt-2 text-3xl font-semibold" style={{ color: colors.white }}>
+                <h2 className="mt-2 text-3xl font-semibold" style={{ color: colors.secondaryHex }}>
                   Control center
                 </h2>
-                <p className="mt-1 text-sm" style={{ color: secondaryTint(0.75) }}>
+                <p className="mt-1 text-sm" style={{ color: secondaryTint(0.65) }}>
                   {activeTab === "contacts"
                     ? "Monitor every contact submission instantly."
                     : "Discover the latest applicants and their documents."}
@@ -532,8 +562,8 @@ const Admin: React.FC = () => {
                 disabled={loading}
                 className="group inline-flex items-center gap-2 self-start rounded-full border px-5 py-2 text-sm font-medium transition"
                 style={{
-                  background: secondaryTint(0.25),
-                  borderColor: primaryTint(0.45),
+                  background: colors.primaryHex,
+                  borderColor: colors.primaryHex,
                   color: colors.white,
                   opacity: loading ? 0.6 : 1,
                 }}
@@ -549,11 +579,13 @@ const Admin: React.FC = () => {
                 return (
                   <div
                     key={card.label}
-                    className="relative overflow-hidden rounded-3xl border p-6 shadow-xl backdrop-blur transition"
+                    className="relative overflow-hidden rounded-3xl border p-6 shadow-sm transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
+                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = `rgba(${colors.primaryRgb},0.08)`; (e.currentTarget as HTMLElement).style.color = colors.secondaryHex; }}
+                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = colors.white; (e.currentTarget as HTMLElement).style.color = colors.secondaryHex; }}
                     style={{
-                      background: card.tint,
-                      borderColor: primaryTint(0.4),
-                      color: colors.white,
+                      background: colors.white,
+                      borderColor: primaryTint(0.12),
+                      color: colors.secondaryHex,
                     }}
                   >
                     <div className="relative z-10 flex items-start justify-between gap-4">
@@ -561,16 +593,16 @@ const Admin: React.FC = () => {
                         <p className="text-xs uppercase tracking-wide" style={{ color: secondaryTint(0.7) }}>
                           {card.label}
                         </p>
-                        <p className="mt-2 text-2xl font-semibold" style={{ color: colors.white }}>
+                        <p className="mt-2 text-2xl font-semibold" style={{ color: colors.secondaryHex }}>
                           {card.value}
                         </p>
-                        <p className="mt-1 text-sm" style={{ color: secondaryTint(0.85) }}>
+                        <p className="mt-1 text-sm" style={{ color: secondaryTint(0.6) }}>
                           {card.helper}
                         </p>
                       </div>
                       <span
                         className="flex h-12 w-12 items-center justify-center rounded-2xl"
-                        style={{ background: secondaryTint(0.25), color: colors.white }}
+                        style={{ background: colors.primaryHex, color: colors.white }}
                       >
                         <Icon className="h-5 w-5" />
                       </span>
