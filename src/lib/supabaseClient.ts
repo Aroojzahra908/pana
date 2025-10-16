@@ -145,7 +145,8 @@ export async function deleteFrom(table: string, id: string | number) {
 export async function updateRow(table: string, id: string | number, payload: any) {
   if (!SUPABASE_URL) throw new Error("Missing SUPABASE_URL");
   const url = `${SUPABASE_URL}/rest/v1/${table}?id=eq.${encodeURIComponent(String(id))}`;
-  const headers = getHeaders();
+  // include Prefer to return the updated representation which helps callers
+  const headers = { ...getHeaders(), Prefer: "return=representation" };
   // PATCH requires application/json
   const res = await fetch(url, { method: "PATCH", headers, body: JSON.stringify(payload) });
   if (!res.ok) {
