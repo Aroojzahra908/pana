@@ -445,7 +445,7 @@ const Admin: React.FC = () => {
       <ConfigBanner />
       {/* Hero banner below header */}
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <section className="mb-8">
+        <section className="mt-8 mb-8">
           <div
             className="w-full rounded-3xl p-6 shadow-sm hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 flex flex-col sm:flex-row items-start sm:items-center gap-4"
             style={{ background: colors.white, border: `1px solid ${primaryTint(0.06)}` }}
