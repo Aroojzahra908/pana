@@ -231,7 +231,7 @@ const Admin: React.FC = () => {
           </div>
           <span
             className="rounded-full px-3 py-1 text-xs font-semibold"
-            style={{ background: primaryTint(0.18), color: colors.white }}
+            style={{ background: colors.primaryHex, color: colors.white }}
           >
             {contacts.length} records
           </span>
