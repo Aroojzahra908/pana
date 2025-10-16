@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -15,12 +14,15 @@ import {
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import colors from "../components/colors";
+import supabase from "@/lib/supabaseClient";
+import { toast } from "@/hooks/use-toast";
 
 const Careers = () => {
-  const [selectedJob, setSelectedJob] = useState(null);
+  const [selectedJob, setSelectedJob] = useState<any | null>(null);
   const [showApplication, setShowApplication] = useState(false);
   const [isGeneralApplication, setIsGeneralApplication] = useState(false);
   const [resumeFileName, setResumeFileName] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Scroll to top on initial mount and when selectedJob or showApplication change
   useEffect(() => {
@@ -145,47 +147,62 @@ const Careers = () => {
     "Stock options and performance bonuses",
   ];
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     const formData = new FormData(e.target);
-    const applicationData = {
-      firstName: formData.get("firstName"),
-      lastName: formData.get("lastName"),
-      email: formData.get("email"),
-      phone: formData.get("phone"),
-      linkedIn: formData.get("linkedIn"),
-      resume: formData.get("resume"),
-      coverLetter: formData.get("coverLetter"),
-      position: isGeneralApplication
-        ? "General Application"
-        : selectedJob?.title,
-      jobId: isGeneralApplication ? null : selectedJob?.id,
-    };
+    const firstName = String(formData.get("firstName") || "").trim();
+    const lastName = String(formData.get("lastName") || "").trim();
+    const email = String(formData.get("email") || "").trim();
+    const phone = String(formData.get("phone") || "").trim();
+    const linkedIn = String(formData.get("linkedIn") || "").trim();
+    const coverLetter = String(formData.get("coverLetter") || "").trim();
 
+    if (!firstName || !lastName || !email) {
+      toast({ title: "Validation", description: "First name, last name and email are required." });
+      return;
+    }
+    if (!import.meta.env.VITE_SUPABASE_URL) {
+      toast({ title: "Config", description: "Missing SUPABASE_URL" });
+      return;
+    }
+
+    setIsSubmitting(true);
     try {
-      console.log("Application submitted:", applicationData);
-      alert("Application submitted successfully!");
+      const payload = [{
+        first_name: firstName,
+        last_name: lastName,
+        email,
+        phone,
+        linkedin: linkedIn,
+        resume_file_name: resumeFileName || null,
+        cover_letter: coverLetter || null,
+        position: isGeneralApplication ? "General Application" : selectedJob?.title || null,
+        job_id: isGeneralApplication ? null : selectedJob?.id || null,
+        created_at: new Date().toISOString(),
+      }];
+
+      await supabase.insertInto("job_applications", payload);
+      toast({ title: "Application submitted", description: "We'll review your application shortly." });
+
       setShowApplication(false);
       setSelectedJob(null);
       setIsGeneralApplication(false);
       setResumeFileName("");
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error submitting application:", error);
-      alert(
-        "There was an error submitting your application. Please try again."
-      );
+      toast({ title: "Error", description: error?.message || "Failed to submit application." });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setResumeFileName(file.name);
-    }
+  const handleFileChange = (e: any) => {
+    const file = e.target.files?.[0];
+    if (file) setResumeFileName(file.name);
   };
 
-  const ApplicationModal = ({ job, onClose, isGeneral }) => (
+  const ApplicationModal = ({ job, onClose, isGeneral }: any) => (
     <AnimatePresence>
       <motion.div
         initial={{ opacity: 0 }}
@@ -359,9 +376,12 @@ const Careers = () => {
                 type="submit"
                 className="flex-1 text-white px-8 py-4 rounded-xl font-semibold shadow-lg flex items-center justify-center transition-transform duration-300 hover:scale-105 hover:opacity-90"
                 style={{ backgroundColor: colors.primaryHex }}
+                disabled={isSubmitting}
               >
-                Submit Application
-                <ArrowRight size={18} className="ml-2" />
+                {isSubmitting ? "Submitting..." : (<>
+                  Submit Application
+                  <ArrowRight size={18} className="ml-2" />
+                </>)}
               </button>
 
               <button
@@ -387,7 +407,7 @@ const Careers = () => {
     </AnimatePresence>
   );
 
-  const JobModal = ({ job, onClose, onApply }) => (
+  const JobModal = ({ job, onClose, onApply }: any) => (
     <AnimatePresence>
       <motion.div
         initial={{ opacity: 0 }}
@@ -468,7 +488,7 @@ const Careers = () => {
                   Key Responsibilities
                 </h3>
                 <ul className="space-y-3">
-                  {job.responsibilities.map((resp, idx) => (
+                  {job.responsibilities.map((resp: string, idx: number) => (
                     <li
                       key={idx}
                       className="flex items-start gap-3"
@@ -493,7 +513,7 @@ const Careers = () => {
                   Requirements
                 </h3>
                 <ul className="space-y-3">
-                  {job.requirements.map((req, idx) => (
+                  {job.requirements.map((req: string, idx: number) => (
                     <li
                       key={idx}
                       className="flex items-start gap-3"
