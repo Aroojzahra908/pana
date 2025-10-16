@@ -18,221 +18,217 @@ import supabase from "@/lib/supabaseClient";
 import { toast } from "@/hooks/use-toast";
 
 const ApplicationModal = ({ job, onClose, isGeneral, firstName, setFirstName, lastName, setLastName, email, setEmail, phone, setPhone, linkedIn, setLinkedIn, coverLetter, setCoverLetter, resumeFileName, handleFileChange, handleSubmit, isSubmitting }: any) => (
-  <AnimatePresence>
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+    onClick={onClose}
+  >
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-      onClick={onClose}
+      initial={{ scale: 0.9, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      className="bg-white rounded-2xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+      onClick={(e) => e.stopPropagation()}
     >
-      <motion.div
-        initial={{ scale: 0.9, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.9, opacity: 0 }}
-        className="bg-white rounded-2xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="flex justify-between items-start mb-6 flex-wrap gap-4">
-          <div>
-            <h2
-              className="text-2xl font-bold mb-2"
-              style={{ color: colors.primaryHex }}
-            >
-              {isGeneral ? "General Application" : `Apply for ${job?.title}`}
-            </h2>
-            {!isGeneral && (
-              <p className="text-gray-600">
-                {job?.department} • {job?.location}
-              </p>
-            )}
-          </div>
-          <button
-            onClick={onClose}
-            className="text-gray-400 hover:text-gray-600 transition-colors"
-            aria-label="Close application form"
+      <div className="flex justify-between items-start mb-6 flex-wrap gap-4">
+        <div>
+          <h2
+            className="text-2xl font-bold mb-2"
+            style={{ color: colors.primaryHex }}
           >
-            <X size={24} />
-          </button>
+            {isGeneral ? "General Application" : `Apply for ${job?.title}`}
+          </h2>
+          {!isGeneral && (
+            <p className="text-gray-600">
+              {job?.department} • {job?.location}
+            </p>
+          )}
+        </div>
+        <button
+          onClick={onClose}
+          className="text-gray-400 hover:text-gray-600 transition-colors"
+          aria-label="Close application form"
+        >
+          <X size={24} />
+        </button>
+      </div>
+
+      <form className="space-y-6" onSubmit={handleSubmit}>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              First Name *
+            </label>
+            <div className="relative">
+              <User
+                size={20}
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+              />
+              <input
+                type="text"
+                name="firstName"
+                required
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
+                placeholder="John"
+              />
+            </div>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Last Name *
+            </label>
+            <div className="relative">
+              <User
+                size={20}
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+              />
+              <input
+                type="text"
+                name="lastName"
+                required
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
+                placeholder="Doe"
+              />
+            </div>
+          </div>
         </div>
 
-        <form className="space-y-6" onSubmit={handleSubmit}>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                First Name *
-              </label>
-              <div className="relative">
-                <User
-                  size={20}
-                  className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-                />
-                <input
-                  type="text"
-                  name="firstName"
-                  required
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
-                  placeholder="John"
-                />
-              </div>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Last Name *
-              </label>
-              <div className="relative">
-                <User
-                  size={20}
-                  className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-                />
-                <input
-                  type="text"
-                  name="lastName"
-                  required
-                  value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
-                  placeholder="Doe"
-                />
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Email Address *
-            </label>
-            <div className="relative">
-              <Mail
-                size={20}
-                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-              />
-              <input
-                type="email"
-                name="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
-                placeholder="john.doe@email.com"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Phone Number
-            </label>
-            <div className="relative">
-              <Phone
-                size={20}
-                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-              />
-              <input
-                type="tel"
-                name="phone"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
-                placeholder="+1 (555) 123-4567"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              LinkedIn Profile
-            </label>
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Email Address *
+          </label>
+          <div className="relative">
+            <Mail
+              size={20}
+              className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+            />
             <input
-              type="url"
-              name="linkedIn"
-              value={linkedIn}
-              onChange={(e) => setLinkedIn(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
-              placeholder="https://linkedin.com/in/johndoe"
+              type="email"
+              name="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
+              placeholder="john.doe@email.com"
             />
           </div>
+        </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Resume/CV *
-            </label>
-            <label className="border-2 border-dashed border-gray-300 rounded-xl p-6 text-center hover:border-cyan-500 transition-colors cursor-pointer block">
-              <Upload size={32} className="mx-auto text-gray-400 mb-2" />
-              {resumeFileName ? (
-                <p className="text-gray-600 mb-1">{resumeFileName}</p>
-              ) : (
-                <>
-                  <p className="text-gray-600 mb-1">
-                    Click to upload or drag and drop
-                  </p>
-                  <p className="text-sm text-gray-500">
-                    PDF, DOC, DOCX (max 10MB)
-                  </p>
-                </>
-              )}
-              <input
-                type="file"
-                name="resume"
-                className="hidden"
-                accept=".pdf,.doc,.docx"
-                required
-                onChange={handleFileChange}
-              />
-            </label>
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Cover Letter
-            </label>
-            <textarea
-              name="coverLetter"
-              rows={6}
-              value={coverLetter}
-              onChange={(e) => setCoverLetter(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cyan-500 focus:border-transparent resize-none"
-              placeholder="Tell us why you're interested in this role and what makes you a great fit..."
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Phone Number
+          </label>
+          <div className="relative">
+            <Phone
+              size={20}
+              className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+            />
+            <input
+              type="tel"
+              name="phone"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
+              placeholder="+1 (555) 123-4567"
             />
           </div>
+        </div>
 
-          <div className="flex flex-col md:flex-row gap-4">
-            <button
-              type="button"
-              onClick={async (ev) => { ev.preventDefault(); console.log('Careers: submit button clicked'); await handleSubmit(); }}
-              className="flex-1 text-white px-8 py-4 rounded-xl font-semibold shadow-lg flex items-center justify-center transition-transform duration-300 hover:scale-105 hover:opacity-90"
-              style={{ backgroundColor: colors.primaryHex }}
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? "Submitting..." : (<>
-                Submit Application
-                <ArrowRight size={18} className="ml-2" />
-              </>)}
-            </button>
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            LinkedIn Profile
+          </label>
+          <input
+            type="url"
+            name="linkedIn"
+            value={linkedIn}
+            onChange={(e) => setLinkedIn(e.target.value)}
+            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
+            placeholder="https://linkedin.com/in/johndoe"
+          />
+        </div>
 
-            <button
-              type="button"
-              onClick={onClose}
-              className="px-8 py-3 border border-gray-300 text-gray-700 rounded-xl font-medium flex items-center justify-center transition-colors transition-transform duration-300 hover:bg-white hover:text-[color:var(--primaryHex)] hover:scale-105 hover:opacity-90"
-              style={{ transition: "color 0.3s, background-color 0.3s" }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = colors.white;
-                e.currentTarget.style.color = colors.primaryHex;
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "";
-                e.currentTarget.style.color = "";
-              }}
-            >
-              Cancel
-            </button>
-          </div>
-        </form>
-      </motion.div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Resume/CV *
+          </label>
+          <label className="border-2 border-dashed border-gray-300 rounded-xl p-6 text-center hover:border-cyan-500 transition-colors cursor-pointer block">
+            <Upload size={32} className="mx-auto text-gray-400 mb-2" />
+            {resumeFileName ? (
+              <p className="text-gray-600 mb-1">{resumeFileName}</p>
+            ) : (
+              <>
+                <p className="text-gray-600 mb-1">
+                  Click to upload or drag and drop
+                </p>
+                <p className="text-sm text-gray-500">
+                  PDF, DOC, DOCX (max 10MB)
+                </p>
+              </>
+            )}
+            <input
+              type="file"
+              name="resume"
+              className="hidden"
+              accept=".pdf,.doc,.docx"
+              required
+              onChange={handleFileChange}
+            />
+          </label>
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Cover Letter
+          </label>
+          <textarea
+            name="coverLetter"
+            rows={6}
+            value={coverLetter}
+            onChange={(e) => setCoverLetter(e.target.value)}
+            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cyan-500 focus:border-transparent resize-none"
+            placeholder="Tell us why you're interested in this role and what makes you a great fit..."
+          />
+        </div>
+
+        <div className="flex flex-col md:flex-row gap-4">
+          <button
+            type="button"
+            onClick={async (ev) => { ev.preventDefault(); console.log('Careers: submit button clicked'); await handleSubmit(); }}
+            className="flex-1 text-white px-8 py-4 rounded-xl font-semibold shadow-lg flex items-center justify-center transition-transform duration-300 hover:scale-105 hover:opacity-90"
+            style={{ backgroundColor: colors.primaryHex }}
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "Submitting..." : (<>
+              Submit Application
+              <ArrowRight size={18} className="ml-2" />
+            </>)}
+          </button>
+
+          <button
+            type="button"
+            onClick={onClose}
+            className="px-8 py-3 border border-gray-300 text-gray-700 rounded-xl font-medium flex items-center justify-center transition-colors transition-transform duration-300 hover:bg-white hover:text-[color:var(--primaryHex)] hover:scale-105 hover:opacity-90"
+            style={{ transition: "color 0.3s, background-color 0.3s" }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = colors.white;
+              e.currentTarget.style.color = colors.primaryHex;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "";
+              e.currentTarget.style.color = "";
+            }}
+          >
+            Cancel
+          </button>
+        </div>
+      </form>
     </motion.div>
-  </AnimatePresence>
+  </motion.div>
 );
 
 
