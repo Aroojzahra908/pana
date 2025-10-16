@@ -485,10 +485,10 @@ const Admin: React.FC = () => {
                       <Icon className="h-5 w-5" />
                     </span>
                     <span className="flex-1">
-                      <span className="text-sm font-semibold" style={{ color: active ? colors.secondaryHex : colors.white }}>
+                      <span className="text-sm font-semibold" style={{ color: active ? colors.white : colors.secondaryHex }}>
                         {tab.label}
                       </span>
-                      <p className="mt-1 text-xs" style={{ color: active ? secondaryTint(0.7) : secondaryTint(0.8) }}>
+                      <p className="mt-1 text-xs" style={{ color: active ? 'rgba(255,255,255,0.9)' : secondaryTint(0.6) }}>
                         {tab.description}
                       </p>
                     </span>
