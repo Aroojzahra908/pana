@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
 import colors from "../components/colors";
+import supabase from "@/lib/supabaseClient";
+import { toast } from "@/hooks/use-toast";
 
 type FormData = {
   firstName: string;
@@ -48,7 +50,7 @@ const Contact = () => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("animate-fade-in");
+          (entry.target as HTMLElement).classList.add("animate-fade-in");
           observer.unobserve(entry.target);
         }
       });
@@ -59,9 +61,7 @@ const Contact = () => {
       const htmlElement = element as HTMLElement;
       htmlElement.style.opacity = "0";
       htmlElement.style.transform = "translateY(30px)";
-      htmlElement.style.transition = `opacity 0.6s ease ${
-        index * 0.1
-      }s, transform 0.6s ease ${index * 0.1}s`;
+      htmlElement.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
       observer.observe(element);
     });
 
@@ -79,48 +79,28 @@ const Contact = () => {
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
-    
-    if (!formData.firstName.trim()) {
-      newErrors.firstName = "First name is required";
-    }
-    
-    if (!formData.lastName.trim()) {
-      newErrors.lastName = "Last name is required";
-    }
-    
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email";
-    }
-    
-    if (!formData.company.trim()) {
-      newErrors.company = "Company name is required";
-    }
-    
-    if (!formData.service) {
-      newErrors.service = "Please select a service";
-    }
-    
-    if (!formData.message.trim()) {
-      newErrors.message = "Project details are required";
-    } else if (formData.message.trim().length < 20) {
-      newErrors.message = "Please provide more details (at least 20 characters)";
-    }
-    
+
+    if (!formData.firstName.trim()) newErrors.firstName = "First name is required";
+    if (!formData.lastName.trim()) newErrors.lastName = "Last name is required";
+
+    if (!formData.email.trim()) newErrors.email = "Email is required";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) newErrors.email = "Please enter a valid email";
+
+    if (!formData.company.trim()) newErrors.company = "Company name is required";
+    if (!formData.service) newErrors.service = "Please select a service";
+
+    if (!formData.message.trim()) newErrors.message = "Project details are required";
+    else if (formData.message.trim().length < 20) newErrors.message = "Please provide more details (at least 20 characters)";
+
     setErrors(newErrors);
-    
-    // Scroll to first error if any
+
     if (Object.keys(newErrors).length > 0) {
-      const firstError = Object.keys(newErrors)[0];
-      const element = document.getElementById(firstError);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth", block: "center" });
-        element.focus();
-      }
+      const firstError = Object.keys(newErrors)[0] as keyof FormErrors;
+      const element = document.getElementById(firstError as string);
+      if (element) element.scrollIntoView({ behavior: "smooth", block: "center" });
       return false;
     }
-    
+
     return true;
   };
 
@@ -129,36 +109,42 @@ const Contact = () => {
   ) => {
     const { id, value } = e.target;
     setFormData((prev) => ({ ...prev, [id]: value }));
-    
-    // Clear error when user starts typing
-    if (errors[id as keyof FormErrors]) {
-      setErrors((prev) => ({ ...prev, [id]: undefined }));
-    }
+
+    if (errors[id as keyof FormErrors]) setErrors((prev) => ({ ...prev, [id]: undefined }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!validateForm()) {
+
+    if (!validateForm()) return;
+
+    if (!import.meta.env.VITE_SUPABASE_URL) {
+      toast({ title: "Config", description: "Missing SUPABASE_URL" });
       return;
     }
-    
+
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      console.log("Form submitted:", formData);
+    try {
+      const payload = [{
+        first_name: formData.firstName.trim(),
+        last_name: formData.lastName.trim(),
+        email: formData.email.trim(),
+        company: formData.company.trim(),
+        service: formData.service,
+        message: formData.message.trim(),
+        created_at: new Date().toISOString(),
+      }];
+
+      await supabase.insertInto("contact_messages", payload);
+      toast({ title: "Message sent", description: "We'll get back to you soon." });
+
+      setFormData({ firstName: "", lastName: "", email: "", company: "", service: "", message: "" });
+    } catch (err: any) {
+      console.error("contact submit error:", err);
+      toast({ title: "Error", description: err?.message || "Failed to send your message." });
+    } finally {
       setIsSubmitting(false);
-      alert("Thank you for your message! We'll get back to you soon.");
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        company: "",
-        service: "",
-        message: "",
-      });
-    }, 1000);
+    }
   };
 
   return (
@@ -450,5 +436,3 @@ const Contact = () => {
 };
 
 export default Contact;
-
-
