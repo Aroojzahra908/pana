@@ -463,12 +463,42 @@ const Admin: React.FC = () => {
   async function handleApprove(table: string, id: string | number) {
     try {
       await supabase.updateRow(table, id, { status: "selected" });
-      toast({ title: "Approved", description: "Record marked as selected." });
+
+      // find the record in local cache to construct selected_students payload
+      let record: any = null;
       if (table === "job_applications") {
         setApplications((prev) => (prev || []).map((a) => (a.id === id ? { ...a, status: "selected" } : a)));
+        record = (applications || []).find((a: any) => a.id === id) || null;
       }
       if (table === "contact_messages") {
         setContacts((prev) => (prev || []).map((c) => (c.id === id ? { ...c, status: "selected" } : c)));
+        record = (contacts || []).find((c: any) => c.id === id) || null;
+      }
+
+      // Insert into selected_students table so selection is persistent
+      if (record) {
+        try {
+          const payload = {
+            source_table: table,
+            source_id: record.id,
+            first_name: record.first_name || null,
+            last_name: record.last_name || null,
+            email: record.email || null,
+            phone: record.phone || null,
+            position: record.position || null,
+            company: record.company || null,
+            resume_file_url: record.resume_file_url || null,
+            notes: record.cover_letter || record.message || null,
+            selected_at: new Date().toISOString(),
+          };
+          await supabase.insertInto("selected_students", [payload]);
+          toast({ title: "Approved", description: "Record moved to Selected and saved." });
+        } catch (insErr: any) {
+          console.error("Failed to insert selected_students", insErr);
+          toast({ title: "Warning", description: "Approved but failed to save selected student. Check DB schema/permissions." });
+        }
+      } else {
+        toast({ title: "Approved", description: "Record marked as selected." });
       }
     } catch (err: any) {
       console.error("Approve failed", err);
