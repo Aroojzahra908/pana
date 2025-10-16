@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Briefcase, Inbox, RefreshCw, Sparkles, Users } from "lucide-react";
 import supabase from "@/lib/supabaseClient"; // simple REST helpers: supabase.fetchTable / supabase.insertInto
 import { toast } from "@/hooks/use-toast";
+import colors from "@/components/colors";
 
 type TabKey = "contacts" | "applications";
 
@@ -16,6 +17,9 @@ const formatFullName = (first?: string | null, last?: string | null) => {
   const parts = [first, last].filter((part): part is string => Boolean(part && part.trim()));
   return parts.length ? parts.join(" ") : "—";
 };
+
+const primaryTint = (opacity: number) => `rgba(${colors.primaryRgb}, ${opacity})`;
+const secondaryTint = (opacity: number) => `rgba(${colors.secondaryRgb}, ${opacity})`;
 
 const Admin: React.FC = () => {
   const [contacts, setContacts] = useState<any[] | null>(null); // contact_messages table
@@ -131,30 +135,39 @@ const Admin: React.FC = () => {
       value: contacts?.length ?? 0,
       helper: uniqueCompanies > 0 ? `${uniqueCompanies} unique companies` : "Awaiting first lead",
       icon: Inbox,
-      accent: "from-sky-500/70 via-sky-400/60 to-cyan-500/60",
+      tint: primaryTint(0.16),
     },
     {
       label: "Applicants",
       value: applications?.length ?? 0,
       helper: uniqueRoles > 0 ? `${uniqueRoles} roles represented` : "No roles yet",
       icon: Users,
-      accent: "from-violet-500/70 via-indigo-500/60 to-fuchsia-500/60",
+      tint: secondaryTint(0.18),
     },
     {
       label: "Dashboard status",
       value: loading ? "Refreshing…" : "Live",
       helper: lastSynced ? `Last sync ${formatDateTime(lastSynced)}` : "Sync to populate data",
       icon: Sparkles,
-      accent: "from-emerald-500/70 via-teal-500/60 to-lime-500/60",
+      tint: primaryTint(0.22),
     },
   ];
 
   const ConfigBanner = () =>
     missingConfig ? (
       <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-6 rounded-2xl border border-amber-200/40 bg-amber-500/15 p-6 text-amber-100 backdrop-blur">
-          <h3 className="text-lg font-semibold">Supabase configuration required</h3>
-          <p className="mt-2 text-sm leading-relaxed">
+        <div
+          className="mb-6 rounded-2xl border p-6 text-sm"
+          style={{
+            background: primaryTint(0.12),
+            borderColor: primaryTint(0.35),
+            color: colors.white,
+          }}
+        >
+          <h3 className="text-lg font-semibold" style={{ color: colors.white }}>
+            Supabase configuration required
+          </h3>
+          <p className="mt-2 leading-relaxed" style={{ color: colors.white }}>
             Connect your project to Supabase by setting VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY or use the MCP popover to link
             Supabase before the admin data can be displayed.
           </p>
@@ -163,17 +176,27 @@ const Admin: React.FC = () => {
     ) : null;
 
   const renderEmptyState = (title: string, description: string, tone: "muted" | "error" = "muted") => {
-    const toneClasses =
-      tone === "error"
-        ? "border-rose-400/60 bg-rose-500/15 text-rose-100"
-        : "border-white/15 bg-white/5 text-slate-200";
+    const background = tone === "error" ? "rgba(220, 38, 38, 0.2)" : primaryTint(0.08);
+    const border = tone === "error" ? "rgba(220, 38, 38, 0.45)" : primaryTint(0.35);
     return (
-      <div className={`rounded-3xl border px-8 py-14 text-center text-sm leading-relaxed ${toneClasses}`}>
-        <p className="text-lg font-semibold">{title}</p>
-        <p className="mx-auto mt-2 max-w-md text-sm opacity-80">{description}</p>
+      <div
+        className="rounded-3xl border px-8 py-14 text-center text-sm leading-relaxed"
+        style={{ background, borderColor: border, color: colors.white }}
+      >
+        <p className="text-lg font-semibold" style={{ color: colors.white }}>
+          {title}
+        </p>
+        <p className="mx-auto mt-2 max-w-md text-sm" style={{ color: colors.white }}>
+          {description}
+        </p>
       </div>
     );
   };
+
+  const tableShellStyle = {
+    background: secondaryTint(0.25),
+    borderColor: secondaryTint(0.4),
+  } as const;
 
   const renderContactsTable = () => {
     if (contactsError) {
@@ -193,22 +216,30 @@ const Admin: React.FC = () => {
     }
 
     return (
-      <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-2xl backdrop-blur">
-        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 px-6 py-5">
+      <div className="overflow-hidden rounded-3xl border shadow-2xl backdrop-blur" style={tableShellStyle}>
+        <div
+          className="flex flex-wrap items-center justify-between gap-3 border-b px-6 py-5"
+          style={{ borderColor: secondaryTint(0.35) }}
+        >
           <div>
-            <h2 className="text-xl font-semibold text-white">Contact messages</h2>
-            <p className="text-sm text-slate-300">
+            <h2 className="text-xl font-semibold" style={{ color: colors.white }}>
+              Contact messages
+            </h2>
+            <p className="text-sm" style={{ color: primaryTint(0.8) }}>
               Review student and client enquiries with all supporting details.
             </p>
           </div>
-          <span className="rounded-full bg-sky-500/15 px-3 py-1 text-xs font-semibold text-sky-200">
+          <span
+            className="rounded-full px-3 py-1 text-xs font-semibold"
+            style={{ background: primaryTint(0.18), color: colors.white }}
+          >
             {contacts.length} records
           </span>
         </div>
 
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-white/10 text-left text-sm text-slate-100">
-            <thead className="bg-white/5 text-xs uppercase tracking-wide text-slate-300">
+          <table className="min-w-full divide-y text-left text-sm" style={{ color: colors.white }}>
+            <thead style={{ background: primaryTint(0.12), color: colors.white }}>
               <tr>
                 <th className="px-6 py-3 font-semibold">Student</th>
                 <th className="px-6 py-3 font-semibold">Contact</th>
@@ -217,40 +248,56 @@ const Admin: React.FC = () => {
                 <th className="px-6 py-3 font-semibold">Received</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/10">
+            <tbody>
               {contacts.map((contact) => (
-                <tr key={contact.id} className="transition hover:bg-white/10">
+                <tr key={contact.id} style={{ borderBottom: `1px solid ${secondaryTint(0.35)}` }}>
                   <td className="px-6 py-4">
-                    <p className="font-semibold text-white">{formatFullName(contact.first_name, contact.last_name)}</p>
-                    <p className="text-xs text-slate-300">{contact.role || contact.company || "—"}</p>
+                    <p className="font-semibold" style={{ color: colors.white }}>
+                      {formatFullName(contact.first_name, contact.last_name)}
+                    </p>
+                    <p className="text-xs" style={{ color: primaryTint(0.8) }}>
+                      {contact.role || contact.company || "—"}
+                    </p>
                   </td>
                   <td className="px-6 py-4">
                     {contact.email ? (
                       <a
                         href={`mailto:${contact.email}`}
-                        className="text-sm text-sky-200 hover:text-sky-100"
+                        style={{ color: colors.primaryHex }}
+                        className="text-sm hover:underline"
                       >
                         {contact.email}
                       </a>
                     ) : (
-                      <p className="text-sm text-slate-300">—</p>
+                      <p className="text-sm" style={{ color: secondaryTint(0.8) }}>
+                        —
+                      </p>
                     )}
                     {contact.phone ? (
-                      <p className="mt-1 text-xs text-slate-300">{contact.phone}</p>
+                      <p className="mt-1 text-xs" style={{ color: secondaryTint(0.8) }}>
+                        {contact.phone}
+                      </p>
                     ) : null}
                   </td>
                   <td className="px-6 py-4">
-                    <p className="text-sm text-slate-200">{contact.company || "—"}</p>
-                    <span className="mt-1 inline-flex rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-sky-200">
+                    <p className="text-sm" style={{ color: colors.white }}>
+                      {contact.company || "—"}
+                    </p>
+                    <span
+                      className="mt-1 inline-flex rounded-full px-3 py-1 text-xs font-medium"
+                      style={{ background: primaryTint(0.18), color: colors.white }}
+                    >
                       {contact.service || "Not specified"}
                     </span>
                   </td>
                   <td className="px-6 py-4">
-                    <p className="max-w-md text-sm text-slate-100 line-clamp-3">
+                    <p className="max-w-md text-sm" style={{ color: colors.white }}>
                       {contact.message || "No additional message supplied."}
                     </p>
                   </td>
-                  <td className="px-6 py-4 text-sm text-slate-300">{formatDateTime(contact.created_at)}</td>
+                  <td className="px-6 py-4 text-sm" style={{ color: secondaryTint(0.8) }}>
+                    {formatDateTime(contact.created_at)}
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -278,22 +325,30 @@ const Admin: React.FC = () => {
     }
 
     return (
-      <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-2xl backdrop-blur">
-        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 px-6 py-5">
+      <div className="overflow-hidden rounded-3xl border shadow-2xl backdrop-blur" style={tableShellStyle}>
+        <div
+          className="flex flex-wrap items-center justify-between gap-3 border-b px-6 py-5"
+          style={{ borderColor: secondaryTint(0.35) }}
+        >
           <div>
-            <h2 className="text-xl font-semibold text-white">Job applications</h2>
-            <p className="text-sm text-slate-300">
+            <h2 className="text-xl font-semibold" style={{ color: colors.white }}>
+              Job applications
+            </h2>
+            <p className="text-sm" style={{ color: primaryTint(0.8) }}>
               Track every applicant and their supporting documents at a glance.
             </p>
           </div>
-          <span className="rounded-full bg-violet-500/15 px-3 py-1 text-xs font-semibold text-violet-200">
+          <span
+            className="rounded-full px-3 py-1 text-xs font-semibold"
+            style={{ background: secondaryTint(0.22), color: colors.white }}
+          >
             {applications.length} records
           </span>
         </div>
 
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-white/10 text-left text-sm text-slate-100">
-            <thead className="bg-white/5 text-xs uppercase tracking-wide text-slate-300">
+          <table className="min-w-full divide-y text-left text-sm" style={{ color: colors.white }}>
+            <thead style={{ background: secondaryTint(0.2), color: colors.white }}>
               <tr>
                 <th className="px-6 py-3 font-semibold">Student</th>
                 <th className="px-6 py-3 font-semibold">Contact</th>
@@ -302,47 +357,70 @@ const Admin: React.FC = () => {
                 <th className="px-6 py-3 font-semibold">Applied</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/10">
+            <tbody>
               {applications.map((application) => (
-                <tr key={application.id} className="transition hover:bg-white/10">
+                <tr key={application.id} style={{ borderBottom: `1px solid ${secondaryTint(0.35)}` }}>
                   <td className="px-6 py-4">
-                    <p className="font-semibold text-white">
+                    <p className="font-semibold" style={{ color: colors.white }}>
                       {formatFullName(application.first_name, application.last_name)}
                     </p>
-                    <p className="text-xs text-slate-300">{application.linkedin || "—"}</p>
+                    <p className="text-xs" style={{ color: primaryTint(0.8) }}>
+                      {application.linkedin || "—"}
+                    </p>
                   </td>
                   <td className="px-6 py-4">
                     {application.email ? (
                       <a
                         href={`mailto:${application.email}`}
-                        className="text-sm text-sky-200 hover:text-sky-100"
+                        style={{ color: colors.primaryHex }}
+                        className="text-sm hover:underline"
                       >
                         {application.email}
                       </a>
                     ) : (
-                      <p className="text-sm text-slate-300">—</p>
+                      <p className="text-sm" style={{ color: secondaryTint(0.8) }}>
+                        —
+                      </p>
                     )}
                     {application.phone ? (
-                      <p className="mt-1 text-xs text-slate-300">{application.phone}</p>
+                      <p className="mt-1 text-xs" style={{ color: secondaryTint(0.8) }}>
+                        {application.phone}
+                      </p>
                     ) : null}
                   </td>
                   <td className="px-6 py-4">
-                    <p className="text-sm text-slate-200">
+                    <p className="text-sm" style={{ color: colors.white }}>
                       {application.position || "General application"}
                     </p>
-                    <p className="mt-1 text-xs text-slate-300">Job ID: {application.job_id ?? "—"}</p>
+                    <p className="mt-1 text-xs" style={{ color: secondaryTint(0.8) }}>
+                      Job ID: {application.job_id ?? "—"}
+                    </p>
                   </td>
                   <td className="px-6 py-4 space-y-2">
-                    {application.resume_file_name ? (
-                      <p className="text-sm text-slate-100">{application.resume_file_name}</p>
+                    {application.resume_file_url ? (
+                      <a
+                        href={application.resume_file_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-semibold hover:underline"
+                        style={{ color: colors.primaryHex }}
+                      >
+                        View resume
+                      </a>
                     ) : (
-                      <p className="text-sm text-slate-300">No resume attached</p>
+                      <p className="text-sm" style={{ color: secondaryTint(0.8) }}>
+                        {application.resume_file_name || "No resume attached"}
+                      </p>
                     )}
                     {application.cover_letter ? (
-                      <p className="text-xs text-slate-300 line-clamp-2">{application.cover_letter}</p>
+                      <p className="text-xs" style={{ color: secondaryTint(0.8) }}>
+                        {application.cover_letter}
+                      </p>
                     ) : null}
                   </td>
-                  <td className="px-6 py-4 text-sm text-slate-300">{formatDateTime(application.created_at)}</td>
+                  <td className="px-6 py-4 text-sm" style={{ color: secondaryTint(0.8) }}>
+                    {formatDateTime(application.created_at)}
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -355,18 +433,32 @@ const Admin: React.FC = () => {
   const renderTabContent = () => (activeTab === "contacts" ? renderContactsTable() : renderApplicationsTable());
 
   return (
-    <div className="relative isolate min-h-screen bg-slate-950 pb-16 pt-8 text-white">
+    <div
+      className="relative isolate min-h-screen pb-16 pt-8"
+      style={{
+        background: `linear-gradient(140deg, ${primaryTint(0.22)} 0%, ${secondaryTint(0.92)} 55%, ${primaryTint(0.55)} 100%)`,
+        color: colors.white,
+      }}
+    >
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.18),_transparent_55%)]"
+        className="pointer-events-none absolute inset-0"
+        style={{ background: `radial-gradient(circle at top, ${primaryTint(0.3)} 0%, transparent 60%)` }}
         aria-hidden
       />
       <ConfigBanner />
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-10 lg:flex-row">
-          <aside className="w-full rounded-3xl border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur lg:max-w-xs">
-            <p className="text-xs uppercase tracking-[0.4em] text-slate-300">Control</p>
-            <h1 className="mt-3 text-2xl font-semibold text-white">Admin dashboard</h1>
-            <p className="mt-2 text-sm leading-relaxed text-slate-300">
+          <aside
+            className="w-full rounded-3xl border p-6 shadow-2xl backdrop-blur lg:max-w-xs"
+            style={{ background: primaryTint(0.18), borderColor: primaryTint(0.4), color: colors.white }}
+          >
+            <p className="text-xs uppercase tracking-[0.4em]" style={{ color: colors.white }}>
+              Control
+            </p>
+            <h1 className="mt-3 text-2xl font-semibold" style={{ color: colors.white }}>
+              Admin dashboard
+            </h1>
+            <p className="mt-2 text-sm leading-relaxed" style={{ color: secondaryTint(0.75) }}>
               Switch between tabs to review contact enquiries and job applications in real time.
             </p>
 
@@ -380,31 +472,36 @@ const Admin: React.FC = () => {
                     type="button"
                     onClick={() => setActiveTab(tab.id)}
                     aria-pressed={active}
-                    className={`group flex w-full items-start gap-3 rounded-2xl border px-4 py-3 text-left transition ${
-                      active
-                        ? "border-white/50 bg-white text-slate-900 shadow-lg"
-                        : "border-white/10 bg-white/5 text-slate-200 hover:border-white/30 hover:bg-white/10"
-                    }`}
+                    className="group flex w-full items-start gap-3 rounded-2xl border px-4 py-3 text-left transition"
+                    style={{
+                      borderColor: active ? colors.white : primaryTint(0.4),
+                      background: active ? colors.white : secondaryTint(0.2),
+                      color: active ? colors.secondaryHex : colors.white,
+                    }}
                   >
                     <span
-                      className={`flex h-10 w-10 items-center justify-center rounded-xl ${
-                        active ? "bg-slate-900/5 text-slate-900" : "bg-white/10 text-sky-200"
-                      }`}
+                      className="flex h-10 w-10 items-center justify-center rounded-xl"
+                      style={{
+                        background: active ? secondaryTint(0.15) : primaryTint(0.2),
+                        color: active ? colors.secondaryHex : colors.white,
+                      }}
                     >
                       <Icon className="h-5 w-5" />
                     </span>
                     <span className="flex-1">
-                      <span className={`text-sm font-semibold ${active ? "text-slate-900" : "text-white"}`}>
+                      <span className="text-sm font-semibold" style={{ color: active ? colors.secondaryHex : colors.white }}>
                         {tab.label}
                       </span>
-                      <p className={`mt-1 text-xs ${active ? "text-slate-600" : "text-slate-300"}`}>
+                      <p className="mt-1 text-xs" style={{ color: active ? secondaryTint(0.7) : secondaryTint(0.8) }}>
                         {tab.description}
                       </p>
                     </span>
                     <span
-                      className={`rounded-full px-2 py-1 text-xs font-semibold ${
-                        active ? "bg-slate-900/10 text-slate-900" : "bg-white/10 text-slate-200"
-                      }`}
+                      className="rounded-full px-2 py-1 text-xs font-semibold"
+                      style={{
+                        background: active ? secondaryTint(0.18) : primaryTint(0.2),
+                        color: colors.white,
+                      }}
                     >
                       {tab.badge}
                     </span>
@@ -414,12 +511,16 @@ const Admin: React.FC = () => {
             </div>
           </aside>
 
-          <main className="flex-1">
+          <main className="flex-1" style={{ color: colors.white }}>
             <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="text-xs uppercase tracking-[0.4em] text-sky-300">Overview</p>
-                <h2 className="mt-2 text-3xl font-semibold text-white">Control center</h2>
-                <p className="mt-1 text-sm text-slate-300">
+                <p className="text-xs uppercase tracking-[0.4em]" style={{ color: secondaryTint(0.7) }}>
+                  Overview
+                </p>
+                <h2 className="mt-2 text-3xl font-semibold" style={{ color: colors.white }}>
+                  Control center
+                </h2>
+                <p className="mt-1 text-sm" style={{ color: secondaryTint(0.75) }}>
                   {activeTab === "contacts"
                     ? "Monitor every contact submission instantly."
                     : "Discover the latest applicants and their documents."}
@@ -429,11 +530,15 @@ const Admin: React.FC = () => {
               <button
                 onClick={fetchAll}
                 disabled={loading}
-                className="group inline-flex items-center gap-2 self-start rounded-full border border-white/20 bg-white/10 px-5 py-2 text-sm font-medium text-white transition hover:border-white/40 hover:bg-white/20 disabled:cursor-not-allowed disabled:opacity-60"
+                className="group inline-flex items-center gap-2 self-start rounded-full border px-5 py-2 text-sm font-medium transition"
+                style={{
+                  background: secondaryTint(0.25),
+                  borderColor: primaryTint(0.45),
+                  color: colors.white,
+                  opacity: loading ? 0.6 : 1,
+                }}
               >
-                <RefreshCw
-                  className={`h-4 w-4 transition ${loading ? "animate-spin" : "group-hover:-rotate-45"}`}
-                />
+                <RefreshCw className={`h-4 w-4 transition ${loading ? "animate-spin" : "group-hover:-rotate-45"}`} />
                 {loading ? "Refreshing..." : "Refresh data"}
               </button>
             </div>
@@ -444,16 +549,29 @@ const Admin: React.FC = () => {
                 return (
                   <div
                     key={card.label}
-                    className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 shadow-xl backdrop-blur transition hover:border-white/30 hover:bg-white/10"
+                    className="relative overflow-hidden rounded-3xl border p-6 shadow-xl backdrop-blur transition"
+                    style={{
+                      background: card.tint,
+                      borderColor: primaryTint(0.4),
+                      color: colors.white,
+                    }}
                   >
-                    <div className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${card.accent} opacity-20`} />
                     <div className="relative z-10 flex items-start justify-between gap-4">
                       <div>
-                        <p className="text-xs uppercase tracking-wide text-slate-300">{card.label}</p>
-                        <p className="mt-2 text-2xl font-semibold text-white">{card.value}</p>
-                        <p className="mt-1 text-sm text-slate-300">{card.helper}</p>
+                        <p className="text-xs uppercase tracking-wide" style={{ color: secondaryTint(0.7) }}>
+                          {card.label}
+                        </p>
+                        <p className="mt-2 text-2xl font-semibold" style={{ color: colors.white }}>
+                          {card.value}
+                        </p>
+                        <p className="mt-1 text-sm" style={{ color: secondaryTint(0.85) }}>
+                          {card.helper}
+                        </p>
                       </div>
-                      <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-white">
+                      <span
+                        className="flex h-12 w-12 items-center justify-center rounded-2xl"
+                        style={{ background: secondaryTint(0.25), color: colors.white }}
+                      >
                         <Icon className="h-5 w-5" />
                       </span>
                     </div>
