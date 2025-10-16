@@ -436,8 +436,8 @@ const Admin: React.FC = () => {
     <div
       className="relative isolate min-h-screen pb-16 pt-8"
       style={{
-        background: `linear-gradient(140deg, ${primaryTint(0.22)} 0%, ${secondaryTint(0.92)} 55%, ${primaryTint(0.55)} 100%)`,
-        color: colors.white,
+        background: colors.white,
+        color: colors.secondaryHex,
       }}
     >
       <div
