@@ -500,6 +500,8 @@ const Admin: React.FC = () => {
                     onClick={() => setActiveTab(tab.id)}
                     aria-pressed={active}
                     className="group flex w-full items-start gap-3 rounded-2xl border px-4 py-3 text-left transition hover:shadow-md"
+                    onMouseEnter={(e) => { if (!active) { (e.currentTarget as HTMLElement).style.backgroundColor = `rgba(${colors.primaryRgb},0.08)`; (e.currentTarget as HTMLElement).style.color = colors.white; } }}
+                    onMouseLeave={(e) => { if (!active) { (e.currentTarget as HTMLElement).style.backgroundColor = colors.white; (e.currentTarget as HTMLElement).style.color = colors.secondaryHex; } }}
                     style={{
                       borderColor: active ? colors.primaryHex : primaryTint(0.08),
                       background: active ? colors.primaryHex : colors.white,
