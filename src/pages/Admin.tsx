@@ -250,7 +250,7 @@ const Admin: React.FC = () => {
             </thead>
             <tbody>
               {contacts.map((contact) => (
-                <tr key={contact.id} style={{ borderBottom: `1px solid ${secondaryTint(0.35)}` }}>
+                <tr key={contact.id} style={{ borderBottom: `1px solid ${secondaryTint(0.35)}`, transition: 'background-color 0.18s ease' }} onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = `rgba(${colors.primaryRgb},0.04)`)} onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}>
                   <td className="px-6 py-4">
                     <p className="font-semibold" style={{ color: colors.secondaryHex }}>
                       {formatFullName(contact.first_name, contact.last_name)}
