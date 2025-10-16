@@ -389,10 +389,10 @@ const Admin: React.FC = () => {
                     ) : null}
                   </td>
                   <td className="px-6 py-4">
-                    <p className="text-sm" style={{ color: colors.white }}>
+                    <p className="text-sm" style={{ color: colors.secondaryHex }}>
                       {application.position || "General application"}
                     </p>
-                    <p className="mt-1 text-xs" style={{ color: secondaryTint(0.8) }}>
+                    <p className="mt-1 text-xs" style={{ color: secondaryTint(0.6) }}>
                       Job ID: {application.job_id ?? "—"}
                     </p>
                   </td>
