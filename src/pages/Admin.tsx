@@ -455,6 +455,14 @@ const Admin: React.FC = () => {
               <p className="mt-1 text-sm" style={{ color: secondaryTint(0.6) }}>
                 Here's a quick overview of recent activity. Use the controls to the left to switch tabs and manage submissions.
               </p>
+              <div className="mt-3 flex flex-wrap gap-3">
+                <span className="inline-flex items-center rounded-full px-3 py-1 text-sm font-semibold" style={{ background: colors.primaryHex, color: colors.white }}>
+                  {contacts?.length ?? 0} Leads
+                </span>
+                <span className="inline-flex items-center rounded-full px-3 py-1 text-sm font-semibold" style={{ background: colors.white, border: `1px solid ${primaryTint(0.06)}`, color: colors.secondaryHex }}>
+                  {applications?.length ?? 0} Applicants
+                </span>
+              </div>
             </div>
             <div className="flex items-center gap-3">
               <a href="/" className="inline-flex items-center px-4 py-2 rounded-full font-medium" style={{ background: colors.primaryHex, color: colors.white }}>
