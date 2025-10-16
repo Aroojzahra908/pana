@@ -438,6 +438,7 @@ const Admin: React.FC = () => {
       style={{
         background: colors.white,
         color: colors.secondaryHex,
+        paddingTop: '6.5rem' // extra spacing to account for fixed header
       }}
     >
       <div className="pointer-events-none absolute inset-0" aria-hidden />
