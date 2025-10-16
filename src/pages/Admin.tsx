@@ -280,12 +280,12 @@ const Admin: React.FC = () => {
                     ) : null}
                   </td>
                   <td className="px-6 py-4">
-                    <p className="text-sm" style={{ color: colors.white }}>
+                    <p className="text-sm" style={{ color: colors.secondaryHex }}>
                       {contact.company || "—"}
                     </p>
                     <span
                       className="mt-1 inline-flex rounded-full px-3 py-1 text-xs font-medium"
-                      style={{ background: primaryTint(0.18), color: colors.white }}
+                      style={{ background: colors.primaryHex, color: colors.white }}
                     >
                       {contact.service || "Not specified"}
                     </span>
