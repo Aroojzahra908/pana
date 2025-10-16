@@ -485,7 +485,7 @@ const Admin: React.FC = () => {
             <h1 className="mt-3 text-2xl font-bold" style={{ color: colors.white }}>
               Admin dashboard
             </h1>
-            <p className="mt-2 text-sm leading-relaxed" style={{ color: secondaryTint(0.65) }}>
+            <p className="mt-2 text-sm leading-relaxed" style={{ color: colors.white }}>
               Switch between tabs to review contact enquiries and job applications in real time.
             </p>
 
