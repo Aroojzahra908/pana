@@ -566,7 +566,7 @@ const Admin: React.FC = () => {
                       </div>
                       <span
                         className="flex h-12 w-12 items-center justify-center rounded-2xl"
-                        style={{ background: secondaryTint(0.25), color: colors.white }}
+                        style={{ background: colors.primaryHex, color: colors.white }}
                       >
                         <Icon className="h-5 w-5" />
                       </span>
