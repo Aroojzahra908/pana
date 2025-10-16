@@ -545,11 +545,11 @@ const Admin: React.FC = () => {
                 return (
                   <div
                     key={card.label}
-                    className="relative overflow-hidden rounded-3xl border p-6 shadow-xl backdrop-blur transition"
+                    className="relative overflow-hidden rounded-3xl border p-6 shadow-sm transition"
                     style={{
-                      background: card.tint,
-                      borderColor: primaryTint(0.4),
-                      color: colors.white,
+                      background: colors.white,
+                      borderColor: primaryTint(0.06),
+                      color: colors.secondaryHex,
                     }}
                   >
                     <div className="relative z-10 flex items-start justify-between gap-4">
