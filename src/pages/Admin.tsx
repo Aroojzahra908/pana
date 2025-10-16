@@ -477,7 +477,7 @@ const Admin: React.FC = () => {
         <div className="flex flex-col gap-10 lg:flex-row">
           <aside
             className="w-full rounded-3xl border p-6 shadow-sm lg:max-w-xs"
-            style={{ background: colors.white, borderColor: primaryTint(0.12), color: colors.secondaryHex }}
+            style={{ background: colors.primaryHex, borderColor: colors.primaryHex, color: colors.white }}
           >
             <p className="text-xs uppercase tracking-[0.4em]" style={{ color: colors.primaryHex }}>
               Control
@@ -499,37 +499,37 @@ const Admin: React.FC = () => {
                     type="button"
                     onClick={() => setActiveTab(tab.id)}
                     aria-pressed={active}
-                    className="group flex w-full items-start gap-3 rounded-2xl border px-4 py-3 text-left transition hover:shadow-md"
-                    onMouseEnter={(e) => { if (!active) { (e.currentTarget as HTMLElement).style.backgroundColor = `rgba(${colors.primaryRgb},0.08)`; (e.currentTarget as HTMLElement).style.color = colors.white; } }}
-                    onMouseLeave={(e) => { if (!active) { (e.currentTarget as HTMLElement).style.backgroundColor = colors.white; (e.currentTarget as HTMLElement).style.color = colors.secondaryHex; } }}
+                    className="group flex w-full items-start gap-3 rounded-2xl border px-4 py-3 text-left transition"
+                    onMouseEnter={(e) => { if (!active) { (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(255,255,255,0.08)'; (e.currentTarget as HTMLElement).style.color = colors.white; } }}
+                    onMouseLeave={(e) => { if (!active) { (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent'; (e.currentTarget as HTMLElement).style.color = colors.white; } }}
                     style={{
-                      borderColor: active ? colors.primaryHex : primaryTint(0.08),
-                      background: active ? colors.primaryHex : colors.white,
-                      color: active ? colors.white : colors.secondaryHex,
+                      borderColor: active ? 'rgba(255,255,255,0.12)' : 'transparent',
+                      background: active ? colors.white : 'transparent',
+                      color: active ? colors.primaryHex : colors.white,
                     }}
                   >
                     <span
                       className="flex h-10 w-10 items-center justify-center rounded-xl"
                       style={{
-                        background: active ? colors.white : primaryTint(0.06),
-                        color: colors.primaryHex,
+                        background: active ? colors.white : 'rgba(255,255,255,0.12)',
+                        color: active ? colors.primaryHex : colors.white,
                       }}
                     >
                       <Icon className="h-5 w-5" />
                     </span>
                     <span className="flex-1">
-                      <span className="text-sm font-semibold" style={{ color: active ? colors.white : colors.secondaryHex }}>
+                      <span className="text-sm font-semibold" style={{ color: active ? colors.primaryHex : colors.white }}>
                         {tab.label}
                       </span>
-                      <p className="mt-1 text-xs" style={{ color: active ? 'rgba(255,255,255,0.9)' : secondaryTint(0.6) }}>
+                      <p className="mt-1 text-xs" style={{ color: active ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,0.85)' }}>
                         {tab.description}
                       </p>
                     </span>
                     <span
                       className="rounded-full px-2 py-1 text-xs font-semibold"
                       style={{
-                        background: active ? colors.white : primaryTint(0.06),
-                        color: active ? colors.primaryHex : colors.secondaryHex,
+                        background: active ? colors.white : 'rgba(255,255,255,0.12)',
+                        color: active ? colors.primaryHex : colors.white,
                       }}
                     >
                       {tab.badge}
