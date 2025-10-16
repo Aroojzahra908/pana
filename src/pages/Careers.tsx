@@ -149,6 +149,7 @@ const Careers = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    console.log("Careers: handleSubmit called");
 
     const formData = new FormData(e.target);
     const firstName = String(formData.get("firstName") || "").trim();
@@ -158,11 +159,22 @@ const Careers = () => {
     const linkedIn = String(formData.get("linkedIn") || "").trim();
     const coverLetter = String(formData.get("coverLetter") || "").trim();
 
+    // basic validation
     if (!firstName || !lastName || !email) {
+      console.log("Careers: validation failed - missing name/email");
       toast({ title: "Validation", description: "First name, last name and email are required." });
       return;
     }
+
+    // ensure resume is attached (some browsers may not include file in FormData if something odd)
+    if (!formData.get("resume") && !resumeFileName) {
+      console.log("Careers: validation failed - missing resume");
+      toast({ title: "Validation", description: "Please attach your resume (PDF/DOC) before submitting." });
+      return;
+    }
+
     if (!import.meta.env.VITE_SUPABASE_URL) {
+      console.log("Careers: missing SUPABASE_URL env");
       toast({ title: "Config", description: "Missing SUPABASE_URL" });
       return;
     }
@@ -182,7 +194,10 @@ const Careers = () => {
         created_at: new Date().toISOString(),
       }];
 
-      await supabase.insertInto("job_applications", payload);
+      console.log("Careers: inserting payload", payload);
+      const res = await supabase.insertInto("job_applications", payload);
+      console.log("Careers: insert result", res);
+
       toast({ title: "Application submitted", description: "We'll review your application shortly." });
 
       setShowApplication(false);
