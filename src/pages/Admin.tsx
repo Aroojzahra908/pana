@@ -482,7 +482,7 @@ const Admin: React.FC = () => {
             <p className="text-xs uppercase tracking-[0.4em]" style={{ color: colors.primaryHex }}>
               Control
             </p>
-            <h1 className="mt-3 text-2xl font-semibold" style={{ color: colors.secondaryHex }}>
+            <h1 className="mt-3 text-2xl font-bold" style={{ color: colors.white }}>
               Admin dashboard
             </h1>
             <p className="mt-2 text-sm leading-relaxed" style={{ color: secondaryTint(0.65) }}>
