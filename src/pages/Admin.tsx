@@ -194,7 +194,7 @@ const Admin: React.FC = () => {
   };
 
   const tableShellStyle = {
-    background: primaryTint(0.04),
+    background: colors.white,
     borderColor: primaryTint(0.12),
   } as const;
 
