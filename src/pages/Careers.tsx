@@ -223,7 +223,10 @@ const Careers = () => {
 
   const handleFileChange = (e: any) => {
     const file = e.target.files?.[0];
-    if (file) setResumeFileName(file.name);
+    if (file) {
+      setResumeFileName(file.name);
+      setResumeFile(file);
+    }
   };
 
   const ApplicationModal = ({ job, onClose, isGeneral }: any) => (
