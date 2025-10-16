@@ -3,8 +3,6 @@ import supabase from "@/lib/supabaseClient"; // simple REST helpers: supabase.fe
 import { toast } from "@/hooks/use-toast";
 
 const Admin: React.FC = () => {
-  const [users, setUsers] = useState<any[] | null>(null); // profiles table
-  const [usersError, setUsersError] = useState<string | null>(null);
 
   const [contacts, setContacts] = useState<any[] | null>(null); // contact_messages table
   const [contactsError, setContactsError] = useState<string | null>(null);
@@ -26,10 +24,8 @@ const Admin: React.FC = () => {
 
     if (!import.meta.env.VITE_SUPABASE_URL) {
       const msg = "Missing SUPABASE_URL";
-      setUsers(null);
       setContacts(null);
       setApplications(null);
-      setUsersError(msg);
       setContactsError(msg);
       setApplicationsError(msg);
       setLoading(false);
@@ -37,17 +33,6 @@ const Admin: React.FC = () => {
     }
 
     try {
-      // profiles
-      try {
-        const usersData = await supabase.fetchTable("profiles");
-        setUsers(Array.isArray(usersData) ? usersData : []);
-        setUsersError(null);
-      } catch (err: any) {
-        console.warn("profiles fetch error:", err);
-        setUsers(null);
-        setUsersError(err?.message || String(err));
-      }
-
       // contact_messages
       try {
         const contactsData = await supabase.fetchTable("contact_messages");
