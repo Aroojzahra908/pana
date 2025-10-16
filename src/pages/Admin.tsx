@@ -367,6 +367,7 @@ const Admin: React.FC = () => {
                 <th className="px-6 py-3 font-bold text-sm tracking-wide" style={{ color: colors.primaryHex }}>Role info</th>
                 <th className="px-6 py-3 font-bold text-sm tracking-wide" style={{ color: colors.primaryHex }}>Resume &amp; links</th>
                 <th className="px-6 py-3 font-bold text-sm tracking-wide" style={{ color: colors.primaryHex }}>Applied</th>
+                <th className="px-6 py-3 font-bold text-sm tracking-wide" style={{ color: colors.primaryHex }}>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -432,6 +433,10 @@ const Admin: React.FC = () => {
                   </td>
                   <td className="px-6 py-4 text-sm" style={{ color: secondaryTint(0.8) }}>
                     {formatDateTime(application.created_at)}
+                  </td>
+                  <td className="px-6 py-4">
+                    <button className="mr-2 px-3 py-1 rounded-md" style={{ background: colors.primaryHex, color: colors.white }} onClick={async () => await handleApprove('job_applications', application.id)}>Approve</button>
+                    <button className="px-3 py-1 rounded-md" style={{ background: '#ef4444', color: '#fff' }} onClick={async () => await handleDelete('job_applications', application.id)}>Delete</button>
                   </td>
                 </tr>
               ))}
