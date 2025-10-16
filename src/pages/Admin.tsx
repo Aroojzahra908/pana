@@ -361,10 +361,10 @@ const Admin: React.FC = () => {
               {applications.map((application) => (
                 <tr key={application.id} style={{ borderBottom: `1px solid ${secondaryTint(0.35)}` }}>
                   <td className="px-6 py-4">
-                    <p className="font-semibold" style={{ color: colors.white }}>
+                    <p className="font-semibold" style={{ color: colors.secondaryHex }}>
                       {formatFullName(application.first_name, application.last_name)}
                     </p>
-                    <p className="text-xs" style={{ color: primaryTint(0.8) }}>
+                    <p className="text-xs" style={{ color: secondaryTint(0.6) }}>
                       {application.linkedin || "—"}
                     </p>
                   </td>
