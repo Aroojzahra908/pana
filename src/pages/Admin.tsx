@@ -437,7 +437,90 @@ const Admin: React.FC = () => {
     );
   };
 
-  const renderTabContent = () => (activeTab === "contacts" ? renderContactsTable() : renderApplicationsTable());
+  async function handleDelete(table: string, id: string | number) {
+    if (!confirm("Are you sure you want to permanently delete this record?")) return;
+    try {
+      await supabase.deleteFrom(table, id);
+      toast({ title: "Deleted", description: "Record deleted." });
+      if (table === "contact_messages") setContacts((prev) => (prev || []).filter((c) => c.id !== id));
+      if (table === "job_applications") setApplications((prev) => (prev || []).filter((a) => a.id !== id));
+    } catch (err: any) {
+      console.error("Delete failed", err);
+      toast({ title: "Error", description: err?.message || "Failed to delete" });
+    }
+  }
+
+  async function handleApprove(table: string, id: string | number) {
+    try {
+      await supabase.updateRow(table, id, { status: "selected" });
+      toast({ title: "Approved", description: "Record marked as selected." });
+      if (table === "job_applications") {
+        setApplications((prev) => (prev || []).map((a) => (a.id === id ? { ...a, status: "selected" } : a)));
+      }
+      if (table === "contact_messages") {
+        setContacts((prev) => (prev || []).map((c) => (c.id === id ? { ...c, status: "selected" } : c)));
+      }
+    } catch (err: any) {
+      console.error("Approve failed", err);
+      toast({ title: "Error", description: err?.message || "Failed to approve. Ensure the table has a 'status' column." });
+    }
+  }
+
+  const renderSelectedTable = () => {
+    const selectedApps = (applications || []).filter((a: any) => a.status === "selected");
+    const selectedContacts = (contacts || []).filter((c: any) => c.status === "selected");
+    const merged = [
+      ...selectedContacts.map((c: any) => ({ ...c, _source: "contacts" })),
+      ...selectedApps.map((a: any) => ({ ...a, _source: "applications" })),
+    ];
+
+    if (!merged.length) return renderEmptyState("No selected students", "No approved students yet.");
+
+    return (
+      <div className="overflow-hidden rounded-3xl border shadow-2xl backdrop-blur" style={tableShellStyle}>
+        <div className="p-6">
+          <h2 className="text-xl font-semibold" style={{ color: colors.secondaryHex }}>Selected students</h2>
+          <p className="text-sm" style={{ color: secondaryTint(0.65) }}>Approved students from contacts and applications.</p>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="min-w-full divide-y text-left text-sm" style={{ color: colors.secondaryHex }}>
+            <thead style={{ background: primaryTint(0.06), color: colors.primaryHex }}>
+              <tr>
+                <th className="px-6 py-3 font-bold text-sm tracking-wide">Name</th>
+                <th className="px-6 py-3 font-bold text-sm tracking-wide">Source</th>
+                <th className="px-6 py-3 font-bold text-sm tracking-wide">Contact</th>
+                <th className="px-6 py-3 font-bold text-sm tracking-wide">Details</th>
+                <th className="px-6 py-3 font-bold text-sm tracking-wide">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {merged.map((row: any) => (
+                <tr key={`${row._source}-${row.id}`} style={{ borderBottom: `1px solid ${secondaryTint(0.35)}` }}>
+                  <td className="px-6 py-4">
+                    <p className="font-semibold" style={{ color: colors.secondaryHex }}>{formatFullName(row.first_name, row.last_name)}</p>
+                  </td>
+                  <td className="px-6 py-4"><p style={{ color: secondaryTint(0.6) }}>{row._source}</p></td>
+                  <td className="px-6 py-4">
+                    {row.email ? <a href={`mailto:${row.email}`} style={{ color: colors.primaryHex }}>{row.email}</a> : <span style={{ color: secondaryTint(0.8) }}>—</span>}
+                  </td>
+                  <td className="px-6 py-4"><p style={{ color: colors.secondaryHex }}>{row.position || row.company || '—'}</p></td>
+                  <td className="px-6 py-4">
+                    <button className="mr-2 px-3 py-1 rounded-md" style={{ background: '#ef4444', color: '#fff' }} onClick={async () => await handleDelete(row._source === 'applications' ? 'job_applications' : 'contact_messages', row.id)}>Delete</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    );
+  };
+
+  const renderTabContent = () => {
+    if (activeTab === 'contacts') return renderContactsTable();
+    if (activeTab === 'applications') return renderApplicationsTable();
+    return renderSelectedTable();
+  };
 
   return (
     <div
