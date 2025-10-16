@@ -127,6 +127,13 @@ const Admin: React.FC = () => {
       icon: Briefcase,
       badge: applications?.length ?? 0,
     },
+    {
+      id: "selected" as const,
+      label: "Selected Students",
+      description: "Approved candidates (selected).",
+      icon: Sparkles,
+      badge: ((applications || []).filter((a: any) => a.status === "selected").length ?? 0) + ((contacts || []).filter((c: any) => c.status === "selected").length ?? 0),
+    },
   ];
 
   const summaryCards = [
