@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   Briefcase,
@@ -231,7 +231,6 @@ const ApplicationModal = ({ job, onClose, isGeneral, firstName, setFirstName, la
   </motion.div>
 );
 
-
 const Careers = () => {
   const [selectedJob, setSelectedJob] = useState<any | null>(null);
   const [showApplication, setShowApplication] = useState(false);
@@ -458,7 +457,96 @@ const Careers = () => {
     }
   };
 
+  // JobModal is defined here so it has access to benefits and colors
+  const JobModal = ({ job, onClose, onApply }: any) => (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+      onClick={onClose}
+    >
+      <motion.div
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        className="bg-white rounded-2xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex justify-between items-start mb-6 flex-wrap gap-4">
+          <div className="flex-1 flex items-center gap-4 flex-wrap">
+            <img
+              src={job.image}
+              alt={job.title}
+              className="w-16 h-16 rounded-xl object-cover flex-shrink-0"
+            />
+            <div>
+              <h2 className="text-3xl font-bold mb-2" style={{ color: colors.primaryHex }}>
+                {job.title}
+              </h2>
+              <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
+                <span className="flex items-center gap-1"><Briefcase size={16} />{job.department}</span>
+                <span className="flex items-center gap-1"><MapPin size={16} />{job.location}</span>
+                <span className="flex items-center gap-1"><Clock size={16} />{job.type}</span>
+                <span className="font-semibold" style={{ color: colors.primaryHex }}>{job.salary}</span>
+              </div>
+            </div>
+          </div>
+          <button onClick={onClose} className="text-gray-400 hover:text-gray-600 transition-colors ml-4" aria-label="Close job details modal"><X size={24} /></button>
+        </div>
 
+        <div className="grid lg:grid-cols-3 gap-8">
+          <div className="lg:col-span-2 space-y-8">
+            <div>
+              <h3 className="text-xl font-bold mb-4" style={{ color: colors.primaryHex }}>Job Description</h3>
+              <p className="text-gray-700 leading-relaxed">{job.description}</p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold mb-4" style={{ color: colors.primaryHex }}>Key Responsibilities</h3>
+              <ul className="space-y-3">
+                {job.responsibilities.map((resp: string, idx: number) => (
+                  <li key={idx} className="flex items-start gap-3" style={{ color: colors.secondaryHex }}>
+                    <CheckCircle size={20} className="mt-0.5 flex-shrink-0" style={{ color: `rgb(${colors.primaryRgb})` }} />
+                    <span>{resp}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold mb-4" style={{ color: colors.primaryHex }}>Requirements</h3>
+              <ul className="space-y-3">
+                {job.requirements.map((req: string, idx: number) => (
+                  <li key={idx} className="flex items-start gap-3" style={{ color: colors.secondaryHex }}>
+                    <CheckCircle size={20} className="mt-0.5 flex-shrink-0" style={{ color: `rgb(${colors.primaryRgb})` }} />
+                    <span>{req}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="space-y-6">
+            <div className="bg-gray-50 rounded-2xl p-6">
+              <h3 className="text-lg font-bold mb-4" style={{ color: colors.primaryHex }}>Quick Apply</h3>
+              <p className="text-gray-600 mb-6 text-sm">Ready to join our team? Submit your application now and we'll get back to you within 48 hours.</p>
+              <button onClick={onApply} className="px-8 py-4 rounded-xl font-semibold shadow-lg transition-transform duration-300 hover:scale-105 hover:opacity-90 flex items-center justify-center text-white" style={{ backgroundColor: colors.primaryHex }}>
+                Apply Now
+                <ArrowRight size={18} className="ml-2" />
+              </button>
+            </div>
+            <div className="bg-cyan-50 rounded-2xl p-6" style={{ color: colors.secondaryHex }}>
+              <h3 className="text-lg font-bold mb-4" style={{ color: colors.secondaryHex }}>What We Offer</h3>
+              <ul className="space-y-2 text-sm">
+                {benefits.slice(0, 4).map((benefit, idx) => (
+                  <li key={idx} className="flex items-center gap-2"><CheckCircle size={16} style={{ color: `rgb(${colors.primaryRgb})` }} />{benefit}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
 
   return (
     <div className="min-h-screen bg-white">
@@ -467,40 +555,15 @@ const Careers = () => {
       {/* Hero Section */}
       <section className="relative py-20 lg:py-24 overflow-hidden mt-16">
         <div className="absolute inset-0">
-          <img
-            src="/tech-icons/c1.jfif"
-            alt="Join Our Team"
-            className="w-full h-full object-cover"
-          />
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(to right, rgba(44,61,79,0.9), rgba(0,180,187,0.8))",
-            }}
-          />
+          <img src="/tech-icons/c1.jfif" alt="Join Our Team" className="w-full h-full object-cover" />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(44,61,79,0.9), rgba(0,180,187,0.8))" }} />
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center max-w-4xl mx-auto"
-          >
-            <h1
-              className="text-5xl lg:text-6xl font-bold mb-6"
-              style={{ color: colors.white }}
-            >
-              Join Our Team
-            </h1>
-            <p
-              className="text-xl mb-8 max-w-2xl mx-auto leading-relaxed opacity-80 text-center"
-              style={{ color: colors.white }}
-            >
-              Help us shape the future of artificial intelligence. We're looking
-              for passionate individuals who want to make a meaningful impact
-              through innovative AI solutions.
+          <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="text-center max-w-4xl mx-auto">
+            <h1 className="text-5xl lg:text-6xl font-bold mb-6" style={{ color: colors.white }}>Join Our Team</h1>
+            <p className="text-xl mb-8 max-w-2xl mx-auto leading-relaxed opacity-80 text-center" style={{ color: colors.white }}>
+              Help us shape the future of artificial intelligence. We're looking for passionate individuals who want to make a meaningful impact through innovative AI solutions.
             </p>
           </motion.div>
         </div>
@@ -510,55 +573,13 @@ const Careers = () => {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-4xl font-bold mb-6">
-                <span style={{ color: colors.primaryHex }}>Why work </span>
-                <span style={{ color: colors.secondaryHex }}>with us?</span>
-              </h2>
-
-              <p
-                className="text-lg mb-8 leading-relaxed"
-                style={{ color: colors.secondaryHex }}
-              >
-                At Panabotics, you'll work alongside brilliant minds on projects
-                that push the boundaries of what's possible with AI. We foster a
-                culture of innovation, learning, and collaboration where your
-                ideas can truly make an impact.
-              </p>
-              <div className="grid sm:grid-cols-2 gap-4">
-                {benefits.map((benefit, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center gap-3"
-                    style={{ color: colors.secondaryHex }}
-                  >
-                    <CheckCircle
-                      size={18}
-                      className="flex-shrink-0"
-                      style={{ color: `rgb(${colors.primaryRgb})` }}
-                    />
-                    <span className="text-sm">{benefit}</span>
-                  </div>
-                ))}
-              </div>
+            <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }}>
+              <h2 className="text-4xl font-bold mb-6"><span style={{ color: colors.primaryHex }}>Why work </span><span style={{ color: colors.secondaryHex }}>with us?</span></h2>
+              <p className="text-lg mb-8 leading-relaxed" style={{ color: colors.secondaryHex }}>At Panabotics, you'll work alongside brilliant minds on projects that push the boundaries of what's possible with AI. We foster a culture of innovation, learning, and collaboration where your ideas can truly make an impact.</p>
+              <div className="grid sm:grid-cols-2 gap-4">{benefits.map((benefit, index) => (<div key={index} className="flex items-center gap-3" style={{ color: colors.secondaryHex }}><CheckCircle size={18} className="flex-shrink-0" style={{ color: `rgb(${colors.primaryRgb})` }} /><span className="text-sm">{benefit}</span></div>))}</div>
             </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              <img
-                src="/tech-icons/c2.jfif"
-                alt="Team collaboration"
-                className="rounded-2xl shadow-2xl w-full max-w-xl mx-auto"
-              />
+            <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }} className="relative">
+              <img src="/tech-icons/c2.jfif" alt="Team collaboration" className="rounded-2xl shadow-2xl w-full max-w-xl mx-auto" />
             </motion.div>
           </div>
         </div>
@@ -567,126 +588,39 @@ const Careers = () => {
       {/* Open Positions */}
       <section id="open-positions" className="py-20">
         <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2
-              className="text-4xl font-bold mb-4"
-              style={{ color: colors.primaryHex }}
-            >
-              Internship &amp; Job Opportunities
-            </h2>
-            <p style={{ color: colors.secondaryHex }}>
-              Discover exciting opportunities to advance your career in AI
-            </p>
+          <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }} className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4" style={{ color: colors.primaryHex }}>Internship &amp; Job Opportunities</h2>
+            <p style={{ color: colors.secondaryHex }}>Discover exciting opportunities to advance your career in AI</p>
           </motion.div>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {jobs.map((job, index) => (
-              <motion.div
-                key={job.id}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-white rounded-2xl shadow-lg transition-shadow duration-300 overflow-hidden group cursor-pointer hover:shadow-[0_8px_24px_rgba(0,180,187,0.4)]"
-                onClick={() => setSelectedJob(job)}
-              >
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={job.image}
-                    alt={job.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <span
-                      className="px-3 py-1 rounded-full text-sm font-medium"
-                      style={{ backgroundColor: colors.primaryHex }}
-                    >
-                      {job.department}
-                    </span>
-                  </div>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">{jobs.map((job, index) => (
+            <motion.div key={job.id} initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: index * 0.1 }} viewport={{ once: true }} className="bg-white rounded-2xl shadow-lg transition-shadow duration-300 overflow-hidden group cursor-pointer hover:shadow-[0_8px_24px_rgba(0,180,187,0.4)]" onClick={() => setSelectedJob(job)}>
+              <div className="relative h-48 overflow-hidden">
+                <img src={job.image} alt={job.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                <div className="absolute bottom-4 left-4 text-white"><span className="px-3 py-1 rounded-full text-sm font-medium" style={{ backgroundColor: colors.primaryHex }}>{job.department}</span></div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-2 group-hover:text-cyan-500 transition-colors" style={{ color: colors.secondaryHex }}>{job.title}</h3>
+                <p className="mb-4 text-sm line-clamp-2" style={{ color: colors.secondaryHex }}>{job.description}</p>
+                <div className="flex flex-wrap items-center gap-3 text-xs mb-4" style={{ color: colors.secondaryHex }}>
+                  <span className="flex items-center gap-1"><MapPin size={12} />{job.location}</span>
+                  <span className="flex items-center gap-1"><Clock size={12} />{job.type}</span>
                 </div>
-                <div className="p-6">
-                  <h3
-                    className="text-xl font-bold mb-2 group-hover:text-cyan-500 transition-colors"
-                    style={{ color: colors.secondaryHex }}
-                  >
-                    {job.title}
-                  </h3>
-                  <p
-                    className="mb-4 text-sm line-clamp-2"
-                    style={{ color: colors.secondaryHex }}
-                  >
-                    {job.description}
-                  </p>
-                  <div
-                    className="flex flex-wrap items-center gap-3 text-xs mb-4"
-                    style={{ color: colors.secondaryHex }}
-                  >
-                    <span className="flex items-center gap-1">
-                      <MapPin size={12} />
-                      {job.location}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Clock size={12} />
-                      {job.type}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span
-                      className="font-semibold"
-                      style={{ color: colors.primaryHex }}
-                    >
-                      {job.salary}
-                    </span>
-                    <ArrowRight
-                      size={18}
-                      className="text-gray-400 group-hover:text-cyan-500 group-hover:translate-x-1 transition-all"
-                    />
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                <div className="flex items-center justify-between"><span className="font-semibold" style={{ color: colors.primaryHex }}>{job.salary}</span><ArrowRight size={18} className="text-gray-400 group-hover:text-cyan-500 group-hover:translate-x-1 transition-all" /></div>
+              </div>
+            </motion.div>
+          ))}</div>
         </div>
       </section>
 
       {/* Don't See Your Role */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto bg-white rounded-3xl p-12 shadow-lg"
-          >
-            <h2
-              className="text-3xl font-bold mb-4"
-              style={{ color: colors.primaryHex }}
-            >
-              Don't See Your Role?
-            </h2>
-            <p className="mb-8 leading-relaxed" style={{ color: colors.secondaryHex }}>
-              We're always looking for talented individuals who share our
-              passion for AI. Send us your resume and let's explore
-              opportunities together. We believe great talent comes in many
-              forms.
-            </p>
+          <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }} className="text-center max-w-3xl mx-auto bg-white rounded-3xl p-12 shadow-lg">
+            <h2 className="text-3xl font-bold mb-4" style={{ color: colors.primaryHex }}>Don't See Your Role?</h2>
+            <p className="mb-8 leading-relaxed" style={{ color: colors.secondaryHex }}>We're always looking for talented individuals who share our passion for AI. Send us your resume and let's explore opportunities together. We believe great talent comes in many forms.</p>
 
-            <button
-              onClick={() => {
-                setIsGeneralApplication(true);
-                setShowApplication(true);
-              }}
-              className="px-8 py-4 rounded-xl font-semibold shadow-lg transition-transform duration-300 hover:scale-105 hover:opacity-90 text-white mx-auto flex items-center"
-              style={{ backgroundColor: colors.primaryHex }}
-            >
+            <button onClick={() => { setIsGeneralApplication(true); setShowApplication(true); }} className="px-8 py-4 rounded-xl font-semibold shadow-lg transition-transform duration-300 hover:scale-105 hover:opacity-90 text-white mx-auto flex items-center" style={{ backgroundColor: colors.primaryHex }}>
               Send General Application
               <ArrowRight size={18} className="ml-2" />
             </button>
@@ -699,10 +633,7 @@ const Careers = () => {
         <JobModal
           job={selectedJob}
           onClose={() => setSelectedJob(null)}
-          onApply={() => {
-            setIsGeneralApplication(false);
-            setShowApplication(true);
-          }}
+          onApply={() => { setIsGeneralApplication(false); setShowApplication(true); }}
         />
       )}
 
@@ -716,7 +647,6 @@ const Careers = () => {
             setIsGeneralApplication(false);
             setResumeFileName("");
             setResumeFile(null);
-            // clear controlled fields
             setFirstName("");
             setLastName("");
             setEmail("");
@@ -744,174 +674,6 @@ const Careers = () => {
       )}
     </div>
   );
-
-const JobModal = ({ job, onClose, onApply }: any) => (
-  <motion.div
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0 }}
-    className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-    onClick={onClose}
-  >
-    <motion.div
-      initial={{ scale: 0.9, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      className="bg-white rounded-2xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto"
-      onClick={(e) => e.stopPropagation()}
-    >
-      <div className="flex justify-between items-start mb-6 flex-wrap gap-4">
-        <div className="flex-1 flex items-center gap-4 flex-wrap">
-          <img
-            src={job.image}
-            alt={job.title}
-            className="w-16 h-16 rounded-xl object-cover flex-shrink-0"
-          />
-          <div>
-            <h2
-              className="text-3xl font-bold mb-2"
-              style={{ color: colors.primaryHex }}
-            >
-              {job.title}
-            </h2>
-            <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
-              <span className="flex items-center gap-1">
-                <Briefcase size={16} />
-                {job.department}
-              </span>
-              <span className="flex items-center gap-1">
-                <MapPin size={16} />
-                {job.location}
-              </span>
-              <span className="flex items-center gap-1">
-                <Clock size={16} />
-                {job.type}
-              </span>
-              <span
-                className="font-semibold"
-                style={{ color: colors.primaryHex }}
-              >
-                {job.salary}
-              </span>
-            </div>
-          </div>
-        </div>
-        <button
-          onClick={onClose}
-          className="text-gray-400 hover:text-gray-600 transition-colors ml-4"
-          aria-label="Close job details modal"
-        >
-          <X size={24} />
-        </button>
-      </div>
-
-      <div className="grid lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2 space-y-8">
-          <div>
-            <h3
-              className="text-xl font-bold mb-4"
-              style={{ color: colors.primaryHex }}
-            >
-              Job Description
-            </h3>
-            <p className="text-gray-700 leading-relaxed">{job.description}</p>
-          </div>
-
-          <div>
-            <h3
-              className="text-xl font-bold mb-4"
-              style={{ color: colors.primaryHex }}
-            >
-              Key Responsibilities
-            </h3>
-            <ul className="space-y-3">
-              {job.responsibilities.map((resp: string, idx: number) => (
-                <li
-                  key={idx}
-                  className="flex items-start gap-3"
-                  style={{ color: colors.secondaryHex }}
-                >
-                  <CheckCircle
-                    size={20}
-                    className="mt-0.5 flex-shrink-0"
-                    style={{ color: `rgb(${colors.primaryRgb})` }}
-                  />
-                  <span>{resp}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3
-              className="text-xl font-bold mb-4"
-              style={{ color: colors.primaryHex }}
-            >
-              Requirements
-            </h3>
-            <ul className="space-y-3">
-              {job.requirements.map((req: string, idx: number) => (
-                <li
-                  key={idx}
-                  className="flex items-start gap-3"
-                  style={{ color: colors.secondaryHex }}
-                >
-                  <CheckCircle
-                    size={20}
-                    className="mt-0.5 flex-shrink-0"
-                    style={{ color: `rgb(${colors.primaryRgb})` }}
-                  />
-                  <span>{req}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        <div className="space-y-6">
-          <div className="bg-gray-50 rounded-2xl p-6">
-            <h3
-              className="text-lg font-bold mb-4"
-              style={{ color: colors.primaryHex }}
-            >
-              Quick Apply
-            </h3>
-            <p className="text-gray-600 mb-6 text-sm">
-              Ready to join our team? Submit your application now and we'll get
-              back to you within 48 hours.
-            </p>
-            <button
-              onClick={onApply}
-              className="px-8 py-4 rounded-xl font-semibold shadow-lg transition-transform duration-300 hover:scale-105 hover:opacity-90 flex items-center justify-center text-white"
-              style={{ backgroundColor: colors.primaryHex }}
-            >
-              Apply Now
-              <ArrowRight size={18} className="ml-2" />
-            </button>
-          </div>
-          <div
-            className="bg-cyan-50 rounded-2xl p-6"
-            style={{ color: colors.secondaryHex }}
-          >
-            <h3 className="text-lg font-bold mb-4" style={{ color: colors.secondaryHex }}>
-              What We Offer
-            </h3>
-            <ul className="space-y-2 text-sm">
-              {benefits.slice(0, 4).map((benefit, idx) => (
-                <li key={idx} className="flex items-center gap-2">
-                  <CheckCircle
-                    size={16}
-                    style={{ color: `rgb(${colors.primaryRgb})` }}
-                  />
-                  {benefit}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  </motion.div>
-);
 };
 
 export default Careers;
