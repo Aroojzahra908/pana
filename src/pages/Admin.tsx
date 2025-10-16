@@ -479,13 +479,13 @@ const Admin: React.FC = () => {
             className="w-full rounded-3xl border p-6 shadow-sm lg:max-w-xs"
             style={{ background: colors.white, borderColor: colors.primaryHex, color: colors.secondaryHex }}
           >
-            <p className="text-xs uppercase tracking-[0.4em]" style={{ color: colors.white }}>
+            <p className="text-xs uppercase tracking-[0.4em]" style={{ color: colors.primaryHex }}>
               Control
             </p>
-            <h1 className="mt-3 text-2xl font-semibold" style={{ color: colors.white }}>
+            <h1 className="mt-3 text-2xl font-semibold" style={{ color: colors.secondaryHex }}>
               Admin dashboard
             </h1>
-            <p className="mt-2 text-sm leading-relaxed" style={{ color: secondaryTint(0.75) }}>
+            <p className="mt-2 text-sm leading-relaxed" style={{ color: secondaryTint(0.65) }}>
               Switch between tabs to review contact enquiries and job applications in real time.
             </p>
 
