@@ -490,7 +490,7 @@ const Admin: React.FC = () => {
                     type="button"
                     onClick={() => setActiveTab(tab.id)}
                     aria-pressed={active}
-                    className="group flex w-full items-start gap-3 rounded-2xl border px-4 py-3 text-left transition"
+                    className="group flex w-full items-start gap-3 rounded-2xl border px-4 py-3 text-left transition hover:shadow-md"
                     style={{
                       borderColor: active ? colors.primaryHex : primaryTint(0.08),
                       background: active ? colors.primaryHex : colors.white,
