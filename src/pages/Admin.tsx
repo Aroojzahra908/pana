@@ -222,10 +222,10 @@ const Admin: React.FC = () => {
           style={{ borderColor: secondaryTint(0.35) }}
         >
           <div>
-            <h2 className="text-xl font-semibold" style={{ color: colors.white }}>
+            <h2 className="text-xl font-semibold" style={{ color: colors.secondaryHex }}>
               Contact messages
             </h2>
-            <p className="text-sm" style={{ color: primaryTint(0.8) }}>
+            <p className="text-sm" style={{ color: secondaryTint(0.65) }}>
               Review student and client enquiries with all supporting details.
             </p>
           </div>
