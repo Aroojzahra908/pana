@@ -503,9 +503,10 @@ const Admin: React.FC = () => {
                     onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = `rgba(${colors.primaryRgb},0.12)`; if (!active) { (e.currentTarget as HTMLElement).style.color = colors.white; } else { (e.currentTarget as HTMLElement).style.color = colors.primaryHex; } }}
                     onMouseLeave={(e) => { if (active) { (e.currentTarget as HTMLElement).style.backgroundColor = colors.white; (e.currentTarget as HTMLElement).style.color = colors.primaryHex; } else { (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent'; (e.currentTarget as HTMLElement).style.color = colors.white; } }}
                     style={{
-                      borderColor: active ? 'rgba(255,255,255,0.12)' : 'transparent',
+                      borderColor: 'rgba(255,255,255,0.14)',
                       background: active ? colors.white : 'transparent',
                       color: active ? colors.primaryHex : colors.white,
+                      boxShadow: active ? '0 6px 18px rgba(0,0,0,0.06)' : 'none'
                     }}
                   >
                     <span
