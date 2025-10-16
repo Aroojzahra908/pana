@@ -383,27 +383,24 @@ const Careers = () => {
     "Stock options and performance bonuses",
   ];
 
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    console.log("Careers: handleSubmit called");
+  const handleSubmit = async (e?: any) => {
+    if (e && typeof e.preventDefault === "function") e.preventDefault();
+    console.log("Careers: handleSubmit called (controlled state)");
 
-    const formData = new FormData(e.target);
-    const firstName = String(formData.get("firstName") || "").trim();
-    const lastName = String(formData.get("lastName") || "").trim();
-    const email = String(formData.get("email") || "").trim();
-    const phone = String(formData.get("phone") || "").trim();
-    const linkedIn = String(formData.get("linkedIn") || "").trim();
-    const coverLetter = String(formData.get("coverLetter") || "").trim();
+    const first = firstName.trim();
+    const last = lastName.trim();
+    const mail = email.trim();
+    const phoneVal = phone.trim();
+    const linked = linkedIn.trim();
+    const cover = coverLetter.trim();
 
-    // basic validation
-    if (!firstName || !lastName || !email) {
+    if (!first || !last || !mail) {
       console.log("Careers: validation failed - missing name/email");
       toast({ title: "Validation", description: "First name, last name and email are required." });
       return;
     }
 
-    // ensure resume is attached (some browsers may not include file in FormData if something odd)
-    if (!formData.get("resume") && !resumeFileName) {
+    if (!resumeFile && !resumeFileName) {
       console.log("Careers: validation failed - missing resume");
       toast({ title: "Validation", description: "Please attach your resume (PDF/DOC) before submitting." });
       return;
@@ -418,13 +415,13 @@ const Careers = () => {
     setIsSubmitting(true);
     try {
       const payload = [{
-        first_name: firstName,
-        last_name: lastName,
-        email,
-        phone,
-        linkedin: linkedIn,
+        first_name: first,
+        last_name: last,
+        email: mail,
+        phone: phoneVal || null,
+        linkedin: linked || null,
         resume_file_name: resumeFileName || null,
-        cover_letter: coverLetter || null,
+        cover_letter: cover || null,
         position: isGeneralApplication ? "General Application" : selectedJob?.title || null,
         job_id: isGeneralApplication ? null : selectedJob?.id || null,
         created_at: new Date().toISOString(),
@@ -436,10 +433,18 @@ const Careers = () => {
 
       toast({ title: "Application submitted", description: "We'll review your application shortly." });
 
+      // reset modal state
       setShowApplication(false);
       setSelectedJob(null);
       setIsGeneralApplication(false);
       setResumeFileName("");
+      setResumeFile(null);
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setPhone("");
+      setLinkedIn("");
+      setCoverLetter("");
     } catch (error: any) {
       console.error("Error submitting application:", error);
       toast({ title: "Error", description: error?.message || "Failed to submit application." });
