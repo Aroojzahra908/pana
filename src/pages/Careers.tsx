@@ -1101,7 +1101,31 @@ const Careers = () => {
             setSelectedJob(null);
             setIsGeneralApplication(false);
             setResumeFileName("");
+            setResumeFile(null);
+            // clear controlled fields
+            setFirstName("");
+            setLastName("");
+            setEmail("");
+            setPhone("");
+            setLinkedIn("");
+            setCoverLetter("");
           }}
+          firstName={firstName}
+          setFirstName={setFirstName}
+          lastName={lastName}
+          setLastName={setLastName}
+          email={email}
+          setEmail={setEmail}
+          phone={phone}
+          setPhone={setPhone}
+          linkedIn={linkedIn}
+          setLinkedIn={setLinkedIn}
+          coverLetter={coverLetter}
+          setCoverLetter={setCoverLetter}
+          resumeFileName={resumeFileName}
+          handleFileChange={handleFileChange}
+          handleSubmit={handleSubmit}
+          isSubmitting={isSubmitting}
         />
       )}
     </div>
