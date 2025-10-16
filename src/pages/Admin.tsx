@@ -109,27 +109,6 @@ const Admin: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-          {/* Profiles */}
-          <div className="p-4 border rounded-lg">
-            <h3 className="font-semibold mb-2">Profiles</h3>
-            {usersError ? (
-              <div className="text-sm text-red-600">{usersError}</div>
-            ) : users === null ? (
-              <div className="text-sm text-muted-foreground">No profiles table or permission denied.</div>
-            ) : users.length === 0 ? (
-              <div className="text-sm text-muted-foreground">No profiles found.</div>
-            ) : (
-              <div className="space-y-2 max-h-64 overflow-auto">
-                {users.map((u) => (
-                  <div key={u.id} className="text-sm">
-                    <div className="font-medium">{u.email || u.id}</div>
-                    <div className="text-xs text-slate-500">{u.is_admin ? "admin" : "user"}</div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-
           {/* Contact Messages */}
           <div className="p-4 border rounded-lg">
             <h3 className="font-semibold mb-2">Contact messages</h3>
