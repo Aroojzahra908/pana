@@ -253,6 +253,7 @@ const Admin: React.FC = () => {
                 <th className="px-6 py-3 font-bold text-sm tracking-wide" style={{ color: colors.primaryHex }}>Company &amp; Service</th>
                 <th className="px-6 py-3 font-bold text-sm tracking-wide" style={{ color: colors.primaryHex }}>Message</th>
                 <th className="px-6 py-3 font-bold text-sm tracking-wide" style={{ color: colors.primaryHex }}>Received</th>
+                <th className="px-6 py-3 font-bold text-sm tracking-wide" style={{ color: colors.primaryHex }}>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -304,6 +305,10 @@ const Admin: React.FC = () => {
                   </td>
                   <td className="px-6 py-4 text-sm" style={{ color: secondaryTint(0.6) }}>
                     {formatDateTime(contact.created_at)}
+                  </td>
+                  <td className="px-6 py-4">
+                    <button className="mr-2 px-3 py-1 rounded-md" style={{ background: colors.primaryHex, color: colors.white }} onClick={async () => await handleApprove('contact_messages', contact.id)}>Approve</button>
+                    <button className="px-3 py-1 rounded-md" style={{ background: '#ef4444', color: '#fff' }} onClick={async () => await handleDelete('contact_messages', contact.id)}>Delete</button>
                   </td>
                 </tr>
               ))}
