@@ -283,6 +283,8 @@ const Careers = () => {
                     type="text"
                     name="firstName"
                     required
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
                     className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
                     placeholder="John"
                   />
@@ -301,6 +303,8 @@ const Careers = () => {
                     type="text"
                     name="lastName"
                     required
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
                     className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
                     placeholder="Doe"
                   />
@@ -321,6 +325,8 @@ const Careers = () => {
                   type="email"
                   name="email"
                   required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
                   placeholder="john.doe@email.com"
                 />
@@ -339,6 +345,8 @@ const Careers = () => {
                 <input
                   type="tel"
                   name="phone"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
                   className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
                   placeholder="+1 (555) 123-4567"
                 />
@@ -352,6 +360,8 @@ const Careers = () => {
               <input
                 type="url"
                 name="linkedIn"
+                value={linkedIn}
+                onChange={(e) => setLinkedIn(e.target.value)}
                 className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
                 placeholder="https://linkedin.com/in/johndoe"
               />
@@ -380,6 +390,7 @@ const Careers = () => {
                   name="resume"
                   className="hidden"
                   accept=".pdf,.doc,.docx"
+                  // keep required but we validate in JS too
                   required
                   onChange={handleFileChange}
                 />
@@ -393,6 +404,8 @@ const Careers = () => {
               <textarea
                 name="coverLetter"
                 rows={6}
+                value={coverLetter}
+                onChange={(e) => setCoverLetter(e.target.value)}
                 className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cyan-500 focus:border-transparent resize-none"
                 placeholder="Tell us why you're interested in this role and what makes you a great fit..."
               />
@@ -401,6 +414,7 @@ const Careers = () => {
             <div className="flex flex-col md:flex-row gap-4">
               <button
                 type="submit"
+                onClick={(e) => { e.stopPropagation(); /* ensure click reaches handler */ }}
                 className="flex-1 text-white px-8 py-4 rounded-xl font-semibold shadow-lg flex items-center justify-center transition-transform duration-300 hover:scale-105 hover:opacity-90"
                 style={{ backgroundColor: colors.primaryHex }}
                 disabled={isSubmitting}
