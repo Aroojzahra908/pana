@@ -307,8 +307,8 @@ const Admin: React.FC = () => {
                     {formatDateTime(contact.created_at)}
                   </td>
                   <td className="px-6 py-4">
-                    <button className="mr-2 px-3 py-1 rounded-md" style={{ background: colors.primaryHex, color: colors.white }} onClick={async () => await handleApprove('contact_messages', contact.id)}>Approve</button>
-                    <button className="px-3 py-1 rounded-md" style={{ background: '#ef4444', color: '#fff' }} onClick={async () => await handleDelete('contact_messages', contact.id)}>Delete</button>
+                    <button className="inline-flex items-center justify-center px-3 py-1 rounded-md" style={{ minWidth: 84, background: colors.primaryHex, color: colors.white, fontWeight: 600 }} onClick={async () => await handleApprove('contact_messages', contact.id)}>Approve</button>
+                    <button className="inline-flex items-center justify-center px-3 py-1 rounded-md" style={{ minWidth: 84, background: '#ef4444', color: '#fff', fontWeight: 600 }} onClick={async () => await handleDelete('contact_messages', contact.id)}>Delete</button>
                   </td>
                 </tr>
               ))}
@@ -435,8 +435,8 @@ const Admin: React.FC = () => {
                     {formatDateTime(application.created_at)}
                   </td>
                   <td className="px-6 py-4">
-                    <button className="mr-2 px-3 py-1 rounded-md" style={{ background: colors.primaryHex, color: colors.white }} onClick={async () => await handleApprove('job_applications', application.id)}>Approve</button>
-                    <button className="px-3 py-1 rounded-md" style={{ background: '#ef4444', color: '#fff' }} onClick={async () => await handleDelete('job_applications', application.id)}>Delete</button>
+                    <button className="inline-flex items-center justify-center px-3 py-1 rounded-md" style={{ minWidth: 84, background: colors.primaryHex, color: colors.white, fontWeight: 600 }} onClick={async () => await handleApprove('job_applications', application.id)}>Approve</button>
+                    <button className="inline-flex items-center justify-center px-3 py-1 rounded-md" style={{ minWidth: 84, background: '#ef4444', color: '#fff', fontWeight: 600 }} onClick={async () => await handleDelete('job_applications', application.id)}>Delete</button>
                   </td>
                 </tr>
               ))}
@@ -462,20 +462,27 @@ const Admin: React.FC = () => {
 
   async function handleApprove(table: string, id: string | number) {
     try {
-      await supabase.updateRow(table, id, { status: "selected" });
-
-      // find the record in local cache to construct selected_students payload
+      // locate the current record from local state first (stable reference)
       let record: any = null;
       if (table === "job_applications") {
-        setApplications((prev) => (prev || []).map((a) => (a.id === id ? { ...a, status: "selected" } : a)));
         record = (applications || []).find((a: any) => a.id === id) || null;
       }
       if (table === "contact_messages") {
-        setContacts((prev) => (prev || []).map((c) => (c.id === id ? { ...c, status: "selected" } : c)));
         record = (contacts || []).find((c: any) => c.id === id) || null;
       }
 
-      // Insert into selected_students table so selection is persistent
+      // perform the DB update
+      await supabase.updateRow(table, id, { status: "selected" });
+
+      // update local cache so UI reflects the change immediately
+      if (table === "job_applications") {
+        setApplications((prev) => (prev || []).map((a) => (a.id === id ? { ...a, status: "selected" } : a)));
+      }
+      if (table === "contact_messages") {
+        setContacts((prev) => (prev || []).map((c) => (c.id === id ? { ...c, status: "selected" } : c)));
+      }
+
+      // persist selection to selected_students when possible
       if (record) {
         try {
           const payload = {
@@ -498,11 +505,12 @@ const Admin: React.FC = () => {
           toast({ title: "Warning", description: "Approved but failed to save selected student. Check DB schema/permissions." });
         }
       } else {
+        // record not found in local cache but DB update succeeded
         toast({ title: "Approved", description: "Record marked as selected." });
       }
     } catch (err: any) {
       console.error("Approve failed", err);
-      toast({ title: "Error", description: err?.message || "Failed to approve. Ensure the table has a 'status' column." });
+      toast({ title: "Error", description: err?.message || "Failed to approve. Ensure the table has a 'status' column and RLS allows updates." });
     }
   }
 
@@ -545,7 +553,7 @@ const Admin: React.FC = () => {
                   </td>
                   <td className="px-6 py-4"><p style={{ color: colors.secondaryHex }}>{row.position || row.company || '—'}</p></td>
                   <td className="px-6 py-4">
-                    <button className="mr-2 px-3 py-1 rounded-md" style={{ background: '#ef4444', color: '#fff' }} onClick={async () => await handleDelete(row._source === 'applications' ? 'job_applications' : 'contact_messages', row.id)}>Delete</button>
+                    <button className="inline-flex items-center justify-center px-3 py-1 rounded-md" style={{ minWidth: 84, background: '#ef4444', color: '#fff', fontWeight: 600 }} onClick={async () => await handleDelete(row._source === 'applications' ? 'job_applications' : 'contact_messages', row.id)}>Delete</button>
                   </td>
                 </tr>
               ))}
