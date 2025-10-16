@@ -495,8 +495,8 @@ const Admin: React.FC = () => {
                     <span
                       className="rounded-full px-2 py-1 text-xs font-semibold"
                       style={{
-                        background: active ? secondaryTint(0.18) : primaryTint(0.2),
-                        color: colors.white,
+                        background: active ? colors.white : primaryTint(0.06),
+                        color: active ? colors.primaryHex : colors.secondaryHex,
                       }}
                     >
                       {tab.badge}
