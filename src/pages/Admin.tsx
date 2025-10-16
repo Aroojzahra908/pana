@@ -241,11 +241,11 @@ const Admin: React.FC = () => {
           <table className="min-w-full divide-y text-left text-sm" style={{ color: colors.secondaryHex }}>
             <thead style={{ background: colors.primaryHex, color: colors.white }}>
               <tr>
-                <th className="px-6 py-3 font-semibold text-sm uppercase tracking-wide" style={{ color: colors.white }}>Student</th>
-                <th className="px-6 py-3 font-semibold text-sm uppercase tracking-wide" style={{ color: colors.white }}>Contact</th>
-                <th className="px-6 py-3 font-semibold text-sm uppercase tracking-wide" style={{ color: colors.white }}>Company &amp; Service</th>
-                <th className="px-6 py-3 font-semibold text-sm uppercase tracking-wide" style={{ color: colors.white }}>Message</th>
-                <th className="px-6 py-3 font-semibold text-sm uppercase tracking-wide" style={{ color: colors.white }}>Received</th>
+                <th className="px-6 py-3 font-bold text-sm uppercase tracking-wide" style={{ color: colors.white }}>Student</th>
+                <th className="px-6 py-3 font-bold text-sm uppercase tracking-wide" style={{ color: colors.white }}>Contact</th>
+                <th className="px-6 py-3 font-bold text-sm uppercase tracking-wide" style={{ color: colors.white }}>Company &amp; Service</th>
+                <th className="px-6 py-3 font-bold text-sm uppercase tracking-wide" style={{ color: colors.white }}>Message</th>
+                <th className="px-6 py-3 font-bold text-sm uppercase tracking-wide" style={{ color: colors.white }}>Received</th>
               </tr>
             </thead>
             <tbody>
@@ -350,11 +350,11 @@ const Admin: React.FC = () => {
           <table className="min-w-full divide-y text-left text-sm" style={{ color: colors.secondaryHex }}>
             <thead style={{ background: colors.primaryHex, color: colors.white }}>
               <tr>
-                <th className="px-6 py-3 font-semibold text-sm uppercase tracking-wide" style={{ color: colors.white }}>Student</th>
-                <th className="px-6 py-3 font-semibold text-sm uppercase tracking-wide" style={{ color: colors.white }}>Contact</th>
-                <th className="px-6 py-3 font-semibold text-sm uppercase tracking-wide" style={{ color: colors.white }}>Role info</th>
-                <th className="px-6 py-3 font-semibold text-sm uppercase tracking-wide" style={{ color: colors.white }}>Resume &amp; links</th>
-                <th className="px-6 py-3 font-semibold text-sm uppercase tracking-wide" style={{ color: colors.white }}>Applied</th>
+                <th className="px-6 py-3 font-bold text-sm uppercase tracking-wide" style={{ color: colors.white }}>Student</th>
+                <th className="px-6 py-3 font-bold text-sm uppercase tracking-wide" style={{ color: colors.white }}>Contact</th>
+                <th className="px-6 py-3 font-bold text-sm uppercase tracking-wide" style={{ color: colors.white }}>Role info</th>
+                <th className="px-6 py-3 font-bold text-sm uppercase tracking-wide" style={{ color: colors.white }}>Resume &amp; links</th>
+                <th className="px-6 py-3 font-bold text-sm uppercase tracking-wide" style={{ color: colors.white }}>Applied</th>
               </tr>
             </thead>
             <tbody>
