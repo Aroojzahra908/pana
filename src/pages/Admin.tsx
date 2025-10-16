@@ -577,8 +577,10 @@ const Admin: React.FC = () => {
                   <div
                     key={card.label}
                     className="relative overflow-hidden rounded-3xl border p-6 shadow-sm transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
+                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = `rgba(${colors.primaryRgb},0.08)`; (e.currentTarget as HTMLElement).style.color = colors.secondaryHex; }}
+                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = colors.white; (e.currentTarget as HTMLElement).style.color = colors.secondaryHex; }}
                     style={{
-                      background: primaryTint(0.06),
+                      background: colors.white,
                       borderColor: primaryTint(0.12),
                       color: colors.secondaryHex,
                     }}
