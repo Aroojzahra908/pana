@@ -477,7 +477,7 @@ const Admin: React.FC = () => {
         <div className="flex flex-col gap-10 lg:flex-row">
           <aside
             className="w-full rounded-3xl border p-6 shadow-sm lg:max-w-xs"
-            style={{ background: primaryTint(0.03), borderColor: primaryTint(0.12), color: colors.secondaryHex }}
+            style={{ background: colors.white, borderColor: primaryTint(0.12), color: colors.secondaryHex }}
           >
             <p className="text-xs uppercase tracking-[0.4em]" style={{ color: colors.primaryHex }}>
               Control
