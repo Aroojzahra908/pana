@@ -530,8 +530,11 @@ const Admin: React.FC = () => {
       };
 
       // persist selection to selected_students
+      let savedRecord: any = payload;
       try {
-        await supabase.upsertInto("selected_students", payload);
+        const result = await supabase.upsertInto("selected_students", payload);
+        // If the result is an array, take the first item; if it's a single object, use it
+        savedRecord = Array.isArray(result) ? result[0] : result || payload;
       } catch (insErr: any) {
         console.error("Failed to upsert selected_students", insErr);
         toast({ title: "Warning", description: "Approved but failed to save selected student. Check DB schema/permissions." });
@@ -540,9 +543,9 @@ const Admin: React.FC = () => {
 
       // Update local state: add to selectedStudents and REMOVE from contacts/applications
       setSelectedStudents((prev) => {
-        if (!prev) return [payload];
+        if (!prev) return [savedRecord];
         const exists = prev.some((s: any) => s.source_table === table && s.source_id === record.id);
-        return exists ? prev : [...prev, payload];
+        return exists ? prev : [...prev, savedRecord];
       });
 
       // Remove from source table state so it disappears from that tab
