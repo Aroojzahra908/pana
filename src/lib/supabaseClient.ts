@@ -162,4 +162,22 @@ export async function updateRow(table: string, id: string | number, payload: any
   }
 }
 
-export default { fetchTable, insertInto, uploadToStorage, getPublicUrl, deleteFrom, updateRow };
+export async function upsertInto(table: string, payload: any) {
+  if (!SUPABASE_URL) throw new Error("Missing SUPABASE_URL");
+  const url = `${SUPABASE_URL}/rest/v1/${table}`;
+  const headers = { ...getHeaders(), Prefer: "resolution=merge-duplicates,return=representation" };
+  const res = await fetch(url, { method: "POST", headers, body: JSON.stringify(payload) });
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`Failed to upsert into ${table}: ${res.status} ${text}`);
+  }
+  const text = await res.text();
+  if (!text) return null;
+  try {
+    return JSON.parse(text);
+  } catch (e) {
+    return text;
+  }
+}
+
+export default { fetchTable, insertInto, uploadToStorage, getPublicUrl, deleteFrom, updateRow, upsertInto };
