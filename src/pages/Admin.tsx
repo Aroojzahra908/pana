@@ -470,7 +470,7 @@ const Admin: React.FC = () => {
                   </td>
                   <td className="px-6 py-4 flex gap-2">
                     {application.status === "selected" ? (
-                      <span className="inline-flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold" style={{ minWidth: 76, background: '#10b981', color: '#fff' }}>Approved</span>
+                      <button className="inline-flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold" style={{ minWidth: 76, background: '#10b981', color: '#fff' }} onClick={async () => await handleRevert('job_applications', application.id)}>Approved</button>
                     ) : (
                       <button className="inline-flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold" style={{ minWidth: 76, background: colors.primaryHex, color: colors.white }} onClick={async () => await handleApprove('job_applications', application.id)}>Pending</button>
                     )}
