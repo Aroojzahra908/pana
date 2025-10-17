@@ -40,9 +40,18 @@ const Contact = () => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Scroll to top on route change
+  // Scroll to form when hash present, else top
   useEffect(() => {
-    window.scrollTo(0, 0);
+    if (location.hash === "#contact-form") {
+      setTimeout(() => {
+        const formEl = document.getElementById("contact-form");
+        if (formEl) formEl.scrollIntoView({ behavior: "smooth", block: "start" });
+        const first = document.getElementById("firstName") as HTMLInputElement | null;
+        first?.focus();
+      }, 50);
+    } else {
+      window.scrollTo(0, 0);
+    }
   }, [location]);
 
   useEffect(() => {
@@ -190,7 +199,7 @@ const Contact = () => {
             >
               Send us a message
             </h2>
-            <form className="space-y-4 sm:space-y-6" onSubmit={handleSubmit}>
+            <form id="contact-form" className="space-y-4 sm:space-y-6" onSubmit={handleSubmit}>
               <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                 {[
                   { id: "firstName", label: "First Name", placeholder: "John", required: true },
@@ -449,10 +458,16 @@ const Contact = () => {
                 discover how we can help you achieve your goals.
               </p>
               <button
-                className="px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold shadow-lg flex items-center justify-center transition-transform duration-300 hover:scale-[1.02] hover:opacity-100 text-sm sm:text-base"
+                className="mx-auto block px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold shadow-lg flex items-center justify-center transition-transform duration-300 hover:scale-[1.02] hover:opacity-100 text-sm sm:text-base"
                 style={{
                   backgroundColor: colors.white,
                   color: colors.primaryHex,
+                }}
+                onClick={() => {
+                  const formEl = document.getElementById("contact-form");
+                  if (formEl) formEl.scrollIntoView({ behavior: "smooth", block: "start" });
+                  const first = document.getElementById("firstName") as HTMLInputElement | null;
+                  first?.focus();
                 }}
               >
                 Send us a message
