@@ -191,4 +191,4 @@ export async function upsertInto(table: string, payload: any) {
   }
 }
 
-export default { fetchTable, insertInto, uploadToStorage, getPublicUrl, deleteFrom, updateRow, upsertInto };
+export default { fetchTable, insertInto, uploadToStorage, getPublicUrl, deleteFrom, updateRow, upsertInto, deleteByQuery };
