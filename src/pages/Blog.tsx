@@ -787,7 +787,11 @@ const Blog = () => {
               <img
                 src="/tech-icons/b9.avif"
                 alt="Newsletter background"
-                className="w-full h-full object-cover opacity-20"
+                className="w-full h-full object-cover"
+              />
+              <div
+                className="absolute inset-0"
+                style={{ backgroundColor: `rgba(${colors.primaryRgb}, 0.35)` }}
               />
             </div>
             <div className="relative z-10">
