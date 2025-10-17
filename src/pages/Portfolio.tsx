@@ -1100,7 +1100,7 @@ const PanaboticsPortfolio: React.FC = () => {
                 {/* Contact Us */}
                 <a
                   href="/contact"
-                  className="inline-flex items-center px-6 py-3 md:px-8 md:py-4 border-2 rounded-lg md:rounded-full transition-all duration-300 hover:scale-105 text-sm md:text-base"
+                  className="inline-flex items-center px-5 py-2 md:px-6 md:py-3 border-2 rounded-lg md:rounded-full transition-all duration-300 hover:scale-105 text-xs md:text-sm"
                   style={{ borderColor: "white", color: "white" }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.backgroundColor = "white";
