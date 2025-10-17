@@ -574,6 +574,35 @@ const Admin: React.FC = () => {
     }
   }
 
+  async function handleRevert(table: string, id: string | number) {
+    try {
+      // Update status back to null/pending in source table
+      await supabase.updateRow(table, id, { status: null });
+
+      // Delete from selected_students table
+      try {
+        await supabase.deleteByQuery("selected_students", `source_table=eq.${encodeURIComponent(table)}&source_id=eq.${encodeURIComponent(String(id))}`);
+      } catch (err) {
+        console.warn("Could not delete from selected_students:", err);
+      }
+
+      // Update local state
+      if (table === "job_applications") {
+        setApplications((prev) => (prev || []).map((a) => a.id === id ? { ...a, status: null } : a));
+      }
+      if (table === "contact_messages") {
+        setContacts((prev) => (prev || []).map((c) => c.id === id ? { ...c, status: null } : c));
+      }
+
+      setSelectedStudents((prev) => (prev || []).filter((s) => !(s.source_table === table && s.source_id === id)));
+
+      toast({ title: "Reverted", description: "Record moved back to Pending." });
+    } catch (err: any) {
+      console.error("Revert failed", err);
+      toast({ title: "Error", description: err?.message || "Failed to revert. Ensure RLS allows updates." });
+    }
+  }
+
   async function handleDeleteSelected(id: string | number) {
     if (!confirm("Are you sure you want to permanently remove this student from Selected Students? (Their resume will still be available in the original tab)")) return;
     try {
