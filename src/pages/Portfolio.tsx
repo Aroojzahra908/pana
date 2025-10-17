@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Mail, Phone, MapPin, LifeBuoy, Linkedin } from "lucide-react";
 import { useLocation } from 'react-router-dom';
@@ -1072,17 +1071,17 @@ const PanaboticsPortfolio: React.FC = () => {
               </div>
             </div> */}
             <div className="relative z-10">
-              <h2 className="text-2xl md:text-4xl font-bold mb-3 md:mb-4">
+              <h2 className="text-lg md:text-2xl font-bold mb-2 md:mb-3">
                 Ready to Experience Our AI Solutions?
               </h2>
-              <p className="text-sm md:text-xl mb-4 md:mb-8 opacity-90 max-w-2xl mx-auto">
+              <p className="text-xs md:text-sm mb-3 md:mb-5 opacity-90 max-w-2xl mx-auto leading-relaxed">
                 Join thousands of companies already transforming their operations with Panabotics AI products.
                 Get started with a personalized demo today.
               </p>
-              <div className="flex flex-col sm:flex-row gap-2 md:gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-2 md:gap-3 justify-center">
                 {/* Schedule Demo */}
                 <button
-                  className="inline-flex items-center px-6 py-3 md:px-8 md:py-4 font-semibold rounded-lg md:rounded-full transition-all duration-300 hover:scale-105 hover:shadow-md md:hover:shadow-xl group text-sm md:text-base"
+                  className="inline-flex items-center px-5 py-2 md:px-6 md:py-3 font-semibold rounded-lg md:rounded-full transition-all duration-300 hover:scale-105 hover:shadow-md md:hover:shadow-xl group text-xs md:text-sm"
                   style={{ backgroundColor: "white", color: colors.primaryHex }}
                   onMouseEnter={(e) =>
                     (e.currentTarget.style.backgroundColor = "#e0f7f9")
@@ -1101,7 +1100,7 @@ const PanaboticsPortfolio: React.FC = () => {
                 {/* Contact Us */}
                 <a
                   href="/contact"
-                  className="inline-flex items-center px-6 py-3 md:px-8 md:py-4 border-2 rounded-lg md:rounded-full transition-all duration-300 hover:scale-105 text-sm md:text-base"
+                  className="inline-flex items-center px-5 py-2 md:px-6 md:py-3 border-2 rounded-lg md:rounded-full transition-all duration-300 hover:scale-105 text-xs md:text-sm"
                   style={{ borderColor: "white", color: "white" }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.backgroundColor = "white";
@@ -1144,4 +1143,3 @@ const PanaboticsPortfolio: React.FC = () => {
 };
 
 export default PanaboticsPortfolio;
-

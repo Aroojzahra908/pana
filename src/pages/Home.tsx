@@ -2146,7 +2146,7 @@ const Home = () => {
       company: "TechCorp",
       content: "Panabotics transformed our data processing capabilities. Their AI solutions increased our efficiency by 300% and saved us millions in operational costs.",
       rating: 5,
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face"
+      image: "https://images.pexels.com/photos/25651531/pexels-photo-25651531.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop"
     },
     {
       name: "Michael Chen",
@@ -2154,7 +2154,7 @@ const Home = () => {
       company: "InnovateLab",
       content: "The computer vision system they built for our manufacturing line reduced defects by 95%. Absolutely game-changing technology.",
       rating: 5,
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face"
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face&q=80"
     },
     {
       name: "Dr. Emily Rodriguez",
@@ -2162,7 +2162,7 @@ const Home = () => {
       company: "MedTech",
       content: "Their machine learning models helped us predict patient outcomes with 99.2% accuracy. Panabotics is our trusted AI partner.",
       rating: 5,
-      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=80&h=80&fit=crop&crop=face"
+      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200&h=200&fit=crop&crop=face&q=80"
     }
   ];
 
@@ -2242,25 +2242,25 @@ const Home = () => {
   const whyChooseUs = [
     {
       icon: Award,
-      image: "https://images.unsplash.com/photo-1553028826-f4804a6dfd3f?w=400&h=300&fit=crop&crop=center",
+      image: "https://cdn.builder.io/api/v1/image/assets%2F176f979fd2a249d498538cbe54d6ce39%2F462c808a6af44823ac1c1b5be0b70430?format=webp&width=800",
       title: "Industry Expertise",
       description: "5+ years of experience delivering cutting-edge AI solutions across various industries"
     },
     {
       icon: Users,
-      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=300&fit=crop&crop=center",
+      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop&crop=center&q=80",
       title: "Expert Team",
       description: "PhDs and ML engineers with proven track records in AI research and implementation"
     },
     {
       icon: Shield,
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop&crop=center",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&crop=center&q=80",
       title: "Proven Results",
       description: "98% client satisfaction rate with measurable ROI improvements for every project"
     },
     {
       icon: Clock,
-      image: "https://images.unsplash.com/photo-1556075798-4825dfaaf498?w=400&h=300&fit=crop&crop=center",
+      image: "https://images.unsplash.com/photo-1556075798-4825dfaaf498?w=800&h=600&fit=crop&crop=center&q=80",
       title: "Fast Delivery",
       description: "Agile development process ensuring quick time-to-market without compromising quality"
     }
@@ -2272,7 +2272,7 @@ const Home = () => {
       step: "01",
       title: "Discovery",
       description: "We analyze your business needs and identify AI opportunities",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=300&h=200&fit=crop&crop=center",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&crop=center&q=80",
       color: "from-sky-400 to-sky-600",
       icon: "🔍"
     },
@@ -2280,15 +2280,15 @@ const Home = () => {
       step: "02",
       title: "Strategy",
       description: "Create a comprehensive AI roadmap tailored to your goals",
-      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=300&h=200&fit=crop&crop=center",
+      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop&crop=center&q=80",
       color: "from-teal-400 to-teal-600",
-      icon: "📋"
+      icon: "����"
     },
     {
       step: "03",
       title: "Development",
       description: "Build and train custom AI models using best practices",
-      image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=300&h=200&fit=crop&crop=center",
+      image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=600&h=400&fit=crop&crop=center&q=80",
       color: "from-slate-400 to-slate-600",
       icon: "⚙️"
     },
@@ -2296,7 +2296,7 @@ const Home = () => {
       step: "04",
       title: "Deployment",
       description: "Launch, monitor, and continuously optimize your AI solution",
-      image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=300&h=200&fit=crop&crop=center",
+      image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=600&h=400&fit=crop&crop=center&q=80",
       color: "from-gray-400 to-gray-600",
       icon: "🚀"
     }
