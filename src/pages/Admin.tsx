@@ -542,14 +542,18 @@ const Admin: React.FC = () => {
   }
 
   const renderSelectedTable = () => {
-    const selectedApps = (applications || []).filter((a: any) => a.status === "selected");
-    const selectedContacts = (contacts || []).filter((c: any) => c.status === "selected");
-    const merged = [
-      ...selectedContacts.map((c: any) => ({ ...c, _source: "contacts" })),
-      ...selectedApps.map((a: any) => ({ ...a, _source: "applications" })),
-    ];
-
-    if (!merged.length) return renderEmptyState("No selected students", "No approved students yet.");
+    if (selectedStudentsError) {
+      return renderEmptyState("Unable to load selected students", selectedStudentsError, "error");
+    }
+    if (selectedStudents === null) {
+      return renderEmptyState(
+        "Connect Supabase to view selected students",
+        "We could not reach the selected_students table. Confirm database permissions and try syncing again."
+      );
+    }
+    if (!selectedStudents.length) {
+      return renderEmptyState("No selected students", "No approved students yet.");
+    }
 
     return (
       <div className="overflow-hidden rounded-3xl border shadow-2xl backdrop-blur" style={tableShellStyle}>
@@ -569,18 +573,18 @@ const Admin: React.FC = () => {
               </tr>
             </thead>
             <tbody>
-              {merged.map((row: any) => (
-                <tr key={`${row._source}-${row.id}`} style={{ borderBottom: `1px solid ${secondaryTint(0.35)}` }}>
+              {selectedStudents.map((row: any) => (
+                <tr key={row.id} style={{ borderBottom: `1px solid ${secondaryTint(0.35)}` }}>
                   <td className="px-6 py-4">
                     <p className="font-semibold" style={{ color: colors.secondaryHex }}>{formatFullName(row.first_name, row.last_name)}</p>
                   </td>
-                  <td className="px-6 py-4"><p style={{ color: secondaryTint(0.6) }}>{row._source}</p></td>
+                  <td className="px-6 py-4"><p style={{ color: secondaryTint(0.6) }}>{row.source_table}</p></td>
                   <td className="px-6 py-4">
                     {row.email ? <a href={`mailto:${row.email}`} style={{ color: colors.primaryHex }}>{row.email}</a> : <span style={{ color: secondaryTint(0.8) }}>—</span>}
                   </td>
                   <td className="px-6 py-4"><p style={{ color: colors.secondaryHex }}>{row.position || row.company || '—'}</p></td>
                   <td className="px-6 py-4">
-                    <button className="inline-flex items-center justify-center px-3 py-1 rounded-md" style={{ minWidth: 84, background: '#ef4444', color: '#fff', fontWeight: 600 }} onClick={async () => await handleDelete(row._source === 'applications' ? 'job_applications' : 'contact_messages', row.id)}>Delete</button>
+                    <button className="inline-flex items-center justify-center px-3 py-1 rounded-md" style={{ minWidth: 84, background: '#ef4444', color: '#fff', fontWeight: 600 }} onClick={async () => await handleDeleteSelected(row.id)}>Delete</button>
                   </td>
                 </tr>
               ))}
