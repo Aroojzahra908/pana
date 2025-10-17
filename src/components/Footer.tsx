@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
 import { Mail, Phone, MapPin, MessageSquare, LifeBuoy, HelpCircle } from "lucide-react";
@@ -84,13 +83,13 @@ const Footer = () => {
         color: colors.white,
       }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* Responsive grid: default 1 col (mobile), md 2 cols, lg 6 cols */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+        {/* Responsive grid: compact layout */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5">
           {/* Brand Section */}
-          <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center space-x-2 mb-4">
-              <div className="text-2xl font-bold select-none">
+          <div>
+            <Link to="/" className="flex items-center space-x-1 mb-2">
+              <div className="text-base sm:text-lg font-bold select-none">
                 <span style={{ color: colors.primaryHex }}>Pana</span>
                 <span
                   className="bg-clip-text text-transparent"
@@ -102,18 +101,16 @@ const Footer = () => {
                 </span>
               </div>
             </Link>
-            <p className="mb-6 leading-relaxed">
-              Transforming businesses through innovative AI and ML solutions.
-              We're your partners in building the future of intelligent
-              technology.
+            <p className="mb-2 leading-tight text-xs">
+              AI & ML Solutions
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-1.5">
               {socialLinks.map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="w-10 h-10 rounded-lg flex items-center justify-center transition-colors duration-200"
+                  className="w-7 h-7 rounded-md flex items-center justify-center transition-colors duration-200"
                   style={{
                     backgroundColor: colors.white,
                     color: colors.secondaryHex,
@@ -129,7 +126,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Icon className="h-5 w-5" />
+                  <Icon className="h-3.5 w-3.5" />
                 </a>
               ))}
             </div>
@@ -138,13 +135,13 @@ const Footer = () => {
           {/* Footer Links */}
           {footerSections.map(({ title, links }) => (
             <div key={title}>
-              <h3 className="text-lg font-semibold mb-4">{title}</h3>
-              <ul className="space-y-2">
+              <h3 className="text-xs font-semibold mb-1.5 uppercase tracking-wide">{title}</h3>
+              <ul className="space-y-1">
                 {links.map(({ name, href }) => (
                   <li key={name}>
                     <Link
                       to={href}
-                      className="transition-colors duration-200 block" // block for better tap on mobile
+                      className="transition-colors duration-200 block text-xs"
                       style={{ color: colors.white }}
                       onMouseEnter={(e) =>
                         (e.currentTarget.style.color = colors.grayGradientStart)
@@ -162,19 +159,21 @@ const Footer = () => {
           ))}
         </div>
 
+        {/* Divider */}
+        <div className="border-t border-white border-opacity-20 my-4"></div>
+
         {/* Bottom Bar */}
-        <div className="border-t border-white mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm text-center md:text-left select-none">
-            © 2025 Panabotics. All rights reserved. | Designed with for the
-            future of AI
+        <div className="flex flex-col sm:flex-row gap-2 justify-between items-center text-center sm:text-left">
+          <p className="text-xs select-none">
+            © 2025 Panabotics. All rights reserved.
           </p>
-          <div className="flex space-x-6 mt-4 md:mt-0 flex-wrap justify-center md:justify-start">
+          <div className="flex space-x-3 flex-wrap justify-center sm:justify-start">
             {["Privacy Policy", "Terms of Service", "Cookie Policy"].map(
               (text) => (
                 <Link
                   key={text}
                   to="/contact"
-                  className="text-sm transition-colors duration-200 select-none"
+                  className="text-xs transition-colors duration-200 select-none"
                   style={{ color: colors.white }}
                   onMouseEnter={(e) =>
                     (e.currentTarget.style.color = colors.grayGradientStart)
