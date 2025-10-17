@@ -793,7 +793,7 @@ const Blog = () => {
               />
               <div
                 className="absolute inset-0"
-                style={{ backgroundColor: `rgba(${colors.primaryRgb}, 0.8)` }}
+                style={{ backgroundColor: `rgba(${colors.primaryRgb}, 0.7)` }}
               />
             </div>
             <div className="relative z-10">
