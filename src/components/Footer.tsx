@@ -85,7 +85,7 @@ const Footer = () => {
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
         {/* Responsive grid: compact layout */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5">
           {/* Brand Section */}
           <div className="col-span-2 sm:col-span-1">
             <Link to="/" className="flex items-center space-x-1 mb-2">
