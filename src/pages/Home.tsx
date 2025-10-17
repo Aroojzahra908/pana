@@ -2242,25 +2242,25 @@ const Home = () => {
   const whyChooseUs = [
     {
       icon: Award,
-      image: "https://images.unsplash.com/photo-1553028826-f4804a6dfd3f?w=400&h=300&fit=crop&crop=center",
+      image: "https://images.unsplash.com/photo-1553028826-f4804a6dfd3f?w=800&h=600&fit=crop&crop=center&q=80",
       title: "Industry Expertise",
       description: "5+ years of experience delivering cutting-edge AI solutions across various industries"
     },
     {
       icon: Users,
-      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=300&fit=crop&crop=center",
+      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop&crop=center&q=80",
       title: "Expert Team",
       description: "PhDs and ML engineers with proven track records in AI research and implementation"
     },
     {
       icon: Shield,
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop&crop=center",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&crop=center&q=80",
       title: "Proven Results",
       description: "98% client satisfaction rate with measurable ROI improvements for every project"
     },
     {
       icon: Clock,
-      image: "https://images.unsplash.com/photo-1556075798-4825dfaaf498?w=400&h=300&fit=crop&crop=center",
+      image: "https://images.unsplash.com/photo-1556075798-4825dfaaf498?w=800&h=600&fit=crop&crop=center&q=80",
       title: "Fast Delivery",
       description: "Agile development process ensuring quick time-to-market without compromising quality"
     }
