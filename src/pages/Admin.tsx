@@ -240,10 +240,10 @@ const Admin: React.FC = () => {
     // Show all contacts (both pending and approved)
     const allContacts = (contacts || []);
 
-    if (!pendingContacts.length) {
+    if (!allContacts.length) {
       return renderEmptyState(
-        "No pending contact messages",
-        "All contacts have been approved and moved to Selected Students."
+        "No contact messages",
+        "No contact submissions yet."
       );
     }
 
@@ -265,7 +265,7 @@ const Admin: React.FC = () => {
             className="rounded-full px-3 py-1 text-xs font-semibold"
             style={{ background: colors.primaryHex, color: colors.white }}
           >
-            {pendingContacts.length} records
+            {allContacts.length} records
           </span>
         </div>
 
@@ -282,7 +282,7 @@ const Admin: React.FC = () => {
               </tr>
             </thead>
             <tbody>
-              {pendingContacts.map((contact) => (
+              {allContacts.map((contact) => (
                 <tr key={contact.id} style={{ borderBottom: `1px solid ${secondaryTint(0.35)}`, transition: 'background-color 0.18s ease' }} onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = `rgba(${colors.primaryRgb},0.08)`)} onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}>
                   <td className="px-6 py-4">
                     <p className="font-semibold" style={{ color: colors.secondaryHex }}>
@@ -332,8 +332,12 @@ const Admin: React.FC = () => {
                     {formatDateTime(contact.created_at)}
                   </td>
                   <td className="px-6 py-4">
-                    <button className="inline-flex items-center justify-center px-3 py-1 rounded-md" style={{ minWidth: 84, background: colors.primaryHex, color: colors.white, fontWeight: 600 }} onClick={async () => await handleApprove('contact_messages', contact.id)}>Approve</button>
-                    <button className="inline-flex items-center justify-center px-3 py-1 rounded-md" style={{ minWidth: 84, background: '#ef4444', color: '#fff', fontWeight: 600 }} onClick={async () => await handleDelete('contact_messages', contact.id)}>Delete</button>
+                    {contact.status === "selected" ? (
+                      <span className="inline-flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold" style={{ minWidth: 84, background: '#10b981', color: '#fff' }}>Approved</span>
+                    ) : (
+                      <button className="inline-flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold" style={{ minWidth: 84, background: colors.primaryHex, color: colors.white }} onClick={async () => await handleApprove('contact_messages', contact.id)}>Pending</button>
+                    )}
+                    <button className="inline-flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold ml-2" style={{ minWidth: 84, background: '#ef4444', color: '#fff' }} onClick={async () => await handleDelete('contact_messages', contact.id)}>Delete</button>
                   </td>
                 </tr>
               ))}
@@ -355,13 +359,13 @@ const Admin: React.FC = () => {
       );
     }
 
-    // Filter to show only non-selected applications (pending/approved but not moved to selected_students)
-    const pendingApplications = (applications || []).filter((a: any) => a.status !== "selected");
+    // Show all applications (both pending and approved)
+    const allApplications = (applications || []);
 
-    if (!pendingApplications.length) {
+    if (!allApplications.length) {
       return renderEmptyState(
-        "No pending job applications",
-        "All applications have been approved and moved to Selected Students."
+        "No job applications",
+        "No applications submitted yet."
       );
     }
 
@@ -383,7 +387,7 @@ const Admin: React.FC = () => {
             className="rounded-full px-3 py-1 text-xs font-semibold"
             style={{ background: colors.primaryHex, color: colors.white }}
           >
-            {pendingApplications.length} records
+            {allApplications.length} records
           </span>
         </div>
 
@@ -400,7 +404,7 @@ const Admin: React.FC = () => {
               </tr>
             </thead>
             <tbody>
-              {pendingApplications.map((application) => (
+              {allApplications.map((application) => (
                 <tr key={application.id} style={{ borderBottom: `1px solid ${secondaryTint(0.35)}`, transition: 'background-color 0.18s ease' }} onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = `rgba(${colors.primaryRgb},0.08)`)} onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}>
                   <td className="px-6 py-4">
                     <p className="font-semibold" style={{ color: colors.secondaryHex }}>
@@ -464,8 +468,12 @@ const Admin: React.FC = () => {
                     {formatDateTime(application.created_at)}
                   </td>
                   <td className="px-6 py-4">
-                    <button className="inline-flex items-center justify-center px-3 py-1 rounded-md" style={{ minWidth: 84, background: colors.primaryHex, color: colors.white, fontWeight: 600 }} onClick={async () => await handleApprove('job_applications', application.id)}>Approve</button>
-                    <button className="inline-flex items-center justify-center px-3 py-1 rounded-md" style={{ minWidth: 84, background: '#ef4444', color: '#fff', fontWeight: 600 }} onClick={async () => await handleDelete('job_applications', application.id)}>Delete</button>
+                    {application.status === "selected" ? (
+                      <span className="inline-flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold" style={{ minWidth: 84, background: '#10b981', color: '#fff' }}>Approved</span>
+                    ) : (
+                      <button className="inline-flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold" style={{ minWidth: 84, background: colors.primaryHex, color: colors.white }} onClick={async () => await handleApprove('job_applications', application.id)}>Pending</button>
+                    )}
+                    <button className="inline-flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold ml-2" style={{ minWidth: 84, background: '#ef4444', color: '#fff' }} onClick={async () => await handleDelete('job_applications', application.id)}>Delete</button>
                   </td>
                 </tr>
               ))}
@@ -550,15 +558,15 @@ const Admin: React.FC = () => {
         return exists ? prev : [...prev, savedRecord];
       });
 
-      // Remove from source table state so it disappears from that tab
+      // Update local state to reflect new status but keep in source table
       if (table === "job_applications") {
-        setApplications((prev) => (prev || []).filter((a) => a.id !== id));
+        setApplications((prev) => (prev || []).map((a) => a.id === id ? { ...a, status: "selected" } : a));
       }
       if (table === "contact_messages") {
-        setContacts((prev) => (prev || []).filter((c) => c.id !== id));
+        setContacts((prev) => (prev || []).map((c) => c.id === id ? { ...c, status: "selected" } : c));
       }
 
-      toast({ title: "Approved!", description: "Record moved to Selected Students." });
+      toast({ title: "Approved!", description: "Record marked as approved and added to Selected Students." });
     } catch (err: any) {
       console.error("Approve failed", err);
       toast({ title: "Error", description: err?.message || "Failed to approve. Ensure the table has a 'status' column and RLS allows updates." });
