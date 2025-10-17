@@ -779,7 +779,7 @@ const Blog = () => {
         {/* Newsletter Section - Responsive padding and text */}
         <div className="relative mt-12 sm:mt-16 md:mt-20">
           <div
-            className="rounded-xl md:rounded-3xl p-6 sm:p-8 md:p-12 text-white text-center relative overflow-hidden shadow-lg md:shadow-xl border-2"
+            className="max-w-3xl mx-auto rounded-xl md:rounded-3xl p-6 sm:p-8 md:p-12 text-white text-center relative overflow-hidden shadow-lg md:shadow-xl border-2"
             style={{
               backgroundColor: colors.secondaryHex,
               borderColor: colors.primaryHex,
