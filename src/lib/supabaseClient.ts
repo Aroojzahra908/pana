@@ -142,6 +142,17 @@ export async function deleteFrom(table: string, id: string | number) {
   return true;
 }
 
+export async function deleteByQuery(table: string, query: string) {
+  if (!SUPABASE_URL) throw new Error("Missing SUPABASE_URL");
+  const url = `${SUPABASE_URL}/rest/v1/${table}?${query}`;
+  const res = await fetch(url, { method: "DELETE", headers: getHeaders() });
+  if (!res.ok) {
+    const text = await res.text().catch(() => "");
+    throw new Error(`Failed to delete from ${table}: ${res.status} ${text}`);
+  }
+  return true;
+}
+
 export async function updateRow(table: string, id: string | number, payload: any) {
   if (!SUPABASE_URL) throw new Error("Missing SUPABASE_URL");
   const url = `${SUPABASE_URL}/rest/v1/${table}?id=eq.${encodeURIComponent(String(id))}`;
