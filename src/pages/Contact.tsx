@@ -219,6 +219,13 @@ const Contact = () => {
                   required: true,
                 },
                 {
+                  id: "phone",
+                  label: "Phone Number",
+                  type: "tel",
+                  placeholder: "+1 (555) 123-4567",
+                  required: true,
+                },
+                {
                   id: "company",
                   label: "Company",
                   type: "text",
