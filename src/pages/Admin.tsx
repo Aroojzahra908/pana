@@ -451,6 +451,14 @@ const Admin: React.FC = () => {
     if (!confirm("Are you sure you want to permanently delete this record?")) return;
     try {
       await supabase.deleteFrom(table, id);
+
+      // Also delete from selected_students table if it exists there
+      try {
+        await supabase.deleteByQuery("selected_students", `source_table=eq.${encodeURIComponent(table)}&source_id=eq.${encodeURIComponent(String(id))}`);
+      } catch (err) {
+        console.warn("Could not delete from selected_students:", err);
+      }
+
       toast({ title: "Deleted", description: "Record deleted." });
       if (table === "contact_messages") setContacts((prev) => (prev || []).filter((c) => c.id !== id));
       if (table === "job_applications") setApplications((prev) => (prev || []).filter((a) => a.id !== id));
