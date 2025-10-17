@@ -2242,7 +2242,7 @@ const Home = () => {
   const whyChooseUs = [
     {
       icon: Award,
-      image: "https://images.unsplash.com/photo-1553028826-f4804a6dfd3f?w=800&h=600&fit=crop&crop=center&q=80",
+      image: "https://cdn.builder.io/api/v1/image/assets%2F176f979fd2a249d498538cbe54d6ce39%2F462c808a6af44823ac1c1b5be0b70430?format=webp&width=800",
       title: "Industry Expertise",
       description: "5+ years of experience delivering cutting-edge AI solutions across various industries"
     },
