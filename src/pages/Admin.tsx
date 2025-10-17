@@ -159,7 +159,7 @@ const Admin: React.FC = () => {
 
   const summaryCards = [
     {
-      label: "Contact Leads",
+      label: "Pending Leads",
       value: (contacts || []).filter((c: any) => c.status !== "selected").length ?? 0,
       helper: uniqueCompanies > 0 ? `${uniqueCompanies} unique companies` : "Awaiting first lead",
       icon: Inbox,
