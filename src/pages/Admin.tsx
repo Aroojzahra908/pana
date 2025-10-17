@@ -498,10 +498,10 @@ const Admin: React.FC = () => {
             notes: record.cover_letter || record.message || null,
             selected_at: new Date().toISOString(),
           };
-          await supabase.insertInto("selected_students", [payload]);
+          await supabase.upsertInto("selected_students", payload);
           toast({ title: "Approved", description: "Record moved to Selected and saved." });
         } catch (insErr: any) {
-          console.error("Failed to insert selected_students", insErr);
+          console.error("Failed to upsert selected_students", insErr);
           toast({ title: "Warning", description: "Approved but failed to save selected student. Check DB schema/permissions." });
         }
       } else {
