@@ -424,12 +424,25 @@ const Careers = () => {
         const objectPath = `applications/${objectName}`;
 
         console.log("Careers: uploading resume", objectPath);
-        await supabase.uploadToStorage("resumes", objectPath, resumeFile, {
-          contentType: resumeFile.type || "application/octet-stream",
-          upsert: false,
-        });
-        resumeUrl = supabase.getPublicUrl("resumes", objectPath);
-        console.log("Careers: resume uploaded", resumeUrl);
+        try {
+          await supabase.uploadToStorage("resumes", objectPath, resumeFile, {
+            contentType: resumeFile.type || "application/octet-stream",
+            upsert: false,
+          });
+          resumeUrl = supabase.getPublicUrl("resumes", objectPath);
+          console.log("Careers: resume uploaded", resumeUrl);
+        } catch (uploadErr: any) {
+          console.error("Careers: resume upload failed", uploadErr);
+          const msg = uploadErr?.message || String(uploadErr);
+          // If the failure is due to Supabase row-level security / permissions, proceed without the resume
+          if (msg.toLowerCase().includes("row-level security") || msg.toLowerCase().includes("upload denied") || msg.includes("403")) {
+            toast({ title: "Upload failed", description: "Resume upload blocked by storage permissions. Your application will be submitted without the resume." });
+            // leave resumeUrl as null and continue
+          } else {
+            // For other errors, rethrow to be handled by outer catch
+            throw uploadErr;
+          }
+        }
       }
 
       const payload = [{
