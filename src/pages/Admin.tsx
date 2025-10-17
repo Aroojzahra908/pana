@@ -615,7 +615,8 @@ const Admin: React.FC = () => {
                 <th className="px-6 py-3 font-bold text-sm tracking-wide">Name</th>
                 <th className="px-6 py-3 font-bold text-sm tracking-wide">Source</th>
                 <th className="px-6 py-3 font-bold text-sm tracking-wide">Contact</th>
-                <th className="px-6 py-3 font-bold text-sm tracking-wide">Details</th>
+                <th className="px-6 py-3 font-bold text-sm tracking-wide">Position</th>
+                <th className="px-6 py-3 font-bold text-sm tracking-wide">Resume</th>
                 <th className="px-6 py-3 font-bold text-sm tracking-wide">Actions</th>
               </tr>
             </thead>
@@ -631,7 +632,14 @@ const Admin: React.FC = () => {
                   </td>
                   <td className="px-6 py-4"><p style={{ color: colors.secondaryHex }}>{row.position || row.company || '—'}</p></td>
                   <td className="px-6 py-4">
-                    <button className="inline-flex items-center justify-center px-3 py-1 rounded-md" style={{ minWidth: 84, background: '#ef4444', color: '#fff', fontWeight: 600 }} onClick={async () => await handleDeleteSelected(row.id)}>Delete</button>
+                    {row.resume_file_url ? (
+                      <a href={row.resume_file_url} target="_blank" rel="noopener noreferrer" style={{ color: colors.primaryHex, textDecoration: 'underline' }} className="font-medium">View Resume</a>
+                    ) : (
+                      <span style={{ color: secondaryTint(0.8) }}>—</span>
+                    )}
+                  </td>
+                  <td className="px-6 py-4">
+                    <button className="inline-flex items-center justify-center px-3 py-1 rounded-md" style={{ minWidth: 84, background: '#ef4444', color: '#fff', fontWeight: 600 }} onClick={async () => await handleDeleteSelected(row.id)}>Remove</button>
                   </td>
                 </tr>
               ))}
