@@ -319,6 +319,7 @@ const Admin: React.FC = () => {
                     <span
                       className="mt-1 inline-flex rounded-full px-3 py-1 text-xs font-medium"
                       style={{ background: colors.primaryHex, color: colors.white }}
+                      title={contact.service || "Not specified"}
                     >
                       {contact.service || "Not specified"}
                     </span>
@@ -331,13 +332,13 @@ const Admin: React.FC = () => {
                   <td className="px-6 py-4 text-sm" style={{ color: secondaryTint(0.6) }}>
                     {formatDateTime(contact.created_at)}
                   </td>
-                  <td className="px-6 py-4">
+                  <td className="px-6 py-4 flex gap-2">
                     {contact.status === "selected" ? (
-                      <span className="inline-flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold" style={{ minWidth: 84, background: '#10b981', color: '#fff' }}>Approved</span>
+                      <span className="inline-flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold" style={{ minWidth: 76, background: '#10b981', color: '#fff' }}>Approved</span>
                     ) : (
-                      <button className="inline-flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold" style={{ minWidth: 84, background: colors.primaryHex, color: colors.white }} onClick={async () => await handleApprove('contact_messages', contact.id)}>Pending</button>
+                      <button className="inline-flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold" style={{ minWidth: 76, background: colors.primaryHex, color: colors.white }} onClick={async () => await handleApprove('contact_messages', contact.id)}>Pending</button>
                     )}
-                    <button className="inline-flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold ml-2" style={{ minWidth: 84, background: '#ef4444', color: '#fff' }} onClick={async () => await handleDelete('contact_messages', contact.id)}>Delete</button>
+                    <button className="inline-flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold" style={{ minWidth: 76, background: '#ef4444', color: '#fff' }} onClick={async () => await handleDelete('contact_messages', contact.id)}>Delete</button>
                   </td>
                 </tr>
               ))}
@@ -467,13 +468,13 @@ const Admin: React.FC = () => {
                   <td className="px-6 py-4 text-sm" style={{ color: secondaryTint(0.8) }}>
                     {formatDateTime(application.created_at)}
                   </td>
-                  <td className="px-6 py-4">
+                  <td className="px-6 py-4 flex gap-2">
                     {application.status === "selected" ? (
-                      <span className="inline-flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold" style={{ minWidth: 84, background: '#10b981', color: '#fff' }}>Approved</span>
+                      <span className="inline-flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold" style={{ minWidth: 76, background: '#10b981', color: '#fff' }}>Approved</span>
                     ) : (
-                      <button className="inline-flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold" style={{ minWidth: 84, background: colors.primaryHex, color: colors.white }} onClick={async () => await handleApprove('job_applications', application.id)}>Pending</button>
+                      <button className="inline-flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold" style={{ minWidth: 76, background: colors.primaryHex, color: colors.white }} onClick={async () => await handleApprove('job_applications', application.id)}>Pending</button>
                     )}
-                    <button className="inline-flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold ml-2" style={{ minWidth: 84, background: '#ef4444', color: '#fff' }} onClick={async () => await handleDelete('job_applications', application.id)}>Delete</button>
+                    <button className="inline-flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold" style={{ minWidth: 76, background: '#ef4444', color: '#fff' }} onClick={async () => await handleDelete('job_applications', application.id)}>Delete</button>
                   </td>
                 </tr>
               ))}
