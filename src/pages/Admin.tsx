@@ -49,8 +49,10 @@ const Admin: React.FC = () => {
       const msg = "Missing SUPABASE_URL";
       setContacts(null);
       setApplications(null);
+      setSelectedStudents(null);
       setContactsError(msg);
       setApplicationsError(msg);
+      setSelectedStudentsError(msg);
       setLoading(false);
       return;
     }
@@ -82,6 +84,20 @@ const Admin: React.FC = () => {
         console.warn("job_applications fetch error:", err);
         setApplications(null);
         setApplicationsError(err?.message || String(err));
+      }
+
+      // selected_students
+      try {
+        const selectedData = await supabase.fetchTable("selected_students");
+        const sorted = Array.isArray(selectedData)
+          ? selectedData.sort((a: any, b: any) => (a.selected_at < b.selected_at ? 1 : -1))
+          : selectedData;
+        setSelectedStudents(sorted || []);
+        setSelectedStudentsError(null);
+      } catch (err: any) {
+        console.warn("selected_students fetch error:", err);
+        setSelectedStudents(null);
+        setSelectedStudentsError(err?.message || String(err));
       }
 
       setLastSynced(new Date().toISOString());
