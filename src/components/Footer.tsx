@@ -87,7 +87,7 @@ const Footer = () => {
         {/* Responsive grid: compact layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5">
           {/* Brand Section */}
-          <div className="col-span-2 sm:col-span-1">
+          <div>
             <Link to="/" className="flex items-center space-x-1 mb-2">
               <div className="text-base sm:text-lg font-bold select-none">
                 <span style={{ color: colors.primaryHex }}>Pana</span>
