@@ -1,5 +1,3 @@
-
-
 import { useEffect, useState } from "react";
 import {
   Calendar,
@@ -12,6 +10,7 @@ import {
   Share2,
   Bookmark,
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 import colors from "../components/colors";
 
@@ -524,10 +523,16 @@ const Blog = () => {
     <div className="min-h-screen bg-gray-50 pt-16 md:pt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 md:py-12">
         {/* Header Section - Responsive text sizes */}
-        <div className="text-center mb-10 sm:mb-14 md:mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          style={{ willChange: "transform" }}
+          className="text-center mb-10 sm:mb-14 md:mb-16"
+        >
           <div className="pb-4 sm:pb-5">
             <h1
-              className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight"
+              className="text-5xl lg:text-6xl font-bold leading-tight"
               style={{ color: colors.primaryHex }}
             >
               AI Insights Blog
@@ -538,10 +543,16 @@ const Blog = () => {
             artificial intelligence and machine learning from our team of
             experts.
           </p>
-        </div>
+        </motion.div>
 
         {/* Featured Post Slider - Responsive height */}
-        <div className="relative mb-10 sm:mb-14 md:mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="relative mb-10 sm:mb-14 md:mb-16"
+        >
           <div
             className="bg-white rounded-xl md:rounded-3xl overflow-hidden shadow-xl md:shadow-2xl border-2"
             style={{ borderColor: colors.primaryHex }}
@@ -620,10 +631,16 @@ const Blog = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Blog Posts Grid - Responsive columns */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-8">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-8"
+        >
           {blogPosts.map((post, index) => (
             <article
               key={index}
@@ -755,7 +772,7 @@ const Blog = () => {
               </div>
             </article>
           ))}
-        </div>
+        </motion.div>
 
         {/* Newsletter Section - Responsive padding and text */}
         <div className="relative mt-12 sm:mt-16 md:mt-20">

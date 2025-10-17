@@ -1,6 +1,6 @@
-
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import colors from "../components/colors";
 import { useNavigate } from 'react-router-dom';
@@ -201,17 +201,21 @@ const Services = () => {
       {/* Hero Section */}
       <div className="relative pt-24 md:pt-32 pb-12 md:pb-20 overflow-hidden bg-white">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="animate-on-scroll">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            style={{ willChange: "transform" }}
+          >
             <h3
-              className="text-3xl md:text-5xl lg:text-6xl font-extrabold mb-6 md:mb-8 leading-tight"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 leading-tight"
               style={{ color: colors.primaryHex }}
             >
-              <span className="block">AI Solutions That</span>
-              <span className="block">Transform Business</span>
+              AI Solutions That Transform Business
             </h3>
 
             <p
-              className="text-lg md:text-xl lg:text-2xl max-w-3xl md:max-w-4xl mx-auto mb-8 md:mb-12 leading-relaxed text-gray-700"
+              className="text-sm md:text-base lg:text-lg max-w-2xl md:max-w-3xl mx-auto mb-8 md:mb-12 leading-relaxed text-gray-700"
             >
               Panabotics delivers cutting-edge artificial intelligence and machine learning solutions
               that revolutionize how businesses operate, compete, and thrive in the digital age.
@@ -237,16 +241,22 @@ const Services = () => {
                 </span>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Services Grid */}
         <div className="py-12 md:py-20">
-          <div className="text-center mb-12 md:mb-16 animate-on-scroll">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-12 md:mb-16"
+          >
             <h2
-              className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 md:mb-6"
+              className="text-5xl lg:text-6xl font-bold mb-4 md:mb-6"
               style={{ color: colors.primaryHex }}
             >
               Our Services
@@ -254,7 +264,7 @@ const Services = () => {
             <p className="text-base md:text-xl max-w-2xl md:max-w-3xl mx-auto text-gray-700">
               Comprehensive AI and ML solutions designed to accelerate your digital transformation
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 mb-12 md:mb-16">
             {services.map((service, index) => (
@@ -313,7 +323,7 @@ const Services = () => {
         {/* Stats Section */}
         <div className="stats-section py-12 md:py-20 rounded-xl md:rounded-2xl lg:rounded-3xl mb-12 md:mb-20 animate-on-scroll bg-white shadow-md md:shadow-lg">
           <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-2 md:mb-4" style={{ color: colors.primaryHex }}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 md:mb-4" style={{ color: colors.primaryHex }}>
               Trusted by Industry Leaders
             </h2>
             <p className="text-sm md:text-base lg:text-xl text-gray-700">Delivering measurable results across diverse sectors</p>
@@ -328,7 +338,7 @@ const Services = () => {
             ].map(({ label, value }, idx) => (
               <div key={idx} className="group">
                 <div
-                  className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-1 md:mb-2 group-hover:scale-105 transition-transform"
+                  className="text-3xl md:text-4xl lg:text-5xl font-bold mb-1 md:mb-2 group-hover:scale-105 transition-transform"
                   style={{ color: colors.secondaryHex }}
                 >
                   {value}
@@ -342,7 +352,7 @@ const Services = () => {
         {/* Case Studies */}
         <div className="py-12 md:py-20 animate-on-scroll">
           <div className="text-center mb-8 md:mb-12 lg:mb-16">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-2 md:mb-4" style={{ color: colors.primaryHex }}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 md:mb-4" style={{ color: colors.primaryHex }}>
               Success Stories
             </h2>
             <p className="text-sm md:text-base lg:text-xl text-gray-700">Real-world AI implementations driving business transformation</p>
@@ -367,7 +377,7 @@ const Services = () => {
                   </div>
                 </div>
                 <div className="p-3 md:p-4 lg:p-6">
-                  <h3 className="text-lg md:text-xl font-extrabold mb-1 md:mb-2" style={{ color: colors.primaryHex }}>
+                  <h3 className="text-lg md:text-xl font-bold mb-1 md:mb-2" style={{ color: colors.primaryHex }}>
                     {study.title}
                   </h3>
                   <p className="text-xs md:text-sm text-gray-700">{study.description}</p>
@@ -400,7 +410,7 @@ const Services = () => {
             {/* Heading */}
             <div className="relative text-center mb-4 md:mb-6">
               <h2
-                className="text-2xl md:text-3xl font-extrabold mb-1"
+                className="text-2xl md:text-3xl font-bold mb-1"
                 style={{ color: colors.primaryHex }}
               >
                 What Our{" "}
@@ -486,7 +496,7 @@ const Services = () => {
         {/* Process Section */}
         <div className="py-12 md:py-20 animate-on-scroll">
           <div className="text-center mb-8 md:mb-12 lg:mb-16">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-2 md:mb-4" style={{ color: colors.primaryHex }}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 md:mb-4" style={{ color: colors.primaryHex }}>
               Our Process
             </h2>
             <p className="text-sm md:text-base lg:text-xl text-gray-700">
@@ -573,28 +583,3 @@ const Services = () => {
 };
 
 export default Services;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

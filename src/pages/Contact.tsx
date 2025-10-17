@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
+import { motion } from "framer-motion";
 import colors from "../components/colors";
 import supabase from "@/lib/supabaseClient";
 import { toast } from "@/hooks/use-toast";
@@ -158,22 +159,31 @@ const Contact = () => {
     <div className="min-h-screen bg-gray-50 pt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
-        <div
-          className="text-center mb-12 md:mb-16 animate-on-scroll"
-          style={{ color: colors.primaryHex }}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          style={{ willChange: "transform", color: colors.primaryHex }}
+          className="text-center mb-12 md:mb-16"
         >
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
+          <h1 className="text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
             Get In Touch
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4 sm:px-0">
             Ready to transform your business with AI? Let's discuss your project
             and explore how our innovative solutions can drive your success.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12">
           {/* Form Container */}
-          <div className="bg-white rounded-2xl md:rounded-3xl p-6 sm:p-8 animate-on-scroll transition-shadow duration-300 hover:shadow-[0_8px_24px_-4px_rgba(0,180,187,0.4)]">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="bg-white rounded-2xl md:rounded-3xl p-6 sm:p-8 transition-shadow duration-300 hover:shadow-[0_8px_24px_-4px_rgba(0,180,187,0.4)]"
+          >
             <h2
               className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6"
               style={{ color: colors.primaryHex }}
@@ -325,10 +335,16 @@ const Contact = () => {
                 )}
               </button>
             </form>
-          </div>
+          </motion.div>
 
           {/* Contact Info Section */}
-          <div className="space-y-6 sm:space-y-8 animate-on-scroll">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="space-y-6 sm:space-y-8"
+          >
             <div>
               <h2
                 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6"
@@ -442,7 +458,7 @@ const Contact = () => {
                 Send us a message
               </button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

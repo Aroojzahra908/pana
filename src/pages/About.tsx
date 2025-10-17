@@ -89,7 +89,7 @@ const About = () => {
           className="text-center mb-12 md:mb-16 relative z-10"
         >
           <h1
-            className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-gray-900 to-cyan-600 bg-clip-text text-transparent"
+            className="text-5xl lg:text-6xl font-bold mb-4 md:mb-6"
             style={{ color: colors.primaryHex }}
           >
             About Panabotics
