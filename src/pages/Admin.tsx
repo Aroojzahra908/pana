@@ -166,7 +166,7 @@ const Admin: React.FC = () => {
       tint: primaryTint(0.16),
     },
     {
-      label: "Applicants",
+      label: "Pending Applicants",
       value: (applications || []).filter((a: any) => a.status !== "selected").length ?? 0,
       helper: uniqueRoles > 0 ? `${uniqueRoles} roles represented` : "No roles yet",
       icon: Users,
