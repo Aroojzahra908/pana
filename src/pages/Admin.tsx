@@ -506,48 +506,54 @@ const Admin: React.FC = () => {
         record = (contacts || []).find((c: any) => c.id === id) || null;
       }
 
+      if (!record) {
+        toast({ title: "Error", description: "Record not found in local state" });
+        return;
+      }
+
       // perform the DB update
       await supabase.updateRow(table, id, { status: "selected" });
 
-      // update local cache so UI reflects the change immediately
-      if (table === "job_applications") {
-        setApplications((prev) => (prev || []).map((a) => (a.id === id ? { ...a, status: "selected" } : a)));
-      }
-      if (table === "contact_messages") {
-        setContacts((prev) => (prev || []).map((c) => (c.id === id ? { ...c, status: "selected" } : c)));
+      // Create the selected_students payload
+      const payload = {
+        source_table: table,
+        source_id: record.id,
+        first_name: record.first_name || null,
+        last_name: record.last_name || null,
+        email: record.email || null,
+        phone: record.phone || null,
+        position: record.position || null,
+        company: record.company || null,
+        resume_file_url: record.resume_file_url || null,
+        notes: record.cover_letter || record.message || null,
+        selected_at: new Date().toISOString(),
+      };
+
+      // persist selection to selected_students
+      try {
+        await supabase.upsertInto("selected_students", payload);
+      } catch (insErr: any) {
+        console.error("Failed to upsert selected_students", insErr);
+        toast({ title: "Warning", description: "Approved but failed to save selected student. Check DB schema/permissions." });
+        return;
       }
 
-      // persist selection to selected_students when possible
-      if (record) {
-        try {
-          const payload = {
-            source_table: table,
-            source_id: record.id,
-            first_name: record.first_name || null,
-            last_name: record.last_name || null,
-            email: record.email || null,
-            phone: record.phone || null,
-            position: record.position || null,
-            company: record.company || null,
-            resume_file_url: record.resume_file_url || null,
-            notes: record.cover_letter || record.message || null,
-            selected_at: new Date().toISOString(),
-          };
-          await supabase.upsertInto("selected_students", payload);
-          setSelectedStudents((prev) => {
-            if (!prev) return [payload];
-            const exists = prev.some((s: any) => s.source_table === table && s.source_id === record.id);
-            return exists ? prev : [...prev, payload];
-          });
-          toast({ title: "Approved", description: "Record moved to Selected and saved." });
-        } catch (insErr: any) {
-          console.error("Failed to upsert selected_students", insErr);
-          toast({ title: "Warning", description: "Approved but failed to save selected student. Check DB schema/permissions." });
-        }
-      } else {
-        // record not found in local cache but DB update succeeded
-        toast({ title: "Approved", description: "Record marked as selected." });
+      // Update local state: add to selectedStudents and REMOVE from contacts/applications
+      setSelectedStudents((prev) => {
+        if (!prev) return [payload];
+        const exists = prev.some((s: any) => s.source_table === table && s.source_id === record.id);
+        return exists ? prev : [...prev, payload];
+      });
+
+      // Remove from source table state so it disappears from that tab
+      if (table === "job_applications") {
+        setApplications((prev) => (prev || []).filter((a) => a.id !== id));
       }
+      if (table === "contact_messages") {
+        setContacts((prev) => (prev || []).filter((c) => c.id !== id));
+      }
+
+      toast({ title: "Approved!", description: "Record moved to Selected Students." });
     } catch (err: any) {
       console.error("Approve failed", err);
       toast({ title: "Error", description: err?.message || "Failed to approve. Ensure the table has a 'status' column and RLS allows updates." });
