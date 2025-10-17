@@ -9,6 +9,7 @@ type FormData = {
   firstName: string;
   lastName: string;
   email: string;
+  phone: string;
   company: string;
   service: string;
   message: string;
@@ -18,6 +19,7 @@ type FormErrors = {
   firstName?: string;
   lastName?: string;
   email?: string;
+  phone?: string;
   company?: string;
   service?: string;
   message?: string;
@@ -29,6 +31,7 @@ const Contact = () => {
     firstName: "",
     lastName: "",
     email: "",
+    phone: "",
     company: "",
     service: "",
     message: "",
@@ -86,10 +89,13 @@ const Contact = () => {
     if (!formData.email.trim()) newErrors.email = "Email is required";
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) newErrors.email = "Please enter a valid email";
 
+    if (!formData.phone.trim()) newErrors.phone = "Phone number is required";
+    else if (!/^[0-9+\-\s()]+$/.test(formData.phone)) newErrors.phone = "Please enter a valid phone number";
+
     if (!formData.company.trim()) newErrors.company = "Company name is required";
     if (!formData.service) newErrors.service = "Please select a service";
 
-    if (!formData.message.trim()) newErrors.message = "Project details are required";
+    if (!formData.message.trim()) newErrors.message = "Message is required";
     else if (formData.message.trim().length < 20) newErrors.message = "Please provide more details (at least 20 characters)";
 
     setErrors(newErrors);
@@ -129,6 +135,7 @@ const Contact = () => {
         first_name: formData.firstName.trim(),
         last_name: formData.lastName.trim(),
         email: formData.email.trim(),
+        phone: formData.phone.trim(),
         company: formData.company.trim(),
         service: formData.service,
         message: formData.message.trim(),
@@ -138,7 +145,7 @@ const Contact = () => {
       await supabase.insertInto("contact_messages", payload);
       toast({ title: "Message sent", description: "We'll get back to you soon." });
 
-      setFormData({ firstName: "", lastName: "", email: "", company: "", service: "", message: "" });
+      setFormData({ firstName: "", lastName: "", email: "", phone: "", company: "", service: "", message: "" });
     } catch (err: any) {
       console.error("contact submit error:", err);
       toast({ title: "Error", description: err?.message || "Failed to send your message." });
@@ -212,6 +219,13 @@ const Contact = () => {
                   required: true,
                 },
                 {
+                  id: "phone",
+                  label: "Phone Number",
+                  type: "tel",
+                  placeholder: "+1 (555) 123-4567",
+                  required: true,
+                },
+                {
                   id: "company",
                   label: "Company",
                   type: "text",
@@ -275,7 +289,7 @@ const Contact = () => {
                   htmlFor="message"
                   className="block text-sm font-medium text-gray-700 mb-1 sm:mb-2"
                 >
-                  Project Details <span className="text-red-500">*</span>
+                  Message <span className="text-red-500">*</span>
                 </label>
                 <textarea
                   id="message"

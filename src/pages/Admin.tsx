@@ -159,14 +159,14 @@ const Admin: React.FC = () => {
 
   const summaryCards = [
     {
-      label: "Contact Leads",
+      label: "Pending Leads",
       value: (contacts || []).filter((c: any) => c.status !== "selected").length ?? 0,
       helper: uniqueCompanies > 0 ? `${uniqueCompanies} unique companies` : "Awaiting first lead",
       icon: Inbox,
       tint: primaryTint(0.16),
     },
     {
-      label: "Applicants",
+      label: "Pending Applicants",
       value: (applications || []).filter((a: any) => a.status !== "selected").length ?? 0,
       helper: uniqueRoles > 0 ? `${uniqueRoles} roles represented` : "No roles yet",
       icon: Users,
@@ -237,13 +237,13 @@ const Admin: React.FC = () => {
       );
     }
 
-    // Filter to show only non-selected contacts (pending/approved but not moved to selected_students)
-    const pendingContacts = (contacts || []).filter((c: any) => c.status !== "selected");
+    // Show all contacts (both pending and approved)
+    const allContacts = (contacts || []);
 
-    if (!pendingContacts.length) {
+    if (!allContacts.length) {
       return renderEmptyState(
-        "No pending contact messages",
-        "All contacts have been approved and moved to Selected Students."
+        "No contact messages",
+        "No contact submissions yet."
       );
     }
 
@@ -265,7 +265,7 @@ const Admin: React.FC = () => {
             className="rounded-full px-3 py-1 text-xs font-semibold"
             style={{ background: colors.primaryHex, color: colors.white }}
           >
-            {pendingContacts.length} records
+            {allContacts.length} records
           </span>
         </div>
 
@@ -282,7 +282,7 @@ const Admin: React.FC = () => {
               </tr>
             </thead>
             <tbody>
-              {pendingContacts.map((contact) => (
+              {allContacts.map((contact) => (
                 <tr key={contact.id} style={{ borderBottom: `1px solid ${secondaryTint(0.35)}`, transition: 'background-color 0.18s ease' }} onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = `rgba(${colors.primaryRgb},0.08)`)} onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}>
                   <td className="px-6 py-4">
                     <p className="font-semibold" style={{ color: colors.secondaryHex }}>
@@ -319,6 +319,7 @@ const Admin: React.FC = () => {
                     <span
                       className="mt-1 inline-flex rounded-full px-3 py-1 text-xs font-medium"
                       style={{ background: colors.primaryHex, color: colors.white }}
+                      title={contact.service || "Not specified"}
                     >
                       {contact.service || "Not specified"}
                     </span>
@@ -331,9 +332,13 @@ const Admin: React.FC = () => {
                   <td className="px-6 py-4 text-sm" style={{ color: secondaryTint(0.6) }}>
                     {formatDateTime(contact.created_at)}
                   </td>
-                  <td className="px-6 py-4">
-                    <button className="inline-flex items-center justify-center px-3 py-1 rounded-md" style={{ minWidth: 84, background: colors.primaryHex, color: colors.white, fontWeight: 600 }} onClick={async () => await handleApprove('contact_messages', contact.id)}>Approve</button>
-                    <button className="inline-flex items-center justify-center px-3 py-1 rounded-md" style={{ minWidth: 84, background: '#ef4444', color: '#fff', fontWeight: 600 }} onClick={async () => await handleDelete('contact_messages', contact.id)}>Delete</button>
+                  <td className="px-6 py-4 flex gap-2">
+                    {contact.status === "selected" ? (
+                      <span className="inline-flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold" style={{ minWidth: 76, background: '#10b981', color: '#fff' }}>Approved</span>
+                    ) : (
+                      <button className="inline-flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold" style={{ minWidth: 76, background: colors.primaryHex, color: colors.white }} onClick={async () => await handleApprove('contact_messages', contact.id)}>Pending</button>
+                    )}
+                    <button className="inline-flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold" style={{ minWidth: 76, background: '#ef4444', color: '#fff' }} onClick={async () => await handleDelete('contact_messages', contact.id)}>Delete</button>
                   </td>
                 </tr>
               ))}
@@ -355,13 +360,13 @@ const Admin: React.FC = () => {
       );
     }
 
-    // Filter to show only non-selected applications (pending/approved but not moved to selected_students)
-    const pendingApplications = (applications || []).filter((a: any) => a.status !== "selected");
+    // Show all applications (both pending and approved)
+    const allApplications = (applications || []);
 
-    if (!pendingApplications.length) {
+    if (!allApplications.length) {
       return renderEmptyState(
-        "No pending job applications",
-        "All applications have been approved and moved to Selected Students."
+        "No job applications",
+        "No applications submitted yet."
       );
     }
 
@@ -383,7 +388,7 @@ const Admin: React.FC = () => {
             className="rounded-full px-3 py-1 text-xs font-semibold"
             style={{ background: colors.primaryHex, color: colors.white }}
           >
-            {pendingApplications.length} records
+            {allApplications.length} records
           </span>
         </div>
 
@@ -400,7 +405,7 @@ const Admin: React.FC = () => {
               </tr>
             </thead>
             <tbody>
-              {pendingApplications.map((application) => (
+              {allApplications.map((application) => (
                 <tr key={application.id} style={{ borderBottom: `1px solid ${secondaryTint(0.35)}`, transition: 'background-color 0.18s ease' }} onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = `rgba(${colors.primaryRgb},0.08)`)} onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}>
                   <td className="px-6 py-4">
                     <p className="font-semibold" style={{ color: colors.secondaryHex }}>
@@ -463,9 +468,13 @@ const Admin: React.FC = () => {
                   <td className="px-6 py-4 text-sm" style={{ color: secondaryTint(0.8) }}>
                     {formatDateTime(application.created_at)}
                   </td>
-                  <td className="px-6 py-4">
-                    <button className="inline-flex items-center justify-center px-3 py-1 rounded-md" style={{ minWidth: 84, background: colors.primaryHex, color: colors.white, fontWeight: 600 }} onClick={async () => await handleApprove('job_applications', application.id)}>Approve</button>
-                    <button className="inline-flex items-center justify-center px-3 py-1 rounded-md" style={{ minWidth: 84, background: '#ef4444', color: '#fff', fontWeight: 600 }} onClick={async () => await handleDelete('job_applications', application.id)}>Delete</button>
+                  <td className="px-6 py-4 flex gap-2">
+                    {application.status === "selected" ? (
+                      <span className="inline-flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold" style={{ minWidth: 76, background: '#10b981', color: '#fff' }}>Approved</span>
+                    ) : (
+                      <button className="inline-flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold" style={{ minWidth: 76, background: colors.primaryHex, color: colors.white }} onClick={async () => await handleApprove('job_applications', application.id)}>Pending</button>
+                    )}
+                    <button className="inline-flex items-center justify-center px-3 py-1 rounded-md text-xs font-semibold" style={{ minWidth: 76, background: '#ef4444', color: '#fff' }} onClick={async () => await handleDelete('job_applications', application.id)}>Delete</button>
                   </td>
                 </tr>
               ))}
@@ -550,15 +559,15 @@ const Admin: React.FC = () => {
         return exists ? prev : [...prev, savedRecord];
       });
 
-      // Remove from source table state so it disappears from that tab
+      // Update local state to reflect new status but keep in source table
       if (table === "job_applications") {
-        setApplications((prev) => (prev || []).filter((a) => a.id !== id));
+        setApplications((prev) => (prev || []).map((a) => a.id === id ? { ...a, status: "selected" } : a));
       }
       if (table === "contact_messages") {
-        setContacts((prev) => (prev || []).filter((c) => c.id !== id));
+        setContacts((prev) => (prev || []).map((c) => c.id === id ? { ...c, status: "selected" } : c));
       }
 
-      toast({ title: "Approved!", description: "Record moved to Selected Students." });
+      toast({ title: "Approved!", description: "Record marked as approved and added to Selected Students." });
     } catch (err: any) {
       console.error("Approve failed", err);
       toast({ title: "Error", description: err?.message || "Failed to approve. Ensure the table has a 'status' column and RLS allows updates." });
@@ -681,10 +690,10 @@ const Admin: React.FC = () => {
               </p>
               <div className="mt-3 flex flex-wrap gap-3">
                 <span className="inline-flex items-center rounded-full px-3 py-1 text-sm font-semibold" style={{ background: colors.primaryHex, color: colors.white }}>
-                  {contacts?.length ?? 0} Leads
+                  {(contacts || []).filter((c: any) => c.status !== "selected").length ?? 0} Pending Leads
                 </span>
                 <span className="inline-flex items-center rounded-full px-3 py-1 text-sm font-semibold" style={{ background: colors.white, border: `1px solid ${primaryTint(0.06)}`, color: colors.secondaryHex }}>
-                  {applications?.length ?? 0} Applicants
+                  {(applications || []).filter((a: any) => a.status !== "selected").length ?? 0} Pending Applicants
                 </span>
               </div>
             </div>
