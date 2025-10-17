@@ -2146,7 +2146,7 @@ const Home = () => {
       company: "TechCorp",
       content: "Panabotics transformed our data processing capabilities. Their AI solutions increased our efficiency by 300% and saved us millions in operational costs.",
       rating: 5,
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face"
+      image: "https://cdn.builder.io/api/v1/image/assets%2F176f979fd2a249d498538cbe54d6ce39%2F26acda69210c415fb2bd9087c0f41ee3?format=webp&width=200"
     },
     {
       name: "Michael Chen",
@@ -2154,7 +2154,7 @@ const Home = () => {
       company: "InnovateLab",
       content: "The computer vision system they built for our manufacturing line reduced defects by 95%. Absolutely game-changing technology.",
       rating: 5,
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face"
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face&q=80"
     },
     {
       name: "Dr. Emily Rodriguez",
@@ -2162,7 +2162,7 @@ const Home = () => {
       company: "MedTech",
       content: "Their machine learning models helped us predict patient outcomes with 99.2% accuracy. Panabotics is our trusted AI partner.",
       rating: 5,
-      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=80&h=80&fit=crop&crop=face"
+      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200&h=200&fit=crop&crop=face&q=80"
     }
   ];
 
@@ -2290,7 +2290,7 @@ const Home = () => {
       description: "Build and train custom AI models using best practices",
       image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=600&h=400&fit=crop&crop=center&q=80",
       color: "from-slate-400 to-slate-600",
-      icon: "⚙️"
+      icon: "⚙���"
     },
     {
       step: "04",
