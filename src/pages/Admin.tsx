@@ -137,14 +137,14 @@ const Admin: React.FC = () => {
       label: "Contact Messages",
       description: "Leads captured through the website form.",
       icon: Inbox,
-      badge: contacts?.length ?? 0,
+      badge: ((contacts || []).filter((c: any) => c.status !== "selected").length ?? 0),
     },
     {
       id: "applications" as const,
       label: "Job Applications",
       description: "Candidates who applied for open roles.",
       icon: Briefcase,
-      badge: applications?.length ?? 0,
+      badge: ((applications || []).filter((a: any) => a.status !== "selected").length ?? 0),
     },
     {
       id: "selected" as const,
@@ -158,14 +158,14 @@ const Admin: React.FC = () => {
   const summaryCards = [
     {
       label: "Contact Leads",
-      value: contacts?.length ?? 0,
+      value: (contacts || []).filter((c: any) => c.status !== "selected").length ?? 0,
       helper: uniqueCompanies > 0 ? `${uniqueCompanies} unique companies` : "Awaiting first lead",
       icon: Inbox,
       tint: primaryTint(0.16),
     },
     {
       label: "Applicants",
-      value: applications?.length ?? 0,
+      value: (applications || []).filter((a: any) => a.status !== "selected").length ?? 0,
       helper: uniqueRoles > 0 ? `${uniqueRoles} roles represented` : "No roles yet",
       icon: Users,
       tint: secondaryTint(0.18),
