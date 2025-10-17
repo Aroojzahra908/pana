@@ -151,7 +151,7 @@ const Admin: React.FC = () => {
       label: "Selected Students",
       description: "Approved candidates (selected).",
       icon: Sparkles,
-      badge: ((applications || []).filter((a: any) => a.status === "selected").length ?? 0) + ((contacts || []).filter((c: any) => c.status === "selected").length ?? 0),
+      badge: selectedStudents?.length ?? 0,
     },
   ];
 
