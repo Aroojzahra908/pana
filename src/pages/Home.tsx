@@ -2146,7 +2146,7 @@ const Home = () => {
       company: "TechCorp",
       content: "Panabotics transformed our data processing capabilities. Their AI solutions increased our efficiency by 300% and saved us millions in operational costs.",
       rating: 5,
-      image: "https://cdn.builder.io/api/v1/image/assets%2F176f979fd2a249d498538cbe54d6ce39%2F26acda69210c415fb2bd9087c0f41ee3?format=webp&width=200"
+      image: "https://images.pexels.com/photos/25651531/pexels-photo-25651531.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop"
     },
     {
       name: "Michael Chen",
@@ -2282,7 +2282,7 @@ const Home = () => {
       description: "Create a comprehensive AI roadmap tailored to your goals",
       image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop&crop=center&q=80",
       color: "from-teal-400 to-teal-600",
-      icon: "📋"
+      icon: "����"
     },
     {
       step: "03",
@@ -2290,7 +2290,7 @@ const Home = () => {
       description: "Build and train custom AI models using best practices",
       image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=600&h=400&fit=crop&crop=center&q=80",
       color: "from-slate-400 to-slate-600",
-      icon: "⚙���"
+      icon: "⚙️"
     },
     {
       step: "04",
