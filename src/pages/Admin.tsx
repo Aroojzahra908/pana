@@ -110,9 +110,10 @@ const Admin: React.FC = () => {
   }
 
   const uniqueCompanies = useMemo(() => {
-    if (!contacts?.length) return 0;
+    const pendingContacts = (contacts || []).filter((c: any) => c.status !== "selected");
+    if (!pendingContacts?.length) return 0;
     const companies = new Set<string>();
-    contacts.forEach((entry) => {
+    pendingContacts.forEach((entry) => {
       if (entry?.company) {
         companies.add(String(entry.company));
       }
@@ -121,9 +122,10 @@ const Admin: React.FC = () => {
   }, [contacts]);
 
   const uniqueRoles = useMemo(() => {
-    if (!applications?.length) return 0;
+    const pendingApplications = (applications || []).filter((a: any) => a.status !== "selected");
+    if (!pendingApplications?.length) return 0;
     const roles = new Set<string>();
-    applications.forEach((entry) => {
+    pendingApplications.forEach((entry) => {
       if (entry?.position) {
         roles.add(String(entry.position));
       }
