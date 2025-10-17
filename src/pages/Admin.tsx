@@ -234,10 +234,14 @@ const Admin: React.FC = () => {
         "We could not reach the contact_messages table. Confirm database permissions and try syncing again."
       );
     }
-    if (!contacts.length) {
+
+    // Filter to show only non-selected contacts (pending/approved but not moved to selected_students)
+    const pendingContacts = (contacts || []).filter((c: any) => c.status !== "selected");
+
+    if (!pendingContacts.length) {
       return renderEmptyState(
-        "No contact messages yet",
-        "When someone fills out the contact form, their details will appear here automatically."
+        "No pending contact messages",
+        "All contacts have been approved and moved to Selected Students."
       );
     }
 
@@ -259,7 +263,7 @@ const Admin: React.FC = () => {
             className="rounded-full px-3 py-1 text-xs font-semibold"
             style={{ background: colors.primaryHex, color: colors.white }}
           >
-            {contacts.length} records
+            {pendingContacts.length} records
           </span>
         </div>
 
@@ -276,7 +280,7 @@ const Admin: React.FC = () => {
               </tr>
             </thead>
             <tbody>
-              {contacts.map((contact) => (
+              {pendingContacts.map((contact) => (
                 <tr key={contact.id} style={{ borderBottom: `1px solid ${secondaryTint(0.35)}`, transition: 'background-color 0.18s ease' }} onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = `rgba(${colors.primaryRgb},0.08)`)} onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}>
                   <td className="px-6 py-4">
                     <p className="font-semibold" style={{ color: colors.secondaryHex }}>
