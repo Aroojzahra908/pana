@@ -28,6 +28,9 @@ const Admin: React.FC = () => {
   const [applications, setApplications] = useState<any[] | null>(null); // job_applications table
   const [applicationsError, setApplicationsError] = useState<string | null>(null);
 
+  const [selectedStudents, setSelectedStudents] = useState<any[] | null>(null); // selected_students table
+  const [selectedStudentsError, setSelectedStudentsError] = useState<string | null>(null);
+
   const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState<TabKey>("contacts");
   const [lastSynced, setLastSynced] = useState<string | null>(null);
