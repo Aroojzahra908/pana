@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import {
   Calendar,
   User,
@@ -13,11 +13,13 @@ import {
 import { motion } from "framer-motion";
 
 import colors from "../components/colors";
+import { toast } from "@/hooks/use-toast";
 
 const Blog = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [likedPosts, setLikedPosts] = useState(new Set());
   const [selectedBlog, setSelectedBlog] = useState(null);
+  const emailRef = useRef<HTMLInputElement>(null);
   const [bookmarkedPosts, setBookmarkedPosts] = useState(new Set());
 
   // Scroll to top when component mounts or selectedBlog changes
@@ -804,6 +806,7 @@ const Blog = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 max-w-md mx-auto">
                 <input
+                  ref={emailRef}
                   type="email"
                   placeholder="Enter your email"
                   className="flex-1 px-4 py-3 sm:px-6 sm:py-4 rounded-full text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 sm:focus:ring-4 focus:ring-white/30 text-sm sm:text-base"
@@ -818,6 +821,15 @@ const Blog = () => {
                   onMouseLeave={(e) => {
                     e.currentTarget.style.backgroundColor = colors.primaryHex;
                     e.currentTarget.style.color = "white";
+                  }}
+                  onClick={() => {
+                    const email = emailRef.current?.value?.trim();
+                    if (!email) {
+                      toast({ title: "Enter your email", description: "Please add your email to subscribe." });
+                      return;
+                    }
+                    toast({ title: "Subscribed", description: `Thanks! Updates will be sent to ${email}.` });
+                    if (emailRef.current) emailRef.current.value = "";
                   }}
                 >
                   Subscribe Now
