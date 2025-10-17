@@ -133,11 +133,11 @@ const Footer = () => {
           </div>
 
           {/* Footer Links */}
-          {footerSections.slice(0, 3).map(({ title, links }) => (
+          {footerSections.map(({ title, links }) => (
             <div key={title}>
               <h3 className="text-xs font-semibold mb-1.5 uppercase tracking-wide">{title}</h3>
               <ul className="space-y-1">
-                {links.slice(0, 2).map(({ name, href }) => (
+                {links.map(({ name, href }) => (
                   <li key={name}>
                     <Link
                       to={href}
