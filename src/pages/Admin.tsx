@@ -549,26 +549,38 @@ const Admin: React.FC = () => {
   async function handleDeleteSelected(id: string | number) {
     if (!confirm("Are you sure you want to permanently delete this record?")) return;
     try {
+      console.log("Deleting selected student with id:", id);
+
       // Find the selected student record to get source table and source_id
       const selectedRecord = (selectedStudents || []).find((s: any) => s.id === id);
+      console.log("Selected record found:", selectedRecord);
 
       // Delete from selected_students table
-      await supabase.deleteFrom("selected_students", id);
+      try {
+        console.log("Deleting from selected_students table");
+        await supabase.deleteFrom("selected_students", id);
+        console.log("Successfully deleted from selected_students");
+      } catch (delErr: any) {
+        console.error("Error deleting from selected_students:", delErr);
+        throw new Error(`Failed to delete from selected_students: ${delErr?.message || delErr}`);
+      }
 
       // Also delete from the source table if we have that info
       if (selectedRecord?.source_table && selectedRecord?.source_id) {
         try {
+          console.log("Deleting from source table:", selectedRecord.source_table, "with id:", selectedRecord.source_id);
           await supabase.deleteFrom(selectedRecord.source_table, selectedRecord.source_id);
+          console.log("Successfully deleted from source table");
         } catch (err) {
           console.warn("Could not delete from source table:", err);
         }
       }
 
-      toast({ title: "Deleted", description: "Record deleted." });
+      toast({ title: "Deleted", description: "Record deleted from selected students." });
       setSelectedStudents((prev) => (prev || []).filter((s) => s.id !== id));
     } catch (err: any) {
-      console.error("Delete failed", err);
-      toast({ title: "Error", description: err?.message || "Failed to delete" });
+      console.error("Delete failed:", err);
+      toast({ title: "Error", description: `Delete failed: ${err?.message || "Failed to delete"}` });
     }
   }
 
