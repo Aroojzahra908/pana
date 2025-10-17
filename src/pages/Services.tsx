@@ -3,11 +3,13 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import colors from "../components/colors";
+import { useNavigate } from 'react-router-dom';
 
 const Services = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [stats, setStats] = useState({ projects: 0, clients: 0, accuracy: 0, uptime: 0 });
   const location = useLocation();
+  const navigate = useNavigate();
 
   // Scroll to top on route change and component mount
   useEffect(() => {
@@ -115,9 +117,9 @@ const Services = () => {
       description: "Revolutionary image and video analysis powered by state-of-the-art computer vision technology. Perfect for quality control, medical imaging, autonomous systems, and security applications.",
       features: ["Object Detection", "Facial Recognition", "Medical Imaging", "Quality Control"],
       images: [
-      "/tech-icons/s33.jfif",
-       "/tech-icons/s32.png",
-       "/tech-icons/s31.jpg",
+        "/tech-icons/s33.jfif",
+        "/tech-icons/s32.png",
+        "/tech-icons/s31.jpg",
       ]
     },
     {
@@ -135,7 +137,7 @@ const Services = () => {
       description: "Streamline operations with intelligent RPA solutions that eliminate manual tasks, reduce errors, and improve efficiency. Our bots work 24/7 to optimize your business processes.",
       features: ["Process Automation", "Workflow Optimization", "Error Reduction", "24/7 Operations"],
       images: [
-         "/tech-icons/s51.jfif",
+        "/tech-icons/s51.jfif",
         "/tech-icons/s52.jfif",
         "/tech-icons/s53.webp",
       ]
@@ -145,9 +147,9 @@ const Services = () => {
       description: "Deploy sophisticated AI agents that can understand context, make decisions, and interact naturally with users. Perfect for customer service, virtual assistants, and autonomous task execution.",
       features: ["Conversational AI", "Virtual Assistants", "Decision Making", "Natural Interaction"],
       images: [
-       "/tech-icons/s61.png", 
-       "/tech-icons/s63.webp",
-       "/tech-icons/s62.jpg",
+        "/tech-icons/s61.png",
+        "/tech-icons/s63.webp",
+        "/tech-icons/s62.jpg",
       ]
     }
   ];
@@ -376,61 +378,110 @@ const Services = () => {
         </div>
 
         {/* Testimonials Slider */}
-        <div className="py-12 md:py-20 rounded-xl md:rounded-2xl lg:rounded-3xl animate-on-scroll bg-white shadow-md md:shadow-lg">
-          <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-2 md:mb-4" style={{ color: colors.primaryHex }}>
-              What Our <span className="text-secondary" style={{ color: colors.secondaryHex }}>Clients Say</span>
-            </h2>
-            <p className="text-sm md:text-base lg:text-xl text-gray-700">Hear from industry leaders who trust Panabotics</p>
-          </div>
+        <div className="w-full flex justify-center">
+          <div className="w-full max-w-6xl py-6 md:py-8 bg-gradient-to-b from-gray-50 to-white rounded-3xl shadow-inner relative overflow-hidden px-4 md:px-8">
 
-          <div className="relative max-w-3xl md:max-w-4xl mx-auto px-2 md:px-4">
-            <div
-              className="bg-white rounded-lg md:rounded-xl lg:rounded-2xl p-4 md:p-6 lg:p-8 shadow-md md:shadow-lg border-2 md:border-4 border-transparent"
-              style={{ borderColor: colors.primaryHex }}
-            >
-              <div className="text-4xl md:text-5xl lg:text-6xl mb-2 md:mb-4" style={{ color: colors.primaryHex }}>"</div>
-              <p className="text-sm md:text-base lg:text-xl mb-4 md:mb-6 lg:mb-8 leading-relaxed" style={{ color: colors.secondaryHex }}>
-                {testimonials[currentTestimonial].quote}
-              </p>
-              <div className="flex items-center">
-                <div
-                  className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-full flex items-center justify-center mr-3 md:mr-4"
-                  style={{ backgroundColor: colors.primaryHex }}
-                >
-                  <span className="text-white font-bold text-lg md:text-xl">
-                    {testimonials[currentTestimonial].author.charAt(0)}
-                  </span>
-                </div>
-                <div>
-                  <div style={{ color: colors.secondaryHex, fontWeight: 'bold', fontSize: '0.875rem' }}>
-                    {testimonials[currentTestimonial].author}
-                  </div>
-                  <div style={{ color: colors.secondaryHex + 'cc', fontSize: '0.75rem' }}>
-                    {testimonials[currentTestimonial].position}
-                  </div>
-                  <div style={{ color: colors.primaryHex, fontSize: '0.75rem' }}>
-                    {testimonials[currentTestimonial].company}
-                  </div>
-                </div>
-              </div>
+            {/* Background Glow */}
+            <div className="absolute inset-0 overflow-hidden">
+              <div
+                className="absolute w-28 h-28 bg-gradient-to-tr opacity-10 blur-3xl rounded-full -top-10 -left-10 animate-pulse"
+                style={{
+                  backgroundImage: `linear-gradient(to top right, ${colors.primaryHex}, ${colors.secondaryHex})`,
+                }}
+              ></div>
+              <div
+                className="absolute w-36 h-36 bg-gradient-to-tr opacity-10 blur-3xl rounded-full bottom-0 right-0 animate-pulse"
+                style={{
+                  backgroundImage: `linear-gradient(to top right, ${colors.secondaryHex}, ${colors.primaryHex})`,
+                }}
+              ></div>
             </div>
 
-            <div className="flex justify-center mt-4 md:mt-6 lg:mt-8 space-x-1 md:space-x-2">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentTestimonial(index)}
-                  className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${index === currentTestimonial ? 'scale-125' : 'hover:opacity-80'}`}
-                  style={{
-                    backgroundColor: index === currentTestimonial ? colors.primaryHex : '#C0C0C0'
-                  }}
-                  aria-label={`Select testimonial ${index + 1}`}
-                />
-              ))}
+            {/* Heading */}
+            <div className="relative text-center mb-4 md:mb-6">
+              <h2
+                className="text-2xl md:text-3xl font-extrabold mb-1"
+                style={{ color: colors.primaryHex }}
+              >
+                What Our{" "}
+                <span className="text-secondary" style={{ color: colors.secondaryHex }}>
+                  Clients Say
+                </span>
+              </h2>
+              <p className="text-sm md:text-base text-gray-600">
+                Hear from innovators who trust Panabotics
+              </p>
+            </div>
+
+            {/* Testimonial Card */}
+            <div className="relative">
+              <div
+                className="rounded-2xl bg-white/95 backdrop-blur-md border-4 shadow-lg p-4 md:p-5 transition-all duration-500 hover:shadow-xl max-w-2xl mx-auto"
+                style={{
+                  borderColor: colors.primaryHex,
+                }}
+              >
+                <div
+                  className="text-3xl md:text-4xl mb-1 font-serif"
+                  style={{ color: colors.primaryHex }}
+                >
+                  “
+                </div>
+                <p
+                  className="text-sm md:text-base mb-3 leading-relaxed text-gray-700 italic"
+                  style={{ color: colors.secondaryHex }}
+                >
+                  {testimonials[currentTestimonial].quote}
+                </p>
+
+                <div className="flex flex-col items-center text-center mt-2">
+                  <div
+                    className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center text-white text-lg font-bold shadow-md mb-2"
+                    style={{ backgroundColor: colors.primaryHex }}
+                  >
+                    {testimonials[currentTestimonial].author.charAt(0)}
+                  </div>
+                  <h4
+                    className="text-sm md:text-base font-semibold"
+                    style={{ color: colors.secondaryHex }}
+                  >
+                    {testimonials[currentTestimonial].author}
+                  </h4>
+                  <p className="text-xs text-gray-500">
+                    {testimonials[currentTestimonial].position}
+                  </p>
+                  <p
+                    className="text-xs font-medium mt-1"
+                    style={{ color: colors.primaryHex }}
+                  >
+                    {testimonials[currentTestimonial].company}
+                  </p>
+                </div>
+              </div>
+
+              {/* Dots */}
+              <div className="flex justify-center mt-3 space-x-1.5">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentTestimonial(index)}
+                    className={`w-2 h-2 md:w-2.5 md:h-2.5 rounded-full transition-all duration-300 ${index === currentTestimonial
+                      ? "scale-125 shadow-sm"
+                      : "opacity-50 hover:opacity-90"
+                      }`}
+                    style={{
+                      backgroundColor:
+                        index === currentTestimonial
+                          ? colors.primaryHex
+                          : "#CBD5E1",
+                    }}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
+
 
         {/* Process Section */}
         <div className="py-12 md:py-20 animate-on-scroll">
@@ -485,29 +536,37 @@ const Services = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="py-12 md:py-20 rounded-xl md:rounded-2xl lg:rounded-3xl text-center animate-on-scroll mb-12 md:mb-20 bg-white shadow-md md:shadow-lg">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-4 md:mb-6" style={{ color: colors.primaryHex }}>
+        <div className="py-6 md:py-8 rounded-xl md:rounded-2xl text-center animate-on-scroll mb-10 md:mb-14 bg-white shadow-lg hover:shadow-xl transition-shadow duration-500 max-w-3xl mx-auto">
+          <h2
+            className="text-base md:text-lg lg:text-xl font-bold mb-2 md:mb-3"
+            style={{ color: colors.primaryHex }}
+          >
             Ready to Transform Your Business?
           </h2>
-          <p className="text-sm md:text-base lg:text-xl mb-6 md:mb-8 max-w-2xl mx-auto text-gray-700">
-            Let's discuss how Panabotics can help you harness the power of AI to drive innovation,
+          <p className="text-xs md:text-sm lg:text-base mb-4 md:mb-6 max-w-md mx-auto text-gray-600 leading-relaxed"
+            style={{ color: colors.secondaryHex }}
+          >
+            Let's discuss how <span style={{ color: colors.primaryHex }}>Panabotics</span> can help you harness the power of AI to drive innovation,
             efficiency, and growth in your organization.
           </p>
-          <div className="flex flex-col sm:flex-row gap-2 md:gap-3 lg:gap-4 justify-center">
+
+          <div className="flex flex-col sm:flex-row gap-2 md:gap-3 justify-center">
             <button
-              className="px-4 py-2 md:px-6 md:py-3 lg:px-8 lg:py-4 rounded-lg md:rounded-xl font-semibold shadow-md md:shadow-lg transition-transform duration-300 hover:scale-105 hover:opacity-90 text-sm md:text-base"
+              onClick={() => navigate('/contact')}
+              className="px-4 py-2 md:px-5 md:py-2 rounded-lg font-medium shadow-sm hover:shadow-md transition-transform duration-300 hover:scale-105 hover:opacity-90 text-xs md:text-sm"
               style={{ backgroundColor: colors.primaryHex, color: 'white' }}
             >
               Start Your AI Journey
             </button>
-            <button
-              className="px-4 py-2 md:px-6 md:py-3 lg:px-8 lg:py-4 border-2 rounded-lg md:rounded-xl font-semibold transition-colors duration-300 hover:bg-opacity-10 text-sm md:text-base"
+            {/* <button
+              className="px-4 py-2 md:px-5 md:py-2 rounded-lg font-medium border transition-colors duration-300 hover:bg-gray-50 text-xs md:text-sm"
               style={{ borderColor: colors.primaryHex, color: colors.primaryHex }}
             >
               Schedule a Consultation
-            </button>
+            </button> */}
           </div>
         </div>
+
       </div>
     </div>
   );
