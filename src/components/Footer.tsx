@@ -52,8 +52,8 @@ const Footer = () => {
     {
       title: "Contact",
       links: [
-        { name: "info@panabotics.com", href: "mailto:info@panabotics.com", icon: Mail },
-        { name: "+92 300 1234567", href: "tel:+92 315 3307820", icon: Phone },
+        { name: "panabotics@gmail.com", href: "mailto:panabotics@gmail.com", icon: Mail },
+        { name: "03153307820", href: "tel:+923153307820", icon: Phone },
         { name: "Lahore, Pakistan", href: "/contact", icon: MapPin },
         { name: "Contact Form", href: "/contact", icon: MessageSquare },
         { name: "Support Center", href: "/contact", icon: LifeBuoy },
