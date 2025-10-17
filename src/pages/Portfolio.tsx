@@ -1074,7 +1074,7 @@ const PanaboticsPortfolio: React.FC = () => {
               <h2 className="text-lg md:text-2xl font-bold mb-2 md:mb-3">
                 Ready to Experience Our AI Solutions?
               </h2>
-              <p className="text-xs md:text-sm mb-3 md:mb-5 opacity-90 max-w-2xl mx-auto">
+              <p className="text-xs md:text-sm mb-3 md:mb-5 opacity-90 max-w-2xl mx-auto leading-snug">
                 Join thousands of companies already transforming their operations with Panabotics AI products.
                 Get started with a personalized demo today.
               </p>
