@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Mail, Phone, MapPin, LifeBuoy, Linkedin } from "lucide-react";
 import { useLocation } from 'react-router-dom';
@@ -1072,10 +1071,10 @@ const PanaboticsPortfolio: React.FC = () => {
               </div>
             </div> */}
             <div className="relative z-10">
-              <h2 className="text-2xl md:text-4xl font-bold mb-3 md:mb-4">
+              <h2 className="text-lg md:text-2xl font-bold mb-2 md:mb-3">
                 Ready to Experience Our AI Solutions?
               </h2>
-              <p className="text-sm md:text-xl mb-4 md:mb-8 opacity-90 max-w-2xl mx-auto">
+              <p className="text-xs md:text-sm mb-3 md:mb-5 opacity-90 max-w-2xl mx-auto">
                 Join thousands of companies already transforming their operations with Panabotics AI products.
                 Get started with a personalized demo today.
               </p>
@@ -1144,4 +1143,3 @@ const PanaboticsPortfolio: React.FC = () => {
 };
 
 export default PanaboticsPortfolio;
-
