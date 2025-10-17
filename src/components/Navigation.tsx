@@ -227,7 +227,7 @@ const Navigation = () => {
           {/* CTA Button */}
           <div className="hidden md:block">
             <Link
-              to="/contact"
+              to="/contact#contact-form"
               onClick={() => setIsMobileMenuOpen(false)}
               className="block w-full max-w-[140px] text-center text-white px-3 py-2 rounded-md font-medium shadow-lg transition-transform duration-300 hover:scale-105 hover:opacity-90"
               style={{ backgroundColor: colors.primaryHex }}
