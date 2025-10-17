@@ -689,10 +689,10 @@ const Admin: React.FC = () => {
               </p>
               <div className="mt-3 flex flex-wrap gap-3">
                 <span className="inline-flex items-center rounded-full px-3 py-1 text-sm font-semibold" style={{ background: colors.primaryHex, color: colors.white }}>
-                  {contacts?.length ?? 0} Leads
+                  {(contacts || []).filter((c: any) => c.status !== "selected").length ?? 0} Pending Leads
                 </span>
                 <span className="inline-flex items-center rounded-full px-3 py-1 text-sm font-semibold" style={{ background: colors.white, border: `1px solid ${primaryTint(0.06)}`, color: colors.secondaryHex }}>
-                  {applications?.length ?? 0} Applicants
+                  {(applications || []).filter((a: any) => a.status !== "selected").length ?? 0} Pending Applicants
                 </span>
               </div>
             </div>
