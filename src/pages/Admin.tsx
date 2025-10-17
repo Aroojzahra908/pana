@@ -28,6 +28,9 @@ const Admin: React.FC = () => {
   const [applications, setApplications] = useState<any[] | null>(null); // job_applications table
   const [applicationsError, setApplicationsError] = useState<string | null>(null);
 
+  const [selectedStudents, setSelectedStudents] = useState<any[] | null>(null); // selected_students table
+  const [selectedStudentsError, setSelectedStudentsError] = useState<string | null>(null);
+
   const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState<TabKey>("contacts");
   const [lastSynced, setLastSynced] = useState<string | null>(null);
@@ -46,8 +49,10 @@ const Admin: React.FC = () => {
       const msg = "Missing SUPABASE_URL";
       setContacts(null);
       setApplications(null);
+      setSelectedStudents(null);
       setContactsError(msg);
       setApplicationsError(msg);
+      setSelectedStudentsError(msg);
       setLoading(false);
       return;
     }
@@ -81,6 +86,20 @@ const Admin: React.FC = () => {
         setApplicationsError(err?.message || String(err));
       }
 
+      // selected_students
+      try {
+        const selectedData = await supabase.fetchTable("selected_students");
+        const sorted = Array.isArray(selectedData)
+          ? selectedData.sort((a: any, b: any) => (a.selected_at < b.selected_at ? 1 : -1))
+          : selectedData;
+        setSelectedStudents(sorted || []);
+        setSelectedStudentsError(null);
+      } catch (err: any) {
+        console.warn("selected_students fetch error:", err);
+        setSelectedStudents(null);
+        setSelectedStudentsError(err?.message || String(err));
+      }
+
       setLastSynced(new Date().toISOString());
     } catch (err) {
       console.error(err);
@@ -91,9 +110,10 @@ const Admin: React.FC = () => {
   }
 
   const uniqueCompanies = useMemo(() => {
-    if (!contacts?.length) return 0;
+    const pendingContacts = (contacts || []).filter((c: any) => c.status !== "selected");
+    if (!pendingContacts?.length) return 0;
     const companies = new Set<string>();
-    contacts.forEach((entry) => {
+    pendingContacts.forEach((entry) => {
       if (entry?.company) {
         companies.add(String(entry.company));
       }
@@ -102,9 +122,10 @@ const Admin: React.FC = () => {
   }, [contacts]);
 
   const uniqueRoles = useMemo(() => {
-    if (!applications?.length) return 0;
+    const pendingApplications = (applications || []).filter((a: any) => a.status !== "selected");
+    if (!pendingApplications?.length) return 0;
     const roles = new Set<string>();
-    applications.forEach((entry) => {
+    pendingApplications.forEach((entry) => {
       if (entry?.position) {
         roles.add(String(entry.position));
       }
@@ -118,35 +139,35 @@ const Admin: React.FC = () => {
       label: "Contact Messages",
       description: "Leads captured through the website form.",
       icon: Inbox,
-      badge: contacts?.length ?? 0,
+      badge: ((contacts || []).filter((c: any) => c.status !== "selected").length ?? 0),
     },
     {
       id: "applications" as const,
       label: "Job Applications",
       description: "Candidates who applied for open roles.",
       icon: Briefcase,
-      badge: applications?.length ?? 0,
+      badge: ((applications || []).filter((a: any) => a.status !== "selected").length ?? 0),
     },
     {
       id: "selected" as const,
       label: "Selected Students",
       description: "Approved candidates (selected).",
       icon: Sparkles,
-      badge: ((applications || []).filter((a: any) => a.status === "selected").length ?? 0) + ((contacts || []).filter((c: any) => c.status === "selected").length ?? 0),
+      badge: selectedStudents?.length ?? 0,
     },
   ];
 
   const summaryCards = [
     {
       label: "Contact Leads",
-      value: contacts?.length ?? 0,
+      value: (contacts || []).filter((c: any) => c.status !== "selected").length ?? 0,
       helper: uniqueCompanies > 0 ? `${uniqueCompanies} unique companies` : "Awaiting first lead",
       icon: Inbox,
       tint: primaryTint(0.16),
     },
     {
       label: "Applicants",
-      value: applications?.length ?? 0,
+      value: (applications || []).filter((a: any) => a.status !== "selected").length ?? 0,
       helper: uniqueRoles > 0 ? `${uniqueRoles} roles represented` : "No roles yet",
       icon: Users,
       tint: secondaryTint(0.18),
@@ -215,10 +236,14 @@ const Admin: React.FC = () => {
         "We could not reach the contact_messages table. Confirm database permissions and try syncing again."
       );
     }
-    if (!contacts.length) {
+
+    // Filter to show only non-selected contacts (pending/approved but not moved to selected_students)
+    const pendingContacts = (contacts || []).filter((c: any) => c.status !== "selected");
+
+    if (!pendingContacts.length) {
       return renderEmptyState(
-        "No contact messages yet",
-        "When someone fills out the contact form, their details will appear here automatically."
+        "No pending contact messages",
+        "All contacts have been approved and moved to Selected Students."
       );
     }
 
@@ -240,7 +265,7 @@ const Admin: React.FC = () => {
             className="rounded-full px-3 py-1 text-xs font-semibold"
             style={{ background: colors.primaryHex, color: colors.white }}
           >
-            {contacts.length} records
+            {pendingContacts.length} records
           </span>
         </div>
 
@@ -257,7 +282,7 @@ const Admin: React.FC = () => {
               </tr>
             </thead>
             <tbody>
-              {contacts.map((contact) => (
+              {pendingContacts.map((contact) => (
                 <tr key={contact.id} style={{ borderBottom: `1px solid ${secondaryTint(0.35)}`, transition: 'background-color 0.18s ease' }} onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = `rgba(${colors.primaryRgb},0.08)`)} onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}>
                   <td className="px-6 py-4">
                     <p className="font-semibold" style={{ color: colors.secondaryHex }}>
@@ -329,10 +354,14 @@ const Admin: React.FC = () => {
         "We could not reach the job_applications table. Confirm database permissions and try syncing again."
       );
     }
-    if (!applications.length) {
+
+    // Filter to show only non-selected applications (pending/approved but not moved to selected_students)
+    const pendingApplications = (applications || []).filter((a: any) => a.status !== "selected");
+
+    if (!pendingApplications.length) {
       return renderEmptyState(
-        "No job applications yet",
-        "As soon as a candidate submits the careers form, their record will appear here."
+        "No pending job applications",
+        "All applications have been approved and moved to Selected Students."
       );
     }
 
@@ -354,7 +383,7 @@ const Admin: React.FC = () => {
             className="rounded-full px-3 py-1 text-xs font-semibold"
             style={{ background: colors.primaryHex, color: colors.white }}
           >
-            {applications.length} records
+            {pendingApplications.length} records
           </span>
         </div>
 
@@ -371,7 +400,7 @@ const Admin: React.FC = () => {
               </tr>
             </thead>
             <tbody>
-              {applications.map((application) => (
+              {pendingApplications.map((application) => (
                 <tr key={application.id} style={{ borderBottom: `1px solid ${secondaryTint(0.35)}`, transition: 'background-color 0.18s ease' }} onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = `rgba(${colors.primaryRgb},0.08)`)} onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}>
                   <td className="px-6 py-4">
                     <p className="font-semibold" style={{ color: colors.secondaryHex }}>
@@ -451,6 +480,14 @@ const Admin: React.FC = () => {
     if (!confirm("Are you sure you want to permanently delete this record?")) return;
     try {
       await supabase.deleteFrom(table, id);
+
+      // Also delete from selected_students table if it exists there
+      try {
+        await supabase.deleteByQuery("selected_students", `source_table=eq.${encodeURIComponent(table)}&source_id=eq.${encodeURIComponent(String(id))}`);
+      } catch (err) {
+        console.warn("Could not delete from selected_students:", err);
+      }
+
       toast({ title: "Deleted", description: "Record deleted." });
       if (table === "contact_messages") setContacts((prev) => (prev || []).filter((c) => c.id !== id));
       if (table === "job_applications") setApplications((prev) => (prev || []).filter((a) => a.id !== id));
@@ -471,58 +508,99 @@ const Admin: React.FC = () => {
         record = (contacts || []).find((c: any) => c.id === id) || null;
       }
 
+      if (!record) {
+        toast({ title: "Error", description: "Record not found in local state" });
+        return;
+      }
+
       // perform the DB update
       await supabase.updateRow(table, id, { status: "selected" });
 
-      // update local cache so UI reflects the change immediately
-      if (table === "job_applications") {
-        setApplications((prev) => (prev || []).map((a) => (a.id === id ? { ...a, status: "selected" } : a)));
-      }
-      if (table === "contact_messages") {
-        setContacts((prev) => (prev || []).map((c) => (c.id === id ? { ...c, status: "selected" } : c)));
+      // Create the selected_students payload
+      const payload = {
+        source_table: table,
+        source_id: record.id,
+        first_name: record.first_name || null,
+        last_name: record.last_name || null,
+        email: record.email || null,
+        phone: record.phone || null,
+        position: record.position || null,
+        company: record.company || null,
+        resume_file_url: record.resume_file_url || null,
+        notes: record.cover_letter || record.message || null,
+        selected_at: new Date().toISOString(),
+      };
+
+      // persist selection to selected_students
+      let savedRecord: any = payload;
+      try {
+        const result = await supabase.upsertInto("selected_students", payload);
+        // If the result is an array, take the first item; if it's a single object, use it
+        savedRecord = Array.isArray(result) ? result[0] : result || payload;
+      } catch (insErr: any) {
+        console.error("Failed to upsert selected_students", insErr);
+        toast({ title: "Warning", description: "Approved but failed to save selected student. Check DB schema/permissions." });
+        return;
       }
 
-      // persist selection to selected_students when possible
-      if (record) {
-        try {
-          const payload = {
-            source_table: table,
-            source_id: record.id,
-            first_name: record.first_name || null,
-            last_name: record.last_name || null,
-            email: record.email || null,
-            phone: record.phone || null,
-            position: record.position || null,
-            company: record.company || null,
-            resume_file_url: record.resume_file_url || null,
-            notes: record.cover_letter || record.message || null,
-            selected_at: new Date().toISOString(),
-          };
-          await supabase.insertInto("selected_students", [payload]);
-          toast({ title: "Approved", description: "Record moved to Selected and saved." });
-        } catch (insErr: any) {
-          console.error("Failed to insert selected_students", insErr);
-          toast({ title: "Warning", description: "Approved but failed to save selected student. Check DB schema/permissions." });
-        }
-      } else {
-        // record not found in local cache but DB update succeeded
-        toast({ title: "Approved", description: "Record marked as selected." });
+      // Update local state: add to selectedStudents and REMOVE from contacts/applications
+      setSelectedStudents((prev) => {
+        if (!prev) return [savedRecord];
+        const exists = prev.some((s: any) => s.source_table === table && s.source_id === record.id);
+        return exists ? prev : [...prev, savedRecord];
+      });
+
+      // Remove from source table state so it disappears from that tab
+      if (table === "job_applications") {
+        setApplications((prev) => (prev || []).filter((a) => a.id !== id));
       }
+      if (table === "contact_messages") {
+        setContacts((prev) => (prev || []).filter((c) => c.id !== id));
+      }
+
+      toast({ title: "Approved!", description: "Record moved to Selected Students." });
     } catch (err: any) {
       console.error("Approve failed", err);
       toast({ title: "Error", description: err?.message || "Failed to approve. Ensure the table has a 'status' column and RLS allows updates." });
     }
   }
 
-  const renderSelectedTable = () => {
-    const selectedApps = (applications || []).filter((a: any) => a.status === "selected");
-    const selectedContacts = (contacts || []).filter((c: any) => c.status === "selected");
-    const merged = [
-      ...selectedContacts.map((c: any) => ({ ...c, _source: "contacts" })),
-      ...selectedApps.map((a: any) => ({ ...a, _source: "applications" })),
-    ];
+  async function handleDeleteSelected(id: string | number) {
+    if (!confirm("Are you sure you want to permanently remove this student from Selected Students? (Their resume will still be available in the original tab)")) return;
+    try {
+      console.log("Deleting selected student with id:", id);
 
-    if (!merged.length) return renderEmptyState("No selected students", "No approved students yet.");
+      // Only delete from selected_students table - keep the source record for resume access
+      try {
+        console.log("Deleting from selected_students table");
+        await supabase.deleteFrom("selected_students", id);
+        console.log("Successfully deleted from selected_students");
+      } catch (delErr: any) {
+        console.error("Error deleting from selected_students:", delErr);
+        throw new Error(`Failed to delete: ${delErr?.message || delErr}`);
+      }
+
+      toast({ title: "Removed", description: "Student removed from Selected Students. Original record kept for reference." });
+      setSelectedStudents((prev) => (prev || []).filter((s) => s.id !== id));
+    } catch (err: any) {
+      console.error("Delete failed:", err);
+      toast({ title: "Error", description: `Failed: ${err?.message || "Failed to remove"}` });
+    }
+  }
+
+  const renderSelectedTable = () => {
+    if (selectedStudentsError) {
+      return renderEmptyState("Unable to load selected students", selectedStudentsError, "error");
+    }
+    if (selectedStudents === null) {
+      return renderEmptyState(
+        "Connect Supabase to view selected students",
+        "We could not reach the selected_students table. Confirm database permissions and try syncing again."
+      );
+    }
+    if (!selectedStudents.length) {
+      return renderEmptyState("No selected students", "No approved students yet.");
+    }
 
     return (
       <div className="overflow-hidden rounded-3xl border shadow-2xl backdrop-blur" style={tableShellStyle}>
@@ -537,23 +615,31 @@ const Admin: React.FC = () => {
                 <th className="px-6 py-3 font-bold text-sm tracking-wide">Name</th>
                 <th className="px-6 py-3 font-bold text-sm tracking-wide">Source</th>
                 <th className="px-6 py-3 font-bold text-sm tracking-wide">Contact</th>
-                <th className="px-6 py-3 font-bold text-sm tracking-wide">Details</th>
+                <th className="px-6 py-3 font-bold text-sm tracking-wide">Position</th>
+                <th className="px-6 py-3 font-bold text-sm tracking-wide">Resume</th>
                 <th className="px-6 py-3 font-bold text-sm tracking-wide">Actions</th>
               </tr>
             </thead>
             <tbody>
-              {merged.map((row: any) => (
-                <tr key={`${row._source}-${row.id}`} style={{ borderBottom: `1px solid ${secondaryTint(0.35)}` }}>
+              {selectedStudents.map((row: any) => (
+                <tr key={row.id} style={{ borderBottom: `1px solid ${secondaryTint(0.35)}` }}>
                   <td className="px-6 py-4">
                     <p className="font-semibold" style={{ color: colors.secondaryHex }}>{formatFullName(row.first_name, row.last_name)}</p>
                   </td>
-                  <td className="px-6 py-4"><p style={{ color: secondaryTint(0.6) }}>{row._source}</p></td>
+                  <td className="px-6 py-4"><p style={{ color: secondaryTint(0.6) }}>{row.source_table}</p></td>
                   <td className="px-6 py-4">
                     {row.email ? <a href={`mailto:${row.email}`} style={{ color: colors.primaryHex }}>{row.email}</a> : <span style={{ color: secondaryTint(0.8) }}>—</span>}
                   </td>
                   <td className="px-6 py-4"><p style={{ color: colors.secondaryHex }}>{row.position || row.company || '—'}</p></td>
                   <td className="px-6 py-4">
-                    <button className="inline-flex items-center justify-center px-3 py-1 rounded-md" style={{ minWidth: 84, background: '#ef4444', color: '#fff', fontWeight: 600 }} onClick={async () => await handleDelete(row._source === 'applications' ? 'job_applications' : 'contact_messages', row.id)}>Delete</button>
+                    {row.resume_file_url ? (
+                      <a href={row.resume_file_url} target="_blank" rel="noopener noreferrer" style={{ color: colors.primaryHex, textDecoration: 'underline' }} className="font-medium">View Resume</a>
+                    ) : (
+                      <span style={{ color: secondaryTint(0.8) }}>—</span>
+                    )}
+                  </td>
+                  <td className="px-6 py-4">
+                    <button className="inline-flex items-center justify-center px-3 py-1 rounded-md" style={{ minWidth: 84, background: '#ef4444', color: '#fff', fontWeight: 600 }} onClick={async () => await handleDeleteSelected(row.id)}>Remove</button>
                   </td>
                 </tr>
               ))}
