@@ -352,10 +352,14 @@ const Admin: React.FC = () => {
         "We could not reach the job_applications table. Confirm database permissions and try syncing again."
       );
     }
-    if (!applications.length) {
+
+    // Filter to show only non-selected applications (pending/approved but not moved to selected_students)
+    const pendingApplications = (applications || []).filter((a: any) => a.status !== "selected");
+
+    if (!pendingApplications.length) {
       return renderEmptyState(
-        "No job applications yet",
-        "As soon as a candidate submits the careers form, their record will appear here."
+        "No pending job applications",
+        "All applications have been approved and moved to Selected Students."
       );
     }
 
@@ -377,7 +381,7 @@ const Admin: React.FC = () => {
             className="rounded-full px-3 py-1 text-xs font-semibold"
             style={{ background: colors.primaryHex, color: colors.white }}
           >
-            {applications.length} records
+            {pendingApplications.length} records
           </span>
         </div>
 
