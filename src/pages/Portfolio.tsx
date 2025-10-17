@@ -1078,10 +1078,10 @@ const PanaboticsPortfolio: React.FC = () => {
                 Join thousands of companies already transforming their operations with Panabotics AI products.
                 Get started with a personalized demo today.
               </p>
-              <div className="flex flex-col sm:flex-row gap-2 md:gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-2 md:gap-3 justify-center">
                 {/* Schedule Demo */}
                 <button
-                  className="inline-flex items-center px-6 py-3 md:px-8 md:py-4 font-semibold rounded-lg md:rounded-full transition-all duration-300 hover:scale-105 hover:shadow-md md:hover:shadow-xl group text-sm md:text-base"
+                  className="inline-flex items-center px-5 py-2 md:px-6 md:py-3 font-semibold rounded-lg md:rounded-full transition-all duration-300 hover:scale-105 hover:shadow-md md:hover:shadow-xl group text-xs md:text-sm"
                   style={{ backgroundColor: "white", color: colors.primaryHex }}
                   onMouseEnter={(e) =>
                     (e.currentTarget.style.backgroundColor = "#e0f7f9")
