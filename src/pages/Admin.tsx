@@ -237,8 +237,8 @@ const Admin: React.FC = () => {
       );
     }
 
-    // Filter to show only non-selected contacts (pending/approved but not moved to selected_students)
-    const pendingContacts = (contacts || []).filter((c: any) => c.status !== "selected");
+    // Show all contacts (both pending and approved)
+    const allContacts = (contacts || []);
 
     if (!pendingContacts.length) {
       return renderEmptyState(
