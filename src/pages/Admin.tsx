@@ -526,6 +526,11 @@ const Admin: React.FC = () => {
             selected_at: new Date().toISOString(),
           };
           await supabase.upsertInto("selected_students", payload);
+          setSelectedStudents((prev) => {
+            if (!prev) return [payload];
+            const exists = prev.some((s: any) => s.source_table === table && s.source_id === record.id);
+            return exists ? prev : [...prev, payload];
+          });
           toast({ title: "Approved", description: "Record moved to Selected and saved." });
         } catch (insErr: any) {
           console.error("Failed to upsert selected_students", insErr);
@@ -538,6 +543,32 @@ const Admin: React.FC = () => {
     } catch (err: any) {
       console.error("Approve failed", err);
       toast({ title: "Error", description: err?.message || "Failed to approve. Ensure the table has a 'status' column and RLS allows updates." });
+    }
+  }
+
+  async function handleDeleteSelected(id: string | number) {
+    if (!confirm("Are you sure you want to permanently delete this record?")) return;
+    try {
+      // Find the selected student record to get source table and source_id
+      const selectedRecord = (selectedStudents || []).find((s: any) => s.id === id);
+
+      // Delete from selected_students table
+      await supabase.deleteFrom("selected_students", id);
+
+      // Also delete from the source table if we have that info
+      if (selectedRecord?.source_table && selectedRecord?.source_id) {
+        try {
+          await supabase.deleteFrom(selectedRecord.source_table, selectedRecord.source_id);
+        } catch (err) {
+          console.warn("Could not delete from source table:", err);
+        }
+      }
+
+      toast({ title: "Deleted", description: "Record deleted." });
+      setSelectedStudents((prev) => (prev || []).filter((s) => s.id !== id));
+    } catch (err: any) {
+      console.error("Delete failed", err);
+      toast({ title: "Error", description: err?.message || "Failed to delete" });
     }
   }
 
