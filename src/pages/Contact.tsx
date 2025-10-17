@@ -197,7 +197,7 @@ const Contact = () => {
               className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6"
               style={{ color: colors.primaryHex }}
             >
-              Send us a message
+              Contact Us
             </h2>
             <form id="contact-form" className="space-y-4 sm:space-y-6" onSubmit={handleSubmit}>
               <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
@@ -470,7 +470,7 @@ const Contact = () => {
                   first?.focus();
                 }}
               >
-                Send us a message
+                Contact Us
               </button>
             </div>
           </motion.div>
