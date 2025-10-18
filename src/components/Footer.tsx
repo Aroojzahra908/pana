@@ -101,7 +101,7 @@ const Footer = () => {
                 </span>
               </div>
             </Link>
-            <p className="mb-2 leading-tight text-xs">
+            <p className="mb-2 leading-tight text-xs" style={{ color: "rgba(255,255,255,0.9)" }}>
               AI & ML Solutions
             </p>
             <div className="flex space-x-1.5">
