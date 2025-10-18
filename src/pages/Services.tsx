@@ -199,7 +199,7 @@ const Services = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <div className="relative pt-24 md:pt-32 pb-12 md:pb-20 overflow-hidden bg-white">
+      <div className="relative pt-16 sm:pt-20 md:pt-32 pb-8 sm:pb-12 md:pb-20 overflow-hidden bg-white">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -247,7 +247,7 @@ const Services = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Services Grid */}
-        <div className="py-12 md:py-20">
+        <div className="py-8 sm:py-12 md:py-20">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
