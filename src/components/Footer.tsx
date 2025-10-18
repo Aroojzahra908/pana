@@ -79,7 +79,7 @@ const Footer = () => {
     <footer
       className="text-white"
       style={{
-        backgroundImage: `linear-gradient(135deg, ${colors.secondaryHex}, ${colors.primaryHex})`,
+        backgroundImage: `linear-gradient(90deg, #00b4bb, #000000)`,
         color: colors.white,
       }}
     >
