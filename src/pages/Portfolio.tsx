@@ -909,7 +909,7 @@ const PanaboticsPortfolio: React.FC = () => {
             </div>
 
             <h1
-              className="text-3xl md:text-5xl lg:text-7xl font-bold mb-4 md:mb-6 leading-tight"
+              className="text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-bold mb-4 md:mb-6 leading-tight"
               style={{ color: colors.primaryHex }}
             >
               Our AI Portfolio
@@ -998,7 +998,7 @@ const PanaboticsPortfolio: React.FC = () => {
       {/* Products Grid */}
       <section className="pb-12 md:pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
             {filteredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
