@@ -142,12 +142,12 @@ const Footer = () => {
                     <Link
                       to={href}
                       className="transition-colors duration-200 block text-xs"
-                      style={{ color: colors.white }}
+                      style={{ color: "rgba(255,255,255,0.9)" }}
                       onMouseEnter={(e) =>
-                        (e.currentTarget.style.color = colors.grayGradientStart)
+                        (e.currentTarget.style.color = colors.white)
                       }
                       onMouseLeave={(e) =>
-                        (e.currentTarget.style.color = colors.white)
+                        (e.currentTarget.style.color = "rgba(255,255,255,0.9)")
                       }
                     >
                       {name}
