@@ -77,13 +77,13 @@ const Footer = () => {
 
   return (
     <footer
-      className="text-white min-h-[2.3in]"
+      className="text-white min-h-[1.4in] sm:min-h-[1.6in] lg:min-h-[1.8in]"
       style={{
         backgroundImage: `linear-gradient(90deg, rgba(0,0,0,0.75), #00b4bb)`,
         color: colors.white,
       }}
     >
-      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
+      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
         {/* Responsive grid: compact layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8 md:gap-10">
           {/* Brand Section */}
