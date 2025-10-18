@@ -164,7 +164,7 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="flex flex-col sm:flex-row gap-2 justify-between items-center text-center sm:text-left">
-          <p className="text-xs select-none">
+          <p className="text-xs select-none" style={{ color: "rgba(255,255,255,0.9)" }}>
             © 2025 Panabotics. All rights reserved.
           </p>
           <div className="flex space-x-3 flex-wrap justify-center sm:justify-start">
