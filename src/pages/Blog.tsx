@@ -534,7 +534,7 @@ const Blog = () => {
         >
           <div className="pb-4 sm:pb-5">
             <h1
-              className="text-5xl lg:text-6xl font-bold leading-tight"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold leading-tight"
               style={{ color: colors.primaryHex }}
             >
               AI Insights Blog

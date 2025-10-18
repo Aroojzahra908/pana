@@ -597,7 +597,7 @@ const Careers = () => {
 
         <div className="container mx-auto px-4 relative z-10">
           <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="text-center max-w-4xl mx-auto">
-            <h1 className="text-5xl lg:text-6xl font-bold mb-6" style={{ color: colors.white }}>Join Our Team</h1>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-6" style={{ color: colors.white }}>Join Our Team</h1>
             <p className="text-xl mb-8 max-w-2xl mx-auto leading-relaxed opacity-80 text-center" style={{ color: colors.white }}>
               Help us shape the future of artificial intelligence. We're looking for passionate individuals who want to make a meaningful impact through innovative AI solutions.
             </p>
