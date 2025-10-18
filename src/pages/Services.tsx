@@ -256,7 +256,7 @@ const Services = () => {
             className="text-center mb-12 md:mb-16"
           >
             <h2
-              className="text-5xl lg:text-6xl font-bold mb-4 md:mb-6"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-4 md:mb-6"
               style={{ color: colors.primaryHex }}
             >
               Our Services
@@ -329,7 +329,7 @@ const Services = () => {
             <p className="text-sm md:text-base lg:text-xl text-gray-700">Delivering measurable results across diverse sectors</p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8 text-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8 text-center">
             {[
               { label: 'Projects Completed', value: stats.projects },
               { label: 'Happy Clients', value: stats.clients },

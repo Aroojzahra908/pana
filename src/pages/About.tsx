@@ -89,7 +89,7 @@ const About = () => {
           className="text-center mb-12 md:mb-16 relative z-10"
         >
           <h1
-            className="text-5xl lg:text-6xl font-bold mb-4 md:mb-6"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-4 md:mb-6"
             style={{ color: colors.primaryHex }}
           >
             About Panabotics
@@ -168,7 +168,7 @@ const About = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="grid grid-cols-2 gap-4 md:gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6"
           >
             {[
               {
