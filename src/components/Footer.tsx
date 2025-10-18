@@ -160,20 +160,20 @@ const Footer = () => {
         </div>
 
         {/* Divider */}
-        <div className="border-t my-4" style={{ borderColor: "rgba(0,0,0,0.06)" }}></div>
+        <div className="border-t my-6 sm:my-8" style={{ borderColor: "rgba(0,0,0,0.06)" }}></div>
 
         {/* Bottom Bar */}
-        <div className="flex flex-col sm:flex-row gap-2 justify-between items-center text-center sm:text-left">
-          <p className="text-xs select-none" style={{ color: "rgba(255,255,255,0.9)" }}>
+        <div className="flex flex-col gap-4 sm:gap-6 justify-between items-center text-center sm:text-left">
+          <p className="text-xs sm:text-sm select-none" style={{ color: "rgba(255,255,255,0.9)" }}>
             © 2025 Panabotics. All rights reserved.
           </p>
-          <div className="flex space-x-3 flex-wrap justify-center sm:justify-start">
+          <div className="flex flex-wrap space-x-3 sm:space-x-4 gap-2 sm:gap-3 justify-center sm:justify-start">
             {["Privacy Policy", "Terms of Service", "Cookie Policy"].map(
               (text) => (
                 <Link
                   key={text}
                   to="/contact"
-                  className="text-xs transition-colors duration-200 select-none"
+                  className="text-xs sm:text-sm transition-colors duration-200 select-none hover:text-white"
                   style={{ color: "rgba(255,255,255,0.9)" }}
                   onMouseEnter={(e) =>
                     (e.currentTarget.style.color = colors.white)
