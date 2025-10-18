@@ -27,7 +27,7 @@ const ApplicationModal = ({ job, onClose, isGeneral, firstName, setFirstName, la
     <motion.div
       initial={{ scale: 0.9, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
-      className="bg-white rounded-2xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+      className="bg-white rounded-2xl p-4 sm:p-6 md:p-8 w-full max-w-full sm:max-w-lg md:max-w-2xl max-h-[90vh] overflow-y-auto"
       onClick={(e) => e.stopPropagation()}
     >
       <div className="flex justify-between items-start mb-6 flex-wrap gap-4">
@@ -504,7 +504,7 @@ const Careers = () => {
       <motion.div
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        className="bg-white rounded-2xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+        className="bg-white rounded-2xl p-4 sm:p-6 md:p-8 w-full max-w-full sm:max-w-lg md:max-w-2xl lg:max-w-4xl max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex justify-between items-start mb-6 flex-wrap gap-4">
@@ -512,7 +512,7 @@ const Careers = () => {
             <img
               src={job.image}
               alt={job.title}
-              className="w-16 h-16 rounded-xl object-cover flex-shrink-0"
+              className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl object-cover flex-shrink-0"
             />
             <div>
               <h2 className="text-3xl font-bold mb-2" style={{ color: colors.primaryHex }}>
