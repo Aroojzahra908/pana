@@ -88,7 +88,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5 md:gap-6">
           {/* Brand Section */}
           <div className="col-span-1 sm:col-span-2 md:col-span-1 sm:ml-3 lg:ml-8">
-            <Link to="/" className="flex items-center space-x-1 mb-2 sm:mb-3">
+            <Link to="/" className="flex items-center space-x-1 mb-3 sm:mb-4 lg:mb-5">
               <div className="text-lg sm:text-2xl lg:text-3xl font-extrabold select-none">
                 <span style={{ color: colors.primaryHex }}>Pana</span>
                 <span
@@ -101,10 +101,10 @@ const Footer = () => {
                 </span>
               </div>
             </Link>
-            <p className="mb-2 leading-tight text-xs sm:text-sm" style={{ color: "rgba(255,255,255,0.9)" }}>
+            <p className="mb-3 sm:mb-4 leading-tight text-xs sm:text-sm" style={{ color: "rgba(255,255,255,0.9)" }}>
               AI & ML Solutions
             </p>
-            <div className="flex space-x-2 sm:space-x-2.5">
+            <div className="flex space-x-2 sm:space-x-2.5 mt-3 sm:mt-4">
               {socialLinks.map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
