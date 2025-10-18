@@ -589,7 +589,7 @@ const Careers = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative py-20 lg:py-24 overflow-hidden mt-16">
+      <section className="relative py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden mt-12 sm:mt-16">
         <div className="absolute inset-0">
           <img src="/tech-icons/c1.jfif" alt="Join Our Team" className="w-full h-full object-cover" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(44,61,79,0.9), rgba(0,180,187,0.8))" }} />
