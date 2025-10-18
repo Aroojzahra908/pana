@@ -89,7 +89,7 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="col-span-1 sm:col-span-2 md:col-span-1 sm:ml-3 lg:ml-8">
             <Link to="/" className="flex items-center space-x-1 mb-2 sm:mb-3">
-              <div className="text-sm sm:text-base lg:text-lg font-bold select-none">
+              <div className="text-lg sm:text-2xl lg:text-3xl font-extrabold select-none">
                 <span style={{ color: colors.primaryHex }}>Pana</span>
                 <span
                   className="bg-clip-text text-transparent"
@@ -134,7 +134,7 @@ const Footer = () => {
 
           {/* Footer Links */}
           {footerSections.map(({ title, links }) => (
-            <div key={title} className="col-span-1">
+            <div key={title} className={`col-span-1 ${title === "Services" ? "pl-3 sm:pl-4 lg:pl-6" : ""}`}>
               <h3 className="text-xs sm:text-sm font-semibold mb-2 sm:mb-3 uppercase tracking-wider">{title}</h3>
               <ul className="space-y-1 sm:space-y-1.5">
                 {links.map(({ name, href }) => (
