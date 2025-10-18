@@ -134,14 +134,14 @@ const Footer = () => {
 
           {/* Footer Links */}
           {footerSections.map(({ title, links }) => (
-            <div key={title}>
-              <h3 className="text-xs font-semibold mb-1.5 uppercase tracking-wide">{title}</h3>
-              <ul className="space-y-1">
+            <div key={title} className="col-span-1">
+              <h3 className="text-xs sm:text-sm font-semibold mb-2 sm:mb-3 uppercase tracking-wider">{title}</h3>
+              <ul className="space-y-1.5 sm:space-y-2">
                 {links.map(({ name, href }) => (
                   <li key={name}>
                     <Link
                       to={href}
-                      className="transition-colors duration-200 block text-xs"
+                      className="transition-colors duration-200 block text-xs sm:text-sm leading-relaxed hover:text-white"
                       style={{ color: "rgba(255,255,255,0.9)" }}
                       onMouseEnter={(e) =>
                         (e.currentTarget.style.color = colors.white)
