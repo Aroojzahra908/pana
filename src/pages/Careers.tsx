@@ -195,11 +195,11 @@ const ApplicationModal = ({ job, onClose, isGeneral, firstName, setFirstName, la
           />
         </div>
 
-        <div className="flex flex-col md:flex-row gap-4">
+        <div className="flex flex-col gap-3 sm:gap-4">
           <button
             type="button"
             onClick={async (ev) => { ev.preventDefault(); console.log('Careers: submit button clicked'); await handleSubmit(); }}
-            className="flex-1 text-white px-8 py-4 rounded-xl font-semibold shadow-lg flex items-center justify-center transition-transform duration-300 hover:scale-105 hover:opacity-90"
+            className="flex-1 text-white px-4 py-2 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-xl font-semibold shadow-lg flex items-center justify-center transition-transform duration-300 hover:scale-105 hover:opacity-90"
             style={{ backgroundColor: colors.primaryHex }}
             disabled={isSubmitting}
           >
@@ -212,7 +212,7 @@ const ApplicationModal = ({ job, onClose, isGeneral, firstName, setFirstName, la
           <button
             type="button"
             onClick={onClose}
-            className="px-8 py-3 border border-gray-300 text-gray-700 rounded-xl font-medium flex items-center justify-center transition-colors transition-transform duration-300 hover:bg-white hover:text-[color:var(--primaryHex)] hover:scale-105 hover:opacity-90"
+            className="px-4 py-2 sm:px-6 sm:py-3 md:px-8 md:py-3 border border-gray-300 text-gray-700 rounded-xl font-medium flex items-center justify-center transition-colors transition-transform duration-300 hover:bg-white hover:text-[color:var(--primaryHex)] hover:scale-105 hover:opacity-90"
             style={{ transition: "color 0.3s, background-color 0.3s" }}
             onMouseEnter={(e) => {
               e.currentTarget.style.backgroundColor = colors.white;
