@@ -160,7 +160,7 @@ const Footer = () => {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-white border-opacity-20 my-4"></div>
+        <div className="border-t my-4" style={{ borderColor: "rgba(0,0,0,0.06)" }}></div>
 
         {/* Bottom Bar */}
         <div className="flex flex-col sm:flex-row gap-2 justify-between items-center text-center sm:text-left">
