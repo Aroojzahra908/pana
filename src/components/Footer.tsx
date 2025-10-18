@@ -77,18 +77,18 @@ const Footer = () => {
 
   return (
     <footer
-      className="text-white min-h-[1.4in] sm:min-h-[1.6in] lg:min-h-[1.8in]"
+      className="text-white min-h-[1.0in] sm:min-h-[1.15in] lg:min-h-[1.25in]"
       style={{
         backgroundImage: `linear-gradient(90deg, rgba(0,0,0,0.75), #00b4bb)`,
         color: colors.white,
       }}
     >
-      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
+      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-3 lg:py-4">
         {/* Responsive grid: compact layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8 md:gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5 md:gap-6">
           {/* Brand Section */}
           <div className="col-span-1 sm:col-span-2 md:col-span-1">
-            <Link to="/" className="flex items-center space-x-1 mb-3 sm:mb-4">
+            <Link to="/" className="flex items-center space-x-1 mb-2 sm:mb-3">
               <div className="text-sm sm:text-base lg:text-lg font-bold select-none">
                 <span style={{ color: colors.primaryHex }}>Pana</span>
                 <span
@@ -101,7 +101,7 @@ const Footer = () => {
                 </span>
               </div>
             </Link>
-            <p className="mb-3 leading-tight text-xs sm:text-sm" style={{ color: "rgba(255,255,255,0.9)" }}>
+            <p className="mb-2 leading-tight text-xs sm:text-sm" style={{ color: "rgba(255,255,255,0.9)" }}>
               AI & ML Solutions
             </p>
             <div className="flex space-x-2 sm:space-x-2.5">
@@ -110,7 +110,7 @@ const Footer = () => {
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="w-8 h-8 sm:w-9 sm:h-9 rounded-md flex items-center justify-center transition-colors duration-200 hover:scale-110"
+                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-md flex items-center justify-center transition-colors duration-200 hover:scale-110"
                   style={{
                     backgroundColor: "#00b4bb",
                     color: colors.white,
@@ -136,7 +136,7 @@ const Footer = () => {
           {footerSections.map(({ title, links }) => (
             <div key={title} className="col-span-1">
               <h3 className="text-xs sm:text-sm font-semibold mb-2 sm:mb-3 uppercase tracking-wider">{title}</h3>
-              <ul className="space-y-1.5 sm:space-y-2">
+              <ul className="space-y-1 sm:space-y-1.5">
                 {links.map(({ name, href }) => (
                   <li key={name}>
                     <Link
@@ -160,14 +160,14 @@ const Footer = () => {
         </div>
 
         {/* Divider */}
-        <div className="border-t my-6 sm:my-8" style={{ borderColor: "rgba(0,0,0,0.06)" }}></div>
+        <div className="border-t my-3 sm:my-4" style={{ borderColor: "rgba(0,0,0,0.06)" }}></div>
 
         {/* Bottom Bar */}
-        <div className="flex flex-col gap-4 sm:gap-6 justify-between items-center text-center sm:text-left">
+        <div className="flex flex-col gap-2 sm:gap-3 justify-between items-center text-center sm:text-left">
           <p className="text-xs sm:text-sm select-none" style={{ color: "rgba(255,255,255,0.9)" }}>
             © 2025 Panabotics. All rights reserved.
           </p>
-          <div className="flex flex-wrap space-x-3 sm:space-x-4 gap-2 sm:gap-3 justify-center sm:justify-start">
+          <div className="flex flex-wrap space-x-2 sm:space-x-2.5 gap-1 sm:gap-2 justify-center sm:justify-start">
             {["Privacy Policy", "Terms of Service", "Cookie Policy"].map(
               (text) => (
                 <Link
