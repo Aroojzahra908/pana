@@ -77,17 +77,17 @@ const Footer = () => {
 
   return (
     <footer
-      className="text-white min-h-[1.0in] sm:min-h-[1.15in] lg:min-h-[1.25in]"
+      className="text-white min-h-[1.6in] sm:min-h-[1.9in] lg:min-h-[2.1in]"
       style={{
         backgroundImage: `linear-gradient(90deg, rgba(0,0,0,0.75), #00b4bb)`,
         color: colors.white,
       }}
     >
-      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-3 lg:py-4">
+      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10">
         {/* Responsive grid: compact layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5 md:gap-6">
           {/* Brand Section */}
-          <div className="col-span-1 sm:col-span-2 md:col-span-1">
+          <div className="col-span-1 sm:col-span-2 md:col-span-1 sm:ml-3 lg:ml-8">
             <Link to="/" className="flex items-center space-x-1 mb-2 sm:mb-3">
               <div className="text-sm sm:text-base lg:text-lg font-bold select-none">
                 <span style={{ color: colors.primaryHex }}>Pana</span>
