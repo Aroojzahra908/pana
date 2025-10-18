@@ -188,7 +188,7 @@ const Navigation = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <img
-              src="src/components/logo final-01.svg"
+              src="/tech-icons/logo final-01.svg"
               alt="Panabotics logo"
               className="h-24 sm:h-28 md:h-40 w-auto"
             />
