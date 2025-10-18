@@ -112,16 +112,16 @@ const Footer = () => {
                   aria-label={label}
                   className="w-7 h-7 rounded-md flex items-center justify-center transition-colors duration-200"
                   style={{
-                    backgroundColor: colors.white,
-                    color: colors.secondaryHex,
+                    backgroundColor: "#00b4bb",
+                    color: colors.white,
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = colors.secondaryHex;
-                    e.currentTarget.style.color = colors.white;
+                    e.currentTarget.style.backgroundColor = colors.white;
+                    e.currentTarget.style.color = "#00b4bb";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = colors.white;
-                    e.currentTarget.style.color = colors.secondaryHex;
+                    e.currentTarget.style.backgroundColor = "#00b4bb";
+                    e.currentTarget.style.color = colors.white;
                   }}
                   target="_blank"
                   rel="noopener noreferrer"
