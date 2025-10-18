@@ -87,9 +87,9 @@ const Footer = () => {
         {/* Responsive grid: compact layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8 md:gap-10">
           {/* Brand Section */}
-          <div>
-            <Link to="/" className="flex items-center space-x-1 mb-2">
-              <div className="text-base sm:text-lg font-bold select-none">
+          <div className="col-span-1 sm:col-span-2 md:col-span-1">
+            <Link to="/" className="flex items-center space-x-1 mb-3 sm:mb-4">
+              <div className="text-sm sm:text-base lg:text-lg font-bold select-none">
                 <span style={{ color: colors.primaryHex }}>Pana</span>
                 <span
                   className="bg-clip-text text-transparent"
@@ -101,16 +101,16 @@ const Footer = () => {
                 </span>
               </div>
             </Link>
-            <p className="mb-2 leading-tight text-xs" style={{ color: "rgba(255,255,255,0.9)" }}>
+            <p className="mb-3 leading-tight text-xs sm:text-sm" style={{ color: "rgba(255,255,255,0.9)" }}>
               AI & ML Solutions
             </p>
-            <div className="flex space-x-1.5">
+            <div className="flex space-x-2 sm:space-x-2.5">
               {socialLinks.map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="w-7 h-7 rounded-md flex items-center justify-center transition-colors duration-200"
+                  className="w-8 h-8 sm:w-9 sm:h-9 rounded-md flex items-center justify-center transition-colors duration-200 hover:scale-110"
                   style={{
                     backgroundColor: "#00b4bb",
                     color: colors.white,
@@ -126,7 +126,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Icon className="h-3.5 w-3.5" />
+                  <Icon className="h-4 w-4 sm:h-4.5 sm:w-4.5" />
                 </a>
               ))}
             </div>
