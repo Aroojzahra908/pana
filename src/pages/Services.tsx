@@ -199,7 +199,7 @@ const Services = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <div className="relative pt-24 md:pt-32 pb-12 md:pb-20 overflow-hidden bg-white">
+      <div className="relative pt-16 sm:pt-20 md:pt-32 pb-8 sm:pb-12 md:pb-20 overflow-hidden bg-white">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -247,7 +247,7 @@ const Services = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Services Grid */}
-        <div className="py-12 md:py-20">
+        <div className="py-8 sm:py-12 md:py-20">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -256,7 +256,7 @@ const Services = () => {
             className="text-center mb-12 md:mb-16"
           >
             <h2
-              className="text-5xl lg:text-6xl font-bold mb-4 md:mb-6"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-4 md:mb-6"
               style={{ color: colors.primaryHex }}
             >
               Our Services
@@ -329,7 +329,7 @@ const Services = () => {
             <p className="text-sm md:text-base lg:text-xl text-gray-700">Delivering measurable results across diverse sectors</p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8 text-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8 text-center">
             {[
               { label: 'Projects Completed', value: stats.projects },
               { label: 'Happy Clients', value: stats.clients },
