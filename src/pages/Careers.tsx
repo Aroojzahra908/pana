@@ -27,7 +27,7 @@ const ApplicationModal = ({ job, onClose, isGeneral, firstName, setFirstName, la
     <motion.div
       initial={{ scale: 0.9, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
-      className="bg-white rounded-2xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+      className="bg-white rounded-2xl p-4 sm:p-6 md:p-8 w-full max-w-full sm:max-w-lg md:max-w-2xl max-h-[90vh] overflow-y-auto"
       onClick={(e) => e.stopPropagation()}
     >
       <div className="flex justify-between items-start mb-6 flex-wrap gap-4">
@@ -195,11 +195,11 @@ const ApplicationModal = ({ job, onClose, isGeneral, firstName, setFirstName, la
           />
         </div>
 
-        <div className="flex flex-col md:flex-row gap-4">
+        <div className="flex flex-col gap-3 sm:gap-4">
           <button
             type="button"
             onClick={async (ev) => { ev.preventDefault(); console.log('Careers: submit button clicked'); await handleSubmit(); }}
-            className="flex-1 text-white px-8 py-4 rounded-xl font-semibold shadow-lg flex items-center justify-center transition-transform duration-300 hover:scale-105 hover:opacity-90"
+            className="flex-1 text-white px-4 py-2 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-xl font-semibold shadow-lg flex items-center justify-center transition-transform duration-300 hover:scale-105 hover:opacity-90"
             style={{ backgroundColor: colors.primaryHex }}
             disabled={isSubmitting}
           >
@@ -212,7 +212,7 @@ const ApplicationModal = ({ job, onClose, isGeneral, firstName, setFirstName, la
           <button
             type="button"
             onClick={onClose}
-            className="px-8 py-3 border border-gray-300 text-gray-700 rounded-xl font-medium flex items-center justify-center transition-colors transition-transform duration-300 hover:bg-white hover:text-[color:var(--primaryHex)] hover:scale-105 hover:opacity-90"
+            className="px-4 py-2 sm:px-6 sm:py-3 md:px-8 md:py-3 border border-gray-300 text-gray-700 rounded-xl font-medium flex items-center justify-center transition-colors transition-transform duration-300 hover:bg-white hover:text-[color:var(--primaryHex)] hover:scale-105 hover:opacity-90"
             style={{ transition: "color 0.3s, background-color 0.3s" }}
             onMouseEnter={(e) => {
               e.currentTarget.style.backgroundColor = colors.white;
@@ -504,7 +504,7 @@ const Careers = () => {
       <motion.div
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        className="bg-white rounded-2xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+        className="bg-white rounded-2xl p-4 sm:p-6 md:p-8 w-full max-w-full sm:max-w-lg md:max-w-2xl lg:max-w-4xl max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex justify-between items-start mb-6 flex-wrap gap-4">
@@ -512,7 +512,7 @@ const Careers = () => {
             <img
               src={job.image}
               alt={job.title}
-              className="w-16 h-16 rounded-xl object-cover flex-shrink-0"
+              className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl object-cover flex-shrink-0"
             />
             <div>
               <h2 className="text-3xl font-bold mb-2" style={{ color: colors.primaryHex }}>
@@ -589,7 +589,7 @@ const Careers = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative py-20 lg:py-24 overflow-hidden mt-16">
+      <section className="relative py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden mt-12 sm:mt-16">
         <div className="absolute inset-0">
           <img src="/tech-icons/c1.jfif" alt="Join Our Team" className="w-full h-full object-cover" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(44,61,79,0.9), rgba(0,180,187,0.8))" }} />
@@ -597,7 +597,7 @@ const Careers = () => {
 
         <div className="container mx-auto px-4 relative z-10">
           <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="text-center max-w-4xl mx-auto">
-            <h1 className="text-5xl lg:text-6xl font-bold mb-6" style={{ color: colors.white }}>Join Our Team</h1>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-6" style={{ color: colors.white }}>Join Our Team</h1>
             <p className="text-xl mb-8 max-w-2xl mx-auto leading-relaxed opacity-80 text-center" style={{ color: colors.white }}>
               Help us shape the future of artificial intelligence. We're looking for passionate individuals who want to make a meaningful impact through innovative AI solutions.
             </p>

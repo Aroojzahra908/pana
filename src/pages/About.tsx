@@ -76,9 +76,9 @@ const About = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 pt-16 md:pt-20 overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 pt-12 sm:pt-16 md:pt-20 overflow-hidden">
       {/* Hero Section */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 md:py-12">
         {/* Preload largest hero image in HTML head externally for LCP */}
         <motion.div
           key="hero"
@@ -89,7 +89,7 @@ const About = () => {
           className="text-center mb-12 md:mb-16 relative z-10"
         >
           <h1
-            className="text-5xl lg:text-6xl font-bold mb-4 md:mb-6"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-4 md:mb-6"
             style={{ color: colors.primaryHex }}
           >
             About Panabotics
@@ -168,7 +168,7 @@ const About = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="grid grid-cols-2 gap-4 md:gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6"
           >
             {[
               {

@@ -11,7 +11,6 @@ import Blog from "./pages/Blog";
 import About from "./pages/About";
 import Careers from "./pages/Careers";
 import Contact from "./pages/Contact";
-import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 import Layout from "./components/Layout";
 import PageTransition from "./components/PageTransition";
@@ -31,7 +30,6 @@ const AppRoutes = () => {
           <Route path="/about" element={<PageTransition><About /></PageTransition>} />
           <Route path="/careers" element={<PageTransition><Careers /></PageTransition>} />
           <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
-          <Route path="/admin" element={<PageTransition><Admin /></PageTransition>} />
           <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
         </Routes>
       </AnimatePresence>
