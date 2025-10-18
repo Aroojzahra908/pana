@@ -77,7 +77,7 @@ const Footer = () => {
 
   return (
     <footer
-      className="text-white"
+      className="text-white min-h-[2.3in]"
       style={{
         backgroundImage: `linear-gradient(90deg, rgba(0,0,0,0.75), #00b4bb)`,
         color: colors.white,
